@@ -239,7 +239,7 @@ SMBNTencrypt(unsigned char *passwd, unsigned char *c8, unsigned char *p24,
 
 	rc = E_md4hash(passwd, p16, codepage);
 	if (rc) {
-		cifs_dbg(FYI, "%s Can't generate NT hash, error: %d\n",
+		cifs_dbg(FYI, "%s Can't generate NT hash, error: %d!\n",
 			 __func__, rc);
 		return rc;
 	}
