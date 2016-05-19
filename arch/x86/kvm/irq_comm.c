@@ -117,6 +117,8 @@ void kvm_set_msi_irq(struct kvm_kernel_irq_routing_entry *e,
 
 	irq->dest_id = (e->msi.address_lo &
 			MSI_ADDR_DEST_ID_MASK) >> MSI_ADDR_DEST_ID_SHIFT;
+	if (e->type == KVM_IRQ_ROUTING_MSI_X2APIC)
+		irq->dest_id |= MSI_ADDR_EXT_DEST_ID(e->msi.address_hi);
 	irq->vector = (e->msi.data &
 			MSI_DATA_VECTOR_MASK) >> MSI_DATA_VECTOR_SHIFT;
 	irq->dest_mode = (1 << MSI_ADDR_DEST_MODE_SHIFT) & e->msi.address_lo;
@@ -150,7 +152,8 @@ int kvm_arch_set_irq_inatomic(struct kvm_kernel_irq_routing_entry *e,
 	struct kvm_lapic_irq irq;
 	int r;
 
-	if (unlikely(e->type != KVM_IRQ_ROUTING_MSI))
+	if (unlikely(e->type != KVM_IRQ_ROUTING_MSI &&
+	             e->type != KVM_IRQ_ROUTING_MSI_X2APIC))
 		return -EWOULDBLOCK;
 
 	kvm_set_msi_irq(e, &irq);
@@ -281,6 +284,7 @@ int kvm_set_routing_entry(struct kvm_kernel_irq_routing_entry *e,
 			goto out;
 		break;
 	case KVM_IRQ_ROUTING_MSI:
+	case KVM_IRQ_ROUTING_MSI_X2APIC:
 		e->set = kvm_set_msi;
 		e->msi.address_lo = ue->u.msi.address_lo;
 		e->msi.address_hi = ue->u.msi.address_hi;
@@ -391,21 +395,17 @@ void kvm_scan_ioapic_routes(struct kvm_vcpu *vcpu,
 			       kvm->arch.nr_reserved_ioapic_pins);
 	for (i = 0; i < nr_ioapic_pins; ++i) {
 		hlist_for_each_entry(entry, &table->map[i], link) {
-			u32 dest_id, dest_mode;
-			bool level;
+			struct kvm_lapic_irq irq;
 
-			if (entry->type != KVM_IRQ_ROUTING_MSI)
+			if (entry->type != KVM_IRQ_ROUTING_MSI &&
+			    entry->type != KVM_IRQ_ROUTING_MSI_X2APIC)
 				continue;
-			dest_id = (entry->msi.address_lo >> 12) & 0xff;
-			dest_mode = (entry->msi.address_lo >> 2) & 0x1;
-			level = entry->msi.data & MSI_DATA_TRIGGER_LEVEL;
-			if (level && kvm_apic_match_dest(vcpu, NULL, 0,
-						dest_id, dest_mode)) {
-				u32 vector = entry->msi.data & 0xff;
 
-				__set_bit(vector,
-					  ioapic_handled_vectors);
-			}
+			kvm_set_msi_irq(entry, &irq);
+
+			if (irq.level && kvm_apic_match_dest(vcpu, NULL, 0,
+						irq.dest_id, irq.dest_mode))
+				__set_bit(irq.vector, ioapic_handled_vectors);
 		}
 	}
 	srcu_read_unlock(&kvm->irq_srcu, idx);

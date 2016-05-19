@@ -6337,10 +6337,6 @@ static __init int hardware_setup(void)
 		for (msr = 0x800; msr <= 0x8ff; msr++)
 			vmx_disable_intercept_msr_read_x2apic(msr);
 
-		/* According SDM, in x2apic mode, the whole id reg is used.
-		 * But in KVM, it only use the highest eight bits. Need to
-		 * intercept it */
-		vmx_enable_intercept_msr_read_x2apic(0x802);
 		/* TMCCT */
 		vmx_enable_intercept_msr_read_x2apic(0x839);
 		/* TPR */
@@ -10829,7 +10825,8 @@ static int vmx_update_pi_irte(struct kvm *kvm, unsigned int host_irq,
 	BUG_ON(guest_irq >= irq_rt->nr_rt_entries);
 
 	hlist_for_each_entry(e, &irq_rt->map[guest_irq], link) {
-		if (e->type != KVM_IRQ_ROUTING_MSI)
+		if (e->type != KVM_IRQ_ROUTING_MSI &&
+		    e->type != KVM_IRQ_ROUTING_MSI_X2APIC)
 			continue;
 		/*
 		 * VT-d PI cannot support posting multicast/broadcast

@@ -34,7 +34,7 @@
 #include <asm/asm.h>
 #include <asm/kvm_page_track.h>
 
-#define KVM_MAX_VCPUS 255
+#define KVM_MAX_VCPUS 288
 #define KVM_SOFT_MAX_VCPUS 160
 #define KVM_USER_MEM_SLOTS 509
 /* memory slots that are not exposed to userspace */
@@ -682,9 +682,12 @@ struct kvm_arch_memory_slot {
 struct kvm_apic_map {
 	struct rcu_head rcu;
 	u8 mode;
-	struct kvm_lapic *phys_map[256];
-	/* first index is cluster id second is cpu id in a cluster */
-	struct kvm_lapic *logical_map[16][16];
+	u32 size;
+	union {
+		struct kvm_lapic *xapic_flat_map[8];
+		struct kvm_lapic *xapic_cluster_map[16][4];
+	};
+	struct kvm_lapic *phys_map[];
 };
 
 /* Hyper-V emulation context */
