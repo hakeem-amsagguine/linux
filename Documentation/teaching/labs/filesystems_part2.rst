@@ -1011,7 +1011,7 @@ Implement the function ``minfs_new_inode``. Inside this function you will create
 
 .. tip::
 
-  Use the :c:func:`minix_new_inode`` function as a model.
+  Use the :c:func:`minix_new_inode` function as a model.
   Find the first free inode in imap (``sbi->imap``).
   Use bitwise operations (``find_first_zero_bit`` and ``set_bit``).
   Read the :ref:`BitmapOperations` section.
