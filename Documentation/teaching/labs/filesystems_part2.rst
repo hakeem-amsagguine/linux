@@ -992,7 +992,7 @@ If the implementation is correct, no error messages will be displayed when runni
   We notice that we get an error because we did not implement the directory operations that allow us to create a file.
   We will do this for the next exercise.
 
-2. Create operation
+3. Create operation
 ^^^^^^^^^^^^^^^^^^^
 
 In order to allow the creation of a file in a directory, we must implement the ``create`` operation.
