@@ -157,7 +157,6 @@ static int minfs_readdir(struct file *filp, struct dir_context *ctx)
 {
 	struct buffer_head *bh;
 	struct minfs_dir_entry *de;
-	struct inode *ino;
 	struct minfs_inode_info *mii;
 	struct inode *inode;
 	struct super_block *sb;
@@ -369,7 +368,7 @@ static int minfs_add_link(struct dentry *dentry, struct inode *inode)
 	int i;
 	int err = 0;
 
-	/* TODO 7/3: get directory inode, containing inode & sb */
+	/* TODO 7/3: Get: directory inode (in inode); containing inode (in mii); superblock (in sb). */
 	dir = dentry->d_parent->d_inode;
 	mii = container_of(dir, struct minfs_inode_info, vfs_inode);
 	sb = dir->i_sb;
