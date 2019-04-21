@@ -743,7 +743,7 @@ If the implementation is correct, no error messages will be displayed.
 ^^^^^^^^^^^^^^^^^^
 
 We want to implement the operations for working with files, which are used for accessing a file's content: read, write, truncate, etc.
-For this you will specify the operations described in the structures :c:type:`struct inode_operations`, c:type:`struct file_operations` and c:type:`struct address_space_operations`.
+For this you will specify the operations described in the structures :c:type:`struct inode_operations`, :c:type:`struct file_operations` and :c:type:`struct address_space_operations`.
 
 Follow the locations marked with ``TODO`` 6 which will guide you through the steps you need to take.
 
