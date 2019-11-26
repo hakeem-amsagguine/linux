@@ -695,9 +695,9 @@ err_hw:
 }
 
 static const struct ieee80211_iface_limit if_limits[] = {
-	{ .max = 2,	.types = BIT(NL80211_IFTYPE_STATION) |
+	{ .max = 8,	.types = BIT(NL80211_IFTYPE_STATION) |
 				 BIT(NL80211_IFTYPE_P2P_CLIENT) },
-	{ .max = 2,	.types = BIT(NL80211_IFTYPE_AP) |
+	{ .max = 8,	.types = BIT(NL80211_IFTYPE_AP) |
 #ifdef CONFIG_MAC80211_MESH
 				 BIT(NL80211_IFTYPE_MESH_POINT) |
 #endif
@@ -707,7 +707,7 @@ static const struct ieee80211_iface_limit if_limits[] = {
 static const struct ieee80211_iface_combination if_comb = {
 	.limits = if_limits,
 	.n_limits = ARRAY_SIZE(if_limits),
-	.max_interfaces = 2,
+	.max_interfaces = 8,
 	.num_different_channels = 1,
 };
 
@@ -728,6 +728,7 @@ static void ath9k_set_hw_capab(struct ath9k_htc_priv *priv,
 	ieee80211_hw_set(hw, SIGNAL_DBM);
 	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
 	ieee80211_hw_set(hw, DOESNT_SUPPORT_QOS_NDP);
+	ieee80211_hw_set(hw, SUPPORT_FAST_XMIT);
 
 	if (ath9k_ps_enable)
 		ieee80211_hw_set(hw, SUPPORTS_PS);
@@ -748,9 +749,9 @@ static void ath9k_set_hw_capab(struct ath9k_htc_priv *priv,
 
 	hw->wiphy->flags |= WIPHY_FLAG_IBSS_RSN |
 			    WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL |
-			    WIPHY_FLAG_HAS_CHANNEL_SWITCH;
-
-	hw->wiphy->flags |= WIPHY_FLAG_SUPPORTS_TDLS;
+			    WIPHY_FLAG_HAS_CHANNEL_SWITCH |
+			    WIPHY_FLAG_SUPPORTS_5_10_MHZ |
+			    WIPHY_FLAG_SUPPORTS_TDLS;
 
 	hw->queues = 4;
 	hw->max_listen_interval = 1;

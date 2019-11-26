@@ -197,8 +197,8 @@ struct ath9k_htc_target_rx_stats {
 	__be32 host_done;
 } __packed;
 
-#define ATH9K_HTC_MAX_VIF 2
-#define ATH9K_HTC_MAX_BCN_VIF 2
+#define ATH9K_HTC_MAX_VIF 8
+#define ATH9K_HTC_MAX_BCN_VIF 8
 
 #define INC_VIF(_priv, _type) do {		\
 		switch (_type) {		\
@@ -251,8 +251,8 @@ struct ath9k_vif_iter_data {
 	u8 mask[ETH_ALEN];
 };
 
-#define ATH9K_HTC_MAX_STA 8
-#define ATH9K_HTC_MAX_TID 8
+#define ATH9K_HTC_MAX_STA 128
+#define ATH9K_HTC_MAX_TID 16
 
 enum tid_aggr_state {
 	AGGR_STOP = 0,
@@ -564,6 +564,7 @@ void ath9k_htc_beaconep(void *drv_priv, struct sk_buff *skb,
 int ath9k_htc_update_cap_target(struct ath9k_htc_priv *priv,
 				u8 enable_coex);
 void ath9k_htc_ani_work(struct work_struct *work);
+void ath9k_htc_check_ani(struct ath9k_htc_priv *priv);
 void ath9k_htc_start_ani(struct ath9k_htc_priv *priv);
 void ath9k_htc_stop_ani(struct ath9k_htc_priv *priv);
 
