@@ -1973,6 +1973,9 @@ static int __init init_per_cpu(int nuvhubs, int base_part_pnode)
 	if (!uvhub_mask)
 		goto fail;
 
+	if (!uvhub_mask)
+		goto fail;
+
 	if (get_cpu_topology(base_part_pnode, uvhub_descs, uvhub_mask))
 		goto fail;
 
