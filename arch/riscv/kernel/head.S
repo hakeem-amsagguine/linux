@@ -236,6 +236,11 @@ pmp_done:
 .Lgood_cores:
 #endif
 
+#ifdef CONFIG_SMP
+	li t0, CONFIG_NR_CPUS
+	bgeu a0, t0, .Lsecondary_park
+#endif
+
 	/* Pick one hart to run the main boot sequence */
 	la a3, hart_lottery
 	li a2, 1
