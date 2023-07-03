@@ -511,7 +511,7 @@ static int read_config_rom(struct fw_device *device, int generation)
 	int i, end, length, ret;
 
 	rom = kmalloc(sizeof(*rom) * MAX_CONFIG_ROM_SIZE +
-		      sizeof(*stack) * MAX_CONFIG_ROM_SIZE, GFP_KERNEL);
+		      sizeof(*stack) * MAX_CONFIG_ROM_SIZE, GFP_KERNEL | GFP_DMA);
 	if (rom == NULL)
 		return -ENOMEM;
 
@@ -700,7 +700,7 @@ static void create_units(struct fw_device *device)
 		 * Get the address of the unit directory and try to
 		 * match the drivers id_tables against it.
 		 */
-		unit = kzalloc(sizeof(*unit), GFP_KERNEL);
+		unit = kzalloc(sizeof(*unit), GFP_KERNEL | GFP_DMA);
 		if (unit == NULL)
 			continue;
 

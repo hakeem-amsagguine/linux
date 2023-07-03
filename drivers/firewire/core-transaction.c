@@ -794,7 +794,7 @@ static struct fw_request *allocate_request(struct fw_card *card,
 		return NULL;
 	}
 
-	request = kmalloc(sizeof(*request) + length, GFP_ATOMIC);
+	request = kmalloc(sizeof(*request) + length, GFP_ATOMIC | GFP_DMA);
 	if (request == NULL)
 		return NULL;
 	kref_init(&request->kref);

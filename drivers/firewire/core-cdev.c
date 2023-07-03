@@ -378,7 +378,7 @@ static void queue_bus_reset_event(struct client *client)
 {
 	struct bus_reset_event *e;
 
-	e = kzalloc(sizeof(*e), GFP_KERNEL);
+	e = kzalloc(sizeof(*e), GFP_KERNEL | GFP_DMA);
 	if (e == NULL)
 		return;
 
@@ -589,7 +589,7 @@ static int init_request(struct client *client,
 	    request->length < 4)
 		return -EINVAL;
 
-	e = kmalloc(sizeof(*e) + request->length, GFP_KERNEL);
+	e = kmalloc(sizeof(*e) + request->length, GFP_KERNEL | GFP_DMA);
 	if (e == NULL)
 		return -ENOMEM;
 
@@ -757,7 +757,7 @@ static int ioctl_allocate(struct client *client, union ioctl_arg *arg)
 	struct fw_address_region region;
 	int ret;
 
-	r = kmalloc(sizeof(*r), GFP_KERNEL);
+	r = kmalloc(sizeof(*r), GFP_KERNEL | GFP_DMA);
 	if (r == NULL)
 		return -ENOMEM;
 
@@ -863,7 +863,7 @@ static int ioctl_add_descriptor(struct client *client, union ioctl_arg *arg)
 	if (a->length > 256)
 		return -EINVAL;
 
-	r = kmalloc(sizeof(*r) + a->length * 4, GFP_KERNEL);
+	r = kmalloc(sizeof(*r) + a->length * 4, GFP_KERNEL | GFP_DMA);
 	if (r == NULL)
 		return -ENOMEM;
 
@@ -1528,7 +1528,7 @@ static int ioctl_send_phy_packet(struct client *client, union ioctl_arg *arg)
 	if (!client->device->is_local)
 		return -ENOSYS;
 
-	e = kzalloc(sizeof(*e) + 4, GFP_KERNEL);
+	e = kzalloc(sizeof(*e) + 4, GFP_KERNEL | GFP_DMA);
 	if (e == NULL)
 		return -ENOMEM;
 
