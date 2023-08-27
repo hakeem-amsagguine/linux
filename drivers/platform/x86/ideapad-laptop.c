@@ -1532,6 +1532,13 @@ static const struct dmi_system_id ctrl_ps2_aux_port_list[] = {
 		DMI_MATCH(DMI_PRODUCT_VERSION, "Ideapad Z570"),
 		},
 	},
+	{
+		.ident = "Lenovo Zhaoyang E42-80",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "LENOVO"),
+			DMI_MATCH(DMI_PRODUCT_VERSION, "ZHAOYANG E42-80"),
+		},
+	},
 	{}
 };
 
