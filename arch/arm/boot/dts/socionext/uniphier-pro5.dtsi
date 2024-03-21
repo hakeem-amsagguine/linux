@@ -634,8 +634,8 @@
 			clocks = <&sys_clk 12>, <&sys_clk 24>;
 			reset-names = "gio", "link";
 			resets = <&sys_rst 12>, <&sys_rst 24>;
-			num-ib-windows = <16>;
-			num-ob-windows = <16>;
+			num-ib-linux = <16>;
+			num-ob-linux = <16>;
 			num-lanes = <4>;
 			phy-names = "pcie-phy";
 			phys = <&pcie_phy>;

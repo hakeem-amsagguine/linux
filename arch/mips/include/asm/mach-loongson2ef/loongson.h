@@ -239,7 +239,7 @@ extern int loongson2_cpu_set_rate(unsigned long rate_khz);
 #endif
 
 /*
- * address windows configuration module
+ * address linux configuration module
  *
  * loongson2e do not have this module
  */

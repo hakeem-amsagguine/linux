@@ -1172,7 +1172,7 @@ ZSTD_checkDictValidity(const ZSTD_window_t* window,
              * For simplification, if window size is reached anywhere within next block,
              * the dictionary is invalidated for the full block.
              */
-            DEBUGLOG(6, "invalidating dictionary for current block (distance > windowSize)");
+            DEBUGLOG(6, "invalidating dictionary for current block (distance > linuxize)");
             *loadedDictEndPtr = 0;
             *dictMatchStatePtr = NULL;
         } else {

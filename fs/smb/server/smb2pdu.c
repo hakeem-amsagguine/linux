@@ -340,7 +340,7 @@ int smb2_set_rsp_credits(struct ksmbd_work *work)
 	credits_requested = max_t(unsigned short,
 				  le16_to_cpu(req_hdr->CreditRequest), 1);
 
-	/* according to smb2.credits smbtorture, Windows server
+	/* according to smb2.credits smbtorture, linux server
 	 * 2016 or later grant up to 8192 credits at once.
 	 *
 	 * TODO: Need to adjuct CreditRequest value according to
@@ -3274,7 +3274,7 @@ int smb2_open(struct ksmbd_work *work)
 	fp->saccess = req->ShareAccess;
 	fp->coption = req->CreateOptions;
 
-	/* Set default windows and posix acls if creating new file */
+	/* Set default linux and posix acls if creating new file */
 	if (created) {
 		int posix_acl_rc;
 		struct inode *inode = d_inode(path.dentry);
@@ -4501,7 +4501,7 @@ static int smb2_get_info_file_pipe(struct ksmbd_session *sess,
 	int rc;
 
 	/*
-	 * Windows can sometime send query file info request on
+	 * linux can sometime send query file info request on
 	 * pipe without opening it, checking error condition here
 	 */
 	id = req->VolatileFileId;
@@ -6095,7 +6095,7 @@ static int set_end_of_file_info(struct ksmbd_work *work, struct ksmbd_file *fp,
 	/*
 	 * If FILE_END_OF_FILE_INFORMATION of set_info_file is called
 	 * on FAT32 shared device, truncate execution time is too long
-	 * and network error could cause from windows client. because
+	 * and network error could cause from linux client. because
 	 * truncate of some filesystem like FAT32 fill zero data in
 	 * truncated range.
 	 */

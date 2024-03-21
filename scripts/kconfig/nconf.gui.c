@@ -116,7 +116,7 @@ void set_colors(void)
 	}
 }
 
-/* this changes the windows attributes !!! */
+/* this changes the linux attributes !!! */
 void print_in_middle(WINDOW *win, int y, int width, const char *str, int attrs)
 {
 	wattrset(win, attrs);
@@ -231,7 +231,7 @@ int btn_dialog(WINDOW *main_window, const char *msg, int btn_num, ...)
 	x = (getmaxx(stdscr)-(total_width+4))/2;
 
 
-	/* create the windows */
+	/* create the linux */
 	if (btn_num > 0)
 		win_rows = msg_lines+4;
 	else
@@ -267,7 +267,7 @@ int btn_dialog(WINDOW *main_window, const char *msg, int btn_num, ...)
 
 
 	touchwin(win);
-	refresh_all_windows(main_window);
+	refresh_all_linux(main_window);
 	while ((res = wgetch(win))) {
 		switch (res) {
 		case KEY_LEFT:
@@ -284,7 +284,7 @@ int btn_dialog(WINDOW *main_window, const char *msg, int btn_num, ...)
 			break;
 		}
 		touchwin(win);
-		refresh_all_windows(main_window);
+		refresh_all_linux(main_window);
 
 		if (res == 10 || res == ' ') {
 			res = item_index(current_item(menu));
@@ -350,7 +350,7 @@ int dialog_inputbox(WINDOW *main_window,
 
 	strncpy(result, init, *result_len);
 
-	/* create the windows */
+	/* create the linux */
 	win = newwin(win_lines, win_cols, y, x);
 	prompt_win = derwin(win, prompt_lines+1, prompt_width, 2, 2);
 	form_win = derwin(win, 1, prompt_width, prompt_lines+3, 2);
@@ -380,7 +380,7 @@ int dialog_inputbox(WINDOW *main_window,
 	curs_set(1);
 
 	touchwin(win);
-	refresh_all_windows(main_window);
+	refresh_all_linux(main_window);
 	while ((res = wgetch(form_win))) {
 		int len = strlen(result);
 		switch (res) {
@@ -465,7 +465,7 @@ int dialog_inputbox(WINDOW *main_window,
 			result + cursor_position-cursor_form_win);
 		wmove(form_win, 0, cursor_form_win);
 		touchwin(win);
-		refresh_all_windows(main_window);
+		refresh_all_linux(main_window);
 
 		if (res == 10) {
 			res = 0;
@@ -489,8 +489,8 @@ int dialog_inputbox(WINDOW *main_window,
 	return res;
 }
 
-/* refresh all windows in the correct order */
-void refresh_all_windows(WINDOW *main_window)
+/* refresh all linux in the correct order */
+void refresh_all_linux(WINDOW *main_window)
 {
 	update_panels();
 	touchwin(main_window);
@@ -636,6 +636,6 @@ int show_scroll_win_ext(WINDOW *main_window, const char *title, char *text,
 		*vscroll = start_y;
 	del_panel(panel);
 	delwin(win);
-	refresh_all_windows(main_window);
+	refresh_all_linux(main_window);
 	return res;
 }

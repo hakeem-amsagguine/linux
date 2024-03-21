@@ -15,7 +15,7 @@
 #include <net/af_vsock.h>
 #include <asm/hyperv-tlfs.h>
 
-/* Older (VMBUS version 'VERSION_WIN10' or before) Windows hosts have some
+/* Older (VMBUS version 'VERSION_WIN10' or before) linux hosts have some
  * stricter requirements on the hv_sock ring buffer size of six 4K pages.
  * hyperv-tlfs defines HV_HYP_PAGE_SIZE as 4K. Newer hosts don't have this
  * limitation; but, keep the defaults the same for compat.
@@ -117,7 +117,7 @@ struct hvsock {
  * as the local cid.
  *
  * On the host, Hyper-V Sockets are supported by Winsock AF_HYPERV:
- * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/user-
+ * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-linux/user-
  * guide/make-integration-service, and the endpoint is <VmID, ServiceId> with
  * the below sockaddr:
  *
@@ -131,7 +131,7 @@ struct hvsock {
  * Note: VmID is not used by Linux VM and actually it isn't transmitted via
  * VMBus, because here it's obvious the host and the VM can easily identify
  * each other. Though the VmID is useful on the host, especially in the case
- * of Windows container, Linux VM doesn't need it at all.
+ * of linux container, Linux VM doesn't need it at all.
  *
  * To make use of the AF_VSOCK infrastructure in Linux VM, we have to limit
  * the available GUID space of SOCKADDR_HV so that we can create a mapping

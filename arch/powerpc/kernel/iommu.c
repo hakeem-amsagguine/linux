@@ -1188,7 +1188,7 @@ EXPORT_SYMBOL_GPL(iommu_add_device);
 /*
  * A simple iommu_table_group_ops which only allows reusing the existing
  * iommu_table. This handles VFIO for POWER7 or the nested KVM.
- * The ops does not allow creating windows and only allows reusing the existing
+ * The ops does not allow creating linux and only allows reusing the existing
  * one if it matches table_group->tce32_start/tce32_size/page_shift.
  */
 static unsigned long spapr_tce_get_table_size(__u32 page_shift,

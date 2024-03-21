@@ -547,7 +547,7 @@ static int avs_dsp_do_send_rom_msg(struct avs_dev *adev, struct avs_ipc_msg *req
 	spin_lock(&ipc->rx_lock);
 	avs_ipc_msg_init(ipc, NULL);
 	/*
-	 * with hw still stalled, memory windows may not be
+	 * with hw still stalled, memory linux may not be
 	 * configured properly so avoid accessing SRAM
 	 */
 	avs_dsp_send_tx(adev, request, false);

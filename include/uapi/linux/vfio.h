@@ -1679,7 +1679,7 @@ struct vfio_iommu_type1_dirty_bitmap_get {
  * the details of Dynamic DMA window capability.
  *
  * @pgsizes contains a page size bitmask, 4K/64K/16M are supported.
- * @max_dynamic_windows_supported tells the maximum number of windows
+ * @max_dynamic_linux_supported tells the maximum number of linux
  * which the platform can create.
  * @levels tells the maximum number of levels in multi-level IOMMU tables;
  * this allows splitting a table into smaller chunks which reduces
@@ -1687,7 +1687,7 @@ struct vfio_iommu_type1_dirty_bitmap_get {
  */
 struct vfio_iommu_spapr_tce_ddw_info {
 	__u64 pgsizes;			/* Bitmap of supported page sizes */
-	__u32 max_dynamic_windows_supported;
+	__u32 max_dynamic_linux_supported;
 	__u32 levels;
 };
 
@@ -1702,7 +1702,7 @@ struct vfio_iommu_spapr_tce_ddw_info {
  * for IOVA addresses.
  *
  * Flags supported:
- * - VFIO_IOMMU_SPAPR_INFO_DDW: informs the userspace that dynamic DMA windows
+ * - VFIO_IOMMU_SPAPR_INFO_DDW: informs the userspace that dynamic DMA linux
  *   (DDW) support is present. @ddw is only supported when DDW is present.
  */
 struct vfio_iommu_spapr_tce_info {

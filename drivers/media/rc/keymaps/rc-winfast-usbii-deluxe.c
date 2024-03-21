@@ -41,7 +41,7 @@ static struct rc_map_table winfast_usbii_deluxe[] = {
 
 	{ 0x70, KEY_POWER2},		/* TV ON/OFF */
 
-	{ 0x39, KEY_CYCLEWINDOWS},	/* MINIMIZE (BOSS) */
+	{ 0x39, KEY_CYCLElinux},	/* MINIMIZE (BOSS) */
 	{ 0x3a, KEY_NEW},		/* PIP */
 	{ 0x73, KEY_ZOOM},		/* FULLSECREEN */
 

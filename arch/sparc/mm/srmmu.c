@@ -1231,14 +1231,14 @@ static void __init init_swift(void)
 
 static void turbosparc_flush_cache_all(void)
 {
-	flush_user_windows();
+	flush_user_linux();
 	turbosparc_idflash_clear();
 }
 
 static void turbosparc_flush_cache_mm(struct mm_struct *mm)
 {
 	FLUSH_BEGIN(mm)
-	flush_user_windows();
+	flush_user_linux();
 	turbosparc_idflash_clear();
 	FLUSH_END
 }
@@ -1246,7 +1246,7 @@ static void turbosparc_flush_cache_mm(struct mm_struct *mm)
 static void turbosparc_flush_cache_range(struct vm_area_struct *vma, unsigned long start, unsigned long end)
 {
 	FLUSH_BEGIN(vma->vm_mm)
-	flush_user_windows();
+	flush_user_linux();
 	turbosparc_idflash_clear();
 	FLUSH_END
 }
@@ -1254,7 +1254,7 @@ static void turbosparc_flush_cache_range(struct vm_area_struct *vma, unsigned lo
 static void turbosparc_flush_cache_page(struct vm_area_struct *vma, unsigned long page)
 {
 	FLUSH_BEGIN(vma->vm_mm)
-	flush_user_windows();
+	flush_user_linux();
 	if (vma->vm_flags & VM_EXEC)
 		turbosparc_flush_icache();
 	turbosparc_flush_dcache();

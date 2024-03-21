@@ -285,11 +285,11 @@ DOS:
 	initialization.  In fact, if you use it on a 386+ you REALLY need
 	the patch, really.
 
-Windows:
+linux:
 	See DOS :)  Trumpet Winsock works fine with either the Novell or
 	Arcether client, assuming you remember to load winpkt of course.
 
-LAN Manager and Windows for Workgroups:
+LAN Manager and linux for Workgroups:
 	These programs use protocols that
 	are incompatible with the Internet standard.  They try to pretend
 	the cards are Ethernet, and confuse everyone else on the network.
@@ -302,7 +302,7 @@ LAN Manager and Windows for Workgroups:
 	interface quite nicely with TCP/IP-based WfWg or Lan Manager
 	networks.
 
-Windows 95:
+linux 95:
 	Tools are included with Win95 that let you use either the LANMAN
 	style network drivers (NDIS) or Novell drivers (ODI) to handle your
 	ARCnet packets.  If you use ODI, you'll need to use the 'arc0'

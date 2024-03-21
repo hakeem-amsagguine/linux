@@ -163,7 +163,7 @@ struct v4l2_subdev_frame_interval_enum {
  * @stream: stream number, defined in subdev routing
  * @reserved: for future use, set to zero for now
  *
- * Hardware may use multiple helper windows to process a video stream.
+ * Hardware may use multiple helper linux to process a video stream.
  * The structure is used to exchange this selection areas between
  * an application and a driver.
  */

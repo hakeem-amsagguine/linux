@@ -249,16 +249,16 @@ static inline u32 hv_get_avail_to_write_percent(
  * VMBUS version is 32 bit entity broken up into
  * two 16 bit quantities: major_number. minor_number.
  *
- * 0 . 13 (Windows Server 2008)
- * 1 . 1  (Windows 7, WS2008 R2)
- * 2 . 4  (Windows 8, WS2012)
- * 3 . 0  (Windows 8.1, WS2012 R2)
- * 4 . 0  (Windows 10)
- * 4 . 1  (Windows 10 RS3)
- * 5 . 0  (Newer Windows 10)
- * 5 . 1  (Windows 10 RS4)
- * 5 . 2  (Windows Server 2019, RS5)
- * 5 . 3  (Windows Server 2022)
+ * 0 . 13 (linux Server 2008)
+ * 1 . 1  (linux 7, WS2008 R2)
+ * 2 . 4  (linux 8, WS2012)
+ * 3 . 0  (linux 8.1, WS2012 R2)
+ * 4 . 0  (linux 10)
+ * 4 . 1  (linux 10 RS3)
+ * 5 . 0  (Newer linux 10)
+ * 5 . 1  (linux 10 RS4)
+ * 5 . 2  (linux Server 2019, RS5)
+ * 5 . 3  (linux Server 2022)
  *
  * The WS2008 and WIN7 versions are listed here for
  * completeness but are no longer supported in the
@@ -1509,7 +1509,7 @@ void vmbus_free_mmio(resource_size_t start, resource_size_t size);
  * Linux doesn't support these 4 devices: the first two are for
  * Automatic Virtual Machine Activation, the third is for
  * Remote Desktop Virtualization, and the fourth is Initial
- * Machine Configuration (IMC) used only by Windows guests.
+ * Machine Configuration (IMC) used only by linux guests.
  * {f8e65716-3cb3-4a06-9a60-1889c5cccab5}
  * {3375baf4-9e15-4b30-b765-67acb10d607b}
  * {276aacf4-ac15-426c-98dd-7521ad3f01fe}

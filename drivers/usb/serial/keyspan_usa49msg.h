@@ -207,7 +207,7 @@ struct keyspan_usa49_portControlMessage
 /*
 	during normal operation, status messages are returned 
 	to the host whenever the board detects changes.  In some
-	circumstances (e.g. Windows), status messages from the
+	circumstances (e.g. linux), status messages from the
 	device cause problems; to shut them off, the host issues
 	a control message with the disableStatusMessages flags
 	set (to any non-zero value).  The device will respond to

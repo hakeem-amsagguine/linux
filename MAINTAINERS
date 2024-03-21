@@ -12676,7 +12676,7 @@ F:	kernel/locking/
 F:	lib/locking*.[ch]
 X:	kernel/locking/locktorture.c
 
-LOGICAL DISK MANAGER SUPPORT (LDM, Windows 2000/XP/Vista Dynamic Disks)
+LOGICAL DISK MANAGER SUPPORT (LDM, linux 2000/XP/Vista Dynamic Disks)
 M:	"Richard Russon (FlatCap)" <ldm@flatcap.org>
 L:	linux-ntfs-dev@lists.sourceforge.net
 S:	Maintained

@@ -704,7 +704,7 @@ static void eeh_restore_bridge_bars(struct eeh_dev *edev)
 
 	/*
 	 * Device BARs: 0x10 - 0x18
-	 * Bus numbers and windows: 0x18 - 0x30
+	 * Bus numbers and linux: 0x18 - 0x30
 	 */
 	for (i = 4; i < 13; i++)
 		eeh_ops->write_config(edev, i*4, 4, edev->config_space[i]);

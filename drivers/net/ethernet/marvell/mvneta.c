@@ -5383,8 +5383,8 @@ static int mvneta_init(struct device *dev, struct mvneta_port *pp)
 	return 0;
 }
 
-/* platform glue : initialize decoding windows */
-static void mvneta_conf_mbus_windows(struct mvneta_port *pp,
+/* platform glue : initialize decoding linux */
+static void mvneta_conf_mbus_linux(struct mvneta_port *pp,
 				     const struct mbus_dram_target_info *dram)
 {
 	u32 win_enable;
@@ -5619,11 +5619,11 @@ static int mvneta_probe(struct platform_device *pdev)
 
 	pp->dram_target_info = mv_mbus_dram_info();
 	/* Armada3700 requires setting default configuration of Mbus
-	 * windows, however without using filled mbus_dram_target_info
+	 * linux, however without using filled mbus_dram_target_info
 	 * structure.
 	 */
 	if (pp->dram_target_info || pp->neta_armada3700)
-		mvneta_conf_mbus_windows(pp, pp->dram_target_info);
+		mvneta_conf_mbus_linux(pp, pp->dram_target_info);
 
 	pp->tx_ring_size = MVNETA_MAX_TXD;
 	pp->rx_ring_size = MVNETA_MAX_RXD;
@@ -5815,7 +5815,7 @@ static int mvneta_resume(struct device *device)
 	if (!IS_ERR(pp->clk_bus))
 		clk_prepare_enable(pp->clk_bus);
 	if (pp->dram_target_info || pp->neta_armada3700)
-		mvneta_conf_mbus_windows(pp, pp->dram_target_info);
+		mvneta_conf_mbus_linux(pp, pp->dram_target_info);
 	if (pp->bm_priv) {
 		err = mvneta_bm_port_init(pdev, pp);
 		if (err < 0) {

@@ -146,12 +146,12 @@ static int init_vas_instance(struct platform_device *pdev)
 	spin_lock_init(&vinst->fault_lock);
 	/*
 	 * IRQ and fault handling setup is needed only for user space
-	 * send windows.
+	 * send linux.
 	 */
 	if (vinst->virq) {
 		rc = vas_irq_fault_window_setup(vinst);
 		/*
-		 * Fault window is used only for user space send windows.
+		 * Fault window is used only for user space send linux.
 		 * So if vinst->virq is NULL, tx_win_open returns -ENODEV
 		 * for user space.
 		 */

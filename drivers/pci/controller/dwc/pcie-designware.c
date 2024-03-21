@@ -139,7 +139,7 @@ int dw_pcie_get_resources(struct dw_pcie *pci)
 		}
 	}
 
-	/* Set a default value suitable for at most 8 in and 8 out windows */
+	/* Set a default value suitable for at most 8 in and 8 out linux */
 	if (!pci->atu_size)
 		pci->atu_size = SZ_4K;
 
@@ -832,14 +832,14 @@ void dw_pcie_iatu_detect(struct dw_pcie *pci)
 		max = 0;
 	}
 
-	pci->num_ob_windows = ob;
-	pci->num_ib_windows = ib;
+	pci->num_ob_linux = ob;
+	pci->num_ib_linux = ib;
 	pci->region_align = 1 << fls(min);
 	pci->region_limit = (max << 32) | (SZ_4G - 1);
 
 	dev_info(pci->dev, "iATU: unroll %s, %u ob, %u ib, align %uK, limit %lluG\n",
 		 dw_pcie_cap_is(pci, IATU_UNROLL) ? "T" : "F",
-		 pci->num_ob_windows, pci->num_ib_windows,
+		 pci->num_ob_linux, pci->num_ib_linux,
 		 pci->region_align / SZ_1K, (pci->region_limit + 1) / SZ_1G);
 }
 

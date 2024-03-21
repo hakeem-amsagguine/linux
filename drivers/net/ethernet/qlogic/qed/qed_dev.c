@@ -2671,7 +2671,7 @@ static int qed_hw_init_common(struct qed_hwfn *p_hwfn,
 
 	qed_init_cau_rt_data(cdev);
 
-	/* Program GTT windows */
+	/* Program GTT linux */
 	qed_gtt_init(p_hwfn);
 
 	if (p_hwfn->mcp_info) {

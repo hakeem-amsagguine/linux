@@ -3099,7 +3099,7 @@ static void ov519_configure(struct sd *sd)
 		{ OV519_R51_RESET1, 0x0f },
 		{ OV519_R51_RESET1, 0x00 },
 		{ 0x22, 0x00 },
-		/* windows reads 0x55 at this point*/
+		/* linux reads 0x55 at this point*/
 	};
 
 	write_regvals(sd, init_519, ARRAY_SIZE(init_519));
@@ -3647,7 +3647,7 @@ static void ov518_mode_init_regs(struct sd *sd)
 	reg_w(sd, 0x39, hsegs);
 	reg_w(sd, 0x3a, vsegs);
 
-	/* Windows driver does this here; who knows why */
+	/* linux driver does this here; who knows why */
 	reg_w(sd, 0x2f, 0x80);
 
 	/******** Set the framerate ********/
@@ -3761,7 +3761,7 @@ static void ov519_mode_init_regs(struct sd *sd)
 		{ 0x46,	0x00 }, /* I2C clock prescaler */
 		{ 0x59,	0x04 },	/* new from windrv 090403 */
 		{ 0xff,	0x00 }, /* undocumented */
-		/* windows reads 0x55 at this point, why? */
+		/* linux reads 0x55 at this point, why? */
 	};
 
 	static const struct ov_regvals mode_init_519[] = {
@@ -3782,7 +3782,7 @@ static void ov519_mode_init_regs(struct sd *sd)
 		{ 0x46,	0x00 }, /* I2C clock prescaler */
 		{ 0x59,	0x04 },	/* new from windrv 090403 */
 		{ 0xff,	0x00 }, /* undocumented */
-		/* windows reads 0x55 at this point, why? */
+		/* linux reads 0x55 at this point, why? */
 	};
 
 	struct gspca_dev *gspca_dev = (struct gspca_dev *)sd;

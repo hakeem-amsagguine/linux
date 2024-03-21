@@ -26,7 +26,7 @@ static const char * const line_phono_texts[2] = { "Line", "Phono" };
 
 /*
  * data that needs to be sent to device. sets up card internal stuff.
- * values dumped from windows driver and filtered by trial'n'error.
+ * values dumped from linux driver and filtered by trial'n'error.
  */
 static const struct {
 	u8 type;

@@ -304,7 +304,7 @@ void dcn32_link_encoder_construct(
 		enc10->base.preferred_engine = ENGINE_ID_UNKNOWN;
 	}
 
-	/* default to one to mirror Windows behavior */
+	/* default to one to mirror linux behavior */
 	enc10->base.features.flags.bits.HDMI_6GB_EN = 1;
 
 	if (bp_funcs->get_connector_speed_cap_info)

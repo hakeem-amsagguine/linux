@@ -509,9 +509,9 @@
 			msi-controller;
 			/*
 			 * The 128 MiB address range [0xe8000000-0xf0000000] is
-			 * dedicated for PCIe and can be assigned to 8 windows
+			 * dedicated for PCIe and can be assigned to 8 linux
 			 * with size a power of two. Use one 64 KiB window for
-			 * IO at the end and the remaining seven windows
+			 * IO at the end and the remaining seven linux
 			 * (totaling 127 MiB) for MEM.
 			 */
 			ranges = <0x82000000 0 0xe8000000   0 0xe8000000   0 0x07f00000   /* Port 0 MEM */

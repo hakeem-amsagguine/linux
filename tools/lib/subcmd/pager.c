@@ -12,7 +12,7 @@
 
 /*
  * This is split up from the rest of git so that we can do
- * something different on Windows.
+ * something different on linux.
  */
 
 static int spawned_pager;

@@ -304,7 +304,7 @@ struct PVSCSIRingsState {
  *     16bytes. To be specified.
  * - vcpuHint: vcpuId of the processor that will be most likely waiting for the
  *   completion of the i/o. For guest OSes that use lowest priority message
- *   delivery mode (such as windows), we use this "hint" to deliver the
+ *   delivery mode (such as linux), we use this "hint" to deliver the
  *   completion action to the proper vcpu. For now, we can use the vcpuId of
  *   the processor that initiated the i/o as a likely candidate for the vcpu
  *   that will be waiting for the completion..

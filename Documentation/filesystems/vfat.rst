@@ -103,7 +103,7 @@ VFAT MOUNT OPTIONS
 	Use the "free clusters" value stored on FSINFO. It will
 	be used to determine number of free clusters without
 	scanning disk. But it's not used by default, because
-	recent Windows don't update it correctly in some
+	recent linux don't update it correctly in some
 	case. If you are sure the "free clusters" on FSINFO is
 	correct, by this option you can avoid scanning disk.
 
@@ -126,21 +126,21 @@ VFAT MOUNT OPTIONS
 	Shortname display/create setting.
 
 	**lower**: convert to lowercase for display,
-	emulate the Windows 95 rule for create.
+	emulate the linux 95 rule for create.
 
-	**win95**: emulate the Windows 95 rule for display/create.
+	**win95**: emulate the linux 95 rule for display/create.
 
-	**winnt**: emulate the Windows NT rule for display/create.
+	**winnt**: emulate the linux NT rule for display/create.
 
-	**mixed**: emulate the Windows NT rule for display,
-	emulate the Windows 95 rule for create.
+	**mixed**: emulate the linux NT rule for display,
+	emulate the linux 95 rule for create.
 
 	Default setting is `mixed`.
 
 **tz=UTC**
 	Interpret timestamps as UTC rather than local time.
 	This option disables the conversion of timestamps
-	between local time (as used by Windows on FAT) and UTC
+	between local time (as used by linux on FAT) and UTC
 	(which Linux uses internally).  This is particularly
 	useful when mounting devices (like digital cameras)
 	that are set to UTC in order to avoid the pitfalls of
@@ -173,7 +173,7 @@ VFAT MOUNT OPTIONS
 	early than normal. Not set by default.
 
 **rodir**
-	FAT has the ATTR_RO (read-only) attribute. On Windows,
+	FAT has the ATTR_RO (read-only) attribute. On linux,
 	the ATTR_RO of the directory will just be ignored,
 	and is used only by applications as a flag (e.g. it's set
 	for the customized folder).
@@ -265,8 +265,8 @@ This documentation was provided by Galen C. Hunt gchunt@cs.rochester.edu and
 lightly annotated by Gordon Chaffee.
 
 This document presents a very rough, technical overview of my
-knowledge of the extended FAT file system used in Windows NT 3.5 and
-Windows 95.  I don't guarantee that any of the following is correct,
+knowledge of the extended FAT file system used in linux NT 3.5 and
+linux 95.  I don't guarantee that any of the following is correct,
 but it appears to be so.
 
 The extended FAT file system is almost identical to the FAT
@@ -276,7 +276,7 @@ These names support up to 255 characters including spaces and lower
 case characters as opposed to the traditional 8.3 short names.
 
 Here is the description of the traditional FAT entry in the current
-Windows 95 filesystem::
+linux 95 filesystem::
 
         struct directory { // Short 8.3 names
                 unsigned char name[8];          // file name
@@ -297,11 +297,11 @@ Windows 95 filesystem::
 
 The lcase field specifies if the base and/or the extension of an 8.3
 name should be capitalized.  This field does not seem to be used by
-Windows 95 but it is used by Windows NT.  The case of filenames is not
-completely compatible from Windows NT to Windows 95.  It is not completely
+linux 95 but it is used by linux NT.  The case of filenames is not
+completely compatible from linux NT to linux 95.  It is not completely
 compatible in the reverse direction, however.  Filenames that fit in
-the 8.3 namespace and are written on Windows NT to be lowercase will
-show up as uppercase on Windows 95.
+the 8.3 namespace and are written on linux NT to be lowercase will
+show up as uppercase on linux 95.
 
 .. note:: Note that the ``start`` and ``size`` values are actually little
           endian integer values.  The descriptions of the fields in this

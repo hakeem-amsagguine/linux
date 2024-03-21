@@ -2016,7 +2016,7 @@ static int rtl8192fu_led_brightness_set(struct led_classdev *led_cdev,
 						  led_cdev);
 	u32 ledcfg;
 
-	/* Values obtained by observing the USB traffic from the Windows driver. */
+	/* Values obtained by observing the USB traffic from the linux driver. */
 	rtl8xxxu_write32(priv, REG_SW_GPIO_SHARE_CTRL_0, 0x20080);
 	rtl8xxxu_write32(priv, REG_SW_GPIO_SHARE_CTRL_1, 0x1b0000);
 

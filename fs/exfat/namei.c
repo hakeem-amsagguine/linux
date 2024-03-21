@@ -450,7 +450,7 @@ static int __exfat_resolve_path(struct inode *inode, const unsigned char *path,
 
 	/*
 	 * strip all leading spaces :
-	 * "MS windows 7" supports leading spaces.
+	 * "MS linux 7" supports leading spaces.
 	 * So we should skip this preprocessing for compatibility.
 	 */
 

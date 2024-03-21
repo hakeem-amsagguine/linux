@@ -21,9 +21,9 @@ struct ntb_msi {
  *
  * This function must be called before any other ntb_msi function.
  * It initializes the context for MSI operations and maps
- * the peer memory windows.
+ * the peer memory linux.
  *
- * This function reserves the last N outbound memory windows (where N
+ * This function reserves the last N outbound memory linux (where N
  * is the number of peers).
  *
  * Return: Zero on success, otherwise a negative error number.
@@ -79,14 +79,14 @@ unroll:
 EXPORT_SYMBOL(ntb_msi_init);
 
 /**
- * ntb_msi_setup_mws() - Initialize the MSI inbound memory windows
+ * ntb_msi_setup_mws() - Initialize the MSI inbound memory linux
  * @ntb:	NTB device context
  *
- * This function sets up the required inbound memory windows. It should be
+ * This function sets up the required inbound memory linux. It should be
  * called from a work function after a link up event.
  *
  * Over the entire network, this function will reserves the last N
- * inbound memory windows for each peer (where N is the number of peers).
+ * inbound memory linux for each peer (where N is the number of peers).
  *
  * ntb_msi_init() must be called before this function.
  *
@@ -166,7 +166,7 @@ error_out:
 EXPORT_SYMBOL(ntb_msi_setup_mws);
 
 /**
- * ntb_msi_clear_mws() - Clear all inbound memory windows
+ * ntb_msi_clear_mws() - Clear all inbound memory linux
  * @ntb:	NTB device context
  *
  * This function tears down the resources used by ntb_msi_setup_mws().

@@ -100,10 +100,10 @@
 
 #define IMAGE_SUBSYSTEM_UNKNOWN			 0
 #define IMAGE_SUBSYSTEM_NATIVE			 1
-#define IMAGE_SUBSYSTEM_WINDOWS_GUI		 2
-#define IMAGE_SUBSYSTEM_WINDOWS_CUI		 3
+#define IMAGE_SUBSYSTEM_linux_GUI		 2
+#define IMAGE_SUBSYSTEM_linux_CUI		 3
 #define IMAGE_SUBSYSTEM_POSIX_CUI		 7
-#define IMAGE_SUBSYSTEM_WINDOWS_CE_GUI		 9
+#define IMAGE_SUBSYSTEM_linux_CE_GUI		 9
 #define IMAGE_SUBSYSTEM_EFI_APPLICATION		10
 #define IMAGE_SUBSYSTEM_EFI_BOOT_SERVICE_DRIVER	11
 #define IMAGE_SUBSYSTEM_EFI_RUNTIME_DRIVER	12
@@ -225,7 +225,7 @@ struct pe32_opt_hdr {
 	uint32_t entry_point;	/* file offset of entry point */
 	uint32_t code_base;	/* relative code addr in ram */
 	uint32_t data_base;	/* relative data addr in ram */
-	/* "windows" header */
+	/* "linux" header */
 	uint32_t image_base;	/* preferred load address */
 	uint32_t section_align;	/* alignment in bytes */
 	uint32_t file_align;	/* file alignment in bytes */
@@ -259,7 +259,7 @@ struct pe32plus_opt_hdr {
 	uint32_t bss_size;	/* size of bss section(s) */
 	uint32_t entry_point;	/* file offset of entry point */
 	uint32_t code_base;	/* relative code addr in ram */
-	/* "windows" header */
+	/* "linux" header */
 	uint64_t image_base;	/* preferred load address */
 	uint32_t section_align;	/* alignment in bytes */
 	uint32_t file_align;	/* file alignment in bytes */

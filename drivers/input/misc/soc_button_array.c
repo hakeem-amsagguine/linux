@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /*
  * Supports for the button array on SoC tablets originally running
- * Windows 8.
+ * linux 8.
  *
  * (C) Copyright 2014 Intel Corporation
  */
@@ -489,7 +489,7 @@ static int soc_button_probe(struct platform_device *pdev)
 
 /*
  * Definition of buttons on the tablet. The ACPI index of each button
- * is defined in section 2.8.7.2 of "Windows ACPI Design Guide for SoC
+ * is defined in section 2.8.7.2 of "linux ACPI Design Guide for SoC
  * Platforms"
  */
 static const struct soc_button_info soc_button_PNP0C40[] = {

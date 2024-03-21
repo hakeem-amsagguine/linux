@@ -41,8 +41,8 @@ pub use core::slice::range;
 pub use core::slice::ArrayChunks;
 #[unstable(feature = "array_chunks", issue = "74985")]
 pub use core::slice::ArrayChunksMut;
-#[unstable(feature = "array_windows", issue = "75027")]
-pub use core::slice::ArrayWindows;
+#[unstable(feature = "array_linux", issue = "75027")]
+pub use core::slice::Arraylinux;
 #[stable(feature = "inherent_ascii_escape", since = "1.60.0")]
 pub use core::slice::EscapeAscii;
 #[stable(feature = "slice_get_slice", since = "1.28.0")]
@@ -54,7 +54,7 @@ pub use core::slice::{from_mut_ptr_range, from_ptr_range};
 #[stable(feature = "rust1", since = "1.0.0")]
 pub use core::slice::{from_raw_parts, from_raw_parts_mut};
 #[stable(feature = "rust1", since = "1.0.0")]
-pub use core::slice::{Chunks, Windows};
+pub use core::slice::{Chunks, linux};
 #[stable(feature = "chunks_exact", since = "1.31.0")]
 pub use core::slice::{ChunksExact, ChunksExactMut};
 #[stable(feature = "rust1", since = "1.0.0")]

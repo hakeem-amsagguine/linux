@@ -108,7 +108,7 @@ struct msc_iter {
  * @thdev:		intel_th_device pointer
  * @mbuf:		MSU buffer, if assigned
  * @mbuf_priv		MSU buffer's private data, if @mbuf
- * @win_list:		list of windows in multiblock mode
+ * @win_list:		list of linux in multiblock mode
  * @single_sgt:		single mode buffer
  * @cur_win:		current window
  * @nr_pages:		total number of pages allocated for this buffer
@@ -345,7 +345,7 @@ static size_t msc_win_total_sz(struct msc_window *win)
  * msc_find_window() - find a window matching a given sg_table
  * @msc:	MSC device
  * @sgt:	SG table of the window
- * @nonempty:	skip over empty windows
+ * @nonempty:	skip over empty linux
  *
  * Return:	MSC window structure pointer or NULL if the window
  *		could not be found.
@@ -361,7 +361,7 @@ msc_find_window(struct msc *msc, struct sg_table *sgt, bool nonempty)
 
 	/*
 	 * we might need a radix tree for this, depending on how
-	 * many windows a typical user would allocate; ideally it's
+	 * many linux a typical user would allocate; ideally it's
 	 * something like 2, in which case we're good
 	 */
 	list_for_each_entry(win, &msc->win_list, entry) {
@@ -1297,7 +1297,7 @@ static void msc_buffer_free(struct msc *msc)
  * either done via msc_buffer_contig_alloc() for SINGLE operation mode or
  * msc_buffer_win_alloc() for multiblock operation. The latter allocates one
  * window per invocation, so in multiblock mode this can be called multiple
- * times for the same MSC to allocate multiple windows.
+ * times for the same MSC to allocate multiple linux.
  *
  * This modifies msc::win_list and msc::base, which requires msc::buf_mutex
  * to serialize, so the caller is expected to hold it.

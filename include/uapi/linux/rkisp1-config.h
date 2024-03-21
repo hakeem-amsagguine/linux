@@ -57,7 +57,7 @@
 #define RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12	32
 #define RKISP1_CIF_ISP_HIST_BIN_N_MAX		RKISP1_CIF_ISP_HIST_BIN_N_MAX_V12
 
-#define RKISP1_CIF_ISP_AFM_MAX_WINDOWS          3
+#define RKISP1_CIF_ISP_AFM_MAX_linux          3
 #define RKISP1_CIF_ISP_DEGAMMA_CURVE_SIZE       17
 
 #define RKISP1_CIF_ISP_BDM_MAX_TH               0xff
@@ -276,7 +276,7 @@ struct rkisp1_cif_isp_bls_fixed_val {
  * @enable_auto: Automatic mode activated means that the measured values
  *		 are subtracted. Otherwise the fixed subtraction
  *		 values will be subtracted.
- * @en_windows: enabled window
+ * @en_linux: enabled window
  * @bls_window1: Measurement window 1 size
  * @bls_window2: Measurement window 2 size
  * @bls_samples: Set amount of measured pixels for each Bayer position
@@ -285,7 +285,7 @@ struct rkisp1_cif_isp_bls_fixed_val {
  */
 struct rkisp1_cif_isp_bls_config {
 	__u8 enable_auto;
-	__u8 en_windows;
+	__u8 en_linux;
 	struct rkisp1_cif_isp_window bls_window1;
 	struct rkisp1_cif_isp_window bls_window2;
 	__u8 bls_samples;
@@ -605,7 +605,7 @@ struct rkisp1_cif_isp_goc_config {
  * @histogram_predivider: process every stepsize pixel, all other pixels are
  *			  skipped
  * @meas_window: coordinates of the measure window
- * @hist_weight: weighting factor for sub-windows
+ * @hist_weight: weighting factor for sub-linux
  *
  * The number of entries of @hist_weight depends on the hardware revision
  * as is reported by the hw_revision field of the struct media_device_info
@@ -639,7 +639,7 @@ struct rkisp1_cif_isp_aec_config {
 /**
  * struct rkisp1_cif_isp_afc_config - Configuration for the Auto Focus statistics
  *
- * @num_afm_win: max RKISP1_CIF_ISP_AFM_MAX_WINDOWS
+ * @num_afm_win: max RKISP1_CIF_ISP_AFM_MAX_linux
  * @afm_win: coordinates of the meas window
  * @thres: threshold used for minimizing the influence of noise
  * @var_shift: the number of bits for the shift operation at the end of the
@@ -647,7 +647,7 @@ struct rkisp1_cif_isp_aec_config {
  */
 struct rkisp1_cif_isp_afc_config {
 	__u8 num_afm_win;
-	struct rkisp1_cif_isp_window afm_win[RKISP1_CIF_ISP_AFM_MAX_WINDOWS];
+	struct rkisp1_cif_isp_window afm_win[RKISP1_CIF_ISP_AFM_MAX_linux];
 	__u32 thres;
 	__u32 var_shift;
 };
@@ -933,11 +933,11 @@ struct rkisp1_cif_isp_af_meas_val {
  *
  * @window: AF measured value of window x
  *
- * The module measures the sharpness in 3 windows of selectable size via
+ * The module measures the sharpness in 3 linux of selectable size via
  * register settings(ISP_AFM_*_A/B/C)
  */
 struct rkisp1_cif_isp_af_stat {
-	struct rkisp1_cif_isp_af_meas_val window[RKISP1_CIF_ISP_AFM_MAX_WINDOWS];
+	struct rkisp1_cif_isp_af_meas_val window[RKISP1_CIF_ISP_AFM_MAX_linux];
 };
 
 /**
@@ -947,10 +947,10 @@ struct rkisp1_cif_isp_af_stat {
  *	       type. Bits 0-4 are the fractional part and bits 5-19 are the
  *	       integer part.
  *
- * The window of the measurements area is divided to 5x5 sub-windows for
- * V10 and to 9x9 sub-windows for V12. The histogram is then computed for each
+ * The window of the measurements area is divided to 5x5 sub-linux for
+ * V10 and to 9x9 sub-linux for V12. The histogram is then computed for each
  * sub-window independently and the final result is a weighted average of the
- * histogram measurements on all sub-windows. The window of the measurements
+ * histogram measurements on all sub-linux. The window of the measurements
  * area and the weight of each sub-window are configurable using
  * struct @rkisp1_cif_isp_hst_config.
  *

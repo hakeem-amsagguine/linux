@@ -1215,7 +1215,7 @@ static int ov7670_enum_frame_interval(struct v4l2_subdev *sd,
 	 * Check if the width/height is valid.
 	 *
 	 * If a minimum width/height was requested, filter out the capture
-	 * windows that fall outside that.
+	 * linux that fall outside that.
 	 */
 	for (i = 0; i < n_win_sizes; i++) {
 		struct ov7670_win_size *win = &info->devtype->win_sizes[i];
@@ -1252,7 +1252,7 @@ static int ov7670_enum_frame_size(struct v4l2_subdev *sd,
 
 	/*
 	 * If a minimum width/height was requested, filter out the capture
-	 * windows that fall outside that.
+	 * linux that fall outside that.
 	 */
 	for (i = 0; i < n_win_sizes; i++) {
 		struct ov7670_win_size *win = &info->devtype->win_sizes[i];

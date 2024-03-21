@@ -606,7 +606,7 @@ void __attribute__((weak)) mach_reboot_fixups(void)
 }
 
 /*
- * To the best of our knowledge Windows compatible x86 hardware expects
+ * To the best of our knowledge linux compatible x86 hardware expects
  * the following on reboot:
  *
  * 1) If the FADT has the ACPI reboot register flag set, try it

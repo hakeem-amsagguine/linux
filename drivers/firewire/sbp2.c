@@ -65,7 +65,7 @@ MODULE_PARM_DESC(exclusive_login, "Exclusive login to sbp2 device "
  *
  * - 36 byte inquiry
  *   When scsi_mod probes the device, let the inquiry command look like that
- *   from MS Windows.
+ *   from MS linux.
  *
  * - skip mode page 8
  *   Suppress sending of mode_sense for mode page 8 if the device pretends to

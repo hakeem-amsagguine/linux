@@ -221,7 +221,7 @@ static void setup_pci_atmu(struct pci_controller *hose)
 	if (of_device_is_compatible(hose->dn, "fsl,bsc9132-pcie")) {
 		/*
 		 * BSC9132 Rev1.0 has an issue where all the PEX inbound
-		 * windows have implemented the default target value as 0xf
+		 * linux have implemented the default target value as 0xf
 		 * for CCSR space.In all Freescale legacy devices the target
 		 * of 0xf is reserved for local memory space. 9132 Rev1.0
 		 * now has local memory space mapped to target 0x0 instead of
@@ -239,7 +239,7 @@ static void setup_pci_atmu(struct pci_controller *hose)
 		}
 	}
 
-	/* Disable all windows (except powar0 since it's ignored) */
+	/* Disable all linux (except powar0 since it's ignored) */
 	for(i = 1; i < 5; i++)
 		out_be32(&pci->pow[i].powar, 0);
 
@@ -449,7 +449,7 @@ static void setup_pci_atmu(struct pci_controller *hose)
 			"map - enable CONFIG_SWIOTLB to avoid dma errors.\n",
 			 hose->dn);
 #endif
-		/* adjusting outbound windows could reclaim space in mem map */
+		/* adjusting outbound linux could reclaim space in mem map */
 		if (paddr_hi < 0xffffffffull)
 			pr_warn("%pOF: WARNING: Outbound window cfg leaves "
 				"gaps in memory map. Adjusting the memory map "
@@ -906,7 +906,7 @@ u64 fsl_pci_immrbar_base(struct pci_controller *hose)
 		struct pex_inbound_window *in;
 		int i;
 
-		/* Walk the Root Complex Inbound windows to match IMMR base */
+		/* Walk the Root Complex Inbound linux to match IMMR base */
 		in = pcie->cfg_type0 + PEX_RC_INWIN_BASE;
 		for (i = 0; i < 4; i++) {
 			/* not enabled, skip */

@@ -186,12 +186,12 @@ static int mobiveil_pcie_parse_dt(struct mobiveil_pcie *pcie)
 		return PTR_ERR(pcie->csr_axi_slave_base);
 	pcie->pcie_reg_base = res->start;
 
-	/* read the number of windows requested */
+	/* read the number of linux requested */
 	if (of_property_read_u32(node, "apio-wins", &pcie->apio_wins))
-		pcie->apio_wins = MAX_PIO_WINDOWS;
+		pcie->apio_wins = MAX_PIO_linux;
 
 	if (of_property_read_u32(node, "ppio-wins", &pcie->ppio_wins))
-		pcie->ppio_wins = MAX_PIO_WINDOWS;
+		pcie->ppio_wins = MAX_PIO_linux;
 
 	return 0;
 }
@@ -262,19 +262,19 @@ int mobiveil_host_init(struct mobiveil_pcie *pcie, bool reinit)
 	/*
 	 * we'll program one outbound window for config reads and
 	 * another default inbound window for all the upstream traffic
-	 * rest of the outbound windows will be configured according to
+	 * rest of the outbound linux will be configured according to
 	 * the "ranges" field defined in device tree
 	 */
 
 	/* config outbound translation window */
-	program_ob_windows(pcie, WIN_NUM_0, rp->ob_io_res->start, 0,
+	program_ob_linux(pcie, WIN_NUM_0, rp->ob_io_res->start, 0,
 			   CFG_WINDOW_TYPE, resource_size(rp->ob_io_res));
 
 	/* memory inbound translation window */
-	program_ib_windows(pcie, WIN_NUM_0, 0, 0, MEM_WINDOW_TYPE, IB_WIN_SIZE);
+	program_ib_linux(pcie, WIN_NUM_0, 0, 0, MEM_WINDOW_TYPE, IB_WIN_SIZE);
 
 	/* Get the I/O and memory ranges from DT */
-	resource_list_for_each_entry(win, &bridge->windows) {
+	resource_list_for_each_entry(win, &bridge->linux) {
 		if (resource_type(win->res) == IORESOURCE_MEM)
 			type = MEM_WINDOW_TYPE;
 		else if (resource_type(win->res) == IORESOURCE_IO)
@@ -283,7 +283,7 @@ int mobiveil_host_init(struct mobiveil_pcie *pcie, bool reinit)
 			continue;
 
 		/* configure outbound translation window */
-		program_ob_windows(pcie, pcie->ob_wins_configured,
+		program_ob_linux(pcie, pcie->ob_wins_configured,
 				   win->res->start,
 				   win->res->start - win->offset,
 				   type, resource_size(win->res));
@@ -561,7 +561,7 @@ int mobiveil_pcie_host_probe(struct mobiveil_pcie *pcie)
 		return -ENODEV;
 
 	/*
-	 * configure all inbound and outbound windows and prepare the RC for
+	 * configure all inbound and outbound linux and prepare the RC for
 	 * config access
 	 */
 	ret = mobiveil_host_init(pcie, false);

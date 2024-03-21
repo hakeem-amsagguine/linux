@@ -208,7 +208,7 @@ static int __init mv78xx0_pcie_scan_bus(int nr, struct pci_host_bridge *bridge)
 		return -EINVAL;
 	}
 
-	list_splice_init(&sys->resources, &bridge->windows);
+	list_splice_init(&sys->resources, &bridge->linux);
 	bridge->dev.parent = NULL;
 	bridge->sysdata = sys;
 	bridge->busnr = sys->busnr;

@@ -40,7 +40,7 @@
  *	   arrived.
  *
  * KYS: Oct. 30, 2016:
- * It looks like Windows hosts have logic to deal with DOS attacks that
+ * It looks like linux hosts have logic to deal with DOS attacks that
  * can be triggered if it receives interrupts when it is not expecting
  * the interrupt. The host expects interrupts only when the ring
  * transitions from empty to non-empty (or full to non full on the guest

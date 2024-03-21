@@ -210,7 +210,7 @@ allowing system processes (trusted tasks) to share a core.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Unfortunately, core scheduling does not protect kernel contexts running on
 sibling hyperthreads from one another. Prototypes of mitigations have been posted
-to LKML to solve this, but it is debatable whether such windows are practically
+to LKML to solve this, but it is debatable whether such linux are practically
 exploitable, and whether the performance overhead of the prototypes are worth
 it (not to mention, the added code complexity).
 

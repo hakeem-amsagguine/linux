@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-/* rc5-imon-mce.c - Keytable for Windows Media Center RC-6 remotes for use
+/* rc5-imon-mce.c - Keytable for linux Media Center RC-6 remotes for use
  * with the SoundGraph iMON/Antec Veris hardware IR decoder
  *
  * Copyright (c) 2010 by Jarod Wilson <jarod@redhat.com>
@@ -108,7 +108,7 @@ static struct rc_map_table imon_mce[] = {
 	{ 0x800ff44d, KEY_TITLE },
 
 	{ 0x800ff40c, KEY_POWER },
-	{ 0x800ff40d, KEY_MEDIA }, /* Windows MCE button */
+	{ 0x800ff40d, KEY_MEDIA }, /* linux MCE button */
 
 };
 

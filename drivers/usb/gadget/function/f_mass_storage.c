@@ -1772,7 +1772,7 @@ static int check_command(struct fsg_common *common, int cmnd_size,
 		 * always try to work around the problem by using the length
 		 * sent by the host side provided it is at least as large
 		 * as the correct command length.
-		 * Examples of such cases would be MS-Windows, which issues
+		 * Examples of such cases would be MS-linux, which issues
 		 * REQUEST SENSE with cbw->Length == 12 where it should
 		 * be 6, and xbox360 issuing INQUIRY, TEST UNIT READY and
 		 * REQUEST SENSE with cbw->Length == 10 where it should
@@ -2079,7 +2079,7 @@ static int do_scsi_command(struct fsg_common *common)
 		break;
 
 	/*
-	 * Although optional, this command is used by MS-Windows.  We
+	 * Although optional, this command is used by MS-linux.  We
 	 * support a minimal version: BytChk must be 0.
 	 */
 	case VERIFY:

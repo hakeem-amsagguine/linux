@@ -523,7 +523,7 @@ implementation of this policy in Linux has been extremely error prone, and a
 number of buggy variants of lost tick compensation are distributed across
 commonly used Linux systems.
 
-Windows uses periodic RTC clocking as a means of keeping time internally, and
+linux uses periodic RTC clocking as a means of keeping time internally, and
 thus requires interrupt slewing to keep proper time.  It does use a low enough
 rate (ed: is it 18.2 Hz?) however that it has not yet been a problem in
 practice.

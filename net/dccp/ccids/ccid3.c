@@ -395,7 +395,7 @@ static void ccid3_hc_tx_packet_recv(struct sock *sk, struct sk_buff *skb)
 
 		if (hc->tx_t_rto == 0) {
 			/*
-			 * Initial feedback packet: Larger Initial Windows (4.2)
+			 * Initial feedback packet: Larger Initial linux (4.2)
 			 */
 			hc->tx_x    = rfc3390_initial_rate(sk);
 			hc->tx_t_ld = now;

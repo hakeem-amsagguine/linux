@@ -46,7 +46,7 @@ MODULE_ALIAS("wmi:5FB7F034-2C63-45E9-BE91-3D44E2C707E4");
 
 /* DMI board names of devices that should use the omen specific path for
  * thermal profiles.
- * This was obtained by taking a look in the windows omen command center
+ * This was obtained by taking a look in the linux omen command center
  * app and parsing a json file that they use to figure out what capabilities
  * the device should have.
  * A device is considered an omen if the DisplayName in that list contains

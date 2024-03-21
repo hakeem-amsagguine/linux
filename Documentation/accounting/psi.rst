@@ -58,7 +58,7 @@ CPU full is undefined at the system level, but has been reported
 since 5.13, so it is set to zero for backward compatibility.
 
 The ratios (in %) are tracked as recent trends over ten, sixty, and
-three hundred second windows, which gives insight into short term events
+three hundred second linux, which gives insight into short term events
 as well as medium and long term trends. The total absolute stall time
 (in us) is tracked and exported as well, to allow detection of latency
 spikes which wouldn't necessarily make a dent in the time averages,

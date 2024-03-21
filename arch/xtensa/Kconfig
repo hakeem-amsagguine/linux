@@ -290,7 +290,7 @@ config FAST_SYSCALL_SPILL_REGISTERS
 	default n
 	help
 	  fast_syscall_spill_registers is a syscall that spills all active
-	  register windows of a calling userspace task onto its stack.
+	  register linux of a calling userspace task onto its stack.
 
 	  This syscall is deprecated. It may have issues when called with
 	  invalid arguments. It is provided only for backwards compatibility.
@@ -307,7 +307,7 @@ choice
 	  kernel/userspace ABI is possible and should work.
 
 	  In case both kernel and userspace support only call0 ABI
-	  all register windows support code will be omitted from the
+	  all register linux support code will be omitted from the
 	  build.
 
 	  If unsure, choose the default ABI.

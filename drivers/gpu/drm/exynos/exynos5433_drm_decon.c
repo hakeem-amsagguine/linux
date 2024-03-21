@@ -31,7 +31,7 @@
 #define DSD_CFG_MUX 0x1004
 #define DSD_CFG_MUX_TE_UNMASK_GLOBAL BIT(13)
 
-#define WINDOWS_NR	5
+#define linux_NR	5
 #define PRIMARY_WIN	2
 #define CURSON_WIN	4
 
@@ -58,8 +58,8 @@ struct decon_context {
 	struct drm_device		*drm_dev;
 	void				*dma_priv;
 	struct exynos_drm_crtc		*crtc;
-	struct exynos_drm_plane		planes[WINDOWS_NR];
-	struct exynos_drm_plane_config	configs[WINDOWS_NR];
+	struct exynos_drm_plane		planes[linux_NR];
+	struct exynos_drm_plane_config	configs[linux_NR];
 	void __iomem			*addr;
 	struct regmap			*sysreg;
 	struct clk			*clks[ARRAY_SIZE(decon_clks_name)];
@@ -80,12 +80,12 @@ static const uint32_t decon_formats[] = {
 	DRM_FORMAT_ARGB8888,
 };
 
-static const enum drm_plane_type decon_win_types[WINDOWS_NR] = {
+static const enum drm_plane_type decon_win_types[linux_NR] = {
 	[PRIMARY_WIN] = DRM_PLANE_TYPE_PRIMARY,
 	[CURSON_WIN] = DRM_PLANE_TYPE_CURSOR,
 };
 
-static const unsigned int capabilities[WINDOWS_NR] = {
+static const unsigned int capabilities[linux_NR] = {
 	0,
 	EXYNOS_DRM_PLANE_CAP_WIN_BLEND | EXYNOS_DRM_PLANE_CAP_PIX_BLEND,
 	EXYNOS_DRM_PLANE_CAP_WIN_BLEND | EXYNOS_DRM_PLANE_CAP_PIX_BLEND,
@@ -540,11 +540,11 @@ static void decon_atomic_disable(struct exynos_drm_crtc *crtc)
 	synchronize_irq(ctx->irq);
 
 	/*
-	 * We need to make sure that all windows are disabled before we
+	 * We need to make sure that all linux are disabled before we
 	 * suspend that connector. Otherwise we might try to scan from
 	 * a destroyed buffer later.
 	 */
-	for (i = ctx->first_win; i < WINDOWS_NR; i++)
+	for (i = ctx->first_win; i < linux_NR; i++)
 		decon_disable_plane(crtc, &ctx->planes[i]);
 
 	decon_swreset(ctx);
@@ -575,7 +575,7 @@ static void decon_clear_channels(struct exynos_drm_crtc *crtc)
 	}
 
 	decon_shadow_protect(ctx, true);
-	for (win = 0; win < WINDOWS_NR; win++)
+	for (win = 0; win < linux_NR; win++)
 		decon_set_bits(ctx, DECON_WINCONx(win), WINCONx_ENWIN_F, 0);
 	decon_shadow_protect(ctx, false);
 
@@ -628,7 +628,7 @@ static int decon_bind(struct device *dev, struct device *master, void *data)
 
 	ctx->drm_dev = drm_dev;
 
-	for (win = ctx->first_win; win < WINDOWS_NR; win++) {
+	for (win = ctx->first_win; win < linux_NR; win++) {
 		ctx->configs[win].pixel_formats = decon_formats;
 		ctx->configs[win].num_pixel_formats = ARRAY_SIZE(decon_formats);
 		ctx->configs[win].zpos = win - ctx->first_win;

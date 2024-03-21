@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0+
 /*
- *  Intel Virtual Button driver for Windows 8.1+
+ *  Intel Virtual Button driver for linux 8.1+
  *
  *  Copyright (C) 2016 AceLan Kao <acelan.kao@canonical.com>
  *  Copyright (C) 2016 Alex Hung <alex.hung@canonical.com>
@@ -37,8 +37,8 @@ MODULE_DEVICE_TABLE(acpi, intel_vbtn_ids);
 static const struct key_entry intel_vbtn_keymap[] = {
 	{ KE_KEY, 0xC0, { KEY_POWER } },	/* power key press */
 	{ KE_IGNORE, 0xC1, { KEY_POWER } },	/* power key release */
-	{ KE_KEY, 0xC2, { KEY_LEFTMETA } },		/* 'Windows' key press */
-	{ KE_KEY, 0xC3, { KEY_LEFTMETA } },		/* 'Windows' key release */
+	{ KE_KEY, 0xC2, { KEY_LEFTMETA } },		/* 'linux' key press */
+	{ KE_KEY, 0xC3, { KEY_LEFTMETA } },		/* 'linux' key release */
 	{ KE_KEY, 0xC4, { KEY_VOLUMEUP } },		/* volume-up key press */
 	{ KE_IGNORE, 0xC5, { KEY_VOLUMEUP } },		/* volume-up key release */
 	{ KE_KEY, 0xC6, { KEY_VOLUMEDOWN } },		/* volume-down key press */

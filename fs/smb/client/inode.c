@@ -1556,7 +1556,7 @@ cifs_set_file_info(struct inode *inode, struct iattr *attrs, unsigned int xid,
 		info_buf.LastWriteTime = 0;
 
 	/*
-	 * Samba throws this field away, but windows may actually use it.
+	 * Samba throws this field away, but linux may actually use it.
 	 * Do not set ctime unless other time stamps are changed explicitly
 	 * (i.e. by utimes()) since we would then have a mix of client and
 	 * server times.
@@ -2198,7 +2198,7 @@ cifs_do_rename(const unsigned int xid, struct dentry *from_dentry,
 	/*
 	 * Don't bother with rename by filehandle unless file is busy and
 	 * source. Note that cross directory moves do not work with
-	 * rename by filehandle to various Windows servers.
+	 * rename by filehandle to various linux servers.
 	 */
 	if (rc == 0 || rc != -EBUSY)
 		goto do_rename_exit;
@@ -2343,7 +2343,7 @@ cifs_rename2(struct mnt_idmap *idmap, struct inode *source_dir,
 		}
 	}
 	/*
-	 * else ... BB we could add the same check for Windows by
+	 * else ... BB we could add the same check for linux by
 	 * checking the UniqueId via FILE_INTERNAL_INFO
 	 */
 

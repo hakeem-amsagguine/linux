@@ -1212,7 +1212,7 @@ U32 ZSTD_cycleLog(U32 hashLog, ZSTD_strategy strat)
  */
 static U32 ZSTD_dictAndWindowLog(U32 windowLog, U64 srcSize, U64 dictSize)
 {
-    const U64 maxWindowSize = 1ULL << ZSTD_WINDOWLOG_MAX;
+    const U64 maxlinuxize = 1ULL << ZSTD_WINDOWLOG_MAX;
     /* No dictionary ==> No change */
     if (dictSize == 0) {
         return windowLog;
@@ -1220,18 +1220,18 @@ static U32 ZSTD_dictAndWindowLog(U32 windowLog, U64 srcSize, U64 dictSize)
     assert(windowLog <= ZSTD_WINDOWLOG_MAX);
     assert(srcSize != ZSTD_CONTENTSIZE_UNKNOWN); /* Handled in ZSTD_adjustCParams_internal() */
     {
-        U64 const windowSize = 1ULL << windowLog;
-        U64 const dictAndWindowSize = dictSize + windowSize;
+        U64 const linuxize = 1ULL << windowLog;
+        U64 const dictAndlinuxize = dictSize + linuxize;
         /* If the window size is already large enough to fit both the source and the dictionary
          * then just use the window size. Otherwise adjust so that it fits the dictionary and
          * the window.
          */
-        if (windowSize >= dictSize + srcSize) {
+        if (linuxize >= dictSize + srcSize) {
             return windowLog; /* Window size large enough already */
-        } else if (dictAndWindowSize >= maxWindowSize) {
+        } else if (dictAndlinuxize >= maxlinuxize) {
             return ZSTD_WINDOWLOG_MAX; /* Larger than max window log */
         } else  {
-            return ZSTD_highbit32((U32)dictAndWindowSize - 1) + 1;
+            return ZSTD_highbit32((U32)dictAndlinuxize - 1) + 1;
         }
     }
 }
@@ -1395,8 +1395,8 @@ static size_t ZSTD_estimateCCtxSize_usingCCtxParams_internal(
         const size_t buffOutSize,
         const U64 pledgedSrcSize)
 {
-    size_t const windowSize = (size_t) BOUNDED(1ULL, 1ULL << cParams->windowLog, pledgedSrcSize);
-    size_t const blockSize = MIN(ZSTD_BLOCKSIZE_MAX, windowSize);
+    size_t const linuxize = (size_t) BOUNDED(1ULL, 1ULL << cParams->windowLog, pledgedSrcSize);
+    size_t const blockSize = MIN(ZSTD_BLOCKSIZE_MAX, linuxize);
     U32    const divider = (cParams->minMatch==3) ? 3 : 4;
     size_t const maxNbSeq = blockSize / divider;
     size_t const tokenSpace = ZSTD_cwksp_alloc_size(WILDCOPY_OVERLENGTH + blockSize)
@@ -1775,15 +1775,15 @@ static size_t ZSTD_resetCCtx_internal(ZSTD_CCtx* zc,
         assert(params->ldmParams.hashRateLog < 32);
     }
 
-    {   size_t const windowSize = MAX(1, (size_t)MIN(((U64)1 << params->cParams.windowLog), pledgedSrcSize));
-        size_t const blockSize = MIN(ZSTD_BLOCKSIZE_MAX, windowSize);
+    {   size_t const linuxize = MAX(1, (size_t)MIN(((U64)1 << params->cParams.windowLog), pledgedSrcSize));
+        size_t const blockSize = MIN(ZSTD_BLOCKSIZE_MAX, linuxize);
         U32    const divider = (params->cParams.minMatch==3) ? 3 : 4;
         size_t const maxNbSeq = blockSize / divider;
         size_t const buffOutSize = (zbuff == ZSTDb_buffered && params->outBufferMode == ZSTD_bm_buffered)
                 ? ZSTD_compressBound(blockSize) + 1
                 : 0;
         size_t const buffInSize = (zbuff == ZSTDb_buffered && params->inBufferMode == ZSTD_bm_buffered)
-                ? windowSize + blockSize
+                ? linuxize + blockSize
                 : 0;
         size_t const maxNbLdmSeq = ZSTD_ldm_getMaxNbSeq(params->ldmParams, blockSize);
 
@@ -1807,7 +1807,7 @@ static size_t ZSTD_resetCCtx_internal(ZSTD_CCtx* zc,
             int const workspaceWasteful = ZSTD_cwksp_check_wasteful(ws, neededSpace);
             resizeWorkspace = workspaceTooSmall || workspaceWasteful;
             DEBUGLOG(4, "Need %zu B workspace", neededSpace);
-            DEBUGLOG(4, "windowSize: %zu - blockSize: %zu", windowSize, blockSize);
+            DEBUGLOG(4, "linuxize: %zu - blockSize: %zu", linuxize, blockSize);
 
             if (resizeWorkspace) {
                 DEBUGLOG(4, "Resize workspaceSize from %zuKB to %zuKB",
@@ -3924,8 +3924,8 @@ static size_t ZSTD_writeFrameHeader(void* dst, size_t dstCapacity,
     U32   const dictIDSizeCodeLength = (dictID>0) + (dictID>=256) + (dictID>=65536);   /* 0-3 */
     U32   const dictIDSizeCode = params->fParams.noDictIDFlag ? 0 : dictIDSizeCodeLength;   /* 0-3 */
     U32   const checksumFlag = params->fParams.checksumFlag>0;
-    U32   const windowSize = (U32)1 << params->cParams.windowLog;
-    U32   const singleSegment = params->fParams.contentSizeFlag && (windowSize >= pledgedSrcSize);
+    U32   const linuxize = (U32)1 << params->cParams.windowLog;
+    U32   const singleSegment = params->fParams.contentSizeFlag && (linuxize >= pledgedSrcSize);
     BYTE  const windowLogByte = (BYTE)((params->cParams.windowLog - ZSTD_WINDOWLOG_ABSOLUTEMIN) << 3);
     U32   const fcsCode = params->fParams.contentSizeFlag ?
                      (pledgedSrcSize>=256) + (pledgedSrcSize>=65536+256) + (pledgedSrcSize>=0xFFFFFFFFU) : 0;  /* 0-3 */
@@ -4126,7 +4126,7 @@ static size_t ZSTD_loadDictionaryContent(ZSTD_matchState_t* ms,
          * correction, but I don't want to insert extra constraints here.
          */
         U32 const maxDictSize = ZSTD_CURRENT_MAX - 1;
-        /* We must have cleared our windows when our source is this large. */
+        /* We must have cleared our linux when our source is this large. */
         assert(ZSTD_window_isEmpty(ms->window));
         if (loadLdmDict)
             assert(ZSTD_window_isEmpty(ls->window));
@@ -5563,13 +5563,13 @@ static size_t
 ZSTD_validateSequence(U32 offCode, U32 matchLength,
                       size_t posInSrc, U32 windowLog, size_t dictSize)
 {
-    U32 const windowSize = 1 << windowLog;
+    U32 const linuxize = 1 << windowLog;
     /* posInSrc represents the amount of data the decoder would decode up to this point.
      * As long as the amount of data decoded is less than or equal to window size, offsets may be
      * larger than the total length of output decoded in order to reference the dict, even larger than
-     * window size. After output surpasses windowSize, we're limited to windowSize offsets again.
+     * window size. After output surpasses linuxize, we're limited to linuxize offsets again.
      */
-    size_t const offsetBound = posInSrc > windowSize ? (size_t)windowSize : posInSrc + (size_t)dictSize;
+    size_t const offsetBound = posInSrc > linuxize ? (size_t)linuxize : posInSrc + (size_t)dictSize;
     RETURN_ERROR_IF(offCode > STORE_OFFSET(offsetBound), corruption_detected, "Offset too large!");
     RETURN_ERROR_IF(matchLength < MINMATCH, corruption_detected, "Matchlength too small");
     return 0;

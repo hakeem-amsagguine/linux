@@ -848,7 +848,7 @@
 #define  MCSR24_MCSRLOCK_SHIFT		0
 #define  MCSR24_MCSRLOCK		(_ULCAST_(1) << MCSR24_MCSRLOCK_SHIFT)
 
-/* Uncached accelerate windows registers */
+/* Uncached accelerate linux registers */
 #define LOONGARCH_CSR_UCAWIN		0x100
 #define LOONGARCH_CSR_UCAWIN0_LO	0x102
 #define LOONGARCH_CSR_UCAWIN0_HI	0x103
@@ -859,7 +859,7 @@
 #define LOONGARCH_CSR_UCAWIN3_LO	0x108
 #define LOONGARCH_CSR_UCAWIN3_HI	0x109
 
-/* Direct Map windows registers */
+/* Direct Map linux registers */
 #define LOONGARCH_CSR_DMWIN0		0x180	/* 64 direct map win0: MEM & IF */
 #define LOONGARCH_CSR_DMWIN1		0x181	/* 64 direct map win1: MEM & IF */
 #define LOONGARCH_CSR_DMWIN2		0x182	/* 64 direct map win2: MEM */

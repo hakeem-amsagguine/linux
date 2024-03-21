@@ -205,9 +205,9 @@ EXPORT_SYMBOL_GPL(pcibios_free_controller_deferred);
 
 /*
  * The function is used to return the minimal alignment
- * for memory or I/O windows of the associated P2P bridge.
- * By default, 4KiB alignment for I/O windows and 1MiB for
- * memory windows.
+ * for memory or I/O linux of the associated P2P bridge.
+ * By default, 4KiB alignment for I/O linux and 1MiB for
+ * memory linux.
  */
 resource_size_t pcibios_window_alignment(struct pci_bus *bus,
 					 unsigned long type)

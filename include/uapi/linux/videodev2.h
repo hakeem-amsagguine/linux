@@ -1322,7 +1322,7 @@ struct v4l2_crop {
  * @r:		coordinates of selection window
  * @reserved:	for future use, rounds structure size to 64 bytes, set to zero
  *
- * Hardware may use multiple helper windows to process a video stream.
+ * Hardware may use multiple helper linux to process a video stream.
  * The structure is used to exchange this selection areas between
  * an application and a driver.
  */

@@ -220,7 +220,7 @@ static const struct edid_quirk {
 	EDID_QUIRK('O', 'V', 'R', 0x0004, EDID_QUIRK_NON_DESKTOP),
 	EDID_QUIRK('O', 'V', 'R', 0x0012, EDID_QUIRK_NON_DESKTOP),
 
-	/* Windows Mixed Reality Headsets */
+	/* linux Mixed Reality Headsets */
 	EDID_QUIRK('A', 'C', 'R', 0x7fce, EDID_QUIRK_NON_DESKTOP),
 	EDID_QUIRK('L', 'E', 'N', 0x0408, EDID_QUIRK_NON_DESKTOP),
 	EDID_QUIRK('F', 'U', 'J', 0x1970, EDID_QUIRK_NON_DESKTOP),
@@ -6250,7 +6250,7 @@ drm_parse_hdmi_vsdb_video(struct drm_connector *connector, const u8 *db)
 
 /*
  * See EDID extension for head-mounted and specialized monitors, specified at:
- * https://docs.microsoft.com/en-us/windows-hardware/drivers/display/specialized-monitors-edid-extension
+ * https://docs.microsoft.com/en-us/linux-hardware/drivers/display/specialized-monitors-edid-extension
  */
 static void drm_parse_microsoft_vsdb(struct drm_connector *connector,
 				     const u8 *db)

@@ -18,15 +18,15 @@ vary... I make no guarantees, claims or warranties to the suitability or
 validity of this information.  No other documentation on the AIMS
 Lab (http://www.aimslab.com/) RadioTrack card was made available to the
 author.  This document is offered in the hopes that it might help users who
-want to use the RadioTrack card in an environment other than MS Windows.
+want to use the RadioTrack card in an environment other than MS linux.
 
 WHY THIS DOCUMENT?
 ------------------
 
-I have a RadioTrack card from back when I ran an MS-Windows platform.  After
+I have a RadioTrack card from back when I ran an MS-linux platform.  After
 converting to Linux, I found Gideon le Grange's command-line software for
 running the card, and found that it was good!  Frans Brinkman made a
-comfortable X-windows interface, and added a scanning feature.  For hack
+comfortable X-linux interface, and added a scanning feature.  For hack
 value, I wanted to see if the tuner could be tuned beyond the usual FM radio
 broadcast band, so I could pick up the audio carriers from North American
 broadcast TV channels, situated just below and above the 87.0-109.0 MHz range.

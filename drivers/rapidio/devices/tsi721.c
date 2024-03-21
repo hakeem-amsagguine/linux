@@ -1060,7 +1060,7 @@ static void tsi721_init_pc2sr_mapping(struct tsi721_device *priv)
 	int i, z;
 	u32 rval;
 
-	/* Disable all PC2SR translation windows */
+	/* Disable all PC2SR translation linux */
 	for (i = 0; i < TSI721_OBWIN_NUM; i++)
 		iowrite32(0, priv->regs + TSI721_OBWINLB(i));
 
@@ -1321,13 +1321,13 @@ static void tsi721_rio_unmap_inb_mem(struct rio_mport *mport,
  * translation regions.
  * @priv: pointer to tsi721 private data
  *
- * Disables inbound windows.
+ * Disables inbound linux.
  */
 static void tsi721_init_sr2pc_mapping(struct tsi721_device *priv)
 {
 	int i;
 
-	/* Disable all SR2PC inbound windows */
+	/* Disable all SR2PC inbound linux */
 	for (i = 0; i < TSI721_IBWIN_NUM; i++)
 		iowrite32(0, priv->regs + TSI721_IBWIN_LB(i));
 	priv->ibwin_cnt = TSI721_IBWIN_NUM;
@@ -1343,7 +1343,7 @@ static void tsi721_close_sr2pc_mapping(struct tsi721_device *priv)
 	struct tsi721_ib_win *ib_win;
 	int i;
 
-	/* Disable all active SR2PC inbound windows */
+	/* Disable all active SR2PC inbound linux */
 	for (i = 0; i < TSI721_IBWIN_NUM; i++) {
 		ib_win = &priv->ib_win[i];
 		if (ib_win->active) {

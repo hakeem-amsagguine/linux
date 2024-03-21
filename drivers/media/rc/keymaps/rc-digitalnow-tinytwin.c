@@ -28,7 +28,7 @@ static struct rc_map_table digitalnow_tinytwin[] = {
 	{ 0x0011, KEY_YELLOW },          /* [yellow] Pictures */
 	{ 0x0012, KEY_DOWN },            /* [down arrow] */
 	{ 0x0013, KEY_GREEN },           /* [green] Music */
-	{ 0x0014, KEY_CYCLEWINDOWS },    /* BACK */
+	{ 0x0014, KEY_CYCLElinux },    /* BACK */
 	{ 0x0015, KEY_FAVORITES },       /* MORE */
 	{ 0x0016, KEY_UP },              /* [up arrow] */
 	{ 0x0017, KEY_LEFT },            /* [left arrow] */

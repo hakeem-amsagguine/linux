@@ -69,7 +69,7 @@ struct sdhci_pxa {
 #define SDIO3_CONF_CLK_INV	BIT(0)
 #define SDIO3_CONF_SD_FB_CLK	BIT(2)
 
-static int mv_conf_mbus_windows(struct platform_device *pdev,
+static int mv_conf_mbus_linux(struct platform_device *pdev,
 				const struct mbus_dram_target_info *dram)
 {
 	int i;
@@ -406,7 +406,7 @@ static int sdhci_pxav3_probe(struct platform_device *pdev)
 		ret = armada_38x_quirks(pdev, host);
 		if (ret < 0)
 			goto err_mbus_win;
-		ret = mv_conf_mbus_windows(pdev, mv_mbus_dram_info());
+		ret = mv_conf_mbus_linux(pdev, mv_mbus_dram_info());
 		if (ret < 0)
 			goto err_mbus_win;
 	}

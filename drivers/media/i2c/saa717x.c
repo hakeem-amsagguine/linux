@@ -13,7 +13,7 @@
  * Cleaned up by Hans Verkuil <hverkuil@xs4all.nl>
  *
  * Note: this is a reversed engineered driver based on captures from
- * the I2C bus under Windows. This chip is very similar to the saa7134,
+ * the I2C bus under linux. This chip is very similar to the saa7134,
  * though. Unfortunately, this driver is currently only working for NTSC.
  */
 

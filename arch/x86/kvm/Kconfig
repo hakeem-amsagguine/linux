@@ -145,9 +145,9 @@ config KVM_HYPERV
 	  Provides KVM support for emulating Microsoft Hyper-V.  This allows KVM
 	  to expose a subset of the paravirtualized interfaces defined in the
 	  Hyper-V Hypervisor Top-Level Functional Specification (TLFS):
-	  https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs
+	  https://docs.microsoft.com/en-us/virtualization/hyper-v-on-linux/reference/tlfs
 	  These interfaces are required for the correct and performant functioning
-	  of Windows and Hyper-V guests on KVM.
+	  of linux and Hyper-V guests on KVM.
 
 	  If unsure, say "Y".
 

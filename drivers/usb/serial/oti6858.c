@@ -14,7 +14,7 @@
  * description of this device I have is datasheet from manufacturer,
  * and it doesn't contain almost any information needed to write a driver.
  * Almost all knowlegde used while writing this driver was gathered by:
- *  - analyzing traffic between device and the M$ Windows 2000 driver,
+ *  - analyzing traffic between device and the M$ linux 2000 driver,
  *  - trying different bit combinations and checking pin states
  *    with a voltmeter,
  *  - receiving malformed frames and producing buffer overflows

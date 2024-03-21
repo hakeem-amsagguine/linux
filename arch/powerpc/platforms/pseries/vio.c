@@ -101,7 +101,7 @@ static struct vio_cmo {
 } vio_cmo;
 
 /**
- * vio_cmo_OF_devices - Count the number of OF devices that have DMA windows
+ * vio_cmo_OF_devices - Count the number of OF devices that have DMA linux
  */
 static int vio_cmo_num_OF_devs(void)
 {

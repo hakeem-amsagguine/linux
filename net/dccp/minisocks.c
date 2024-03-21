@@ -111,7 +111,7 @@ struct sock *dccp_create_openreq_child(const struct sock *sk,
 		 *    Set S.ISR, S.GSR from packet (or Init Cookies)
 		 *
 		 *    Setting AWL/AWH and SWL/SWH happens as part of the feature
-		 *    activation below, as these windows all depend on the local
+		 *    activation below, as these linux all depend on the local
 		 *    and remote Sequence Window feature values (7.5.2).
 		 */
 		newdp->dccps_iss = dreq->dreq_iss;
@@ -121,7 +121,7 @@ struct sock *dccp_create_openreq_child(const struct sock *sk,
 		newdp->dccps_gsr = dreq->dreq_gsr;
 
 		/*
-		 * Activate features: initialise CCIDs, sequence windows etc.
+		 * Activate features: initialise CCIDs, sequence linux etc.
 		 */
 		if (dccp_feat_activate_values(newsk, &dreq->dreq_featneg)) {
 			sk_free_unlock_clone(newsk);

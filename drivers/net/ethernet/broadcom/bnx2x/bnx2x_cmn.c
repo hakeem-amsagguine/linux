@@ -3429,7 +3429,7 @@ static int bnx2x_pkt_req_lin(struct bnx2x *bp, struct sk_buff *skb,
 		if (xmit_type & XMIT_GSO) {
 			unsigned short lso_mss = skb_shinfo(skb)->gso_size;
 			int wnd_size = MAX_FETCH_BD - num_tso_win_sub;
-			/* Number of windows to check */
+			/* Number of linux to check */
 			int num_wnds = skb_shinfo(skb)->nr_frags - wnd_size;
 			int wnd_idx = 0;
 			int frag_idx = 0;
@@ -3462,7 +3462,7 @@ static int bnx2x_pkt_req_lin(struct bnx2x *bp, struct sk_buff *skb,
 			}
 
 			/* Others are easier: run through the frag list and
-			   check all windows */
+			   check all linux */
 			for (wnd_idx = 0; wnd_idx <= num_wnds; wnd_idx++) {
 				wnd_sum +=
 			  skb_frag_size(&skb_shinfo(skb)->frags[wnd_idx + wnd_size - 1]);

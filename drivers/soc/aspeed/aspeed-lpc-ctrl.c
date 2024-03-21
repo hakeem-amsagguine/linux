@@ -85,7 +85,7 @@ static long aspeed_lpc_ctrl_ioctl(struct file *file, unsigned int cmd,
 
 	switch (cmd) {
 	case ASPEED_LPC_CTRL_IOCTL_GET_SIZE:
-		/* The flash windows don't report their size */
+		/* The flash linux don't report their size */
 		if (map.window_type != ASPEED_LPC_CTRL_WINDOW_MEMORY)
 			return -EINVAL;
 

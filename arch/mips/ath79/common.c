@@ -69,7 +69,7 @@ void ath79_ddr_wb_flush(u32 reg)
 }
 EXPORT_SYMBOL_GPL(ath79_ddr_wb_flush);
 
-void ath79_ddr_set_pci_windows(void)
+void ath79_ddr_set_pci_linux(void)
 {
 	BUG_ON(!ath79_ddr_pci_win_base);
 
@@ -82,7 +82,7 @@ void ath79_ddr_set_pci_windows(void)
 	__raw_writel(AR71XX_PCI_WIN6_OFFS, ath79_ddr_pci_win_base + 0x18);
 	__raw_writel(AR71XX_PCI_WIN7_OFFS, ath79_ddr_pci_win_base + 0x1c);
 }
-EXPORT_SYMBOL_GPL(ath79_ddr_set_pci_windows);
+EXPORT_SYMBOL_GPL(ath79_ddr_set_pci_linux);
 
 void ath79_device_reset_set(u32 mask)
 {

@@ -576,10 +576,10 @@ Events that are propagated by the driver to userspace:
 0x6021		ALARM: a sensor is too hot
 0x6022		ALARM: a sensor is extremely hot
 0x6030		System thermal table changed
-0x6032		Thermal Control command set completion  (DYTC, Windows)
+0x6032		Thermal Control command set completion  (DYTC, linux)
 0x6040		Nvidia Optimus/AC adapter related (TO BE VERIFIED)
 0x60C0		X1 Yoga 2016, Tablet mode status changed
-0x60F0		Thermal Transformation changed (GMTS, Windows)
+0x60F0		Thermal Transformation changed (GMTS, linux)
 ======		=====================================================
 
 Battery nearly empty alarms are a last resort attempt to get the

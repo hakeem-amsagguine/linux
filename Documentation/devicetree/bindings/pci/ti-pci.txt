@@ -49,8 +49,8 @@ DEVICE MODE
 		they are locally accessed within the DIF CS2 space
 	       "addr_space" used to map remote RC address space
  - interrupts : one interrupt entries must be specified for main interrupt.
- - num-ib-windows : number of inbound address translation windows
- - num-ob-windows : number of outbound address translation windows
+ - num-ib-linux : number of inbound address translation linux
+ - num-ob-linux : number of outbound address translation linux
  - ti,syscon-unaligned-access: phandle to the syscon DT node. The 1st argument
 			       should contain the register offset within syscon
 			       and the 2nd argument should contain the bit field

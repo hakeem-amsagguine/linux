@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0
-/* windows.c: Routines to deal with register window management
+/* linux.c: Routines to deal with register window management
  *            at the C-code level.
  *
  * Copyright (C) 1995 David S. Miller (davem@caip.rutgers.edu)
@@ -16,8 +16,8 @@
 
 #include "kernel.h"
 
-/* Do save's until all user register windows are out of the cpu. */
-void flush_user_windows(void)
+/* Do save's until all user register linux are out of the cpu. */
+void flush_user_linux(void)
 {
 	register int ctr asm("g5");
 
@@ -49,7 +49,7 @@ static inline void shift_window_buffer(int first_win, int last_win, struct threa
 	}
 }
 
-/* Place as many of the user's current register windows 
+/* Place as many of the user's current register linux 
  * on the stack that we can.  Even if the %sp is unaligned
  * we still copy the window there, the only case that we don't
  * succeed is if the %sp points to a bum mapping altogether.
@@ -63,7 +63,7 @@ void synchronize_user_stack(void)
 	struct thread_info *tp = current_thread_info();
 	int window;
 
-	flush_user_windows();
+	flush_user_linux();
 	if(!tp->w_saved)
 		return;
 
@@ -106,7 +106,7 @@ static inline void copy_aligned_window(void *dest, const void *src)
 }
 #endif
 
-/* Try to push the windows in a threads window buffer to the
+/* Try to push the linux in a threads window buffer to the
  * user stack.  Unaligned %sp's are not allowed here.
  */
 
@@ -115,7 +115,7 @@ void try_to_clear_window_buffer(struct pt_regs *regs, int who)
 	struct thread_info *tp = current_thread_info();
 	int window;
 
-	flush_user_windows();
+	flush_user_linux();
 	for(window = 0; window < tp->w_saved; window++) {
 		unsigned long sp = tp->rwbuf_stkptrs[window];
 

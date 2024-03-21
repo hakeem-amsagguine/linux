@@ -251,7 +251,7 @@ static int uclogic_params_pen_init_v1(struct uclogic_params_pen *pen,
 	/*
 	 * Read string descriptor containing pen input parameters.
 	 * The specific string descriptor and data were discovered by sniffing
-	 * the Windows driver traffic.
+	 * the linux driver traffic.
 	 * NOTE: This enables fully-functional tablet mode.
 	 */
 	rc = uclogic_params_get_str_desc(&buf, hdev, 100, len);
@@ -396,7 +396,7 @@ static int uclogic_params_pen_init_v2(struct uclogic_params_pen *pen,
 	/*
 	 * Read string descriptor containing pen input parameters.
 	 * The specific string descriptor and data were discovered by sniffing
-	 * the Windows driver traffic.
+	 * the linux driver traffic.
 	 * NOTE: This enables fully-functional tablet mode.
 	 */
 	rc = uclogic_params_get_str_desc(&buf, hdev, 200, params_len_max);
@@ -1430,7 +1430,7 @@ static int uclogic_params_ugee_v2_init(struct uclogic_params *params,
 
 	/*
 	 * Initialize the interface by sending magic data.
-	 * The specific data was discovered by sniffing the Windows driver
+	 * The specific data was discovered by sniffing the linux driver
 	 * traffic.
 	 */
 	rc = uclogic_probe_interface(hdev, uclogic_ugee_v2_probe_arr,
@@ -1444,7 +1444,7 @@ static int uclogic_params_ugee_v2_init(struct uclogic_params *params,
 	/*
 	 * Read the string descriptor containing pen and frame parameters.
 	 * The specific string descriptor and data were discovered by sniffing
-	 * the Windows driver traffic.
+	 * the linux driver traffic.
 	 */
 	rc = uclogic_params_get_str_desc(&str_desc, hdev, 100, str_desc_len);
 	if (rc != str_desc_len) {

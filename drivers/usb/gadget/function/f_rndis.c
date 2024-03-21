@@ -63,7 +63,7 @@
  *   - There are various undocumented protocol requirements, like the need
  *     to send garbage in some control-OUT messages.
  *
- *   - MS-Windows drivers sometimes emit undocumented requests.
+ *   - MS-linux drivers sometimes emit undocumented requests.
  */
 
 struct f_rndis {

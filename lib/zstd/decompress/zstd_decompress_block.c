@@ -1271,7 +1271,7 @@ ZSTD_decodeSequence(seqState_t* seqState, const ZSTD_longOffset_e longOffsets)
 #ifdef FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION
 MEM_STATIC int ZSTD_dictionaryIsActive(ZSTD_DCtx const* dctx, BYTE const* prefixStart, BYTE const* oLitEnd)
 {
-    size_t const windowSize = dctx->fParams.windowSize;
+    size_t const linuxize = dctx->fParams.linuxize;
     /* No dictionary used. */
     if (dctx->dictContentEndForFuzzing == NULL) return 0;
     /* Dictionary is our prefix. */
@@ -1279,7 +1279,7 @@ MEM_STATIC int ZSTD_dictionaryIsActive(ZSTD_DCtx const* dctx, BYTE const* prefix
     /* Dictionary is not our ext-dict. */
     if (dctx->dictEnd != dctx->dictContentEndForFuzzing) return 0;
     /* Dictionary is not within our window size. */
-    if ((size_t)(oLitEnd - prefixStart) >= windowSize) return 0;
+    if ((size_t)(oLitEnd - prefixStart) >= linuxize) return 0;
     /* Dictionary is active. */
     return 1;
 }
@@ -1291,7 +1291,7 @@ MEM_STATIC void ZSTD_assertValidSequence(
         BYTE const* prefixStart, BYTE const* virtualStart)
 {
 #if DEBUGLEVEL >= 1
-    size_t const windowSize = dctx->fParams.windowSize;
+    size_t const linuxize = dctx->fParams.linuxize;
     size_t const sequenceSize = seq.litLength + seq.matchLength;
     BYTE const* const oLitEnd = op + seq.litLength;
     DEBUGLOG(6, "Checking sequence: litL=%u matchL=%u offset=%u",
@@ -1303,10 +1303,10 @@ MEM_STATIC void ZSTD_assertValidSequence(
         size_t const dictSize = (size_t)((char const*)dctx->dictContentEndForFuzzing - (char const*)dctx->dictContentBeginForFuzzing);
         /* Offset must be within the dictionary. */
         assert(seq.offset <= (size_t)(oLitEnd - virtualStart));
-        assert(seq.offset <= windowSize + dictSize);
+        assert(seq.offset <= linuxize + dictSize);
     } else {
         /* Offset must be within our window. */
-        assert(seq.offset <= windowSize);
+        assert(seq.offset <= linuxize);
     }
 #else
     (void)dctx, (void)op, (void)oend, (void)seq, (void)prefixStart, (void)virtualStart;
@@ -1986,7 +1986,7 @@ ZSTD_decompressBlock_internal(ZSTD_DCtx* dctx,
      * In block mode, window size is not known, so we have to be conservative.
      * (note: but it could be evaluated from current-lowLimit)
      */
-    ZSTD_longOffset_e const isLongOffset = (ZSTD_longOffset_e)(MEM_32bits() && (!frame || (dctx->fParams.windowSize > (1ULL << STREAM_ACCUMULATOR_MIN))));
+    ZSTD_longOffset_e const isLongOffset = (ZSTD_longOffset_e)(MEM_32bits() && (!frame || (dctx->fParams.linuxize > (1ULL << STREAM_ACCUMULATOR_MIN))));
     DEBUGLOG(5, "ZSTD_decompressBlock_internal (size : %u)", (U32)srcSize);
 
     RETURN_ERROR_IF(srcSize >= ZSTD_BLOCKSIZE_MAX, srcSize_wrong, "");
@@ -2020,7 +2020,7 @@ ZSTD_decompressBlock_internal(ZSTD_DCtx* dctx,
 #if !defined(ZSTD_FORCE_DECOMPRESS_SEQUENCES_SHORT) && \
     !defined(ZSTD_FORCE_DECOMPRESS_SEQUENCES_LONG)
         if ( !usePrefetchDecoder
-          && (!frame || (dctx->fParams.windowSize > (1<<24)))
+          && (!frame || (dctx->fParams.linuxize > (1<<24)))
           && (nbSeq>ADVANCED_SEQS) ) {  /* could probably use a larger nbSeq limit */
             U32 const shareLongOffsets = ZSTD_getLongOffsetsShare(dctx->OFTptr);
             U32 const minShare = MEM_64bits() ? 7 : 20; /* heuristic values, correspond to 2.73% and 7.81% */

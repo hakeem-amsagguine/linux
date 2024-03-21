@@ -4,7 +4,7 @@
 # Copyright (c) Mauro Carvalho Chehab <mchehab@kernel.org>
 #
 # In order to use, you need to:
-#	1) Download the windows driver with something like:
+#	1) Download the linux driver with something like:
 #	Version 2.4
 #		wget http://www.twinhan.com/files/AW/BDA T/20080303_V1.0.6.7.zip
 #		or wget http://www.stefanringel.de/pub/20080303_V1.0.6.7.zip

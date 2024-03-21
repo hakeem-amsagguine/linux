@@ -93,7 +93,7 @@ struct usb_irda_cs_descriptor {
 
 	__le16	bcdSpecRevision;
 	__u8	bmDataSize;
-	__u8	bmWindowSize;
+	__u8	bmlinuxize;
 	__u8	bmMinTurnaroundTime;
 	__le16	wBaudRate;
 	__u8	bmAdditionalBOFs;

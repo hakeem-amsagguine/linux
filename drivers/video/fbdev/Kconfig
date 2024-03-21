@@ -1542,7 +1542,7 @@ config FB_S3C
 
 	  These chips all have the same basic framebuffer design with the
 	  actual capabilities depending on the chip. The S3C6400
-	  and S3C6410 support 4 hardware windows.
+	  and S3C6410 support 4 hardware linux.
 
 	  Currently the support is only for the S3C6400 and S3C6410 SoCs.
 

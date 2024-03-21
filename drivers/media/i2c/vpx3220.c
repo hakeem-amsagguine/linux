@@ -178,7 +178,7 @@ static const unsigned short init_ntsc[] = {
 	0x8d, 640,		/* Number of pixels */
 	0x8f, 0xc00,		/* Disable window 2 */
 	0xf0, 0x73,		/* 13.5 MHz transport, Forced
-				 * mode, latch windows */
+				 * mode, latch linux */
 	0xf2, 0x13,		/* NTSC M, composite input */
 	0xe7, 0x1e1,		/* Enable vertical standard
 				 * locking @ 240 lines */
@@ -196,7 +196,7 @@ static const unsigned short init_pal[] = {
 				 * Must be >= Horizontal begin + Horizontal length */
 	0x8f, 0xc00,		/* Disable window 2 */
 	0xf0, 0x77,		/* 13.5 MHz transport, Forced
-				 * mode, latch windows */
+				 * mode, latch linux */
 	0xf2, 0x3d1,		/* PAL B,G,H,I, composite input */
 	0xe7, 0x241,		/* PAL/SECAM set to 288 lines */
 };
@@ -213,7 +213,7 @@ static const unsigned short init_secam[] = {
 				 * Must be >= Horizontal begin + Horizontal length */
 	0x8f, 0xc00,		/* Disable window 2 */
 	0xf0, 0x77,		/* 13.5 MHz transport, Forced
-				 * mode, latch windows */
+				 * mode, latch linux */
 	0xf2, 0x3d5,		/* SECAM, composite input */
 	0xe7, 0x241,		/* PAL/SECAM set to 288 lines */
 };

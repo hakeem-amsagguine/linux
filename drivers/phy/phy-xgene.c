@@ -1123,7 +1123,7 @@ static void xgene_phy_sata_cfg_lanes(struct xgene_phy_ctx *ctx)
 
 		/*
 		 * Set Rx LOS filter clock rate, sample rate, and threshold
-		 * windows
+		 * linux
 		 */
 		for (i = 0; i < 4; i++) {
 			reg = RXTX_REG148 + i * 2;

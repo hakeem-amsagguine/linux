@@ -3,7 +3,7 @@
 /*
  * This file contains definitions from Hyper-V Hypervisor Top-Level Functional
  * Specification (TLFS):
- * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs
+ * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-linux/reference/tlfs
  */
 
 #ifndef _ASM_X86_HYPERV_TLFS_H

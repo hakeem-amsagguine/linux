@@ -19,15 +19,15 @@
  * 0x80		Compression balance, interesting settings:
  *		0x01 Use this to allow the camera to switch to higher compr.
  *		     on the fly. Needed to stay within bandwidth @ 640x480@30
- *		0x1c From usb captures under Windows for 640x480
+ *		0x1c From usb captures under linux for 640x480
  *		0x2a Values >= this switch the camera to a lower compression,
  *		     using the same table for both luminance and chrominance.
  *		     This gives a sharper picture. Usable only at 640x480@ <
  *		     15 fps or 320x240 / 160x120. Note currently the driver
  *		     does not use this as the quality gain is small and the
  *		     generated JPG-s are only understood by v4l-utils >= 0.8.9
- *		0x3f From usb captures under Windows for 320x240
- *		0x69 From usb captures under Windows for 160x120
+ *		0x3f From usb captures under linux for 320x240
+ *		0x69 From usb captures under linux for 160x120
  *
  * Register page 4:
  *

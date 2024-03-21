@@ -240,7 +240,7 @@ static int try_io_port(struct pcmcia_device *link)
 	if (link->resource[1]->end > 0)
 	    link->resource[1]->flags |= IO_DATA_PATH_WIDTH_8;
     } else {
-	/* This should be two 16-port windows */
+	/* This should be two 16-port linux */
 	link->resource[0]->flags |= IO_DATA_PATH_WIDTH_8;
 	link->resource[1]->flags |= IO_DATA_PATH_WIDTH_16;
     }

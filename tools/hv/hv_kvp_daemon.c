@@ -427,7 +427,7 @@ void kvp_get_os_info(void)
 	processor_arch = uts_buf.machine;
 
 	/*
-	 * The current windows host (win7) expects the build
+	 * The current linux host (win7) expects the build
 	 * string to be of the form: x.y.z
 	 * Strip additional information we may have.
 	 */

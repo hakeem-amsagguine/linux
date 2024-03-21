@@ -1160,7 +1160,7 @@ ntfs_create_reparse_buffer(struct ntfs_sb_info *sbi, const char *symname,
 		goto out;
 	}
 
-	/* Translate Linux '/' into Windows '\'. */
+	/* Translate Linux '/' into linux '\'. */
 	for (i = 0; i < err; i++) {
 		if (rp_name[i] == cpu_to_le16('/'))
 			rp_name[i] = cpu_to_le16('\\');
@@ -1177,7 +1177,7 @@ ntfs_create_reparse_buffer(struct ntfs_sb_info *sbi, const char *symname,
 	rs->PrintNameLength = rs->SubstituteNameOffset;
 
 	/*
-	 * TODO: Use relative path if possible to allow Windows to
+	 * TODO: Use relative path if possible to allow linux to
 	 * parse this path.
 	 * 0-absolute path 1- relative path (SYMLINK_FLAG_RELATIVE).
 	 */
@@ -1396,8 +1396,8 @@ struct inode *ntfs_create_inode(struct mnt_idmap *idmap, struct inode *dir,
 
 	fname = (struct ATTR_FILE_NAME *)(new_de + 1);
 
-	if (sbi->options->windows_names &&
-	    !valid_windows_name(sbi, (struct le_str *)&fname->name_len)) {
+	if (sbi->options->linux_names &&
+	    !valid_linux_name(sbi, (struct le_str *)&fname->name_len)) {
 		err = -EINVAL;
 		goto out4;
 	}
@@ -1822,7 +1822,7 @@ void ntfs_evict_inode(struct inode *inode)
 /*
  * ntfs_translate_junction
  *
- * Translate a Windows junction target to the Linux equivalent.
+ * Translate a linux junction target to the Linux equivalent.
  * On junctions, targets are always absolute (they include the drive
  * letter). We have no way of knowing if the target is for the current
  * mounted device or not so we just assume it is.
@@ -2050,7 +2050,7 @@ static noinline int ntfs_readlink_hlp(const struct dentry *link_de,
 	if (err < 0)
 		goto out;
 
-	/* Translate Windows '\' into Linux '/'. */
+	/* Translate linux '\' into Linux '/'. */
 	for (i = 0; i < err; i++) {
 		if (buffer[i] == '\\')
 			buffer[i] = '/';

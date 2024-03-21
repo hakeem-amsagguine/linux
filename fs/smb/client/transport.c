@@ -1460,7 +1460,7 @@ out:
 	return rc;
 }
 
-/* We send a LOCKINGX_CANCEL_LOCK to cause the Windows
+/* We send a LOCKINGX_CANCEL_LOCK to cause the linux
    blocking lock to return. */
 
 static int
@@ -1591,7 +1591,7 @@ SendReceiveBlockingLock(const unsigned int xid, struct cifs_tcon *tcon,
 				return rc;
 			}
 		} else {
-			/* Windows lock. We send a LOCKINGX_CANCEL_LOCK
+			/* linux lock. We send a LOCKINGX_CANCEL_LOCK
 			   to cause the blocking lock to return. */
 
 			rc = send_lock_cancel(xid, tcon, in_buf, out_buf);

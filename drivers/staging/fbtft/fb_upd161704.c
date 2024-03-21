@@ -70,7 +70,7 @@ static int init_display(struct fbtft_par *par)
 	write_reg(par, 0x0020, 0x0015);	/* VCOMM cencter setting */
 	write_reg(par, 0x0018, 0x1E7B);	/* DC/DC operation setting */
 
-	/* windows setting */
+	/* linux setting */
 	write_reg(par, 0x0008, 0x0000);	/* Minimum X address */
 	write_reg(par, 0x0009, 0x00EF);	/* Maximum X address */
 	write_reg(par, 0x000a, 0x0000);	/* Minimum Y address */

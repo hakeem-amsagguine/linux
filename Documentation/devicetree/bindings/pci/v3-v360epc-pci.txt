@@ -14,7 +14,7 @@ Required properties:
 - bus-range: see pci.txt
 - ranges: this follows the standard PCI bindings in the IEEE Std
   1275-1994 (see pci.txt) with the following restriction:
-  - The non-prefetchable and prefetchable memory windows must
+  - The non-prefetchable and prefetchable memory linux must
     each be exactly 256MB (0x10000000) in size.
   - The prefetchable memory window must be immediately adjacent
     to the non-prefetcable memory window

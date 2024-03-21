@@ -478,7 +478,7 @@ This implementation has some specifics:
    to remove this limitation and have multiple IOMMU groups per a VFIO
    container.
 
-2) The hardware supports so called DMA windows - the PCI address range
+2) The hardware supports so called DMA linux - the PCI address range
    within which DMA transfer is allowed, any attempt to access address space
    out of the window leads to the whole PE isolation.
 
@@ -653,7 +653,7 @@ This implementation has some specifics:
    a PCI bus with a variable page size. Two ioctls have been added to support
    this: VFIO_IOMMU_SPAPR_TCE_CREATE and VFIO_IOMMU_SPAPR_TCE_REMOVE.
    The platform has to support the functionality or error will be returned to
-   the userspace. The existing hardware supports up to 2 DMA windows, one is
+   the userspace. The existing hardware supports up to 2 DMA linux, one is
    2GB long, uses 4K pages and called "default 32bit window"; the other can
    be as big as entire RAM, use different page size, it is optional - guests
    create those in run-time if the guest driver supports 64bit DMA.
@@ -663,7 +663,7 @@ This implementation has some specifics:
    the kernel may not be able to allocate enough of physically contiguous
    memory). It creates a new window in the available slot and returns the bus
    address where the new window starts. Due to hardware limitation, the user
-   space cannot choose the location of DMA windows.
+   space cannot choose the location of DMA linux.
 
    VFIO_IOMMU_SPAPR_TCE_REMOVE receives the bus start address of the window
    and removes it.

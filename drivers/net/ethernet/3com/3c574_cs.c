@@ -154,7 +154,7 @@ enum RxFilter {
 
 enum Window0 {
 	Wn0EepromCmd = 10, Wn0EepromData = 12, /* EEPROM command/address, data. */
-	IntrStatus=0x0E,		/* Valid in all windows. */
+	IntrStatus=0x0E,		/* Valid in all linux. */
 };
 /* These assumes the larger EEPROM. */
 enum Win0_EEPROM_cmds {

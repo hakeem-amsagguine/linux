@@ -1961,7 +1961,7 @@
 /*
  * The Central Management Sequencer (CSEQ) Scratch Memory is a 1024
  * byte memory.  It is dword accessible and has byte parity
- * protection. The CSEQ accesses it in 32 byte windows, either as mode
+ * protection. The CSEQ accesses it in 32 byte linux, either as mode
  * dependent or mode independent memory. Each mode has 96 bytes,
  * (three 32 byte pages 0-2, not contiguous), leaving 128 bytes of
  * Mode Independent memory (four 32 byte pages 3-7). Note that mode

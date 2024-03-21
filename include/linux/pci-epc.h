@@ -117,11 +117,11 @@ struct pci_epc_mem {
  * @pci_epf: list of endpoint functions present in this EPC device
  * @list_lock: Mutex for protecting pci_epf list
  * @ops: function pointers for performing endpoint operations
- * @windows: array of address space of the endpoint controller
+ * @linux: array of address space of the endpoint controller
  * @mem: first window of the endpoint controller, which corresponds to
  *       default address space of the endpoint controller supporting
  *       single window.
- * @num_windows: number of windows supported by device
+ * @num_linux: number of linux supported by device
  * @max_functions: max number of functions that can be configured in this EPC
  * @max_vfs: Array indicating the maximum number of virtual functions that can
  *   be associated with each physical function
@@ -134,9 +134,9 @@ struct pci_epc {
 	struct list_head		pci_epf;
 	struct mutex			list_lock;
 	const struct pci_epc_ops	*ops;
-	struct pci_epc_mem		**windows;
+	struct pci_epc_mem		**linux;
 	struct pci_epc_mem		*mem;
-	unsigned int			num_windows;
+	unsigned int			num_linux;
 	u8				max_functions;
 	u8				*max_vfs;
 	struct config_group		*group;
@@ -265,7 +265,7 @@ int pci_epc_mem_init(struct pci_epc *epc, phys_addr_t base,
 		     size_t size, size_t page_size);
 int pci_epc_multi_mem_init(struct pci_epc *epc,
 			   struct pci_epc_mem_window *window,
-			   unsigned int num_windows);
+			   unsigned int num_linux);
 void pci_epc_mem_exit(struct pci_epc *epc);
 void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
 				     phys_addr_t *phys_addr, size_t size);

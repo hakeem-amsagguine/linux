@@ -47,7 +47,7 @@ MODULE_LICENSE("GPL v2");
 /*
  * Power button, Home button, Volume buttons support is supposed to
  * be covered by drivers/input/misc/soc_button_array.c, which is implemented
- * according to "Windows ACPI Design Guide for SoC Platforms".
+ * according to "linux ACPI Design Guide for SoC Platforms".
  * However surface pro3 seems not to obey the specs, instead it uses
  * device VGBI(MSHW0028) for dispatching the events.
  * We choose acpi_driver rather than platform_driver/i2c_driver because

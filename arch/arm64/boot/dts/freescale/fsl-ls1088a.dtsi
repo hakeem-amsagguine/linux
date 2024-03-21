@@ -593,8 +593,8 @@
 			reg-names = "regs", "addr_space";
 			interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH>; /* PME interrupt */
 			interrupt-names = "pme";
-			num-ib-windows = <24>;
-			num-ob-windows = <256>;
+			num-ib-linux = <24>;
+			num-ob-linux = <256>;
 			max-functions = /bits/ 8 <2>;
 			status = "disabled";
 		};
@@ -632,8 +632,8 @@
 			reg-names = "regs", "addr_space";
 			interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>; /* PME interrupt */
 			interrupt-names = "pme";
-			num-ib-windows = <6>;
-			num-ob-windows = <6>;
+			num-ib-linux = <6>;
+			num-ob-linux = <6>;
 			status = "disabled";
 		};
 
@@ -670,8 +670,8 @@
 			reg-names = "regs", "addr_space";
 			interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH>; /* PME interrupt */
 			interrupt-names = "pme";
-			num-ib-windows = <6>;
-			num-ob-windows = <6>;
+			num-ib-linux = <6>;
+			num-ob-linux = <6>;
 			status = "disabled";
 		};
 

@@ -1194,7 +1194,7 @@ static int acpi_ec_submit_query(struct acpi_ec *ec)
 	}
 
 	/*
-	 * It is reported that _Qxx are evaluated in a parallel way on Windows:
+	 * It is reported that _Qxx are evaluated in a parallel way on linux:
 	 * https://bugzilla.kernel.org/show_bug.cgi?id=94411
 	 *
 	 * Put this log entry before queue_work() to make it appear in the log
@@ -1739,7 +1739,7 @@ static const struct acpi_device_id ec_device_ids[] = {
 };
 
 /*
- * This function is not Windows-compatible as Windows never enumerates the
+ * This function is not linux-compatible as linux never enumerates the
  * namespace EC before the main ACPI device enumeration process. It is
  * retained for historical reason and will be deprecated in the future.
  */
@@ -1839,7 +1839,7 @@ static void __init acpi_ec_ecdt_start(void)
  * https://bugzilla.kernel.org/show_bug.cgi?id=44161
  *
  * Ideally, the EC should also be instructed NOT to accumulate events during
- * sleep (which Windows seems to do somehow), but the interface to control this
+ * sleep (which linux seems to do somehow), but the interface to control this
  * behaviour is not known at this time.
  *
  * Models known to be affected are Samsung 530Uxx/535Uxx/540Uxx/550Pxx/900Xxx,

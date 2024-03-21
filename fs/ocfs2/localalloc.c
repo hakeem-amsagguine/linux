@@ -66,7 +66,7 @@ static int ocfs2_local_alloc_slide_window(struct ocfs2_super *osb,
  * Generally, we'd like to pick as large a local alloc as
  * possible. Performance on large workloads tends to scale
  * proportionally to la size. In addition to that, the reservations
- * code functions more efficiently as it can reserve more windows for
+ * code functions more efficiently as it can reserve more linux for
  * write.
  *
  * Some things work against us when trying to choose a large local alloc:
@@ -147,7 +147,7 @@ unsigned int ocfs2_la_default_mb(struct ocfs2_super *osb)
 		 * Larger cluster group sizes actually work out pretty
 		 * well when pared to 256, so we don't have to do this
 		 * for any group that fits more than two
-		 * OCFS2_LA_MAX_DEFAULT_MB windows.
+		 * OCFS2_LA_MAX_DEFAULT_MB linux.
 		 */
 		if (gd_mb > (2 * OCFS2_LA_MAX_DEFAULT_MB))
 			la_mb = 256;
@@ -609,7 +609,7 @@ out:
  * local alloc. You lose them when you drop i_rwsem.
  *
  * We will add ourselves to the transaction passed in, but may start
- * our own in order to shift windows.
+ * our own in order to shift linux.
  */
 int ocfs2_reserve_local_alloc_bits(struct ocfs2_super *osb,
 				   u32 bits_wanted,

@@ -319,7 +319,7 @@ static int it913x_set_params(struct dvb_frontend *fe)
 		goto err;
 	}
 
-	/* XXX: latest windows driver does not set that at all */
+	/* XXX: latest linux driver does not set that at all */
 	ret = regmap_write(dev->regmap, 0x80ee06, lna_band);
 	if (ret)
 		goto err;
@@ -337,7 +337,7 @@ static int it913x_set_params(struct dvb_frontend *fe)
 	if (ret)
 		goto err;
 
-	/* XXX: latest windows driver sets different value (a8 != 68) */
+	/* XXX: latest linux driver sets different value (a8 != 68) */
 	ret = regmap_write(dev->regmap, 0x80ec4c, 0xa0 | (l_band << 3));
 	if (ret)
 		goto err;

@@ -122,7 +122,7 @@ static int __init map_bios(void)
 		}
 		bios_entry_point = bios_code_map_base + (entry_point & 0x3FFF);
 	}
-	/* The Windows driver maps 0x10000 bytes, we keep only one page... */
+	/* The linux driver maps 0x10000 bytes, we keep only one page... */
 	bios_data_map_base = ioremap(0x400, 0xc00);
 	if (bios_data_map_base == NULL) {
 		printk(KERN_ERR "wistron_btns: Can't map BIOS data\n");

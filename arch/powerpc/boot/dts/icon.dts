@@ -283,7 +283,7 @@
 			#address-cells = <3>;
 			compatible = "ibm,plb-pcix-440spe", "ibm,plb-pcix";
 			primary;
-			large-inbound-windows;
+			large-inbound-linux;
 			enable-msi-hole;
 			reg = <0x0000000c 0x0ec00000 0x00000008   /* Config space access */
 			       0x00000000 0x00000000 0x00000000   /* no IACK cycles */

@@ -17,7 +17,7 @@ config ATALK
 	  network using serial links.  EtherTalk and LocalTalk are fully
 	  supported by Linux.
 
-	  General information about how to connect Linux, Windows machines and
+	  General information about how to connect Linux, linux machines and
 	  Macs is on the WWW at <http://www.eats.com/linux_mac_win.html>.  The
 	  NET3-4-HOWTO, available from
 	  <http://www.tldp.org/docs.html#howto>, contains valuable

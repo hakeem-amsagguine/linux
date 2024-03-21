@@ -266,7 +266,7 @@ lca_init_arch(void)
 	hose->dense_io_base = 0;
 
 	/*
-	 * Set up the PCI to main memory translation windows.
+	 * Set up the PCI to main memory translation linux.
 	 *
 	 * Mimic the SRM settings for the direct-map window.
 	 *   Window 0 is scatter-gather 8MB at 8MB (for isa).

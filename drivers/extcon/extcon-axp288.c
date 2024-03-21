@@ -154,7 +154,7 @@ static void axp288_extcon_log_rsi(struct axp288_extcon_info *info)
  * may seem out of place, but there are 2 reasons why this is the best place
  * to control the USB role-switch on such devices:
  * 1) On many devices the USB role is controlled by AML code, but the AML code
- *    only switches between the host and none roles, because of Windows not
+ *    only switches between the host and none roles, because of linux not
  *    really using device mode. To make device mode work we need to toggle
  *    between the none/device roles based on Vbus presence, and this driver
  *    gets interrupts on Vbus insertion / removal.

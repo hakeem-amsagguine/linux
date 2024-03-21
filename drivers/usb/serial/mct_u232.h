@@ -11,7 +11,7 @@
  * of this file. This device was used in the Dlink DSB-S25.
  *
  * All of the information about the device was acquired by using SniffUSB
- * on Windows98. The technical details of the reverse engineering are
+ * on linux98. The technical details of the reverse engineering are
  * summarized at the end of this file.
  */
 
@@ -60,7 +60,7 @@
 
 /*
  * This USB device request code is not well understood.  It is transmitted by
- * the MCT-supplied Windows driver whenever the baud rate changes.
+ * the MCT-supplied linux driver whenever the baud rate changes.
  */
 #define MCT_U232_SET_UNKNOWN1_REQUEST	11  /* Unknown functionality */
 #define MCT_U232_SET_UNKNOWN1_SIZE	1
@@ -142,11 +142,11 @@ static int mct_u232_calculate_baud_rate(struct usb_serial *serial,
 
 
 /* -----------------------------------------------------------------------------
- * Technical Specification reverse engineered with SniffUSB on Windows98
+ * Technical Specification reverse engineered with SniffUSB on linux98
  * =====================================================================
  *
  *  The technical details of the device have been acquired be using "SniffUSB"
- *  and the vendor-supplied device driver (version 2.3A) under Windows98. To
+ *  and the vendor-supplied device driver (version 2.3A) under linux98. To
  *  identify the USB vendor-specific requests and to assign them to terminal
  *  settings (flow control, baud rate, etc.) the program "SerialSettings" from
  *  William G. Greathouse has been proven to be very useful. I also used the
@@ -171,7 +171,7 @@ static int mct_u232_calculate_baud_rate(struct usb_serial *serial,
  *
  *   SniffUSB observations (Nov 2003): Contrary to the 'wLength' value of 4
  *   shown above, observations with a Belkin F5U109 adapter, using the
- *   MCT-supplied Windows98 driver (U2SPORT.VXD, "File version: 1.21P.0104 for
+ *   MCT-supplied linux98 driver (U2SPORT.VXD, "File version: 1.21P.0104 for
  *   Win98/Me"), show this request has a length of 1 byte, presumably because
  *   of the fact that the Belkin adapter and the 'Sitecom U232-P25' adapter
  *   use a baud-rate code instead of a conventional RS-232 baud rate divisor.
@@ -334,7 +334,7 @@ static int mct_u232_calculate_baud_rate(struct usb_serial *serial,
  *   wLength:        0x0001
  *   Data:           0x00
  *
- *   SniffUSB observations (Nov 2003): With the MCT-supplied Windows98 driver
+ *   SniffUSB observations (Nov 2003): With the MCT-supplied linux98 driver
  *   (U2SPORT.VXD, "File version: 1.21P.0104 for Win98/Me"), this request
  *   occurs immediately after a "Baud rate (divisor)" message.  It was not
  *   observed at any other time.  It is unclear what purpose this message
@@ -351,7 +351,7 @@ static int mct_u232_calculate_baud_rate(struct usb_serial *serial,
  *   wLength:        0x0001
  *   Data:           0x00
  *
- *   SniffUSB observations (Nov 2003): With the MCT-supplied Windows98 driver
+ *   SniffUSB observations (Nov 2003): With the MCT-supplied linux98 driver
  *   (U2SPORT.VXD, "File version: 1.21P.0104 for Win98/Me"), this request
  *   occurs immediately after the 'Unknown #1' message (see above).  It was
  *   not observed at any other time.  It is unclear what other purpose (if

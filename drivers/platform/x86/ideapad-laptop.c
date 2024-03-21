@@ -1528,7 +1528,7 @@ static void ideapad_acpi_notify(acpi_handle handle, u32 event, void *data)
 			 * believes that the device has changed between laptop/
 			 * tent/stand/tablet mode. The EC relies on getting
 			 * angle info from 2 accelerometers through a special
-			 * windows service calling a DSM on the DUAL250E ACPI-
+			 * linux service calling a DSM on the DUAL250E ACPI-
 			 * device. Linux does not do this, making the laptop/
 			 * tent/stand/tablet mode info unreliable, so we simply
 			 * ignore these events.

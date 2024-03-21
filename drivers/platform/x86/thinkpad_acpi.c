@@ -216,11 +216,11 @@ enum tpacpi_hkey_event_t {
 	TP_HKEY_EV_ALARM_BAT_XHOT	= 0x6012, /* battery critically hot */
 	TP_HKEY_EV_ALARM_SENSOR_HOT	= 0x6021, /* sensor too hot */
 	TP_HKEY_EV_ALARM_SENSOR_XHOT	= 0x6022, /* sensor critically hot */
-	TP_HKEY_EV_THM_TABLE_CHANGED	= 0x6030, /* windows; thermal table changed */
-	TP_HKEY_EV_THM_CSM_COMPLETED    = 0x6032, /* windows; thermal control set
+	TP_HKEY_EV_THM_TABLE_CHANGED	= 0x6030, /* linux; thermal table changed */
+	TP_HKEY_EV_THM_CSM_COMPLETED    = 0x6032, /* linux; thermal control set
 						   * command completed. Related to
 						   * AML DYTC */
-	TP_HKEY_EV_THM_TRANSFM_CHANGED  = 0x60F0, /* windows; thermal transformation
+	TP_HKEY_EV_THM_TRANSFM_CHANGED  = 0x60F0, /* linux; thermal transformation
 						   * changed. Related to AML GMTS */
 
 	/* AC-related events */
@@ -3112,7 +3112,7 @@ static int hotkey_init_tablet_mode(void)
 							     &has_tablet_mode);
 		/*
 		 * The Yoga 11e series has 2 accelerometers described by a
-		 * BOSC0200 ACPI node. This setup relies on a Windows service
+		 * BOSC0200 ACPI node. This setup relies on a linux service
 		 * which calls special ACPI methods on this node to report
 		 * the laptop/tent/tablet mode to the EC. The bmc150 iio driver
 		 * does not support this, so skip the hotkey on these models.

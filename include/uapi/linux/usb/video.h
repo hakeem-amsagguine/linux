@@ -473,7 +473,7 @@ struct uvc_streaming_control {
 	__u16 wKeyFrameRate;
 	__u16 wPFrameRate;
 	__u16 wCompQuality;
-	__u16 wCompWindowSize;
+	__u16 wComplinuxize;
 	__u16 wDelay;
 	__u32 dwMaxVideoFrameSize;
 	__u32 dwMaxPayloadTransferSize;

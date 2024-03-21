@@ -100,7 +100,7 @@ wildfire_init_hose(int qbbno, int hoseno)
 #endif
 
         /*
-         * Set up the PCI to main memory translation windows.
+         * Set up the PCI to main memory translation linux.
          *
          * Note: Window 3 is scatter-gather only
          * 

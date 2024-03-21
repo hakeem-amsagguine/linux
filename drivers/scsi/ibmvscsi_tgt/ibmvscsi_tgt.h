@@ -51,10 +51,10 @@ struct dma_window {
 
 struct target_dds {
 	u64 unit_id;                /* 64 bit will force alignment */
-#define NUM_DMA_WINDOWS 2
+#define NUM_DMA_linux 2
 #define LOCAL  0
 #define REMOTE 1
-	struct dma_window  window[NUM_DMA_WINDOWS];
+	struct dma_window  window[NUM_DMA_linux];
 
 	/* root node property "ibm,partition-no" */
 	uint partition_num;

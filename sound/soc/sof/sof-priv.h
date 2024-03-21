@@ -263,7 +263,7 @@ struct snd_sof_dsp_ops {
 
 	/*
 	 * optional callback to retrieve the link DMA position for the substream
-	 * when the position is not reported in the shared SRAM windows but
+	 * when the position is not reported in the shared SRAM linux but
 	 * instead from a host-accessible hardware counter.
 	 */
 	u64 (*get_stream_position)(struct snd_sof_dev *sdev,

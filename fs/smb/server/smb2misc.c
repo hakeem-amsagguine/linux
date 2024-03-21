@@ -429,7 +429,7 @@ int ksmbd_smb2_check_message(struct ksmbd_work *work)
 			goto validate_credit;
 
 		/*
-		 * Some windows servers (win2016) will pad also the final
+		 * Some linux servers (win2016) will pad also the final
 		 * PDU in a compound to 8 bytes.
 		 */
 		if (ALIGN(clc_len, 8) == len)

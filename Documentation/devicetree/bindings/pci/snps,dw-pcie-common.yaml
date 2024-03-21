@@ -224,21 +224,21 @@ properties:
       up link is supposed to be preserved.
     maximum: 16
 
-  num-ob-windows:
+  num-ob-linux:
     $ref: /schemas/types.yaml#/definitions/uint32
     deprecated: true
     description:
-      Number of outbound address translation windows. This parameter can be
+      Number of outbound address translation linux. This parameter can be
       auto-detected based on the iATU memory writability. So there is no
       point in having a dedicated DT-property for it.
     maximum: 256
 
-  num-ib-windows:
+  num-ib-linux:
     $ref: /schemas/types.yaml#/definitions/uint32
     deprecated: true
     description:
-      Number of inbound address translation windows. In the same way as
-      for the outbound AT windows, this parameter can be auto-detected based
+      Number of inbound address translation linux. In the same way as
+      for the outbound AT linux, this parameter can be auto-detected based
       on the iATU memory writability. There is no point having a dedicated
       DT-property for it either.
     maximum: 256
@@ -248,7 +248,7 @@ properties:
     deprecated: true
     description:
       Number of outbound view ports configured in hardware. It's the same as
-      the number of outbound AT windows.
+      the number of outbound AT linux.
     maximum: 256
 
   snps,enable-cdm-check:

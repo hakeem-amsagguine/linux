@@ -136,7 +136,7 @@ enum {
 	RWB_MIN_WRITE_SAMPLES	= 3,
 
 	/*
-	 * If we have this number of consecutive windows with not enough
+	 * If we have this number of consecutive linux with not enough
 	 * information to scale up or down, scale up.
 	 */
 	RWB_UNKNOWN_BUMP	= 5,

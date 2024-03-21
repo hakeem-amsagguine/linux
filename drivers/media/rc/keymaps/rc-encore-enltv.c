@@ -13,7 +13,7 @@
 
 static struct rc_map_table encore_enltv[] = {
 
-	/* Power button does nothing, neither in Windows app,
+	/* Power button does nothing, neither in linux app,
 	 although it sends data (used for BIOS wakeup?) */
 	{ 0x0d, KEY_MUTE },
 
@@ -46,7 +46,7 @@ static struct rc_map_table encore_enltv[] = {
 	{ 0x18, KEY_ENTER },		/* OK */
 
 	{ 0x0e, KEY_ESC },
-	{ 0x13, KEY_CYCLEWINDOWS },	/* desktop */
+	{ 0x13, KEY_CYCLElinux },	/* desktop */
 	{ 0x11, KEY_TAB },
 	{ 0x19, KEY_SWITCHVIDEOMODE },	/* switch */
 

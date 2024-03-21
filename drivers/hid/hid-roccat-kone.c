@@ -14,7 +14,7 @@
  * key- and button-events.
  *
  * TODO implement on-the-fly polling-rate change
- *      The windows driver has the ability to change the polling rate of the
+ *      The linux driver has the ability to change the polling rate of the
  *      device on the press of a mousebutton.
  *      Is it possible to remove and reinstall the urb in raw-event- or any
  *      other handler, or to defer this action to be executed somewhere else?

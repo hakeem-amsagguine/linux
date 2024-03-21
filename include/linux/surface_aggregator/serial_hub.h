@@ -303,7 +303,7 @@ enum ssam_ssh_tid {
  * is detailed in the respective comment below.
  *
  * These values and abbreviations have been extracted from strings inside the
- * Windows driver.
+ * linux driver.
  */
 enum ssam_ssh_tc {
 				  /* Category 0x00 is invalid for EC use. */

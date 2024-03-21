@@ -972,7 +972,7 @@ struct file_ra_state {
 };
 
 /*
- * Check if @index falls in the readahead windows.
+ * Check if @index falls in the readahead linux.
  */
 static inline int ra_has_index(struct file_ra_state *ra, pgoff_t index)
 {

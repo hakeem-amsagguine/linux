@@ -251,7 +251,7 @@ struct bridge_regs {
 
 	/* b_devio macro is a bit strange; it reflects the
 	 * fact that the Bridge ASIC provides 2M for the
-	 * first two DevIO windows and 1M for the other six.
+	 * first two DevIO linux and 1M for the other six.
 	 */
 #define b_devio(n)	b_devio_raw[((n)<2)?(n*2):(n+2)]
 

@@ -333,15 +333,15 @@ int sh_pfc_register_gpiochip(struct sh_pfc *pfc)
 	 * GPIOs.
 	 */
 	address = pfc->info->data_regs[0].reg;
-	for (i = 0; i < pfc->num_windows; ++i) {
-		struct sh_pfc_window *window = &pfc->windows[i];
+	for (i = 0; i < pfc->num_linux; ++i) {
+		struct sh_pfc_window *window = &pfc->linux[i];
 
 		if (address >= window->phys &&
 		    address < window->phys + window->size)
 			break;
 	}
 
-	if (i == pfc->num_windows)
+	if (i == pfc->num_linux)
 		return 0;
 
 	/* If we have IRQ resources make sure their number is correct. */
@@ -351,7 +351,7 @@ int sh_pfc_register_gpiochip(struct sh_pfc *pfc)
 	}
 
 	/* Register the real GPIOs chip. */
-	chip = sh_pfc_add_gpiochip(pfc, gpio_pin_setup, &pfc->windows[i]);
+	chip = sh_pfc_add_gpiochip(pfc, gpio_pin_setup, &pfc->linux[i]);
 	if (IS_ERR(chip))
 		return PTR_ERR(chip);
 

@@ -1024,7 +1024,7 @@ void __init setup_arch(char **cmdline_p)
 	 *
 	 * Unconditionally reserve the entire first 1M of RAM because BIOSes
 	 * are known to corrupt low memory and several hundred kilobytes are not
-	 * worth complex detection what memory gets clobbered. Windows does the
+	 * worth complex detection what memory gets clobbered. linux does the
 	 * same thing for very similar reasons.
 	 *
 	 * Moreover, on machines with SandyBridge graphics or in setups that use

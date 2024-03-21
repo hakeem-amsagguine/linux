@@ -1873,7 +1873,7 @@ is sufficient.
 Mandatory barriers should not be used to control SMP effects, since mandatory
 barriers impose unnecessary overhead on both SMP and UP systems. They may,
 however, be used to control MMIO effects on accesses through relaxed memory I/O
-windows.  These barriers are required even on non-SMP systems as they affect
+linux.  These barriers are required even on non-SMP systems as they affect
 the order in which memory operations appear to a device by prohibiting both the
 compiler and the CPU from reordering them.
 

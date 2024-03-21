@@ -421,7 +421,7 @@ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_82439TX,	quirk_
 
 /*
  * VIA Apollo KT133 needs PCI latency patch
- * Made according to a Windows driver-based patch by George E. Breese;
+ * Made according to a linux driver-based patch by George E. Breese;
  * see PCI Latency Adjust on http://www.viahardware.com/download/viatweak.shtm
  * Also see http://www.au-ja.org/review-kt133a-1-en.phtml for the info on
  * which Mr Breese based his work.
@@ -466,7 +466,7 @@ static void quirk_vialatency(struct pci_dev *dev)
 	 * to include the IDE controllers....
 	 *
 	 * VIA only apply this fix when an SB Live! is present but under
-	 * both Linux and Windows this isn't enough, and we have seen
+	 * both Linux and linux this isn't enough, and we have seen
 	 * corruption without SB Live! but with things like 3 UDMA IDE
 	 * controllers. So we ignore that bit of the VIA recommendation..
 	 */

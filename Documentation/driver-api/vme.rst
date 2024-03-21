@@ -56,14 +56,14 @@ driver is called. The probe routine is passed a pointer to the devices
 device structure. This pointer should be saved, it will be required for
 requesting VME resources.
 
-The driver can request ownership of one or more master windows
-(:c:func:`vme_master_request`), slave windows (:c:func:`vme_slave_request`)
+The driver can request ownership of one or more master linux
+(:c:func:`vme_master_request`), slave linux (:c:func:`vme_slave_request`)
 and/or dma channels (:c:func:`vme_dma_request`). Rather than allowing the device
 driver to request a specific window or DMA channel (which may be used by a
 different driver) the API allows a resource to be assigned based on the required
-attributes of the driver in question. For slave windows these attributes are
+attributes of the driver in question. For slave linux these attributes are
 split into the VME address spaces that need to be accessed in 'aspace' and VME
-bus cycle types required in 'cycle'. Master windows add a further set of
+bus cycle types required in 'cycle'. Master linux add a further set of
 attributes in 'width' specifying the required data transfer widths. These
 attributes are defined as bitmasks and as such any combination of the
 attributes can be requested for a single window, the core will assign a window
@@ -81,11 +81,11 @@ and :c:func:`vme_dma_free`) should be passed the pointer to the resource
 provided during resource allocation.
 
 
-Master windows
+Master linux
 --------------
 
-Master windows provide access from the local processor[s] out onto the VME bus.
-The number of windows available and the available access modes is dependent on
+Master linux provide access from the local processor[s] out onto the VME bus.
+The number of linux available and the available access modes is dependent on
 the underlying chipset. A window must be configured before it can be used.
 
 
@@ -103,18 +103,18 @@ Master window access
 ~~~~~~~~~~~~~~~~~~~~
 
 The function :c:func:`vme_master_read` can be used to read from and
-:c:func:`vme_master_write` used to write to configured master windows.
+:c:func:`vme_master_write` used to write to configured master linux.
 
 In addition to simple reads and writes, :c:func:`vme_master_rmw` is provided to
 do a read-modify-write transaction. Parts of a VME window can also be mapped
 into user space memory using :c:func:`vme_master_mmap`.
 
 
-Slave windows
+Slave linux
 -------------
 
-Slave windows provide devices on the VME bus access into mapped portions of the
-local memory. The number of windows available and the access modes that can be
+Slave linux provide devices on the VME bus access into mapped portions of the
+local memory. The number of linux available and the access modes that can be
 used is dependent on the underlying chipset. A window must be configured before
 it can be used.
 
@@ -144,7 +144,7 @@ bridge.
 Slave window access
 ~~~~~~~~~~~~~~~~~~~
 
-Slave windows map local memory onto the VME bus, the standard methods for
+Slave linux map local memory onto the VME bus, the standard methods for
 accessing memory should be used.
 
 

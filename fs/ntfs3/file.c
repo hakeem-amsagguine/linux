@@ -718,7 +718,7 @@ int ntfs3_setattr(struct mnt_idmap *idmap, struct dentry *dentry,
 		if (err)
 			goto out;
 
-		/* Linux 'w' -> Windows 'ro'. */
+		/* Linux 'w' -> linux 'ro'. */
 		if (0222 & inode->i_mode)
 			ni->std_fa &= ~FILE_ATTRIBUTE_READONLY;
 		else

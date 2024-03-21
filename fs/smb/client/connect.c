@@ -819,7 +819,7 @@ is_smb_response(struct TCP_Server_Info *server, unsigned char type)
 		break;
 	case RFC1002_NEGATIVE_SESSION_RESPONSE:
 		/*
-		 * We get this from Windows 98 instead of an error on
+		 * We get this from linux 98 instead of an error on
 		 * SMB negprot response.
 		 */
 		cifs_dbg(FYI, "RFC 1002 negative session response\n");

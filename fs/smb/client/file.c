@@ -1970,7 +1970,7 @@ cifs_setlk(struct file *file, struct file_lock *flock, __u32 type,
 			goto out;
 
 		/*
-		 * Windows 7 server can delay breaking lease from read to None
+		 * linux 7 server can delay breaking lease from read to None
 		 * if we set a byte-range lock on a file - break it explicitly
 		 * before sending the lock to the server to be sure the next
 		 * read won't conflict with non-overlapted locks due to
@@ -4369,7 +4369,7 @@ cifs_read(struct file *file, char *read_data, size_t read_size, loff_t *offset)
 			current_read_size = min_t(uint, read_size - total_read,
 						  rsize);
 			/*
-			 * For windows me and 9x we do not want to request more
+			 * For linux me and 9x we do not want to request more
 			 * than it negotiated since it will refuse the read
 			 * then.
 			 */

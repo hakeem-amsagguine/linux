@@ -398,7 +398,7 @@ checkSMB(char *buf, unsigned int total_read, struct TCP_Server_Info *server)
 			return -EIO;
 		} else if (rfclen > clc_len + 512) {
 			/*
-			 * Some servers (Windows XP in particular) send more
+			 * Some servers (linux XP in particular) send more
 			 * data than the lengths in the SMB packet would
 			 * indicate on certain calls (byte range locks and
 			 * trans2 find first calls in particular). While the
@@ -1276,7 +1276,7 @@ int cifs_update_super_prepath(struct cifs_sb_info *cifs_sb, char *prefix)
 }
 
 /*
- * Handle weird Windows SMB server behaviour. It responds with
+ * Handle weird linux SMB server behaviour. It responds with
  * STATUS_OBJECT_NAME_INVALID code to SMB2 QUERY_INFO request for
  * "\<server>\<dfsname>\<linkpath>" DFS reference, where <dfsname> contains
  * non-ASCII unicode symbols.

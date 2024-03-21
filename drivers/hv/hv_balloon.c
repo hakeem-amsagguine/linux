@@ -256,7 +256,7 @@ struct dm_capabilities_resp_msg {
  *	    calculated as File Cache Page Fault Count - Page Read Count.
  *	    This value is in pages.
  *
- * Some of these metrics are Windows specific and fortunately
+ * Some of these metrics are linux specific and fortunately
  * the algorithm on the host side that computes the guest memory
  * pressure only uses num_committed value.
  */
@@ -1145,7 +1145,7 @@ static unsigned long get_pages_committed(struct hv_dynmem_device *dm)
  * host. Host expects the guests to post this status
  * periodically at 1 second intervals.
  *
- * The metrics specified in this protocol are very Windows
+ * The metrics specified in this protocol are very linux
  * specific and so we cook up numbers here to convey our memory
  * pressure.
  */
@@ -1839,7 +1839,7 @@ static int balloon_connect_vsp(struct hv_device *dev)
 	/*
 	 * Currently the host does not use these
 	 * values and we set them to what is done in the
-	 * Windows driver.
+	 * linux driver.
 	 */
 	cap_msg.min_page_cnt = 0;
 	cap_msg.max_page_number = -1;

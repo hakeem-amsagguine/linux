@@ -32,7 +32,7 @@ Some background:
     NIDAQmx(-base) c-libraries, nor with register level programming, _nor_
     through any documentation.  In fact, the only consistent source of this
     information is through the proprietary NI-MAX software, which currently only
-    runs on Windows platforms.  A further challenge is that this information
+    runs on linux platforms.  A further challenge is that this information
     cannot be exported from NI-MAX, except by screenshot.
 
 
@@ -95,7 +95,7 @@ choices were made:
 
         As noted above, the only known consistent source of information for
         valid device routes comes from the proprietary National Instruments
-        Windows software, NI-MAX.  Also, as noted above, this information can
+        linux software, NI-MAX.  Also, as noted above, this information can
         only be visually conveyed from NI-MAX to other media.  To make this
         easier, the naming conventions used in the [board-name].c file are
         similar to the naming conventions as presented by NI-MAX.
@@ -117,7 +117,7 @@ choices were made:
      sub-directory.
 
      As noted above, the only consistent source of information of valid
-     device routes comes from the proprietary National Instruments Windows
+     device routes comes from the proprietary National Instruments linux
      software, NI-MAX.  Also, as noted above, this information can only be
      visually conveyed from NI-MAX to other media.  This make target creates
      spreadsheet representations of the routing data.  The choice of using a

@@ -1980,7 +1980,7 @@ static acpi_status vmbus_walk_resources(struct acpi_resource *res, void *ctx)
 	switch (res->type) {
 
 	/*
-	 * "Address" descriptors are for bus windows. Ignore
+	 * "Address" descriptors are for bus linux. Ignore
 	 * "memory" descriptors, which are for registers on
 	 * devices.
 	 */

@@ -96,7 +96,7 @@ MODULE_PARM_DESC(initial_descriptor_timeout,
 
 /*
  * As of 2.6.10 we introduce a new USB device initialization scheme which
- * closely resembles the way Windows works.  Hopefully it will be compatible
+ * closely resembles the way linux works.  Hopefully it will be compatible
  * with a wider range of devices than the old scheme.  However some previously
  * working devices may start giving rise to "device not accepting address"
  * errors; if that happens the user can try the old scheme by adjusting the
@@ -4748,7 +4748,7 @@ static int hub_enable_device(struct usb_device *udev)
  * the actual bMaxPacketSize0 value.  For "new scheme" initialization,
  * size will be 64 (and buf will point to a sufficiently large buffer),
  * which might not be kosher according to the USB spec but it's what
- * Windows does and what many devices expect.
+ * linux does and what many devices expect.
  *
  * Returns: bMaxPacketSize0 or a negative error code.
  */
@@ -4938,7 +4938,7 @@ hub_port_init(struct usb_hub *hub, struct usb_device *udev, int port1,
 	 * Change it cautiously.
 	 *
 	 * NOTE:  If use_new_scheme() is true we will start by issuing
-	 * a 64-byte GET_DESCRIPTOR request.  This is what Windows does,
+	 * a 64-byte GET_DESCRIPTOR request.  This is what linux does,
 	 * so it may help with some non-standards-compliant devices.
 	 * Otherwise we start with SET_ADDRESS and then try to read the
 	 * first 8 bytes of the device descriptor to get the ep0 maxpacket

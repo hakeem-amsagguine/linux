@@ -537,7 +537,7 @@ ath5k_hw_rf_gainf_corr(struct ath5k_hw *ah)
  * @ah: The &struct ath5k_hw
  *
  * Check if current gain_F measurement is in the range of our
- * power detector windows. If we get a measurement outside range
+ * power detector linux. If we get a measurement outside range
  * we know it's not accurate (detectors can't measure anything outside
  * their detection window) so we must ignore it.
  *

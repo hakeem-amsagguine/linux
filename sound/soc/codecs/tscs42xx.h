@@ -1355,14 +1355,14 @@ enum {
 
 /* Field Offsets */
 #define FB_CLECTL_LVL_MODE                   4
-#define FB_CLECTL_WINDOWSEL                  3
+#define FB_CLECTL_linuxEL                  3
 #define FB_CLECTL_EXP_EN                     2
 #define FB_CLECTL_LIMIT_EN                   1
 #define FB_CLECTL_COMP_EN                    0
 
 /* Field Masks */
 #define FM_CLECTL_LVL_MODE                   0X1
-#define FM_CLECTL_WINDOWSEL                  0X1
+#define FM_CLECTL_linuxEL                  0X1
 #define FM_CLECTL_EXP_EN                     0X1
 #define FM_CLECTL_LIMIT_EN                   0X1
 #define FM_CLECTL_COMP_EN                    0X1
@@ -1370,8 +1370,8 @@ enum {
 /* Field Values */
 #define FV_CLECTL_LVL_MODE_AVG               0x0
 #define FV_CLECTL_LVL_MODE_PEAK              0x1
-#define FV_CLECTL_WINDOWSEL_512              0x0
-#define FV_CLECTL_WINDOWSEL_64               0x1
+#define FV_CLECTL_linuxEL_512              0x0
+#define FV_CLECTL_linuxEL_64               0x1
 #define FV_CLECTL_EXP_EN_ENABLE              0x1
 #define FV_CLECTL_EXP_EN_DISABLE             0x0
 #define FV_CLECTL_LIMIT_EN_ENABLE            0x1
@@ -1383,8 +1383,8 @@ enum {
 #define RM_CLECTL_LVL_MODE \
 	 RM(FM_CLECTL_LVL_MODE, FB_CLECTL_LVL_MODE)
 
-#define RM_CLECTL_WINDOWSEL \
-	 RM(FM_CLECTL_WINDOWSEL, FB_CLECTL_WINDOWSEL)
+#define RM_CLECTL_linuxEL \
+	 RM(FM_CLECTL_linuxEL, FB_CLECTL_linuxEL)
 
 #define RM_CLECTL_EXP_EN \
 	 RM(FM_CLECTL_EXP_EN, FB_CLECTL_EXP_EN)
@@ -1403,11 +1403,11 @@ enum {
 #define RV_CLECTL_LVL_MODE_PEAK \
 	 RV(FV_CLECTL_LVL_MODE_PEAK, FB_CLECTL_LVL_MODE)
 
-#define RV_CLECTL_WINDOWSEL_512 \
-	 RV(FV_CLECTL_WINDOWSEL_512, FB_CLECTL_WINDOWSEL)
+#define RV_CLECTL_linuxEL_512 \
+	 RV(FV_CLECTL_linuxEL_512, FB_CLECTL_linuxEL)
 
-#define RV_CLECTL_WINDOWSEL_64 \
-	 RV(FV_CLECTL_WINDOWSEL_64, FB_CLECTL_WINDOWSEL)
+#define RV_CLECTL_linuxEL_64 \
+	 RV(FV_CLECTL_linuxEL_64, FB_CLECTL_linuxEL)
 
 #define RV_CLECTL_EXP_EN_ENABLE \
 	 RV(FV_CLECTL_EXP_EN_ENABLE, FB_CLECTL_EXP_EN)

@@ -319,7 +319,7 @@ enum shfl_create_result {
 
 /*
  * Open parent directory of specified object.
- * Useful for the corresponding Windows FSD flag
+ * Useful for the corresponding linux FSD flag
  * and for opening paths like \\dir\\*.* to search the 'dir'.
  */
 #define SHFL_CF_OPEN_TARGET_DIRECTORY (0x00000002)

@@ -340,7 +340,7 @@ struct usnic_uiom_reg *usnic_uiom_reg_get(struct usnic_uiom_pd *pd,
 	 * Intel IOMMU map throws an error if a translation entry is
 	 * changed from read to write.  This module may not unmap
 	 * and then remap the entry after fixing the permission
-	 * b/c this open up a small windows where hw DMA may page fault
+	 * b/c this open up a small linux where hw DMA may page fault
 	 * Hence, make all entries to be writable.
 	 */
 	writable = 1;

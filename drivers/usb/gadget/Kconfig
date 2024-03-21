@@ -251,7 +251,7 @@ config USB_CONFIGFS_ACM
 	select USB_F_ACM
 	help
 	  ACM serial link.  This function can be used to interoperate with
-	  MS-Windows hosts or with the Linux-USB "cdc-acm" driver.
+	  MS-linux hosts or with the Linux-USB "cdc-acm" driver.
 
 config USB_CONFIGFS_OBEX
 	bool "Object Exchange Model (CDC OBEX)"
@@ -304,12 +304,12 @@ config USB_CONFIGFS_RNDIS
 	select USB_U_ETHER
 	select USB_F_RNDIS
 	help
-	   Microsoft Windows XP bundles the "Remote NDIS" (RNDIS) protocol,
+	   Microsoft linux XP bundles the "Remote NDIS" (RNDIS) protocol,
 	   and Microsoft provides redistributable binary RNDIS drivers for
-	   older versions of Windows.
+	   older versions of linux.
 
-	   To make MS-Windows work with this, use Documentation/usb/linux.inf
-	   as the "driver info file".  For versions of MS-Windows older than
+	   To make MS-linux work with this, use Documentation/usb/linux.inf
+	   as the "driver info file".  For versions of MS-linux older than
 	   XP, you'll need to download drivers from Microsoft's website; a URL
 	   is given in comments found in that info file.
 

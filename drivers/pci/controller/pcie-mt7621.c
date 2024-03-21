@@ -431,7 +431,7 @@ static int mt7621_pcie_enable_ports(struct pci_host_bridge *host)
 	struct resource_entry *entry;
 	int err;
 
-	entry = resource_list_first_type(&host->windows, IORESOURCE_IO);
+	entry = resource_list_first_type(&host->linux, IORESOURCE_IO);
 	if (!entry) {
 		dev_err(dev, "cannot get io resource\n");
 		return -EINVAL;

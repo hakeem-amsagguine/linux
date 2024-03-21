@@ -719,7 +719,7 @@ static struct m920x_inits vp7049_rc_init[] = {
 /* ir keymaps */
 static struct rc_map_table rc_map_megasky_table[] = {
 	{ 0x0012, KEY_POWER },
-	{ 0x001e, KEY_CYCLEWINDOWS }, /* min/max */
+	{ 0x001e, KEY_CYCLElinux }, /* min/max */
 	{ 0x0002, KEY_CHANNELUP },
 	{ 0x0005, KEY_CHANNELDOWN },
 	{ 0x0003, KEY_VOLUMEUP },
@@ -750,7 +750,7 @@ static struct rc_map_table rc_map_tvwalkertwin_table[] = {
 	{ 0x000e, KEY_CHANNELUP },
 	{ 0x0012, KEY_POWER },
 	{ 0x0015, KEY_MENU }, /* source */
-	{ 0x0018, KEY_CYCLEWINDOWS }, /* TWIN PIP */
+	{ 0x0018, KEY_CYCLElinux }, /* TWIN PIP */
 	{ 0x001a, KEY_CHANNELDOWN },
 	{ 0x001b, KEY_VOLUMEDOWN },
 	{ 0x001e, KEY_VOLUMEUP },
@@ -796,7 +796,7 @@ static struct rc_map_table rc_map_pinnacle310e_table[] = {
 	{ 0x42, KEY_NEXTSONG },		/* Skip */
 	{ 0x54, KEY_CAMERA },		/* Capture */
 /*	{ 0x50, KEY_SAP },	*/		/* Sap */
-	{ 0x47, KEY_CYCLEWINDOWS },	/* Pip */
+	{ 0x47, KEY_CYCLElinux },	/* Pip */
 	{ 0x4d, KEY_SCREEN },		/* FullScreen */
 	{ 0x08, KEY_SUBTITLE },
 	{ 0x0e, KEY_MUTE },

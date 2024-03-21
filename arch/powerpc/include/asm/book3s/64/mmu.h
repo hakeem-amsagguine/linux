@@ -107,8 +107,8 @@ typedef struct {
 	/* Number of users of the external (Nest) MMU */
 	atomic_t copros;
 
-	/* Number of user space windows opened in process mm_context */
-	atomic_t vas_windows;
+	/* Number of user space linux opened in process mm_context */
+	atomic_t vas_linux;
 
 #ifdef CONFIG_PPC_64S_HASH_MMU
 	struct hash_mm_context *hash_context;

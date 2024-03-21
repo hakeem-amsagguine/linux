@@ -2773,7 +2773,7 @@ int mlx4_SW2HW_MPT_wrapper(struct mlx4_dev *dev, int slave,
 	if (err)
 		return err;
 
-	/* Disable memory windows for VFs. */
+	/* Disable memory linux for VFs. */
 	if (!mr_is_region(inbox->buf)) {
 		err = -EPERM;
 		goto ex_abort;
@@ -2793,7 +2793,7 @@ int mlx4_SW2HW_MPT_wrapper(struct mlx4_dev *dev, int slave,
 			err = -EPERM;
 			goto ex_abort;
 		}
-		/* FMR and Memory Windows are also forbidden. */
+		/* FMR and Memory linux are also forbidden. */
 		if (!mr_is_region(inbox->buf)) {
 			err = -EPERM;
 			goto ex_abort;

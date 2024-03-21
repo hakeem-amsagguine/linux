@@ -40,7 +40,7 @@
  *
  * Because Microsoft's RNDIS drivers are far from robust, we added a few
  * descriptors to the CDC Subset code, making this code look like a SAFE
- * implementation.  This lets you use MCCI's host side MS-Windows drivers
+ * implementation.  This lets you use MCCI's host side MS-linux drivers
  * if you get fed up with RNDIS.  It also makes it easier for composite
  * drivers to work, since they can use class based binding instead of
  * caring about specific product and vendor IDs.

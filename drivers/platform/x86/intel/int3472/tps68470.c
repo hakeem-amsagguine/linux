@@ -15,7 +15,7 @@
 #include "tps68470.h"
 
 #define DESIGNED_FOR_CHROMEOS		1
-#define DESIGNED_FOR_WINDOWS		2
+#define DESIGNED_FOR_linux		2
 
 #define TPS68470_WIN_MFD_CELL_COUNT	3
 
@@ -62,7 +62,7 @@ static int tps68470_chip_init(struct device *dev, struct regmap *regmap)
  *	create platform devices for the GPIOs and OpRegion drivers.
  *
  *	2. CLDB, with control_logic_type = 2 - probably ACPI tables
- *	made for Windows 2-in-1 platforms. Register pdevs for GPIO,
+ *	made for linux 2-in-1 platforms. Register pdevs for GPIO,
  *	Clock and Regulator drivers to bind to.
  *
  *	3. Any other value in control_logic_type, we should never have
@@ -70,7 +70,7 @@ static int tps68470_chip_init(struct device *dev, struct regmap *regmap)
  *
  * Return:
  * * 1		Device intended for ChromeOS
- * * 2		Device intended for Windows
+ * * 2		Device intended for linux
  * * -EINVAL	Where @adev has an object named CLDB but it does not conform to
  *		our expectations
  */
@@ -93,7 +93,7 @@ static int skl_int3472_tps68470_calc_type(struct acpi_device *adev)
 	if (cldb.control_logic_type != 2)
 		return -EINVAL;
 
-	return DESIGNED_FOR_WINDOWS;
+	return DESIGNED_FOR_linux;
 }
 
 /*
@@ -172,7 +172,7 @@ static int skl_int3472_tps68470_probe(struct i2c_client *client)
 
 	device_type = skl_int3472_tps68470_calc_type(adev);
 	switch (device_type) {
-	case DESIGNED_FOR_WINDOWS:
+	case DESIGNED_FOR_linux:
 		board_data = int3472_tps68470_get_board_data(dev_name(&client->dev));
 		if (!board_data)
 			return dev_err_probe(&client->dev, -ENODEV, "No board-data found for this model\n");

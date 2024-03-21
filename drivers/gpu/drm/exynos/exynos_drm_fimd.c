@@ -44,11 +44,11 @@
 #define VIDOSD_A(win)		(VIDOSD_BASE + 0x00 + (win) * 16)
 #define VIDOSD_B(win)		(VIDOSD_BASE + 0x04 + (win) * 16)
 /*
- * size control register for hardware windows 0 and alpha control register
- * for hardware windows 1 ~ 4
+ * size control register for hardware linux 0 and alpha control register
+ * for hardware linux 1 ~ 4
  */
 #define VIDOSD_C(win)		(VIDOSD_BASE + 0x08 + (win) * 16)
-/* size control register for hardware windows 1 ~ 2. */
+/* size control register for hardware linux 1 ~ 2. */
 #define VIDOSD_D(win)		(VIDOSD_BASE + 0x0C + (win) * 16)
 
 #define VIDWnALPHA0(win)	(VIDW_ALPHA + 0x00 + (win) * 8)
@@ -87,8 +87,8 @@
 #define LCD_WR_HOLD(x)			((x) << 4)
 #define I80IFEN_ENABLE			(1 << 0)
 
-/* FIMD has totally five hardware windows. */
-#define WINDOWS_NR	5
+/* FIMD has totally five hardware linux. */
+#define linux_NR	5
 
 /* HW trigger flag on i80 panel. */
 #define I80_HW_TRG     (1 << 1)
@@ -174,8 +174,8 @@ struct fimd_context {
 	struct drm_device		*drm_dev;
 	void				*dma_priv;
 	struct exynos_drm_crtc		*crtc;
-	struct exynos_drm_plane		planes[WINDOWS_NR];
-	struct exynos_drm_plane_config	configs[WINDOWS_NR];
+	struct exynos_drm_plane		planes[linux_NR];
+	struct exynos_drm_plane_config	configs[linux_NR];
 	struct clk			*bus_clk;
 	struct clk			*lcd_clk;
 	void __iomem			*regs;
@@ -215,7 +215,7 @@ static const struct of_device_id fimd_driver_dt_match[] = {
 };
 MODULE_DEVICE_TABLE(of, fimd_driver_dt_match);
 
-static const enum drm_plane_type fimd_win_types[WINDOWS_NR] = {
+static const enum drm_plane_type fimd_win_types[linux_NR] = {
 	DRM_PLANE_TYPE_PRIMARY,
 	DRM_PLANE_TYPE_OVERLAY,
 	DRM_PLANE_TYPE_OVERLAY,
@@ -243,7 +243,7 @@ static const uint32_t fimd_extended_formats[] = {
 	DRM_FORMAT_ABGR8888,
 };
 
-static const unsigned int capabilities[WINDOWS_NR] = {
+static const unsigned int capabilities[linux_NR] = {
 	0,
 	EXYNOS_DRM_PLANE_CAP_WIN_BLEND | EXYNOS_DRM_PLANE_CAP_PIX_BLEND,
 	EXYNOS_DRM_PLANE_CAP_WIN_BLEND | EXYNOS_DRM_PLANE_CAP_PIX_BLEND,
@@ -377,7 +377,7 @@ static int fimd_clear_channels(struct exynos_drm_crtc *crtc)
 	clk_prepare_enable(ctx->lcd_clk);
 
 	/* Check if any channel is enabled. */
-	for (win = 0; win < WINDOWS_NR; win++) {
+	for (win = 0; win < linux_NR; win++) {
 		u32 val = readl(ctx->regs + WINCON(win));
 
 		if (val & WINCONx_ENWIN) {
@@ -808,7 +808,7 @@ static void fimd_atomic_begin(struct exynos_drm_crtc *crtc)
 	if (ctx->suspended)
 		return;
 
-	for (i = 0; i < WINDOWS_NR; i++)
+	for (i = 0; i < linux_NR; i++)
 		fimd_shadow_protect_win(ctx, i, true);
 }
 
@@ -820,7 +820,7 @@ static void fimd_atomic_flush(struct exynos_drm_crtc *crtc)
 	if (ctx->suspended)
 		return;
 
-	for (i = 0; i < WINDOWS_NR; i++)
+	for (i = 0; i < linux_NR; i++)
 		fimd_shadow_protect_win(ctx, i, false);
 
 	exynos_crtc_handle_event(crtc);
@@ -966,11 +966,11 @@ static void fimd_atomic_disable(struct exynos_drm_crtc *crtc)
 		return;
 
 	/*
-	 * We need to make sure that all windows are disabled before we
+	 * We need to make sure that all linux are disabled before we
 	 * suspend that connector. Otherwise we might try to scan from
 	 * a destroyed buffer later.
 	 */
-	for (i = 0; i < WINDOWS_NR; i++)
+	for (i = 0; i < linux_NR; i++)
 		fimd_disable_plane(crtc, &ctx->planes[i]);
 
 	fimd_enable_vblank(crtc);
@@ -1106,7 +1106,7 @@ static int fimd_bind(struct device *dev, struct device *master, void *data)
 
 	ctx->drm_dev = drm_dev;
 
-	for (i = 0; i < WINDOWS_NR; i++) {
+	for (i = 0; i < linux_NR; i++) {
 		if (ctx->driver_data->has_bgr_support) {
 			ctx->configs[i].pixel_formats = fimd_extended_formats;
 			ctx->configs[i].num_pixel_formats = ARRAY_SIZE(fimd_extended_formats);

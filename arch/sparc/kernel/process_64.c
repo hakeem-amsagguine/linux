@@ -439,7 +439,7 @@ static unsigned long clone_stackframe(unsigned long csp, unsigned long psp)
 		__get_user(fp, &(((struct reg_window32 __user *)psp)->ins[6]));
 
 	/* Now align the stack as this is mandatory in the Sparc ABI
-	 * due to how register windows work.  This hides the
+	 * due to how register linux work.  This hides the
 	 * restriction from thread libraries etc.
 	 */
 	csp &= ~15UL;
@@ -481,7 +481,7 @@ void synchronize_user_stack(void)
 	struct thread_info *t = current_thread_info();
 	unsigned long window;
 
-	flush_user_windows();
+	flush_user_linux();
 	if ((window = get_thread_wsaved()) != 0) {
 		window -= 1;
 		do {
@@ -514,12 +514,12 @@ static const char uwfault32[] = KERN_INFO \
 static const char uwfault64[] = KERN_INFO \
 	"%s[%d]: bad register window fault: SP %016lx (orig_sp %016lx) TPC %08lx O7 %016lx\n";
 
-void fault_in_user_windows(struct pt_regs *regs)
+void fault_in_user_linux(struct pt_regs *regs)
 {
 	struct thread_info *t = current_thread_info();
 	unsigned long window;
 
-	flush_user_windows();
+	flush_user_linux();
 	window = get_thread_wsaved();
 
 	if (likely(window != 0)) {

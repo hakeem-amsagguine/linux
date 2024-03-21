@@ -38,7 +38,7 @@
  * Thanks go to Jonathan Corbet for providing this quality documentation.
  * He is awesome.
  *
- * No physical hardware was harmed running Windows during the
+ * No physical hardware was harmed running linux during the
  * reverse-engineering activity
  */
 
@@ -148,7 +148,7 @@ static int usbtv_select_norm(struct usbtv *usbtv, v4l2_std_id norm)
 	/* These are the series of register values used to configure the
 	 * decoder for a specific standard.
 	 * The first 21 register writes are copied from the
-	 * Settings\DecoderDefaults registry keys present in the Windows driver
+	 * Settings\DecoderDefaults registry keys present in the linux driver
 	 * .INF file, and control various image tuning parameters (color
 	 * correction, sharpness, ...).
 	 */

@@ -4010,7 +4010,7 @@ static int mv_create_dma_pools(struct mv_host_priv *hpriv, struct device *dev)
 	return 0;
 }
 
-static void mv_conf_mbus_windows(struct mv_host_priv *hpriv,
+static void mv_conf_mbus_linux(struct mv_host_priv *hpriv,
 				 const struct mbus_dram_target_info *dram)
 {
 	int i;
@@ -4158,11 +4158,11 @@ static int mv_platform_probe(struct platform_device *pdev)
 	hpriv->n_ports = n_ports;
 
 	/*
-	 * (Re-)program MBUS remapping windows if we are asked to.
+	 * (Re-)program MBUS remapping linux if we are asked to.
 	 */
 	dram = mv_mbus_dram_info();
 	if (dram)
-		mv_conf_mbus_windows(hpriv, dram);
+		mv_conf_mbus_linux(hpriv, dram);
 
 	rc = mv_create_dma_pools(hpriv, &pdev->dev);
 	if (rc)
@@ -4253,11 +4253,11 @@ static int mv_platform_resume(struct platform_device *pdev)
 		struct mv_host_priv *hpriv = host->private_data;
 
 		/*
-		 * (Re-)program MBUS remapping windows if we are asked to.
+		 * (Re-)program MBUS remapping linux if we are asked to.
 		 */
 		dram = mv_mbus_dram_info();
 		if (dram)
-			mv_conf_mbus_windows(hpriv, dram);
+			mv_conf_mbus_linux(hpriv, dram);
 
 		/* initialize adapter */
 		ret = mv_init_host(host);

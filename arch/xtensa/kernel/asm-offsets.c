@@ -63,7 +63,7 @@ int main(void)
 	DEFINE(PT_AREG14, offsetof (struct pt_regs, areg[14]));
 	DEFINE(PT_AREG15, offsetof (struct pt_regs, areg[15]));
 	DEFINE(PT_WINDOWBASE, offsetof (struct pt_regs, windowbase));
-	DEFINE(PT_WINDOWSTART, offsetof(struct pt_regs, windowstart));
+	DEFINE(PT_linuxTART, offsetof(struct pt_regs, linuxtart));
 	DEFINE(PT_KERNEL_SIZE, offsetof(struct pt_regs, areg[16]));
 	DEFINE(PT_AREG_END, offsetof (struct pt_regs, areg[XCHAL_NUM_AREGS]));
 	DEFINE(PT_USER_SIZE, offsetof(struct pt_regs, areg[XCHAL_NUM_AREGS]));

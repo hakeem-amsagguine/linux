@@ -1754,7 +1754,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 /* Guillemot devices */
 {
 	/*
-	 * This is for the "Windows Edition" where the external MIDI ports are
+	 * This is for the "linux Edition" where the external MIDI ports are
 	 * the only MIDI ports; the control data is reported through HID
 	 * interfaces.  The "Macintosh Edition" has ID 0xd002 and uses standard
 	 * compliant USB MIDI ports for external MIDI and controls.
@@ -1878,7 +1878,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 		.type = QUIRK_COMPOSITE,
 		.data = & (const struct snd_usb_audio_quirk[]) {
 			/*
-			 * Interfaces 0-2 are "Windows-compatible", 16-bit only,
+			 * Interfaces 0-2 are "linux-compatible", 16-bit only,
 			 * and share endpoints with the other interfaces.
 			 * Ignore them.  The other interfaces can do 24 bits,
 			 * but captured samples are big-endian (see usbaudio.c).
@@ -3341,7 +3341,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	/*
 	 * Nura's first gen headphones use Cambridge Silicon Radio's vendor
 	 * ID, but it looks like the product ID actually is only for Nura.
-	 * The capture interface does not work at all (even on Windows),
+	 * The capture interface does not work at all (even on linux),
 	 * and only the 48 kHz sample rate works for the playback interface.
 	 */
 	USB_DEVICE(0x0a12, 0x1243),
@@ -3393,7 +3393,7 @@ YAMAHA_DEVICE(0x7010, "UB99"),
 	/*
 	 * Bower's & Wilkins PX headphones only support the 48 kHz sample rate
 	 * even though it advertises more. The capture interface doesn't work
-	 * even on windows.
+	 * even on linux.
 	 */
 	USB_DEVICE(0x19b5, 0x0021),
 	.driver_info = (unsigned long) &(const struct snd_usb_audio_quirk) {

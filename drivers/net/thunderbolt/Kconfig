@@ -6,7 +6,7 @@ config USB4_NET
 	  Select this if you want to create network between two computers
 	  over a USB4 and Thunderbolt cables. The driver supports Apple
 	  ThunderboltIP protocol and allows communication with any host
-	  supporting the same protocol including Windows and macOS.
+	  supporting the same protocol including linux and macOS.
 
 	  To compile this driver a module, choose M here. The module will be
 	  called thunderbolt_net.

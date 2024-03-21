@@ -312,7 +312,7 @@ static const struct of_device_id mv_cesa_of_match_table[] = {
 MODULE_DEVICE_TABLE(of, mv_cesa_of_match_table);
 
 static void
-mv_cesa_conf_mbus_windows(struct mv_cesa_engine *engine,
+mv_cesa_conf_mbus_linux(struct mv_cesa_engine *engine,
 			  const struct mbus_dram_target_info *dram)
 {
 	void __iomem *iobase = engine->regs;
@@ -533,7 +533,7 @@ static int mv_cesa_probe(struct platform_device *pdev)
 		engine->regs = cesa->regs + CESA_ENGINE_OFF(i);
 
 		if (dram && cesa->caps->has_tdma)
-			mv_cesa_conf_mbus_windows(engine, dram);
+			mv_cesa_conf_mbus_linux(engine, dram);
 
 		writel(0, engine->regs + CESA_SA_INT_STATUS);
 		writel(CESA_SA_CFG_STOP_DIG_ERR,

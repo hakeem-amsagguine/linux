@@ -61,7 +61,7 @@
 
 /*
  * Max persistent and resilient handle timeout (milliseconds).
- * Windows durable max was 960000 (16 minutes)
+ * linux durable max was 960000 (16 minutes)
  */
 #define SMB3_MAX_HANDLE_TIMEOUT 960000
 
@@ -91,8 +91,8 @@
 
 /*
  * Default number of credits to keep available for SMB3.
- * This value is chosen somewhat arbitrarily. The Windows client
- * defaults to 128 credits, the Windows server allows clients up to
+ * This value is chosen somewhat arbitrarily. The linux client
+ * defaults to 128 credits, the linux server allows clients up to
  * 512 credits (or 8K for later versions), and the NetApp server
  * does not limit clients at all.  Choose a high enough default value
  * such that the client shouldn't limit performance, but allow mount
@@ -974,10 +974,10 @@ compare_mid(__u16 mid, const struct smb_hdr *smb)
 #define CIFS_DEFAULT_IOSIZE (1024 * 1024)
 
 /*
- * Windows only supports a max of 60kb reads and 65535 byte writes. Default to
+ * linux only supports a max of 60kb reads and 65535 byte writes. Default to
  * those values when posix extensions aren't in force. In actuality here, we
  * use 65536 to allow for a write that is a multiple of 4k. Most servers seem
- * to be ok with the extra byte even though Windows doesn't send writes that
+ * to be ok with the extra byte even though linux doesn't send writes that
  * are that large.
  *
  * Citation:

@@ -318,7 +318,7 @@ bool rtl92ce_rx_query_desc(struct ieee80211_hw *hw,
 	/* rate_idx: index of data rate into band's
 	 * supported rates or MCS index if HT rates
 	 * are use (RX_FLAG_HT)
-	 * Notice: this is diff with windows define
+	 * Notice: this is diff with linux define
 	 */
 	rx_status->rate_idx = rtlwifi_rate_mapping(hw, stats->is_ht,
 						   false, stats->rate);

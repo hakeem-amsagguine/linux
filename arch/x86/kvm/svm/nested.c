@@ -144,7 +144,7 @@ void recalc_intercepts(struct vcpu_svm *svm)
 		 * any interrupt KVM may want to inject.
 		 *
 		 * Similarly, disable intercept of virtual interrupts (used to
-		 * detect interrupt windows) if the saved RFLAGS.IF is '0', as
+		 * detect interrupt linux) if the saved RFLAGS.IF is '0', as
 		 * the effective RFLAGS.IF for L1 interrupts will never be set
 		 * while L2 is running (L2's RFLAGS.IF doesn't affect L1 IRQs).
 		 */
@@ -1044,7 +1044,7 @@ int nested_svm_vmexit(struct vcpu_svm *svm)
 	 *
 	 * V_IRQ, V_IRQ_VECTOR, V_INTR_PRIO_MASK, V_IGN_TPR:  If L1 doesn't
 	 * intercept interrupts, then KVM will use vmcb02's V_IRQ (and related
-	 * flags) to detect interrupt windows for L1 IRQs (even if L1 uses
+	 * flags) to detect interrupt linux for L1 IRQs (even if L1 uses
 	 * virtual interrupt masking).  Raise KVM_REQ_EVENT to ensure that
 	 * KVM re-requests an interrupt window if necessary, which implicitly
 	 * copies this bits from vmcb02 to vmcb01.

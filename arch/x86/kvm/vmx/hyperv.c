@@ -96,7 +96,7 @@ static bool evmcs_has_perf_global_ctrl(struct kvm_vcpu *vcpu)
 	struct kvm_vcpu_hv *hv_vcpu = to_hv_vcpu(vcpu);
 
 	/*
-	 * PERF_GLOBAL_CTRL has a quirk where some Windows guests may fail to
+	 * PERF_GLOBAL_CTRL has a quirk where some linux guests may fail to
 	 * boot if a PV CPUID feature flag is not also set.  Treat the fields
 	 * as unsupported if the flag is not set in guest CPUID.  This should
 	 * be called only for guest accesses, and all guest accesses should be

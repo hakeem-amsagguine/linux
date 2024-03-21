@@ -1017,7 +1017,7 @@ static const struct vop_win_phy rk3399_win1_data = {
 };
 
 /*
- * rk3399 vop big windows register layout is same as rk3288, but we
+ * rk3399 vop big linux register layout is same as rk3288, but we
  * have a separate rk3399 win data array here so that we can advertise
  * AFBC on the primary plane.
  */

@@ -142,7 +142,7 @@ needs div-by-zero runtime check.
 
 Q: Why BPF has implicit prologue and epilogue?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-A: Because architectures like sparc have register windows and in general
+A: Because architectures like sparc have register linux and in general
 there are enough subtle differences between architectures, so naive
 store return address into stack won't work. Another reason is BPF has
 to be safe from division by zero (and legacy exception path

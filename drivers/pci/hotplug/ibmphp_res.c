@@ -1889,7 +1889,7 @@ static int range_exists_already(struct range_node *range, struct bus_node *bus_c
 	return 0;
 }
 
-/* This routine will read the windows for any PPB we have and update the
+/* This routine will read the linux for any PPB we have and update the
  * range info for the secondary bus, and will also input this info into
  * primary bus, since BIOS doesn't. This is for PPB that are in the system
  * on bootup.  For bridged cards that were added during previous load of the

@@ -17,7 +17,7 @@ Hyper-V terminology for vPCI devices is "Discrete Device
 Assignment" (DDA).  Public documentation for Hyper-V DDA is
 available here: `DDA`_
 
-.. _DDA: https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment
+.. _DDA: https://learn.microsoft.com/en-us/linux-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment
 
 DDA is typically used for storage controllers, such as NVMe,
 and for GPUs.  A similar mechanism for NICs is called SR-IOV
@@ -25,7 +25,7 @@ and produces the same benefits by allowing a guest device
 driver to interact directly with the hardware.  See Hyper-V
 public documentation here: `SR-IOV`_
 
-.. _SR-IOV: https://learn.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-
+.. _SR-IOV: https://learn.microsoft.com/en-us/linux-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-
 
 This discussion of vPCI devices includes DDA and SR-IOV
 devices.
@@ -74,9 +74,9 @@ playing no role.
 PCI Device Setup
 ----------------
 PCI device setup follows a sequence that Hyper-V originally
-created for Windows guests, and that can be ill-suited for
+created for linux guests, and that can be ill-suited for
 Linux guests due to differences in the overall structure of
-the Linux PCI subsystem compared with Windows.  Nonetheless,
+the Linux PCI subsystem compared with linux.  Nonetheless,
 with a bit of hackery in the Hyper-V virtual PCI driver for
 Linux, the virtual PCI device is setup in Linux so that
 generic Linux PCI subsystem code and the Linux driver for the

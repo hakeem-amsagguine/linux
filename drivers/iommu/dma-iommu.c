@@ -512,7 +512,7 @@ static int iommu_dma_ranges_sort(void *priv, const struct list_head *a,
 	return res_a->res->start > res_b->res->start;
 }
 
-static int iova_reserve_pci_windows(struct pci_dev *dev,
+static int iova_reserve_pci_linux(struct pci_dev *dev,
 		struct iova_domain *iovad)
 {
 	struct pci_host_bridge *bridge = pci_find_host_bridge(dev->bus);
@@ -520,7 +520,7 @@ static int iova_reserve_pci_windows(struct pci_dev *dev,
 	unsigned long lo, hi;
 	phys_addr_t start = 0, end;
 
-	resource_list_for_each_entry(window, &bridge->windows) {
+	resource_list_for_each_entry(window, &bridge->linux) {
 		if (resource_type(window->res) != IORESOURCE_MEM)
 			continue;
 
@@ -529,7 +529,7 @@ static int iova_reserve_pci_windows(struct pci_dev *dev,
 		reserve_iova(iovad, lo, hi);
 	}
 
-	/* Get reserved DMA windows from host bridge */
+	/* Get reserved DMA linux from host bridge */
 	list_sort(NULL, &bridge->dma_ranges, iommu_dma_ranges_sort);
 	resource_list_for_each_entry(window, &bridge->dma_ranges) {
 		end = window->res->start - window->offset;
@@ -568,7 +568,7 @@ static int iova_reserve_iommu_regions(struct device *dev,
 	int ret = 0;
 
 	if (dev_is_pci(dev)) {
-		ret = iova_reserve_pci_windows(to_pci_dev(dev), iovad);
+		ret = iova_reserve_pci_linux(to_pci_dev(dev), iovad);
 		if (ret)
 			return ret;
 	}

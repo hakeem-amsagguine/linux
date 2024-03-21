@@ -88,7 +88,7 @@ static int genregs32_get(struct task_struct *target,
 	u32 uregs[16];
 
 	if (target == current)
-		flush_user_windows();
+		flush_user_linux();
 
 	membuf_write(&to, regs->u_regs, 16 * sizeof(u32));
 	if (!to.left)
@@ -114,7 +114,7 @@ static int genregs32_set(struct task_struct *target,
 	int ret;
 
 	if (target == current)
-		flush_user_windows();
+		flush_user_linux();
 
 	ret = user_regset_copyin(&pos, &count, &kbuf, &ubuf,
 				 regs->u_regs,
@@ -248,7 +248,7 @@ static int getregs_get(struct task_struct *target,
 	const struct pt_regs *regs = target->thread.kregs;
 
 	if (target == current)
-		flush_user_windows();
+		flush_user_linux();
 
 	membuf_store(&to, regs->psr);
 	membuf_store(&to, regs->pc);
@@ -267,7 +267,7 @@ static int setregs_set(struct task_struct *target,
 	int ret;
 
 	if (target == current)
-		flush_user_windows();
+		flush_user_linux();
 
 	ret = user_regset_copyin(&pos, &count, &kbuf, &ubuf,
 				 v,

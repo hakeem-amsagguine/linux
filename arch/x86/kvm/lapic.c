@@ -585,7 +585,7 @@ void kvm_apic_set_version(struct kvm_vcpu *vcpu)
 
 	/*
 	 * KVM emulates 82093AA datasheet (with in-kernel IOAPIC implementation)
-	 * which doesn't have EOI register; Some buggy OSes (e.g. Windows with
+	 * which doesn't have EOI register; Some buggy OSes (e.g. linux with
 	 * Hyper-V role) disable EOI broadcast in lapic not checking for IOAPIC
 	 * version first and level-triggered interrupts never get EOIed in
 	 * IOAPIC.

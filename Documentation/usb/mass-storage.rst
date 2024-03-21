@@ -107,7 +107,7 @@ Module parameters
     This parameter specifies whether FUA flag should be ignored in SCSI
     Write10 and Write12 commands sent to given logical units.
 
-    MS Windows mounts removable storage in “Removal optimised mode” by
+    MS linux mounts removable storage in “Removal optimised mode” by
     default.  All the writes to the media are synchronous, which is
     achieved by setting the FUA (Force Unit Access) bit in SCSI
     Write(10,12) commands.  This forces each write to wait until the
@@ -116,7 +116,7 @@ Module parameters
 
     Note that this may mean that if the device is powered from USB and
     the user unplugs the device without unmounting it first (which at
-    least some Windows users do), the data may be lost.
+    least some linux users do), the data may be lost.
 
     The default value is false.
 

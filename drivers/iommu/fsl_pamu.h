@@ -127,7 +127,7 @@ struct pamu_mmap_regs {
 #define PAACE_PT_SECONDARY     0x1
 #define PAACE_V_INVALID        0x0
 #define PAACE_V_VALID          0x1
-#define PAACE_MW_SUBWINDOWS    0x1
+#define PAACE_MW_SUBlinux    0x1
 
 #define PAACE_WSE_4K           0xB
 #define PAACE_WSE_8K           0xC

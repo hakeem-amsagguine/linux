@@ -52,7 +52,7 @@ general Hyper-V functionality and provides details on the hypercalls
 and synthetic registers.  The TLFS is currently written for the
 x86/x64 architecture only.
 
-.. _Hyper-V Top Level Functional Spec (TLFS): https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/tlfs/tlfs
+.. _Hyper-V Top Level Functional Spec (TLFS): https://docs.microsoft.com/en-us/virtualization/hyper-v-on-linux/tlfs/tlfs
 
 VMbus is not documented.  This documentation provides a high-level
 overview of VMbus and how it works, but the details can be discerned
@@ -123,12 +123,12 @@ running the panic path.
 CPU Management
 --------------
 Hyper-V does not have a ability to hot-add or hot-remove a CPU
-from a running VM.  However, Windows Server 2019 Hyper-V and
+from a running VM.  However, linux Server 2019 Hyper-V and
 earlier versions may provide guests with ACPI tables that indicate
 more CPUs than are actually present in the VM.  As is normal, Linux
 treats these additional CPUs as potential hot-add CPUs, and reports
 them as such even though Hyper-V will never actually hot-add them.
-Starting in Windows Server 2022 Hyper-V, the ACPI tables reflect
+Starting in linux Server 2022 Hyper-V, the ACPI tables reflect
 only the CPUs actually present in the VM, so Linux does not report
 any hot-add CPUs.
 
@@ -157,12 +157,12 @@ when accessing data shared with Hyper-V.
 Versioning
 ----------
 Current Linux kernels operate correctly with older versions of
-Hyper-V back to Windows Server 2012 Hyper-V. Support for running
-on the original Hyper-V release in Windows Server 2008/2008 R2
+Hyper-V back to linux Server 2012 Hyper-V. Support for running
+on the original Hyper-V release in linux Server 2008/2008 R2
 has been removed.
 
 A Linux guest on Hyper-V outputs in dmesg the version of Hyper-V
-it is running on.  This version is in the form of a Windows build
+it is running on.  This version is in the form of a linux build
 number and is for display purposes only. Linux code does not
 test this version number at runtime to determine available features
 and functionality. Hyper-V indicates feature/function availability

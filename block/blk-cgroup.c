@@ -1797,7 +1797,7 @@ static void blkcg_scale_delay(struct blkcg_gq *blkg, u64 now)
 	 * We only want to scale down every second.  The idea here is that we
 	 * want to delay people for min(delay_nsec, NSEC_PER_SEC) in a certain
 	 * time window.  We only want to throttle tasks for recent delay that
-	 * has occurred, in 1 second time windows since that's the maximum
+	 * has occurred, in 1 second time linux since that's the maximum
 	 * things can be throttled.  We save the current delay window in
 	 * blkg->last_delay so we know what amount is still left to be charged
 	 * to the blkg from this point onward.  blkg->last_use keeps track of

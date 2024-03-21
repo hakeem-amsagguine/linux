@@ -180,7 +180,7 @@ static void group_adjust_blocks(struct super_block *sb, int group_no,
  * dump, find, add, remove, is_empty, find_next_reservable_window, etc.
  *
  * We use a red-black tree to represent per-filesystem reservation
- * windows.
+ * linux.
  *
  */
 
@@ -191,8 +191,8 @@ static void group_adjust_blocks(struct super_block *sb, int group_no,
  * @fn:			function which wishes to dump the reservation map
  *
  * If verbose is turned on, it will print the whole block reservation
- * windows(start, end). Otherwise, it will only print out the "bad" windows,
- * those windows that overlap with their immediate neighbors.
+ * linux(start, end). Otherwise, it will only print out the "bad" linux,
+ * those linux that overlap with their immediate neighbors.
  */
 #if 1
 static void __rsv_window_dump(struct rb_root *root, int verbose,
@@ -207,7 +207,7 @@ restart:
 	bad = 0;
 	prev = NULL;
 
-	printk("Block Allocation Reservation Windows Map (%s):\n", fn);
+	printk("Block Allocation Reservation linux Map (%s):\n", fn);
 	while (n) {
 		rsv = rb_entry(n, struct ext2_reserve_window_node, rsv_node);
 		if (verbose)
@@ -284,7 +284,7 @@ goal_in_my_reservation(struct ext2_reserve_window *rsv, ext2_grpblk_t grp_goal,
  *
  * Find the reserved window which includes the goal, or the previous one
  * if the goal is not in any window.
- * Returns NULL if there are no windows or if all windows start after the goal.
+ * Returns NULL if there are no linux or if all linux start after the goal.
  */
 static struct ext2_reserve_window_node *
 search_reserve_window(struct rb_root *root, ext2_fsblk_t goal)
@@ -855,7 +855,7 @@ static int find_next_reservable_window(
  *
  * on succeed, a new reservation will be found and inserted into the
  * list. It contains at least one free block, and it does not overlap
- * with other reservation windows.
+ * with other reservation linux.
  *
  * Return: 0 on success, -1 if we failed to find a reservation window
  * in this group
@@ -1217,7 +1217,7 @@ ext2_fsblk_t ext2_new_blocks(struct inode *inode, ext2_fsblk_t goal,
 	struct ext2_sb_info *sbi;
 	struct ext2_reserve_window_node *my_rsv = NULL;
 	struct ext2_block_alloc_info *block_i;
-	unsigned short windowsz = 0;
+	unsigned short linuxz = 0;
 	unsigned long ngroups;
 	unsigned long num = *count;
 	int ret;
@@ -1247,8 +1247,8 @@ ext2_fsblk_t ext2_new_blocks(struct inode *inode, ext2_fsblk_t goal,
 	 */
 	block_i = EXT2_I(inode)->i_block_alloc_info;
 	if (!(flags & EXT2_ALLOC_NORESERVE) && block_i) {
-		windowsz = block_i->rsv_window_node.rsv_goal_size;
-		if (windowsz > 0)
+		linuxz = block_i->rsv_window_node.rsv_goal_size;
+		if (linuxz > 0)
 			my_rsv = &block_i->rsv_window_node;
 	}
 
@@ -1276,7 +1276,7 @@ retry_alloc:
 	 * if there is not enough free blocks to make a new resevation
 	 * turn off reservation for this allocation
 	 */
-	if (my_rsv && (free_blocks < windowsz)
+	if (my_rsv && (free_blocks < linuxz)
 		&& (free_blocks > 0)
 		&& (rsv_is_empty(&my_rsv->rsv_window)))
 		my_rsv = NULL;
@@ -1328,7 +1328,7 @@ retry_alloc:
 		 * free blocks is less than half of the reservation
 		 * window size.
 		 */
-		if (my_rsv && (free_blocks <= (windowsz/2)))
+		if (my_rsv && (free_blocks <= (linuxz/2)))
 			continue;
 
 		brelse(bitmap_bh);
@@ -1352,7 +1352,7 @@ retry_alloc:
 	 */
 	if (my_rsv) {
 		my_rsv = NULL;
-		windowsz = 0;
+		linuxz = 0;
 		group_no = goal_group;
 		goto retry_alloc;
 	}

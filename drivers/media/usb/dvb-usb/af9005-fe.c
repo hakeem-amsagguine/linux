@@ -870,7 +870,7 @@ static int af9005_fe_init(struct dvb_frontend *fe)
 
 	if (ret)
 		return ret;
-	/* don't know what register aefc is, but this is what the windows driver does */
+	/* don't know what register aefc is, but this is what the linux driver does */
 	ret = af9005_write_ofdm_register(state->d, 0xaefc, 0);
 	if (ret)
 		return ret;

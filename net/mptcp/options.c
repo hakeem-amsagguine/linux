@@ -1294,7 +1294,7 @@ raise_win:
 		if (unlikely(th->syn))
 			new_win = min(new_win, 65535U) << tp->rx_opt.rcv_wscale;
 		if (!tp->rx_opt.rcv_wscale &&
-		    READ_ONCE(sock_net(ssk)->ipv4.sysctl_tcp_workaround_signed_windows))
+		    READ_ONCE(sock_net(ssk)->ipv4.sysctl_tcp_workaround_signed_linux))
 			new_win = min(new_win, MAX_TCP_WINDOW);
 		else
 			new_win = min(new_win, (65535U << tp->rx_opt.rcv_wscale));

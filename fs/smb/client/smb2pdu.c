@@ -1342,7 +1342,7 @@ int smb3_validate_negotiate(const unsigned int xid, struct cifs_tcon *tcon)
 		(char **)&pneg_rsp, &rsplen);
 	if (rc == -EOPNOTSUPP) {
 		/*
-		 * Old Windows versions or Netapp SMB server can return
+		 * Old linux versions or Netapp SMB server can return
 		 * not supported error. Client should accept it.
 		 */
 		cifs_tcon_dbg(VFS, "Server does not support validate negotiate\n");
@@ -1994,7 +1994,7 @@ static inline void cifs_stats_fail_inc(struct cifs_tcon *tcon, uint16_t code)
 
 #define MAX_SHARENAME_LENGTH (255 /* server */ + 80 /* share */ + 1 /* NULL */)
 
-/* These are similar values to what Windows uses */
+/* These are similar values to what linux uses */
 static inline void init_copy_chunk_defaults(struct cifs_tcon *tcon)
 {
 	tcon->max_chunks = 256;
@@ -3323,7 +3323,7 @@ SMB2_ioctl_init(struct cifs_tcon *tcon, struct TCP_Server_Info *server,
 	/*
 	 * In most cases max_response_size is set to 16K (CIFSMaxBufSize)
 	 * We Could increase default MaxOutputResponse, but that could require
-	 * more credits. Windows typically sets this smaller, but for some
+	 * more credits. linux typically sets this smaller, but for some
 	 * ioctls it may be useful to allow server to send more. No point
 	 * limiting what the server can send as long as fits in one credit
 	 * We can not handle more than CIFS_MAX_BUF_SIZE yet but may want

@@ -378,7 +378,7 @@ struct dma_win {
 
 /* Dynamic DMA Window support */
 struct ddw_query_response {
-	u32 windows_available;
+	u32 linux_available;
 	u64 largest_available_block;
 	u32 page_size;
 	u32 migration_capable;
@@ -990,7 +990,7 @@ static struct dma_win *ddw_list_new_entry(struct device_node *pdn,
 	return window;
 }
 
-static void find_existing_ddw_windows_named(const char *name)
+static void find_existing_ddw_linux_named(const char *name)
 {
 	int len;
 	struct device_node *pdn;
@@ -1022,17 +1022,17 @@ static void find_existing_ddw_windows_named(const char *name)
 	}
 }
 
-static int find_existing_ddw_windows(void)
+static int find_existing_ddw_linux(void)
 {
 	if (!firmware_has_feature(FW_FEATURE_LPAR))
 		return 0;
 
-	find_existing_ddw_windows_named(DIRECT64_PROPNAME);
-	find_existing_ddw_windows_named(DMA64_PROPNAME);
+	find_existing_ddw_linux_named(DIRECT64_PROPNAME);
+	find_existing_ddw_linux_named(DMA64_PROPNAME);
 
 	return 0;
 }
-machine_arch_initcall(pseries, find_existing_ddw_windows);
+machine_arch_initcall(pseries, find_existing_ddw_linux);
 
 /**
  * ddw_read_ext - Get the value of an DDW extension
@@ -1082,7 +1082,7 @@ static int query_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 
 	/*
 	 * From LoPAR level 2.8, "ibm,ddw-extensions" index 3 can rule how many
-	 * output parameters ibm,query-pe-dma-windows will have, ranging from
+	 * output parameters ibm,query-pe-dma-linux will have, ranging from
 	 * 5 to 6.
 	 */
 	ret = ddw_read_ext(parent, DDW_EXT_QUERY_OUT_SIZE, &ext_query);
@@ -1107,13 +1107,13 @@ static int query_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 
 	switch (out_sz) {
 	case 5:
-		query->windows_available = query_out[0];
+		query->linux_available = query_out[0];
 		query->largest_available_block = query_out[1];
 		query->page_size = query_out[2];
 		query->migration_capable = query_out[3];
 		break;
 	case 6:
-		query->windows_available = query_out[0];
+		query->linux_available = query_out[0];
 		query->largest_available_block = ((u64)query_out[1] << 32) |
 						 query_out[2];
 		query->page_size = query_out[3];
@@ -1121,10 +1121,10 @@ static int query_ddw(struct pci_dev *dev, const u32 *ddw_avail,
 		break;
 	}
 
-	dev_info(&dev->dev, "ibm,query-pe-dma-windows(%x) %x %x %x returned %d, lb=%llx ps=%x wn=%d\n",
+	dev_info(&dev->dev, "ibm,query-pe-dma-linux(%x) %x %x %x returned %d, lb=%llx ps=%x wn=%d\n",
 		 ddw_avail[DDW_QUERY_PE_DMA_WIN], cfg_addr, BUID_HI(buid),
 		 BUID_LO(buid), ret, query->largest_available_block,
-		 query->page_size, query->windows_available);
+		 query->page_size, query->linux_available);
 
 	return ret;
 }
@@ -1193,7 +1193,7 @@ static phys_addr_t ddw_memory_hotplug_max(void)
 /*
  * Platforms supporting the DDW option starting with LoPAR level 2.7 implement
  * ibm,ddw-extensions, which carries the rtas token for
- * ibm,reset-pe-dma-windows.
+ * ibm,reset-pe-dma-linux.
  * That rtas-call can be used to restore the default DMA window for the device.
  */
 static void reset_dma_window(struct pci_dev *dev, struct device_node *par_dn)
@@ -1217,7 +1217,7 @@ static void reset_dma_window(struct pci_dev *dev, struct device_node *par_dn)
 			BUID_LO(buid));
 	if (ret)
 		dev_info(&dev->dev,
-			 "ibm,reset-pe-dma-windows(%x) %x %x %x returned %d ",
+			 "ibm,reset-pe-dma-linux(%x) %x %x %x returned %d ",
 			 reset_dma_win, cfg_addr, BUID_HI(buid), BUID_LO(buid),
 			 ret);
 }
@@ -1279,7 +1279,7 @@ static struct property *ddw_property_create(const char *propname, u32 liobn, u64
 }
 
 /*
- * If the PE supports dynamic dma windows, and there is space for a table
+ * If the PE supports dynamic dma linux, and there is space for a table
  * that can map all pages in a linear offset, then setup such a table,
  * and record the dma-offset in the struct device.
  *
@@ -1344,7 +1344,7 @@ static bool enable_ddw(struct pci_dev *dev, struct device_node *pdn)
 
        /*
 	 * Query if there is a second window of size to map the
-	 * whole partition.  Query returns number of windows, largest
+	 * whole partition.  Query returns number of linux, largest
 	 * block assigned to PE (partition endpoint), and two bitmasks
 	 * of page sizes: supported and supported for migrate-dma.
 	 */
@@ -1360,7 +1360,7 @@ static bool enable_ddw(struct pci_dev *dev, struct device_node *pdn)
 	 * If anything fails after this, we need to restore it, so also check
 	 * for extensions presence.
 	 */
-	if (query.windows_available == 0) {
+	if (query.linux_available == 0) {
 		int reset_win_ext;
 
 		/* DDW + IOMMU on single window may fail if there is any allocation */
@@ -1385,9 +1385,9 @@ static bool enable_ddw(struct pci_dev *dev, struct device_node *pdn)
 		if (ret != 0)
 			goto out_failed;
 
-		if (query.windows_available == 0) {
-			/* no windows are available for this device. */
-			dev_dbg(&dev->dev, "no free dynamic windows");
+		if (query.linux_available == 0) {
+			/* no linux are available for this device. */
+			dev_dbg(&dev->dev, "no free dynamic linux");
 			goto out_failed;
 		}
 	}

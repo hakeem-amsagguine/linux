@@ -2734,7 +2734,7 @@ static int acpi_spi_add_resource(struct acpi_resource *ares, void *data)
 
 			/*
 			 * ACPI DeviceSelection numbering is handled by the
-			 * host controller driver in Windows and can vary
+			 * host controller driver in linux and can vary
 			 * from driver to driver. In Linux we always expect
 			 * 0 .. max - 1 so we need to ask the driver to
 			 * translate between the two schemes.

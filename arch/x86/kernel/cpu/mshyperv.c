@@ -387,7 +387,7 @@ static void __init ms_hyperv_init_platform(void)
 	/*
 	 * Check CPU management privilege.
 	 *
-	 * To mirror what Windows does we should extract CPU management
+	 * To mirror what linux does we should extract CPU management
 	 * features and use the ReservedIdentityBit to detect if Linux is the
 	 * root partition. But that requires negotiating CPU management
 	 * interface (a process to be finalized). For now, use the privilege
@@ -609,7 +609,7 @@ static bool __init ms_hyperv_x2apic_available(void)
  *
  * Note: for a Hyper-V root partition, this will always return false.
  * The hypervisor doesn't expose these HYPERV_CPUID_VIRT_STACK_* cpuids by
- * default, they are implemented as intercepts by the Windows Hyper-V stack.
+ * default, they are implemented as intercepts by the linux Hyper-V stack.
  * Even a nested root partition (L2 root) will not get them because the
  * nested (L1) hypervisor filters them out.
  */

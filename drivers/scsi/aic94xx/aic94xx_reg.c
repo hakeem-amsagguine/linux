@@ -148,8 +148,8 @@ ASD_WRITE_SW(swc, u16, word);
 ASD_WRITE_SW(swc, u32, dword);
 
 /*
- * A word about sliding windows:
- * MBAR0 is divided into sliding windows A, C and B, in that order.
+ * A word about sliding linux:
+ * MBAR0 is divided into sliding linux A, C and B, in that order.
  * SWA starts at offset 0 of MBAR0, up to 0x57, with size 0x58 bytes.
  * SWC starts at offset 0x58 of MBAR0, up to 0x60, with size 0x8 bytes.
  * From 0x60 to 0x7F, we have a copy of PCI config space 0x60-0x7F.

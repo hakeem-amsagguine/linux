@@ -310,7 +310,7 @@ struct vpu_boot_params {
 	 *    Bit 40-43 - unsigned 4b: PLL Ratio decrease amount on low residency
 	 *    Bit 44-47 - unsigned 4b: PLL Ratio decrease amount on lowest frequency
 	 *    Bit 48-55 - uint8_t: Period (ms) for residency decisions
-	 *    Bit 56-63 - uint8_t: Averaging windows (as multiples of period. Max: 30 decimal)
+	 *    Bit 56-63 - uint8_t: Averaging linux (as multiples of period. Max: 30 decimal)
 	 * Power Save/Max Performance: Unused
 	 */
 	u64 dvfs_param;

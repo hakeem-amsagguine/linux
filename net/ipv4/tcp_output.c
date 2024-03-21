@@ -226,7 +226,7 @@ void tcp_select_initial_window(const struct sock *sk, int __space, __u32 mss,
 	 * which we interpret as a sign the remote TCP is not
 	 * misinterpreting the window field as a signed quantity.
 	 */
-	if (READ_ONCE(sock_net(sk)->ipv4.sysctl_tcp_workaround_signed_windows))
+	if (READ_ONCE(sock_net(sk)->ipv4.sysctl_tcp_workaround_signed_linux))
 		(*rcv_wnd) = min(space, MAX_TCP_WINDOW);
 	else
 		(*rcv_wnd) = min_t(u32, space, U16_MAX);
@@ -292,7 +292,7 @@ static u16 tcp_select_window(struct sock *sk)
 	 * scaled window.
 	 */
 	if (!tp->rx_opt.rcv_wscale &&
-	    READ_ONCE(net->ipv4.sysctl_tcp_workaround_signed_windows))
+	    READ_ONCE(net->ipv4.sysctl_tcp_workaround_signed_linux))
 		new_win = min(new_win, MAX_TCP_WINDOW);
 	else
 		new_win = min(new_win, (65535U << tp->rx_opt.rcv_wscale));
@@ -3031,7 +3031,7 @@ void tcp_push_one(struct sock *sk, unsigned int mss_now)
  * those cases where the window is constrained on the sender side
  * because the pipeline is full.
  *
- * BSD also seems to "accidentally" limit itself to windows that are a
+ * BSD also seems to "accidentally" limit itself to linux that are a
  * multiple of MSS, at least until the free space gets quite small.
  * This would appear to be a side effect of the mbuf implementation.
  * Combining these two algorithms results in the observed behavior

@@ -593,7 +593,7 @@ cia_save_srm_settings(int is_pyxis)
 	else
 	    saved_config.cia_cnfg   = 0;
 
-	/* Save DMA windows configuration. */
+	/* Save DMA linux configuration. */
 	for (i = 0; i < 4; i++) {
 	    saved_config.window[i].w_base = *(vip)CIA_IOC_PCI_Wn_BASE(i);
 	    saved_config.window[i].w_mask = *(vip)CIA_IOC_PCI_Wn_MASK(i);
@@ -713,7 +713,7 @@ do_init_arch(int is_pyxis)
 	}
 
 	/*
-	 * Set up the PCI to main memory translation windows.
+	 * Set up the PCI to main memory translation linux.
 	 *
 	 * Window 0 is S/G 8MB at 8MB (for isa)
 	 * Window 1 is S/G 1MB at 768MB (for tbia) (unused for CIA rev 1)

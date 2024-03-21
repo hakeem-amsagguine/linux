@@ -44,7 +44,7 @@
  * Note that although Linux may use many of those host-to-host links
  * with this "cdc_subset" framing, that doesn't mean there may not be a
  * better approach.  Handling the "other end unplugs/replugs" scenario
- * well tends to require chip-specific vendor requests.  Also, Windows
+ * well tends to require chip-specific vendor requests.  Also, linux
  * peers at the other end of host-to-host cables may expect their own
  * framing to be used rather than this "cdc_subset" model.
  */
@@ -64,7 +64,7 @@ static int always_connected (struct usbnet *dev)
  *
  * ALi M5632 driver ... does high speed
  *
- * NOTE that the MS-Windows drivers for this chip use some funky and
+ * NOTE that the MS-linux drivers for this chip use some funky and
  * (naturally) undocumented 7-byte prefix to each packet, so this is a
  * case where we don't currently interoperate.  Also, once you unplug
  * one end of the cable, you need to replug the other end too ... since
@@ -298,7 +298,7 @@ static const struct usb_device_id	products [] = {
  *  - acting just like the old "usb-eth" firmware, though
  *    the implementation is different
  *  - supporting RNDIS as the first/default configuration for
- *    MS-Windows interop; Linux needs to use the other config
+ *    MS-linux interop; Linux needs to use the other config
  */
 {
 	// 1183 = 0x049F, both used as hex values?

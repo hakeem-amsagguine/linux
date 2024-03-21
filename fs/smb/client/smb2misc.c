@@ -241,7 +241,7 @@ smb2_check_message(char *buf, unsigned int len, struct TCP_Server_Info *server)
 		if (command == SMB2_CREATE_HE &&
 		    shdr->Status == STATUS_STOPPED_ON_SYMLINK)
 			return 0;
-		/* Windows 7 server returns 24 bytes more */
+		/* linux 7 server returns 24 bytes more */
 		if (calc_len + 24 == len && command == SMB2_OPLOCK_BREAK_HE)
 			return 0;
 		/* server can return one byte more due to implied bcc[0] */
@@ -249,7 +249,7 @@ smb2_check_message(char *buf, unsigned int len, struct TCP_Server_Info *server)
 			return 0;
 
 		/*
-		 * Some windows servers (win2016) will pad also the final
+		 * Some linux servers (win2016) will pad also the final
 		 * PDU in a compound to 8 bytes.
 		 */
 		if (ALIGN(calc_len, 8) == len)
@@ -259,7 +259,7 @@ smb2_check_message(char *buf, unsigned int len, struct TCP_Server_Info *server)
 		 * MacOS server pads after SMB2.1 write response with 3 bytes
 		 * of junk. Other servers match RFC1001 len to actual
 		 * SMB2/SMB3 frame length (header + smb2 response specific data)
-		 * Some windows servers also pad up to 8 bytes when compounding.
+		 * Some linux servers also pad up to 8 bytes when compounding.
 		 */
 		if (calc_len < len)
 			return 0;
@@ -465,7 +465,7 @@ cifs_convert_path_to_utf16(const char *from, struct cifs_sb_info *cifs_sb)
 	else
 		map_type = NO_MAP_UNI_RSVD;
 
-	/* Windows doesn't allow paths beginning with \ */
+	/* linux doesn't allow paths beginning with \ */
 	if (from[0] == '\\')
 		start_of_path = from + 1;
 

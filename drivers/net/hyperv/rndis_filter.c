@@ -1458,7 +1458,7 @@ static void rndis_get_friendly_name(struct net_device *net,
 	if (size == 0)
 		return;	/* name not set */
 
-	/* Convert Windows Unicode string to UTF-8 */
+	/* Convert linux Unicode string to UTF-8 */
 	len = ucs2_as_utf8(ifalias, wname, sizeof(ifalias));
 
 	/* ignore the default value from host */

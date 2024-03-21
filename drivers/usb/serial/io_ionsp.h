@@ -308,7 +308,7 @@ do {									\
 //	IOSP_CMD_RX_CHECK_REQ
 //
 //  This command is used to assist in the implementation of the
-//  IOCTL_SERIAL_PURGE Windows IOCTL.
+//  IOCTL_SERIAL_PURGE linux IOCTL.
 //  This IOSP command tries to place a marker at the end of the RX
 //  queue in the Edgeport. If the Edgeport RX queue is full then
 //  the Check will be discarded.

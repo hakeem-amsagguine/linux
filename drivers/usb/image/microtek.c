@@ -20,7 +20,7 @@
  * normal data is read from the scanner (in packets of maximum 32
  * bytes) and from which the status byte is read, and 0x83 from which
  * the results of a scan (or preview) are read in up to 64 * 1024 byte
- * chunks by the Windows driver. We don't know how much it is possible
+ * chunks by the linux driver. We don't know how much it is possible
  * to read at a time from 0x83.
  *
  * It seems possible to read (with URB transfers) everything from 0x82
@@ -67,7 +67,7 @@
  *	20000424 started conversion to use URBs
  *	20000502 handled short transfers as errors
  *	20000513 rename and organisation of functions (john)
- *	20000513 added IDs for all products supported by Windows driver (john)
+ *	20000513 added IDs for all products supported by linux driver (john)
  *	20000514 Rewrote mts_scsi_queuecommand to use URBs (john)
  *	20000514 Version 0.0.8j
  *      20000514 Fix reporting of non-existent devices to SCSI layer (john)

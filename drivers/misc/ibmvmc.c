@@ -2192,8 +2192,8 @@ static int read_dma_window(struct vio_dev *vdev,
 	const __be32 *prop;
 
 	/* TODO Using of_parse_dma_window would be better, but it doesn't give
-	 * a way to read multiple windows without already knowing the size of
-	 * a window or the number of windows
+	 * a way to read multiple linux without already knowing the size of
+	 * a window or the number of linux
 	 */
 	dma_window =
 		(const __be32 *)vio_get_attribute(vdev, "ibm,my-dma-window",

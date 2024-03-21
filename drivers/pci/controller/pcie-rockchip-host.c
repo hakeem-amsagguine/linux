@@ -783,7 +783,7 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
 
 	rockchip_pcie_cfg_configuration_accesses(rockchip,
 						 AXI_WRAPPER_TYPE0_CFG);
-	entry = resource_list_first_type(&bridge->windows, IORESOURCE_MEM);
+	entry = resource_list_first_type(&bridge->linux, IORESOURCE_MEM);
 	if (!entry)
 		return -ENODEV;
 
@@ -809,7 +809,7 @@ static int rockchip_pcie_cfg_atu(struct rockchip_pcie *rockchip)
 		return err;
 	}
 
-	entry = resource_list_first_type(&bridge->windows, IORESOURCE_IO);
+	entry = resource_list_first_type(&bridge->linux, IORESOURCE_IO);
 	if (!entry)
 		return -ENODEV;
 

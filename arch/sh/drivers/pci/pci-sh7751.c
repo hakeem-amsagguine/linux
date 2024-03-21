@@ -113,7 +113,7 @@ static int __init sh7751_pci_init(void)
 	word = PCI_BASE_CLASS_BRIDGE << 24;
 	pci_write_reg(chan, word, SH7751_PCICONF2);
 
-	/* Set IO and Mem windows to local address
+	/* Set IO and Mem linux to local address
 	 * Make PCI and local address the same for easy 1 to 1 mapping
 	 */
 	word = sh7751_pci_map.window0.size - 1;

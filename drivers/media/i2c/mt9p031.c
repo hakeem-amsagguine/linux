@@ -407,7 +407,7 @@ static int mt9p031_set_params(struct mt9p031 *mt9p031)
 	unsigned int ybin;
 	int ret;
 
-	/* Windows position and size.
+	/* linux position and size.
 	 *
 	 * TODO: Make sure the start coordinates and window size match the
 	 * skipping, binning and mirroring (see description of registers 2 and 4

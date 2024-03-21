@@ -2623,7 +2623,7 @@ static void mv643xx_eth_netpoll(struct net_device *dev)
 
 /* platform glue ************************************************************/
 static void
-mv643xx_eth_conf_mbus_windows(struct mv643xx_eth_shared_private *msp,
+mv643xx_eth_conf_mbus_linux(struct mv643xx_eth_shared_private *msp,
 			      const struct mbus_dram_target_info *dram)
 {
 	void __iomem *base = msp->base;
@@ -2869,11 +2869,11 @@ static int mv643xx_eth_shared_probe(struct platform_device *pdev)
 		clk_prepare_enable(msp->clk);
 
 	/*
-	 * (Re-)program MBUS remapping windows if we are asked to.
+	 * (Re-)program MBUS remapping linux if we are asked to.
 	 */
 	dram = mv_mbus_dram_info();
 	if (dram)
-		mv643xx_eth_conf_mbus_windows(msp, dram);
+		mv643xx_eth_conf_mbus_linux(msp, dram);
 
 	ret = mv643xx_eth_shared_of_probe(pdev);
 	if (ret)

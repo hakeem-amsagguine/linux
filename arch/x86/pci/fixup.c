@@ -686,7 +686,7 @@ DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_INTEL, 0x19e1, quirk_intel_th_dnv);
 
 /*
  * The PCI Firmware Spec, rev 3.2, notes that ACPI should optionally allow
- * configuring host bridge windows using the _PRS and _SRS methods.
+ * configuring host bridge linux using the _PRS and _SRS methods.
  *
  * But this is rarely implemented, so we manually enable a large 64bit BAR for
  * PCIe device on AMD Family 15h (Models 00h-1fh, 30h-3fh, 60h-7fh) Processors
@@ -912,7 +912,7 @@ DECLARE_PCI_FIXUP_RESUME(PCI_VENDOR_ID_INTEL, 0x5ad6, chromeos_fixup_apl_pci_l1s
  *
  * On this platform with VMD off, the NVMe device cannot successfully power
  * back on from D3cold. This appears to be an untested transition by the
- * vendor: Windows leaves the NVMe and parent bridge in D0 during suspend.
+ * vendor: linux leaves the NVMe and parent bridge in D0 during suspend.
  *
  * We disable D3cold on the parent bridge for simplicity, and the fact that
  * both parent bridge and NVMe device share the same power resource.

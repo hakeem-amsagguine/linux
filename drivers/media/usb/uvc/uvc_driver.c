@@ -2132,7 +2132,7 @@ static int uvc_probe(struct usb_interface *intf,
 	/*
 	 * Add iFunction or iInterface to names when available as additional
 	 * distinguishers between interfaces. iFunction is prioritized over
-	 * iInterface which matches Windows behavior at the point of writing.
+	 * iInterface which matches linux behavior at the point of writing.
 	 */
 	if (intf->intf_assoc && intf->intf_assoc->iFunction != 0)
 		function = intf->intf_assoc->iFunction;

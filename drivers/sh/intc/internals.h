@@ -67,7 +67,7 @@ struct intc_desc_int {
 	struct intc_handle_int *sense;
 	unsigned int nr_sense;
 	struct intc_window *window;
-	unsigned int nr_windows;
+	unsigned int nr_linux;
 	struct irq_domain *domain;
 	struct irq_chip chip;
 	bool skip_suspend;

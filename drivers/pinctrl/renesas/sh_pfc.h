@@ -232,8 +232,8 @@ struct sh_pfc {
 	const struct sh_pfc_soc_info *info;
 	spinlock_t lock;
 
-	unsigned int num_windows;
-	struct sh_pfc_window *windows;
+	unsigned int num_linux;
+	struct sh_pfc_window *linux;
 	unsigned int num_irqs;
 	unsigned int *irqs;
 

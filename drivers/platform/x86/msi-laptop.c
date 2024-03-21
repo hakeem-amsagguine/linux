@@ -114,7 +114,7 @@ struct quirk_entry {
 	bool old_ec_model;
 
 	/* Some MSI 3G netbook only have one fn key to control
-	 * Wlan/Bluetooth/3G, those netbook will load the SCM (windows app) to
+	 * Wlan/Bluetooth/3G, those netbook will load the SCM (linux app) to
 	 * disable the original Wlan/Bluetooth control by BIOS when user press
 	 * fn key, then control Wlan/Bluetooth/3G by SCM (software control by
 	 * OS). Without SCM, user cann't on/off 3G module on those 3G netbook.

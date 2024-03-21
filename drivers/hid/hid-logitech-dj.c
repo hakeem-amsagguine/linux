@@ -568,7 +568,7 @@ static bool recvr_type_is_bluetooth(enum recvr_type type)
 }
 
 /*
- * dj/HID++ receivers are really a single logical entity, but for BIOS/Windows
+ * dj/HID++ receivers are really a single logical entity, but for BIOS/linux
  * compatibility they have multiple USB interfaces. On HID++ receivers we need
  * to listen for input reports on both interfaces. The functions below are used
  * to create a single struct dj_receiver_dev for all interfaces belonging to

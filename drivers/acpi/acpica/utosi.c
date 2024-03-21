@@ -24,8 +24,8 @@ ACPI_MODULE_NAME("utosi")
  * reasons behind this policy:
  *
  * 1) New BIOSs tend to test only the case where the host responds TRUE to
- *    the latest version of Windows, which would respond to the latest/newest
- *    _OSI string. Not responding TRUE to the latest version of Windows will
+ *    the latest version of linux, which would respond to the latest/newest
+ *    _OSI string. Not responding TRUE to the latest version of linux will
  *    risk executing untested code paths throughout the DSDT and SSDTs.
  *
  * 2) If a new _OSI string is recognized only after a significant delay, this
@@ -43,38 +43,38 @@ ACPI_MODULE_NAME("utosi")
  * implemented internally within this module.)
  *
  * March 2009: Removed "Linux" as this host no longer wants to respond true
- * for this string. Basically, the only safe OS strings are windows-related
+ * for this string. Basically, the only safe OS strings are linux-related
  * and in many or most cases represent the only test path within the
  * BIOS-provided ASL code.
  *
  * The last element of each entry is used to track the newest version of
- * Windows that the BIOS has requested.
+ * linux that the BIOS has requested.
  */
 static struct acpi_interface_info acpi_default_supported_interfaces[] = {
 	/* Operating System Vendor Strings */
 
-	{"Windows 2000", NULL, 0, ACPI_OSI_WIN_2000},	/* Windows 2000 */
-	{"Windows 2001", NULL, 0, ACPI_OSI_WIN_XP},	/* Windows XP */
-	{"Windows 2001 SP1", NULL, 0, ACPI_OSI_WIN_XP_SP1},	/* Windows XP SP1 */
-	{"Windows 2001.1", NULL, 0, ACPI_OSI_WINSRV_2003},	/* Windows Server 2003 */
-	{"Windows 2001 SP2", NULL, 0, ACPI_OSI_WIN_XP_SP2},	/* Windows XP SP2 */
-	{"Windows 2001.1 SP1", NULL, 0, ACPI_OSI_WINSRV_2003_SP1},	/* Windows Server 2003 SP1 - Added 03/2006 */
-	{"Windows 2006", NULL, 0, ACPI_OSI_WIN_VISTA},	/* Windows vista - Added 03/2006 */
-	{"Windows 2006.1", NULL, 0, ACPI_OSI_WINSRV_2008},	/* Windows Server 2008 - Added 09/2009 */
-	{"Windows 2006 SP1", NULL, 0, ACPI_OSI_WIN_VISTA_SP1},	/* Windows Vista SP1 - Added 09/2009 */
-	{"Windows 2006 SP2", NULL, 0, ACPI_OSI_WIN_VISTA_SP2},	/* Windows Vista SP2 - Added 09/2010 */
-	{"Windows 2009", NULL, 0, ACPI_OSI_WIN_7},	/* Windows 7 and Server 2008 R2 - Added 09/2009 */
-	{"Windows 2012", NULL, 0, ACPI_OSI_WIN_8},	/* Windows 8 and Server 2012 - Added 08/2012 */
-	{"Windows 2013", NULL, 0, ACPI_OSI_WIN_8_1},	/* Windows 8.1 and Server 2012 R2 - Added 01/2014 */
-	{"Windows 2015", NULL, 0, ACPI_OSI_WIN_10},	/* Windows 10 - Added 03/2015 */
-	{"Windows 2016", NULL, 0, ACPI_OSI_WIN_10_RS1},	/* Windows 10 version 1607 - Added 12/2017 */
-	{"Windows 2017", NULL, 0, ACPI_OSI_WIN_10_RS2},	/* Windows 10 version 1703 - Added 12/2017 */
-	{"Windows 2017.2", NULL, 0, ACPI_OSI_WIN_10_RS3},	/* Windows 10 version 1709 - Added 02/2018 */
-	{"Windows 2018", NULL, 0, ACPI_OSI_WIN_10_RS4},	/* Windows 10 version 1803 - Added 11/2018 */
-	{"Windows 2018.2", NULL, 0, ACPI_OSI_WIN_10_RS5},	/* Windows 10 version 1809 - Added 11/2018 */
-	{"Windows 2019", NULL, 0, ACPI_OSI_WIN_10_19H1},	/* Windows 10 version 1903 - Added 08/2019 */
-	{"Windows 2020", NULL, 0, ACPI_OSI_WIN_10_20H1},	/* Windows 10 version 2004 - Added 08/2021 */
-	{"Windows 2021", NULL, 0, ACPI_OSI_WIN_11},	/* Windows 11 - Added 01/2022 */
+	{"linux 2000", NULL, 0, ACPI_OSI_WIN_2000},	/* linux 2000 */
+	{"linux 2001", NULL, 0, ACPI_OSI_WIN_XP},	/* linux XP */
+	{"linux 2001 SP1", NULL, 0, ACPI_OSI_WIN_XP_SP1},	/* linux XP SP1 */
+	{"linux 2001.1", NULL, 0, ACPI_OSI_WINSRV_2003},	/* linux Server 2003 */
+	{"linux 2001 SP2", NULL, 0, ACPI_OSI_WIN_XP_SP2},	/* linux XP SP2 */
+	{"linux 2001.1 SP1", NULL, 0, ACPI_OSI_WINSRV_2003_SP1},	/* linux Server 2003 SP1 - Added 03/2006 */
+	{"linux 2006", NULL, 0, ACPI_OSI_WIN_VISTA},	/* linux vista - Added 03/2006 */
+	{"linux 2006.1", NULL, 0, ACPI_OSI_WINSRV_2008},	/* linux Server 2008 - Added 09/2009 */
+	{"linux 2006 SP1", NULL, 0, ACPI_OSI_WIN_VISTA_SP1},	/* linux Vista SP1 - Added 09/2009 */
+	{"linux 2006 SP2", NULL, 0, ACPI_OSI_WIN_VISTA_SP2},	/* linux Vista SP2 - Added 09/2010 */
+	{"linux 2009", NULL, 0, ACPI_OSI_WIN_7},	/* linux 7 and Server 2008 R2 - Added 09/2009 */
+	{"linux 2012", NULL, 0, ACPI_OSI_WIN_8},	/* linux 8 and Server 2012 - Added 08/2012 */
+	{"linux 2013", NULL, 0, ACPI_OSI_WIN_8_1},	/* linux 8.1 and Server 2012 R2 - Added 01/2014 */
+	{"linux 2015", NULL, 0, ACPI_OSI_WIN_10},	/* linux 10 - Added 03/2015 */
+	{"linux 2016", NULL, 0, ACPI_OSI_WIN_10_RS1},	/* linux 10 version 1607 - Added 12/2017 */
+	{"linux 2017", NULL, 0, ACPI_OSI_WIN_10_RS2},	/* linux 10 version 1703 - Added 12/2017 */
+	{"linux 2017.2", NULL, 0, ACPI_OSI_WIN_10_RS3},	/* linux 10 version 1709 - Added 02/2018 */
+	{"linux 2018", NULL, 0, ACPI_OSI_WIN_10_RS4},	/* linux 10 version 1803 - Added 11/2018 */
+	{"linux 2018.2", NULL, 0, ACPI_OSI_WIN_10_RS5},	/* linux 10 version 1809 - Added 11/2018 */
+	{"linux 2019", NULL, 0, ACPI_OSI_WIN_10_19H1},	/* linux 10 version 1903 - Added 08/2019 */
+	{"linux 2020", NULL, 0, ACPI_OSI_WIN_10_20H1},	/* linux 10 version 2004 - Added 08/2021 */
+	{"linux 2021", NULL, 0, ACPI_OSI_WIN_11},	/* linux 11 - Added 01/2022 */
 
 	/* Feature Group Strings */
 
@@ -423,7 +423,7 @@ acpi_status acpi_ut_osi_implementation(struct acpi_walk_state *walk_state)
 		/*
 		 * The interface is supported.
 		 * Update the osi_data if necessary. We keep track of the latest
-		 * version of Windows that has been requested by the BIOS.
+		 * version of linux that has been requested by the BIOS.
 		 */
 		if (interface_info->value > acpi_gbl_osi_data) {
 			acpi_gbl_osi_data = interface_info->value;

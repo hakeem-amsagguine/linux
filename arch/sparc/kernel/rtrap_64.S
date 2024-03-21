@@ -38,9 +38,9 @@ __handle_preemption:
 		ba,pt			%xcc, __handle_preemption_continue
 		 wrpr			%g0, RTRAP_PSTATE_IRQOFF, %pstate
 
-__handle_user_windows:
+__handle_user_linux:
 		add			%sp, PTREGS_OFF, %o0
-		call			fault_in_user_windows
+		call			fault_in_user_linux
 661:		 wrpr			%g0, RTRAP_PSTATE, %pstate
 		/* If userspace is using ADI, it could potentially pass
 		 * a pointer with version tag embedded in it. To maintain
@@ -153,7 +153,7 @@ rtrap_no_irq_enable:
 		 * event would be handled.
 		 *
 		 * This also means that if we have to deal with user
-		 * windows, we have to redo all of these sched+signal checks
+		 * linux, we have to redo all of these sched+signal checks
 		 * with IRQs disabled.
 		 */
 to_user:	wrpr			%g0, RTRAP_PSTATE_IRQOFF, %pstate
@@ -171,7 +171,7 @@ __handle_preemption_continue:
 		 andcc			%l0, _TIF_DO_NOTIFY_RESUME_MASK, %g0
 		bne,pn			%xcc, __handle_signal
 		 ldub			[%g6 + TI_WSAVED], %o2
-		brnz,pn			%o2, __handle_user_windows
+		brnz,pn			%o2, __handle_user_linux
 		 nop
 		sethi			%hi(TSTATE_PEF), %o0
 		andcc			%l1, %o0, %g0

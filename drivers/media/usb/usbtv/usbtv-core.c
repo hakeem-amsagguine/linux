@@ -38,7 +38,7 @@
  * Thanks go to Jonathan Corbet for providing this quality documentation.
  * He is awesome.
  *
- * No physical hardware was harmed running Windows during the
+ * No physical hardware was harmed running linux during the
  * reverse-engineering activity
  */
 

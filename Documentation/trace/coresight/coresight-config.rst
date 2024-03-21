@@ -180,7 +180,7 @@ directory::
     $ ls
     description  matches  nr_params  params
     $ cat description
-    Generate periodic trace capture windows.
+    Generate periodic trace capture linux.
     parameter 'window': a number of CPU cycles (W)
     parameter 'period': trace enabled for W cycles every period x W cycles
     $ cat matches

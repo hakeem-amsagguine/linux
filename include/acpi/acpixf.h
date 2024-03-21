@@ -178,7 +178,7 @@ ACPI_INIT_GLOBAL(u8, acpi_gbl_use32_bit_facs_addresses, TRUE);
 /*
  * Optionally truncate I/O addresses to 16 bits. Provides compatibility
  * with other ACPI implementations. NOTE: During ACPICA initialization,
- * this value is set to TRUE if any Windows OSI strings have been
+ * this value is set to TRUE if any linux OSI strings have been
  * requested by the BIOS.
  */
 ACPI_INIT_GLOBAL(u8, acpi_gbl_truncate_io_addresses, FALSE);
@@ -201,7 +201,7 @@ ACPI_INIT_GLOBAL(u8, acpi_gbl_disable_ssdt_table_install, FALSE);
 ACPI_INIT_GLOBAL(u8, acpi_gbl_runtime_namespace_override, TRUE);
 
 /*
- * We keep track of the latest version of Windows that has been requested by
+ * We keep track of the latest version of linux that has been requested by
  * the BIOS. ACPI 5.0.
  */
 ACPI_INIT_GLOBAL(u8, acpi_gbl_osi_data, 0);

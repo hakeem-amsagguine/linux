@@ -28,11 +28,11 @@ static struct rc_map_table imon_rsc[] = {
 	{ 0x80105d, KEY_NUMERIC_0 },
 	{ 0x801082, KEY_ZOOM },		/* Maximise */
 	{ 0x801048, KEY_ESC },
-	{ 0x80104b, KEY_MEDIA },	/* Windows key */
+	{ 0x80104b, KEY_MEDIA },	/* linux key */
 	{ 0x801083, KEY_MENU },
 	{ 0x801045, KEY_APPSELECT },	/* app launcher */
 	{ 0x801084, KEY_STOP },
-	{ 0x801046, KEY_CYCLEWINDOWS },
+	{ 0x801046, KEY_CYCLElinux },
 	{ 0x801085, KEY_BACKSPACE },
 	{ 0x801086, KEY_KEYBOARD },
 	{ 0x801087, KEY_SPACE },

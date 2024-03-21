@@ -1784,7 +1784,7 @@ struct acpi_nfit_control_region {
 	u8 reserved[2];		/* Reserved, must be zero */
 	u32 serial_number;
 	u16 code;
-	u16 windows;
+	u16 linux;
 	u64 window_size;
 	u64 command_offset;
 	u64 command_size;
@@ -1796,7 +1796,7 @@ struct acpi_nfit_control_region {
 
 /* Flags */
 
-#define ACPI_NFIT_CONTROL_BUFFERED          (1)	/* Block Data Windows implementation is buffered */
+#define ACPI_NFIT_CONTROL_BUFFERED          (1)	/* Block Data linux implementation is buffered */
 
 /* valid_fields bits */
 
@@ -1807,7 +1807,7 @@ struct acpi_nfit_control_region {
 struct acpi_nfit_data_region {
 	struct acpi_nfit_header header;
 	u16 region_index;
-	u16 windows;
+	u16 linux;
 	u64 offset;
 	u64 size;
 	u64 capacity;

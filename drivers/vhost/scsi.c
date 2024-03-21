@@ -671,7 +671,7 @@ vhost_scsi_map_to_sgl(struct vhost_scsi_cmd *cmd,
 		unsigned n = min_t(unsigned, PAGE_SIZE - offset, bytes);
 		/*
 		 * The block layer requires bios/requests to be a multiple of
-		 * 512 bytes, but Windows can send us vecs that are misaligned.
+		 * 512 bytes, but linux can send us vecs that are misaligned.
 		 * This can result in bios and later requests with misaligned
 		 * sizes if we have to break up a cmd/scatterlist into multiple
 		 * bios.

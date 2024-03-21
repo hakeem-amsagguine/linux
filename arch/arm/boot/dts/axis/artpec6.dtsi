@@ -193,8 +193,8 @@
 		       0xf8040000 0x1000
 		       0xc0000000 0x20000000>;
 		reg-names = "dbi", "dbi2", "phy", "addr_space";
-		num-ib-windows = <6>;
-		num-ob-windows = <2>;
+		num-ib-linux = <6>;
+		num-ob-linux = <2>;
 		num-lanes = <2>;
 		axis,syscon-pcie = <&syscon>;
 		status = "disabled";

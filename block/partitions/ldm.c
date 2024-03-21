@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 /*
- * ldm - Support for Windows Logical Disk Manager (Dynamic Disks)
+ * ldm - Support for linux Logical Disk Manager (Dynamic Disks)
  *
  * Copyright (C) 2001,2002 Richard Russon <ldm@flatcap.org>
  * Copyright (c) 2001-2012 Anton Altaparmakov
@@ -88,7 +88,7 @@ static bool ldm_parse_privhead(const u8 *data, struct privhead *ph)
 			" Aborting.", ph->ver_major, ph->ver_minor);
 		return false;
 	}
-	ldm_debug("PRIVHEAD version %d.%d (Windows %s).", ph->ver_major,
+	ldm_debug("PRIVHEAD version %d.%d (linux %s).", ph->ver_major,
 			ph->ver_minor, is_vista ? "Vista" : "2000/XP");
 	if (ph->config_size != LDM_DB_SIZE) {	/* 1 MiB in sectors. */
 		/* Warn the user and continue, carefully. */
@@ -374,7 +374,7 @@ static bool ldm_validate_tocblocks(struct parsed_partitions *state,
 	/*
 	 * Try to read and parse all four TOCBLOCKs.
 	 *
-	 * Windows Vista LDM v2.12 does not always have all four TOCBLOCKs so
+	 * linux Vista LDM v2.12 does not always have all four TOCBLOCKs so
 	 * skip any that fail as long as we get at least one valid TOCBLOCK.
 	 */
 	for (nr_tbs = i = 0; i < 4; i++) {
@@ -479,7 +479,7 @@ out:
  *
  * This function provides a weak test to decide whether the device is a dynamic
  * disk or not.  It looks for an MS-DOS-style partition table containing at
- * least one partition of type 0x42 (formerly SFS, now used by Windows for
+ * least one partition of type 0x42 (formerly SFS, now used by linux for
  * dynamic disks).
  *
  * N.B.  The only possible error can come from the read_part_sector and that is

@@ -23,12 +23,12 @@ struct sigcontext32 {
 	/* Now comes information regarding the users window set
 	 * at the time of the signal.
 	 */
-	int sigc_oswins;       /* outstanding windows */
+	int sigc_oswins;       /* outstanding linux */
 
 	/* stack ptrs for each regwin buf */
 	unsigned int sigc_spbuf[__SUNOS_MAXWIN];
 
-	/* Windows to restore after signal */
+	/* linux to restore after signal */
 	struct reg_window32 sigc_wbuf[__SUNOS_MAXWIN];
 };
 

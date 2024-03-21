@@ -62,22 +62,22 @@ this table marked with no it means default is without **no**.
    * - fmask=
 
    * - nohidden
-     - Files with the Windows-specific HIDDEN (FILE_ATTRIBUTE_HIDDEN) attribute
+     - Files with the linux-specific HIDDEN (FILE_ATTRIBUTE_HIDDEN) attribute
        will not be shown under Linux.
 
    * - sys_immutable
-     - Files with the Windows-specific SYSTEM (FILE_ATTRIBUTE_SYSTEM) attribute
+     - Files with the linux-specific SYSTEM (FILE_ATTRIBUTE_SYSTEM) attribute
        will be marked as system immutable files.
 
    * - hide_dot_files
-     - Updates the Windows-specific HIDDEN (FILE_ATTRIBUTE_HIDDEN) attribute
+     - Updates the linux-specific HIDDEN (FILE_ATTRIBUTE_HIDDEN) attribute
        when creating and moving or renaming files. Files whose names start
        with a dot will have the HIDDEN attribute set and files whose names
        do not start with a dot will have it unset.
 
-   * - windows_names
+   * - linux_names
      - Prevents the creation of files and directories with a name not allowed
-       by Windows, either because it contains some not allowed character (which
+       by linux, either because it contains some not allowed character (which
        are the characters " * / : < > ? \\ | and those whose code is less than
        0x20), because the name (with or without extension) is a reserved file
        name (CON, AUX, NUL, PRN, LPT1-9, COM1-9) or because the last character

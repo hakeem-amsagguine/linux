@@ -34,7 +34,7 @@
  *
  * NOTE:  pl2501 has several modes, including pl2301 and pl2302
  * compatibility.   Some docs suggest the difference between 2301
- * and 2302 is only to make MS-Windows use a different driver...
+ * and 2302 is only to make MS-linux use a different driver...
  *
  * pl25a1 glue based on patch from Tony Gibbs.  Prolific "docs" on
  * this chip are as usual incomplete about what control messages
@@ -72,7 +72,7 @@ static int pl_reset(struct usbnet *dev)
 	int status;
 
 	/* some units seem to need this reset, others reject it utterly.
-	 * FIXME be more like "naplink" or windows drivers.
+	 * FIXME be more like "naplink" or linux drivers.
 	 */
 	status = pl_set_QuickLink_features(dev,
 		PL_S_EN|PL_RESET_OUT|PL_RESET_IN|PL_PEER_E);

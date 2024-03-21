@@ -111,7 +111,7 @@ static int af9005_generic_read_write(struct dvb_usb_device *d, u16 reg,
 	/*
 	 * In thesis, both input and output buffers should have
 	 * identical values for st->data[5] to st->data[8].
-	 * However, windows driver doesn't check these fields, in fact
+	 * However, linux driver doesn't check these fields, in fact
 	 * sometimes the register in the reply is different that what
 	 * has been sent
 	 */

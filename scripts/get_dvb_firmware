@@ -304,7 +304,7 @@ sub dibusb {
 
 sub nxt2002 {
     my $sourcefile = "Technisat_DVB-PC_4_4_COMPACT.zip";
-    my $url = "http://www.bbti.us/download/windows/$sourcefile";
+    my $url = "http://www.bbti.us/download/linux/$sourcefile";
     my $hash = "476befae8c7c1bb9648954060b1eec1f";
     my $outfile = "dvb-fe-nxt2002.fw";
     my $tmpdir = tempdir(DIR => "/tmp", CLEANUP => 1);
@@ -681,7 +681,7 @@ sub drxk_terratec_htc_stick {
     my $zipfile = "Cinergy_HTC_Stick_Drv_5.09.1202.00_XP_Vista_7.exe";
     my $hash = "6722a2442a05423b781721fbc069ed5e";
     my $tmpdir = tempdir(DIR => "/tmp", CLEANUP => 0);
-    my $drvfile = "Cinergy HTC Stick/BDA Driver 5.09.1202.00/Windows 32 Bit/emOEM.sys";
+    my $drvfile = "Cinergy HTC Stick/BDA Driver 5.09.1202.00/linux 32 Bit/emOEM.sys";
     my $fwfile = "dvb-usb-terratec-htc-stick-drxk.fw";
 
     checkstandard();

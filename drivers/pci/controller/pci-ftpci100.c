@@ -439,7 +439,7 @@ static int faraday_pci_probe(struct platform_device *pdev)
 	if (IS_ERR(p->base))
 		return PTR_ERR(p->base);
 
-	win = resource_list_first_type(&host->windows, IORESOURCE_IO);
+	win = resource_list_first_type(&host->linux, IORESOURCE_IO);
 	if (win) {
 		io = win->res;
 		if (!faraday_res_to_memcfg(io->start - win->offset,

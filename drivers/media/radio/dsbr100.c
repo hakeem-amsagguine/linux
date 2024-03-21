@@ -5,11 +5,11 @@
  * audio data has to be handled by a sound driver.
  *
  * Major issue: I can't find out where the device reports the signal
- * strength, and indeed the windows software appearantly just looks
+ * strength, and indeed the linux software appearantly just looks
  * at the stereo indicator as well.  So, scanning will only find
  * stereo stations.  Sad, but I can't help it.
  *
- * Also, the windows program sends oodles of messages over to the
+ * Also, the linux program sends oodles of messages over to the
  * device, and I couldn't figure out their meaning.  My suspicion
  * is that they don't have any:-)
  *

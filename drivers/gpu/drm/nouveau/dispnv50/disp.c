@@ -2304,10 +2304,10 @@ nv50_disp_atomic_commit_tail(struct drm_atomic_state *state)
 	 *TODO: Proper handling of window ownership (Turing apparently
 	 *      supports non-fixed mappings).
 	 */
-	if (core->assign_windows) {
+	if (core->assign_linux) {
 		core->func->wndw.owner(core);
 		nv50_disp_atomic_commit_core(state, interlock);
-		core->assign_windows = false;
+		core->assign_linux = false;
 		interlock[NV50_DISP_INTERLOCK_CORE] = 0;
 	}
 
@@ -2318,7 +2318,7 @@ nv50_disp_atomic_commit_tail(struct drm_atomic_state *state)
 	 *
 	 * The EFI GOP driver on newer GPUs configures window channels with a
 	 * different output format to what we do, and the core channel update
-	 * in the assign_windows case above would result in a state mismatch.
+	 * in the assign_linux case above would result in a state mismatch.
 	 *
 	 * Delay some of the head update until after that point to workaround
 	 * the issue.  This only affects the initial modeset.
@@ -2569,7 +2569,7 @@ nv50_disp_atomic_check(struct drm_device *dev, struct drm_atomic_state *state)
 	struct nv50_head_atom *asyh;
 	int ret, i;
 
-	if (core->assign_windows && core->func->head->static_wndw_map) {
+	if (core->assign_linux && core->func->head->static_wndw_map) {
 		drm_for_each_crtc(crtc, dev) {
 			new_crtc_state = drm_atomic_get_crtc_state(state,
 								   crtc);

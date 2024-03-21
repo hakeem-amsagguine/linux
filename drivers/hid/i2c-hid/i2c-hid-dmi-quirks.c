@@ -30,11 +30,11 @@ struct i2c_hid_desc_override {
 /*
  * descriptors for the SIPODEV SP1064 touchpad
  *
- * This device does not supply any descriptors and on windows a filter
+ * This device does not supply any descriptors and on linux a filter
  * driver operates between the i2c-hid layer and the device and injects
  * these descriptors when the device is prompted. The descriptors were
  * extracted by listening to the i2c-hid traffic that occurs between the
- * windows filter driver and the windows i2c-hid driver.
+ * linux filter driver and the linux i2c-hid driver.
  */
 
 static const struct i2c_hid_desc_override sipodev_desc = {

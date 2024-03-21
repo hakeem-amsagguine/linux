@@ -54,7 +54,7 @@ static void pcibios_scanbus(struct pci_channel *hose)
 		pci_add_resource_offset(&resources, res, offset);
 	}
 
-	list_splice_init(&resources, &bridge->windows);
+	list_splice_init(&resources, &bridge->linux);
 	bridge->dev.parent = NULL;
 	bridge->sysdata = hose;
 	bridge->busnr = next_busno;

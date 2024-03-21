@@ -96,7 +96,7 @@ PAMU restricts DMA operations so that they can only occur within a window.
 Because PCI devices must be able to DMA to memory, the primary window must
 be used to cover all of the guest's memory space.
 
-PAMU primary windows can be divided into 256 subwindows, and each
+PAMU primary linux can be divided into 256 sublinux, and each
 subwindow can have its own address mapping ("guest physical" to "true
 physical").  However, each subwindow has to have the same alignment, which
 means they cannot be located at just any address.  Because of these

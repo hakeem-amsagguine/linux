@@ -65,7 +65,7 @@ Control/Status Registers for configuring the Endpoint Controller. Host can
 write into this region for configuring the outbound Address Translation Unit
 (ATU) and to indicate the link status. Endpoint can indicate the status of
 commands issued by host in this region. Endpoint can also indicate the
-scratchpad offset and number of memory windows to the host using this region.
+scratchpad offset and number of memory linux to the host using this region.
 
 The format of Config Region is given below. All the fields here are 32 bits.
 
@@ -158,7 +158,7 @@ The format of Config Region is given below. All the fields here are 32 bits.
 
   NO OF MEMORY WINDOW:
 
-	Specifies the number of memory windows supported by the NTB device.
+	Specifies the number of memory linux supported by the NTB device.
 
   SPAD OFFSET:
 
@@ -225,7 +225,7 @@ Modeling Constructs:
 ====================
 
 There are 5 or more distinct regions (config, self scratchpad, peer
-scratchpad, doorbell, one or more memory windows) to be modeled to achieve
+scratchpad, doorbell, one or more memory linux) to be modeled to achieve
 NTB functionality. At least one memory window is required while more than
 one is permitted. All these regions should be mapped to BARs for hosts to
 access these regions.
@@ -341,8 +341,8 @@ is done during the initialization phase of NTB endpoint function driver.
 Mapping from EP controller 2 OB space to PCI address space is done when HOST2
 sends CMD_CONFIGURE_MW/CMD_CONFIGURE_DOORBELL.
 
-Modeling Optional Memory Windows:
+Modeling Optional Memory linux:
 ---------------------------------
 
-This is modeled the same was as MW1 but each of the additional memory windows
+This is modeled the same was as MW1 but each of the additional memory linux
 is mapped to separate BARs.

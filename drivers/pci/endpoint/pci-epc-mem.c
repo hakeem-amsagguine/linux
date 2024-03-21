@@ -38,15 +38,15 @@ static int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
 /**
  * pci_epc_multi_mem_init() - initialize the pci_epc_mem structure
  * @epc: the EPC device that invoked pci_epc_mem_init
- * @windows: pointer to windows supported by the device
- * @num_windows: number of windows device supports
+ * @linux: pointer to linux supported by the device
+ * @num_linux: number of linux device supports
  *
  * Invoke to initialize the pci_epc_mem structure used by the
  * endpoint functions to allocate mapped PCI address.
  */
 int pci_epc_multi_mem_init(struct pci_epc *epc,
-			   struct pci_epc_mem_window *windows,
-			   unsigned int num_windows)
+			   struct pci_epc_mem_window *linux,
+			   unsigned int num_linux)
 {
 	struct pci_epc_mem *mem = NULL;
 	unsigned long *bitmap = NULL;
@@ -57,21 +57,21 @@ int pci_epc_multi_mem_init(struct pci_epc *epc,
 	int ret;
 	int i;
 
-	epc->num_windows = 0;
+	epc->num_linux = 0;
 
-	if (!windows || !num_windows)
+	if (!linux || !num_linux)
 		return -EINVAL;
 
-	epc->windows = kcalloc(num_windows, sizeof(*epc->windows), GFP_KERNEL);
-	if (!epc->windows)
+	epc->linux = kcalloc(num_linux, sizeof(*epc->linux), GFP_KERNEL);
+	if (!epc->linux)
 		return -ENOMEM;
 
-	for (i = 0; i < num_windows; i++) {
-		page_size = windows[i].page_size;
+	for (i = 0; i < num_linux; i++) {
+		page_size = linux[i].page_size;
 		if (page_size < PAGE_SIZE)
 			page_size = PAGE_SIZE;
 		page_shift = ilog2(page_size);
-		pages = windows[i].size >> page_shift;
+		pages = linux[i].size >> page_shift;
 		bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
 
 		mem = kzalloc(sizeof(*mem), GFP_KERNEL);
@@ -89,27 +89,27 @@ int pci_epc_multi_mem_init(struct pci_epc *epc,
 			goto err_mem;
 		}
 
-		mem->window.phys_base = windows[i].phys_base;
-		mem->window.size = windows[i].size;
+		mem->window.phys_base = linux[i].phys_base;
+		mem->window.size = linux[i].size;
 		mem->window.page_size = page_size;
 		mem->bitmap = bitmap;
 		mem->pages = pages;
 		mutex_init(&mem->lock);
-		epc->windows[i] = mem;
+		epc->linux[i] = mem;
 	}
 
-	epc->mem = epc->windows[0];
-	epc->num_windows = num_windows;
+	epc->mem = epc->linux[0];
+	epc->num_linux = num_linux;
 
 	return 0;
 
 err_mem:
 	for (; i >= 0; i--) {
-		mem = epc->windows[i];
+		mem = epc->linux[i];
 		kfree(mem->bitmap);
 		kfree(mem);
 	}
-	kfree(epc->windows);
+	kfree(epc->linux);
 
 	return ret;
 }
@@ -150,19 +150,19 @@ void pci_epc_mem_exit(struct pci_epc *epc)
 	struct pci_epc_mem *mem;
 	int i;
 
-	if (!epc->num_windows)
+	if (!epc->num_linux)
 		return;
 
-	for (i = 0; i < epc->num_windows; i++) {
-		mem = epc->windows[i];
+	for (i = 0; i < epc->num_linux; i++) {
+		mem = epc->linux[i];
 		kfree(mem->bitmap);
 		kfree(mem);
 	}
-	kfree(epc->windows);
+	kfree(epc->linux);
 
-	epc->windows = NULL;
+	epc->linux = NULL;
 	epc->mem = NULL;
-	epc->num_windows = 0;
+	epc->num_linux = 0;
 }
 EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
 
@@ -186,8 +186,8 @@ void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
 	int order;
 	int i;
 
-	for (i = 0; i < epc->num_windows; i++) {
-		mem = epc->windows[i];
+	for (i = 0; i < epc->num_linux; i++) {
+		mem = epc->linux[i];
 		mutex_lock(&mem->lock);
 		align_size = ALIGN(size, mem->window.page_size);
 		order = pci_epc_mem_get_order(mem, align_size);
@@ -221,8 +221,8 @@ static struct pci_epc_mem *pci_epc_get_matching_window(struct pci_epc *epc,
 	struct pci_epc_mem *mem;
 	int i;
 
-	for (i = 0; i < epc->num_windows; i++) {
-		mem = epc->windows[i];
+	for (i = 0; i < epc->num_linux; i++) {
+		mem = epc->linux[i];
 
 		if (phys_addr >= mem->window.phys_base &&
 		    phys_addr < (mem->window.phys_base + mem->window.size))

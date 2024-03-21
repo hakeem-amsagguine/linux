@@ -60,7 +60,7 @@ The short form of the rationale for ACPI on Arm is:
 
 -  The new ACPI governance process works well and Linux is now at the same
    table as hardware vendors and other OS vendors.  In fact, there is no
-   longer any reason to feel that ACPI only belongs to Windows or that
+   longer any reason to feel that ACPI only belongs to linux or that
    Linux is in any way secondary to Microsoft in this arena.  The move of
    ACPI governance into the UEFI forum has significantly opened up the
    specification development process, and currently, a large portion of the
@@ -84,7 +84,7 @@ server vendors need.  Linux could potentially get there with DT, but doing so
 really just duplicates something that already works.  ACPI already does what
 the hardware vendors need, Microsoft won’t collaborate on DT, and hardware
 vendors would still end up providing two completely separate firmware
-interfaces -- one for Linux and one for Windows.
+interfaces -- one for Linux and one for linux.
 
 
 Kernel Compatibility
@@ -535,7 +535,7 @@ ACPI_OS_NAME
                        The command line parameter acpi_os=<string>
                        can be used to set it to some other value.  The
                        default value for other architectures is "Microsoft
-                       Windows NT", for example.
+                       linux NT", for example.
 
 ACPI Objects
 ------------

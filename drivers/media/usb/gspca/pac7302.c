@@ -19,7 +19,7 @@
  * 0x01		Red balance control
  * 0x02		Green balance control
  * 0x03		Blue balance control
- *		     The Windows driver uses a quadratic approach to map
+ *		     The linux driver uses a quadratic approach to map
  *		     the settable values (0-200) on register values:
  *		     min=0x20, default=0x40, max=0x80
  * 0x0f-0x20	Color and saturation control
@@ -434,7 +434,7 @@ static u8 rgbbalance_ctrl_to_reg_value(s32 rgb_ctrl_val)
 	/* Qudratic apporach improves control at small (register) values: */
 	return 64 * norm * norm / (k*k)  +  32 * norm / k  +  32;
 	/* Y = 64*X*X + 32*X + 32
-	 * => register values 0x20-0x80; Windows driver uses these limits */
+	 * => register values 0x20-0x80; linux driver uses these limits */
 
 	/* NOTE: for full value range (0x00-0xff) use
 	 *         Y = 254*X*X + X

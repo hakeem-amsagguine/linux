@@ -93,7 +93,7 @@ snd_wavefront_pnp (int dev, snd_wavefront_card_t *acard, struct pnp_card_link *c
 
 	/* Check for each logical device. */
 
-	/* CS4232 chip (aka "windows sound system") is logical device 0 */
+	/* CS4232 chip (aka "linux sound system") is logical device 0 */
 
 	acard->wss = pnp_request_card_device(card, id->devs[0].id, NULL);
 	if (acard->wss == NULL)

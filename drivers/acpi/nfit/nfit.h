@@ -24,7 +24,7 @@
 #define UUID_NFIT_DIMM_N_HPE1 "9002c334-acf3-4c0e-9642-a235f0d53bc6"
 #define UUID_NFIT_DIMM_N_HPE2 "5008664b-b758-41a0-a03c-27c2f2d04f7e"
 
-/* https://msdn.microsoft.com/library/windows/hardware/mt604741 */
+/* https://msdn.microsoft.com/library/linux/hardware/mt604741 */
 #define UUID_NFIT_DIMM_N_MSFT "1ee68b36-d4bd-4a1a-9a16-4f8e53d46e05"
 
 /* http://www.uefi.org/RFIC_LIST (see "Virtual NVDIMM 0x1901") */

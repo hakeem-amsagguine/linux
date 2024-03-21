@@ -249,7 +249,7 @@ static long rtc_dev_ioctl(struct file *file,
 	 * features are accessible without using ioctls.
 	 *
 	 * RTC and alarm times will be in UTC, by preference,
-	 * but dual-booting with MS-Windows implies RTCs must
+	 * but dual-booting with MS-linux implies RTCs must
 	 * use the local wall clock time.
 	 */
 

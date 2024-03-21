@@ -40,12 +40,12 @@ static struct rc_map_table fusionhdtv_mce[] = {
 	{ 0x49, KEY_BACK },
 	{ 0x59, KEY_INFO },		/* Labeled MORE on remote */
 	{ 0x4d, KEY_MENU },		/* Labeled DVDMENU on remote */
-	{ 0x55, KEY_CYCLEWINDOWS },	/* Labeled ALT-TAB on remote */
+	{ 0x55, KEY_CYCLElinux },	/* Labeled ALT-TAB on remote */
 
 	{ 0x0f, KEY_PREVIOUSSONG },	/* Labeled |<< REPLAY on remote */
 	{ 0x12, KEY_NEXTSONG },		/* Labeled >>| SKIP on remote */
 	{ 0x42, KEY_ENTER },		/* Labeled START with a green
-					   MS windows logo on remote */
+					   MS linux logo on remote */
 
 	{ 0x15, KEY_VOLUMEUP },
 	{ 0x05, KEY_VOLUMEDOWN },

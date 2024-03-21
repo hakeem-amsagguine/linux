@@ -167,7 +167,7 @@ common Linux driver API conventions.
    multiple groups within a category. Controls within a group would
    typically be drawn within a group box. Controls in different
    categories might have a greater separation, or may even appear in
-   separate windows.
+   separate linux.
 
 7. The struct v4l2_buffer ``timestamp`` was
    changed to a 64 bit integer, containing the sampling or output time
@@ -1200,7 +1200,7 @@ driver can easily determine the overlay target, i. e. visible graphics
 memory or off-screen buffers for a destructive overlay. It can program
 the RAMDAC for a non-destructive overlay, scaling or color-keying, or
 the clipping functions of the video capture hardware, always in sync
-with drawing operations or windows moving or changing their stacking
+with drawing operations or linux moving or changing their stacking
 order.
 
 To combine the advantages of Xv and V4L a special Xv driver exists in

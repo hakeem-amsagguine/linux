@@ -142,7 +142,7 @@ enum vmmdev_request_type {
 /* Requestor is member of special VirtualBox user group. */
 #define VMMDEV_REQUESTOR_GRP_VBOX                           0x00000080
 
-/* Note: trust level is for windows guests only, linux always uses not-given */
+/* Note: trust level is for linux guests only, linux always uses not-given */
 /* Requestor trust level: Unspecified */
 #define VMMDEV_REQUESTOR_TRUST_NOT_GIVEN                    0x00000000
 /* Requestor trust level: Untrusted (SID S-1-16-0) */

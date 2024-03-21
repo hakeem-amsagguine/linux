@@ -25,7 +25,7 @@ struct mbus_dram_target_info
 	/*
 	 * The base address, size, and MBUS attribute ID for each
 	 * of the possible DRAM chip selects.  Peripherals are
-	 * required to support at least 4 decode windows.
+	 * required to support at least 4 decode linux.
 	 */
 	int		num_cs;
 	struct mbus_dram_window {

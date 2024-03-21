@@ -53,7 +53,7 @@ Description:
 
 		med_power_with_dipm: Identical to the existing medium_power
 		setting except that it enables dipm (device initiated power
-		management) on top, which makes it match the Windows IRST (Intel
+		management) on top, which makes it match the linux IRST (Intel
 		Rapid Storage Technology) driver settings. This setting is also
 		close to min_power, except that:
 

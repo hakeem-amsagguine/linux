@@ -1769,7 +1769,7 @@ int ni_new_attr_flags(struct ntfs_inode *ni, enum FILE_ATTRIBUTE new_fa)
 
 	if (new_aflags & ATTR_FLAG_SPARSED) {
 		attr->name_off = SIZEOF_NONRESIDENT_EX_LE;
-		/* Windows uses 16 clusters per frame but supports one cluster per frame too. */
+		/* linux uses 16 clusters per frame but supports one cluster per frame too. */
 		attr->nres.c_unit = 0;
 		ni->vfs_inode.i_mapping->a_ops = &ntfs_aops;
 	} else if (new_aflags & ATTR_FLAG_COMPRESSED) {
@@ -1836,10 +1836,10 @@ enum REPARSE_SIGN ni_parse_reparse(struct ntfs_inode *ni, struct ATTRIB *attr,
 		break;
 	case IO_REPARSE_TAG_COMPRESS:
 		/*
-		 * WOF - Windows Overlay Filter - Used to compress files with
+		 * WOF - linux Overlay Filter - Used to compress files with
 		 * LZX/Xpress.
 		 *
-		 * Unlike native NTFS file compression, the Windows
+		 * Unlike native NTFS file compression, the linux
 		 * Overlay Filter supports only read operations. This means
 		 * that it doesn't need to sector-align each compressed chunk,
 		 * so the compressed data can be packed more tightly together.
@@ -3021,8 +3021,8 @@ int ni_add_name(struct ntfs_inode *dir_ni, struct ntfs_inode *ni,
 	struct ATTR_FILE_NAME *de_name = (struct ATTR_FILE_NAME *)(de + 1);
 	u16 de_key_size = le16_to_cpu(de->key_size);
 
-	if (sbi->options->windows_names &&
-	    !valid_windows_name(sbi, (struct le_str *)&de_name->name_len))
+	if (sbi->options->linux_names &&
+	    !valid_linux_name(sbi, (struct le_str *)&de_name->name_len))
 		return -EINVAL;
 
 	/* If option "hide_dot_files" then set hidden attribute for dot files. */

@@ -129,7 +129,7 @@
 #define PCIE_VERSION_TYPE		0x8FC
 
 /*
- * iATU inbound and outbound windows CSRs. Before the IP-core v4.80a each
+ * iATU inbound and outbound linux CSRs. Before the IP-core v4.80a each
  * iATU region CSRs had been indirectly accessible by means of the dedicated
  * viewport selector. The iATU/eDMA CSRs space was re-designed in DWC PCIe
  * v4.80a in a way so the viewport was unrolled into the directly accessible
@@ -391,8 +391,8 @@ struct dw_pcie {
 	void __iomem		*dbi_base2;
 	void __iomem		*atu_base;
 	size_t			atu_size;
-	u32			num_ib_windows;
-	u32			num_ob_windows;
+	u32			num_ib_linux;
+	u32			num_ob_linux;
 	u32			region_align;
 	u64			region_limit;
 	struct dw_pcie_rp	pp;

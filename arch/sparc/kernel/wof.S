@@ -17,7 +17,7 @@
 
 /* WARNING: This routine is hairy and _very_ complicated, but it
  *          must be as fast as possible as it handles the allocation
- *          of register windows to the user and kernel.  If you touch
+ *          of register linux to the user and kernel.  If you touch
  *          this code be _very_ careful as many other pieces of the
  *          kernel depend upon how this code behaves.  You have been
  *          duly warned...
@@ -64,8 +64,8 @@ spnwin_patch3_7win:	and	%twin_tmp, 0x7f, %twin_tmp
 	 */
 
 	/* Datum current_thread_info->uwinmask contains at all times a bitmask
-	 * where if any user windows are active, at least one bit will
-	 * be set in to mask.  If no user windows are active, the bitmask
+	 * where if any user linux are active, at least one bit will
+	 * be set in to mask.  If no user linux are active, the bitmask
 	 * will be all zeroes.
 	 */
 	.globl	spill_window_entry 
@@ -79,7 +79,7 @@ spill_window_entry:
 	/* Compute what the new %wim will be if we save the
 	 * window properly in this trap handler.
 	 *
-	 * newwim = ((%wim>>1) | (%wim<<(nwindows - 1)));
+	 * newwim = ((%wim>>1) | (%wim<<(nlinux - 1)));
 	 */
 		srl	%t_wim, 0x1, %twin_tmp
 spnwin_patch1:	sll	%t_wim, 7, %glob_tmp
@@ -96,7 +96,7 @@ spnwin_patch2:	and	%glob_tmp, 0xff, %glob_tmp
 	be,a	spwin_fromuser				! all user wins, branch
 	 save	%g0, %g0, %g0				! Go where saving will occur
 	
-	/* See if any user windows are active in the set. */
+	/* See if any user linux are active in the set. */
 	ld	[%curptr + TI_UWINMASK], %twin_tmp	! grab win mask
 	orcc	%g0, %twin_tmp, %g0			! check for set bits
 	bne	spwin_exist_uwins			! yep, there are some
@@ -104,7 +104,7 @@ spnwin_patch2:	and	%glob_tmp, 0xff, %glob_tmp
 
 	/* Save into the window which must be saved and do it.
 	 * Basically if we are here, this means that we trapped
-	 * from kernel mode with only kernel windows in the register
+	 * from kernel mode with only kernel linux in the register
 	 * file.
 	 */
 	save	%g0, %g0, %g0		! save into the window to stash away
@@ -127,7 +127,7 @@ spwin_no_userwins_from_kernel:
 spwin_exist_uwins:
 	/* LOCATION: Trap window */
 
-	/* Wow, user windows have to be dealt with, this is dirty
+	/* Wow, user linux have to be dealt with, this is dirty
 	 * and messy as all hell.  And difficult to follow if you
 	 * are approaching the infamous register window trap handling
 	 * problem for the first time. DON'T LOOK!
@@ -223,7 +223,7 @@ spwin_user_stack_is_bolixed:
 	st	%twin_tmp, [%curptr + TI_W_SAVED]
 
 		/* Compute new user window mask.  What we are basically
-		 * doing is taking two windows, the invalid one at trap
+		 * doing is taking two linux, the invalid one at trap
 		 * time and the one we attempted to throw onto the users
 		 * stack, and saying that everything else is an ok user
 		 * window.  umask = ((~(%t_wim | %wim)) & valid_wim_bits)

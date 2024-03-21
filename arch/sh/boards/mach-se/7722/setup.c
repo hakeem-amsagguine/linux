@@ -137,7 +137,7 @@ static struct platform_device *se7722_devices[] __initdata = {
 
 static int __init se7722_devices_setup(void)
 {
-	mrshpc_setup_windows();
+	mrshpc_setup_linux();
 
 	/* Wire-up dynamic vectors */
 	cf_ide_resources[2].start = cf_ide_resources[2].end =

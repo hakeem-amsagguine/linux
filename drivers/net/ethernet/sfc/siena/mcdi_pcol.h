@@ -5176,7 +5176,7 @@
 #define       MC_CMD_WOL_FILTER_SET_IN_WOL_TYPE_LEN 4
 /* enum: Magic */
 #define          MC_CMD_WOL_TYPE_MAGIC 0x0
-/* enum: MS Windows Magic */
+/* enum: MS linux Magic */
 #define          MC_CMD_WOL_TYPE_WIN_MAGIC 0x2
 /* enum: IPv4 Syn */
 #define          MC_CMD_WOL_TYPE_IPV4_SYN 0x3
@@ -11943,7 +11943,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V3_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V3_OUT_VI_WINDOW_MODE_LEN 1
@@ -12378,7 +12378,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V4_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V4_OUT_VI_WINDOW_MODE_LEN 1
@@ -12821,7 +12821,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V5_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V5_OUT_VI_WINDOW_MODE_LEN 1
@@ -13269,7 +13269,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V6_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V6_OUT_VI_WINDOW_MODE_LEN 1
@@ -13728,7 +13728,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V7_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V7_OUT_VI_WINDOW_MODE_LEN 1
@@ -14214,7 +14214,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V8_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V8_OUT_VI_WINDOW_MODE_LEN 1
@@ -14708,7 +14708,7 @@
 /* On chips later than Medford the amount of address space assigned to each VI
  * is configurable. This is a global setting that the driver must query to
  * discover the VI to address mapping. Cut-through PIO (CTPIO) is not available
- * with 8k VI windows.
+ * with 8k VI linux.
  */
 #define       MC_CMD_GET_CAPABILITIES_V9_OUT_VI_WINDOW_MODE_OFST 72
 #define       MC_CMD_GET_CAPABILITIES_V9_OUT_VI_WINDOW_MODE_LEN 1
@@ -17144,7 +17144,7 @@
 #define       FUNCTION_PERSONALITY_ID_LEN 4
 /* enum: Function has no assigned personality */
 #define          FUNCTION_PERSONALITY_NULL 0x0
-/* enum: Function has an EF100-style function control window and VI windows
+/* enum: Function has an EF100-style function control window and VI linux
  * with both EF100 and vDPA doorbells.
  */
 #define          FUNCTION_PERSONALITY_EF100 0x1

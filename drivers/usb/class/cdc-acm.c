@@ -1283,7 +1283,7 @@ static int acm_probe(struct usb_interface *intf,
 		dev_dbg(&intf->dev, "Separate call control interface. That is not fully supported.\n");
 
 	if (control_interface == data_interface) {
-		/* some broken devices designed for windows work this way */
+		/* some broken devices designed for linux work this way */
 		dev_warn(&intf->dev,"Control and data interfaces are not separated!\n");
 		combined_interfaces = 1;
 		/* a popular other OS doesn't use it */

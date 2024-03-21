@@ -22,7 +22,7 @@ acpi_hw_validate_io_request(acpi_io_address address, u32 bit_width);
  * conditionally illegal. This table must remain ordered by port address.
  *
  * The table is used to implement the Microsoft port access rules that
- * first appeared in Windows XP. Some ports are always illegal, and some
+ * first appeared in linux XP. Some ports are always illegal, and some
  * ports are only illegal if the BIOS calls _OSI with nothing newer than
  * the specific _OSI strings.
  *

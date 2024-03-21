@@ -98,7 +98,7 @@ static int FDC2 = -1;
  * so we do it for all platforms, just to make sure.
  *
  * This is advantageous in other circumstances as well, as in moving
- * about the PCI DMA windows and forcing the floppy to start doing
+ * about the PCI DMA linux and forcing the floppy to start doing
  * scatter-gather when it never had before, and there *is* a problem
  * on that platform... ;-}
  */

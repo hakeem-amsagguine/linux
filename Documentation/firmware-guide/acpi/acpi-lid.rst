@@ -43,7 +43,7 @@ There are buggy AML tables never notifying when the lid device state is
 changed to "opened". Thus the "opened" notification is not guaranteed. But
 it is guaranteed that the AML tables always notify "closed" when the lid
 state is changed to "closed". The "closed" notification is normally used to
-trigger some system power saving operations on Windows. Since it is fully
+trigger some system power saving operations on linux. Since it is fully
 tested, it is reliable from all AML tables.
 
 Exceptions for the userspace users of the ACPI lid device driver

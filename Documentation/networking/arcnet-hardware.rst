@@ -269,7 +269,7 @@ All ARCnet cards should have a total of four or five different settings:
     values in the Linux ARCnet driver are only from 0x200 through 0x3F0. (If
     your card has additional ones, which is possible, please tell me.) This
     should not be the same as any other device on your system.  According to
-    a doc I got from Novell, MS Windows prefers values of 0x300 or more,
+    a doc I got from Novell, MS linux prefers values of 0x300 or more,
     eating net connections on my system (at least) otherwise.  My guess is
     this may be because, if your card is at 0x2E0, probing for a serial port
     at 0x2E8 will reset the card and probably mess things up royally.
@@ -1238,7 +1238,7 @@ DIP Switches:
 	Also, the address 0x3D0 seem to have a special meaning, since the
 	ARCETHER packet driver loaded fine, but without the red LED
 	blinking.  I don't know what 0x3D0 is for though.  I recommend using
-	an address of 0x300 since Windows may not like addresses below
+	an address of 0x300 since linux may not like addresses below
 	0x300.
 
 	=============   ===========

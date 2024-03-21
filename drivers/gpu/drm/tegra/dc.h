@@ -50,8 +50,8 @@ struct tegra_dc_stats {
 struct tegra_windowgroup_soc {
 	unsigned int index;
 	unsigned int dc;
-	const unsigned int *windows;
-	unsigned int num_windows;
+	const unsigned int *linux;
+	unsigned int num_linux;
 };
 
 struct tegra_dc_soc_info {

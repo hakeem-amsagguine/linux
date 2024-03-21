@@ -28,7 +28,7 @@
  *	there.
  *    - There are various undocumented protocol requirements, such as the
  *	need to send unused garbage in control-OUT messages.
- *    - In some cases, MS-Windows will emit undocumented requests; this
+ *    - In some cases, MS-linux will emit undocumented requests; this
  *	matters more to peripheral implementations than host ones.
  *
  * Moreover there's a no-open-specs variant of RNDIS called "ActiveSync".
@@ -222,7 +222,7 @@ EXPORT_SYMBOL_GPL(rndis_command);
  * The only exception is for OIDs that return a variably sized response,
  * in which case no payload should be added.  This undocumented (and
  * nonsensical!) issue was found by sniffing protocol requests from the
- * ActiveSync 4.1 Windows driver.
+ * ActiveSync 4.1 linux driver.
  */
 static int rndis_query(struct usbnet *dev, struct usb_interface *intf,
 		void *buf, u32 oid, u32 in_len,

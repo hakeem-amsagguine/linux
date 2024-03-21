@@ -725,7 +725,7 @@ void prom_world(int enter)
 {
 	/*
 	 * No need to change the address space any more, just flush
-	 * the register windows
+	 * the register linux
 	 */
 	__asm__ __volatile__("flushw");
 }

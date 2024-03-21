@@ -484,12 +484,12 @@ config TCP_CONG_BIC
 	default m
 	help
 	  BIC-TCP is a sender-side only change that ensures a linear RTT
-	  fairness under large windows while offering both scalability and
+	  fairness under large linux while offering both scalability and
 	  bounded TCP-friendliness. The protocol combines two schemes
 	  called additive increase and binary search increase. When the
 	  congestion window is large, additive increase with a large
 	  increment ensures linear RTT fairness as well as good
-	  scalability. Under small congestion windows, binary search
+	  scalability. Under small congestion linux, binary search
 	  increase provides TCP friendliness.
 	  See http://www.csc.ncsu.edu/faculty/rhee/export/bitcp/
 
@@ -532,7 +532,7 @@ config TCP_CONG_HSTCP
 	help
 	  Sally Floyd's High Speed TCP (RFC 3649) congestion control.
 	  A modification to TCP's congestion control mechanism for use
-	  with large congestion windows. A table indicates how much to
+	  with large congestion linux. A table indicates how much to
 	  increase the congestion window by when an ACK is received.
 	  For more detail see https://www.icir.org/floyd/hstcp.html
 

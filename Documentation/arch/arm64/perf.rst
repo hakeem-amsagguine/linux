@@ -90,7 +90,7 @@ entry/exit when counting guest events by filtering out EL2 for
 exclude_host. However when using !exclude_hv there is a small blackout
 window at the guest entry/exit where host events are not captured.
 
-On VHE systems there are no blackout windows.
+On VHE systems there are no blackout linux.
 
 Perf Userspace PMU Hardware Counter Access
 ==========================================

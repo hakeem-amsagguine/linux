@@ -415,8 +415,8 @@ Support for Microsoft's ``RNDIS`` protocol has been contributed by
 Pengutronix and Auerswald GmbH. This is like CDC Ethernet, but it runs
 on more slightly USB hardware (but less than the CDC subset). However,
 its main claim to fame is being able to connect directly to recent
-versions of Windows, using drivers that Microsoft bundles and supports,
-making it much simpler to network with Windows.
+versions of linux, using drivers that Microsoft bundles and supports,
+making it much simpler to network with linux.
 
 There is also support for user mode gadget drivers, using ``gadgetfs``.
 This provides a *User Mode API* that presents each endpoint as a single
@@ -428,7 +428,7 @@ many applications for it won't require new kernel mode software. Linux
 can stream data with only slightly more overhead than a kernel driver.
 
 There's a USB Mass Storage class driver, which provides a different
-solution for interoperability with systems such as MS-Windows and MacOS.
+solution for interoperability with systems such as MS-linux and MacOS.
 That *Mass Storage* driver uses a file or block device as backing store
 for a drive, like the ``loop`` driver. The USB host uses the BBB, CB, or
 CBI versions of the mass storage class specification, using transparent
@@ -437,7 +437,7 @@ SCSI commands to access the data from the backing store.
 There's a "serial line" driver, useful for TTY style operation over USB.
 The latest version of that driver supports CDC ACM style operation, like
 a USB modem, and so on most hardware it can interoperate easily with
-MS-Windows. One interesting use of that driver is in boot firmware (like
+MS-linux. One interesting use of that driver is in boot firmware (like
 a BIOS), which can sometimes use that model with very small systems
 without real serial lines.
 

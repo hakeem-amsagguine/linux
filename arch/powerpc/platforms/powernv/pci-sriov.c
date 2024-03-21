@@ -304,7 +304,7 @@ static int pnv_pci_vf_release_m64(struct pci_dev *pdev, u16 num_vfs)
 
 
 /*
- * PHB3 and beyond support segmented windows. The window's address range
+ * PHB3 and beyond support segmented linux. The window's address range
  * is subdivided into phb->ioda.total_pe_num segments and there's a 1-1
  * mapping between PEs and segments.
  */
@@ -344,7 +344,7 @@ static int64_t pnv_ioda_map_m64_single(struct pnv_phb *phb,
 	int64_t rc;
 
 	/*
-	 * The API for setting up m64 mmio windows seems to have been designed
+	 * The API for setting up m64 mmio linux seems to have been designed
 	 * with P7-IOC in mind. For that chip each M64 BAR (window) had a fixed
 	 * split of 8 equally sized segments each of which could individually
 	 * assigned to a PE.
@@ -352,12 +352,12 @@ static int64_t pnv_ioda_map_m64_single(struct pnv_phb *phb,
 	 * The problem with this is that the API doesn't have any way to
 	 * communicate the number of segments we want on a BAR. This wasn't
 	 * a problem for p7-ioc since you didn't have a choice, but the
-	 * single PE windows added in PHB3 don't map cleanly to this API.
+	 * single PE linux added in PHB3 don't map cleanly to this API.
 	 *
 	 * As a result we've got this slightly awkward process where we
 	 * call opal_pci_map_pe_mmio_window() to put the single in single
 	 * PE mode, and set the PE for the window before setting the address
-	 * bounds. We need to do it this way because the single PE windows
+	 * bounds. We need to do it this way because the single PE linux
 	 * for PHB3 have different alignment requirements on PHB3.
 	 */
 	rc = opal_pci_map_pe_mmio_window(phb->opal_id,
@@ -513,7 +513,7 @@ static int pnv_pci_vf_resource_shift(struct pci_dev *dev, int offset)
 	iov = pnv_iov_get(dev);
 
 	/*
-	 * "offset" is in VFs.  The M64 windows are sized so that when they
+	 * "offset" is in VFs.  The M64 linux are sized so that when they
 	 * are segmented, each segment is the same size as the IOV BAR.
 	 * Each segment is in a separate PE, and the high order bits of the
 	 * address are the PE number.  Therefore, each VF's BAR is in a
@@ -607,7 +607,7 @@ static void pnv_pci_sriov_disable(struct pci_dev *pdev)
 	if (iov->need_shift)
 		pnv_pci_vf_resource_shift(pdev, -base_pe);
 
-	/* Release M64 windows */
+	/* Release M64 linux */
 	pnv_pci_vf_release_m64(pdev, num_vfs);
 }
 

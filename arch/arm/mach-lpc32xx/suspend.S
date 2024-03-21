@@ -48,7 +48,7 @@ ENTRY(lpc32xx_sys_suspend)
 	orr	WORK1_REG, SAVED_PWR_CTRL_REG, #LPC32XX_CLKPWR_SDRAM_SELF_RFSH
 
 	@ Wait for SDRAM busy status to go busy and then idle
-	@ This guarantees a small windows where DRAM isn't busy
+	@ This guarantees a small linux where DRAM isn't busy
 1:
 	ldr	WORK2_REG, [EMCBASE_REG, #LPC32XX_EMC_STATUS_OFFS]
 	and	WORK2_REG, WORK2_REG, #LPC32XX_EMC_STATUS_BUSY

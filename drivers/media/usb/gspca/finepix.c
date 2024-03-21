@@ -18,7 +18,7 @@ MODULE_LICENSE("GPL");
 /* Default timeout, in ms */
 #define FPIX_TIMEOUT 250
 
-/* Maximum transfer size to use. The windows driver reads by chunks of
+/* Maximum transfer size to use. The linux driver reads by chunks of
  * 0x2000 bytes, so do the same. Note: reading more seems to work
  * too. */
 #define FPIX_MAX_TRANSFER 0x2000

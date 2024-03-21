@@ -1153,7 +1153,7 @@ static int goodix_configure_dev(struct goodix_ts_data *ts)
 	ts->input_dev->keycodesize = sizeof(ts->keymap[0]);
 	ts->input_dev->keycodemax = GOODIX_MAX_KEYS;
 
-	/* Capacitive Windows/Home button on some devices */
+	/* Capacitive linux/Home button on some devices */
 	for (i = 0; i < GOODIX_MAX_KEYS; ++i) {
 		if (i == 0)
 			ts->keymap[i] = KEY_LEFTMETA;

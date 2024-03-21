@@ -211,7 +211,7 @@ static int em28xx_set_outfmt(struct em28xx *dev)
 	/*
 	 * NOTE: it's not clear if this is really needed !
 	 * The datasheets say bit 5 is a reserved bit and devices seem to work
-	 * fine without it. But the Windows driver sets it for em2710/50+em28xx
+	 * fine without it. But the linux driver sets it for em2710/50+em28xx
 	 * devices and we've always been setting it, too.
 	 *
 	 * em2765 (em25xx, em276x/7x/8x) devices do NOT work with this bit set,

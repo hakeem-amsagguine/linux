@@ -86,7 +86,7 @@
 #define TEGRA_CSITE_SIZE		SZ_256K
 
 /* On TEGRA, many peripherals are very closely packed in
- * two 256MB io windows (that actually only use about 64KB
+ * two 256MB io linux (that actually only use about 64KB
  * at the start of each).
  *
  * We will just map the first MMU section of each window (to minimize

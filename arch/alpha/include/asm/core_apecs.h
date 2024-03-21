@@ -24,11 +24,11 @@
 /*
    An AVANTI *might* be an XL, and an XL has only 27 bits of ISA address
    that get passed through the PCI<->ISA bridge chip. So we've gotta use
-   both windows to max out the physical memory we can DMA to. Sigh...
+   both linux to max out the physical memory we can DMA to. Sigh...
 
    If we try a window at 0 for 1GB as a work-around, we run into conflicts
    with ISA/PCI bus memory which can't be relocated, like VGA aperture and
-   BIOS ROMs. So we must put the windows high enough to avoid these areas.
+   BIOS ROMs. So we must put the linux high enough to avoid these areas.
 
    We put window 1 at BUS 64Mb for 64Mb, mapping physical 0 to 64Mb-1,
    and window 2 at BUS 1Gb for 1Gb, mapping physical 0 to 1Gb-1.

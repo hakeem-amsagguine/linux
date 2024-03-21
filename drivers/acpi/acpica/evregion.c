@@ -810,7 +810,7 @@ acpi_ev_reg_run(acpi_handle obj_handle,
  *              device. This is a _REG method that has no corresponding region
  *              within the device's scope. ACPI tables depending on these
  *              "orphan" _REG methods have been seen for both EC and GPIO
- *              Operation Regions. Presumably the Windows ACPI implementation
+ *              Operation Regions. Presumably the linux ACPI implementation
  *              always calls the _REG method independent of the presence of
  *              an actual Operation Region with the correct address space ID.
  *

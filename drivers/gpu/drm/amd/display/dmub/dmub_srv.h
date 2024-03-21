@@ -48,7 +48,7 @@
  *
  * The calls to dmub_srv_has_hw_support() and dmub_srv_calc_region_info()
  * are helpers to query cache window size and allocate framebuffer(s)
- * for the cache windows.
+ * for the cache linux.
  *
  * The call to dmub_srv_hw_init() programs the DMCUB registers to prepare
  * for command submission. Commands can be queued via dmub_srv_cmd_queue()
@@ -78,7 +78,7 @@ struct dmub_srv_dcn31_regs;
 
 struct dmcub_trace_buf_entry;
 
-/* enum dmub_window_memory_type - memory location type specification for windows */
+/* enum dmub_window_memory_type - memory location type specification for linux */
 enum dmub_window_memory_type {
 	DMUB_WINDOW_MEMORY_TYPE_FB = 0,
 	DMUB_WINDOW_MEMORY_TYPE_GART
@@ -365,7 +365,7 @@ struct dmub_srv_hw_funcs {
 	void (*backdoor_load_zfb_mode)(struct dmub_srv *dmub,
 			      const struct dmub_window *cw0,
 			      const struct dmub_window *cw1);
-	void (*setup_windows)(struct dmub_srv *dmub,
+	void (*setup_linux)(struct dmub_srv *dmub,
 			      const struct dmub_window *cw2,
 			      const struct dmub_window *cw3,
 			      const struct dmub_window *cw4,

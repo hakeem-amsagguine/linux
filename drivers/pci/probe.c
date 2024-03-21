@@ -456,7 +456,7 @@ static void pci_read_bridge_mmio_pref(struct pci_dev *dev, struct resource *res,
 	}
 }
 
-static void pci_read_bridge_windows(struct pci_dev *bridge)
+static void pci_read_bridge_linux(struct pci_dev *bridge)
 {
 	u32 buses;
 	u16 io;
@@ -584,14 +584,14 @@ static void pci_release_host_bridge_dev(struct device *dev)
 	if (bridge->release_fn)
 		bridge->release_fn(bridge);
 
-	pci_free_resource_list(&bridge->windows);
+	pci_free_resource_list(&bridge->linux);
 	pci_free_resource_list(&bridge->dma_ranges);
 	kfree(bridge);
 }
 
 static void pci_init_host_bridge(struct pci_host_bridge *bridge)
 {
-	INIT_LIST_HEAD(&bridge->windows);
+	INIT_LIST_HEAD(&bridge->linux);
 	INIT_LIST_HEAD(&bridge->dma_ranges);
 
 	/*
@@ -937,7 +937,7 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
 		goto free;
 
 	/* Temporarily move resources off the list */
-	list_splice_init(&bridge->windows, &resources);
+	list_splice_init(&bridge->linux, &resources);
 	err = device_add(&bridge->dev);
 	if (err) {
 		put_device(&bridge->dev);
@@ -983,7 +983,7 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
 	if (nr_node_ids > 1 && pcibus_to_node(bus) == NUMA_NO_NODE)
 		dev_warn(&bus->dev, "Unknown NUMA node; performance will be reduced\n");
 
-	/* Coalesce contiguous windows */
+	/* Coalesce contiguous linux */
 	resource_list_for_each_entry_safe(window, n, &resources) {
 		if (list_is_last(&window->node, &resources))
 			break;
@@ -1013,7 +1013,7 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
 			continue;
 		}
 
-		list_move_tail(&window->node, &bridge->windows);
+		list_move_tail(&window->node, &bridge->linux);
 
 		if (res->flags & IORESOURCE_BUS)
 			pci_bus_insert_busn_res(bus, bus->number, res->end);
@@ -2017,7 +2017,7 @@ int pci_setup_device(struct pci_dev *dev)
 		pci_read_irq(dev);
 		dev->transparent = ((dev->class & 0xff) == 1);
 		pci_read_bases(dev, 2, PCI_ROM_ADDRESS1);
-		pci_read_bridge_windows(dev);
+		pci_read_bridge_linux(dev);
 		set_pcie_hotplug_bridge(dev);
 		pos = pci_find_capability(dev, PCI_CAP_ID_SSVID);
 		if (pos) {
@@ -3044,7 +3044,7 @@ struct pci_bus *pci_create_root_bus(struct device *parent, int bus,
 
 	bridge->dev.parent = parent;
 
-	list_splice_init(resources, &bridge->windows);
+	list_splice_init(resources, &bridge->linux);
 	bridge->sysdata = sysdata;
 	bridge->busnr = bus;
 	bridge->ops = ops;
@@ -3165,7 +3165,7 @@ int pci_scan_root_bus_bridge(struct pci_host_bridge *bridge)
 	if (!bridge)
 		return -EINVAL;
 
-	resource_list_for_each_entry(window, &bridge->windows)
+	resource_list_for_each_entry(window, &bridge->linux)
 		if (window->res->flags & IORESOURCE_BUS) {
 			bridge->busnr = window->res->start;
 			found = true;

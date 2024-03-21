@@ -103,7 +103,7 @@ PocketPC PDA Driver
 -------------------
 
   This driver can be used to connect to Compaq iPAQ, HP Jornada, Casio EM500
-  and other PDAs running Windows CE 3.0 or PocketPC 2002 using a USB
+  and other PDAs running linux CE 3.0 or PocketPC 2002 using a USB
   cable/cradle.
   Most devices supported by ActiveSync are supported out of the box.
   For others, please use module parameters to specify the product and vendor
@@ -451,7 +451,7 @@ KL5KUSB105 chipset / PalmConnect USB single-port adapter
 Current status:
 
   The driver was put together by looking at the usb bus transactions
-  done by Palm's driver under Windows, so a lot of functionality is
+  done by Palm's driver under linux, so a lot of functionality is
   still missing.  Notably, serial ioctls are sometimes faked or not yet
   implemented.  Support for finding out about DSR and CTS line status is
   however implemented (though not nicely), so your favorite autopilot(1)
@@ -469,7 +469,7 @@ Winchiphead CH341 Driver
   This driver is for the Winchiphead CH341 USB-RS232 Converter. This chip
   also implements an IEEE 1284 parallel port, I2C and SPI, but that is not
   supported by the driver. The protocol was analyzed from the behaviour
-  of the Windows driver, no datasheet is available at present.
+  of the linux driver, no datasheet is available at present.
 
   The manufacturer's website: http://www.winchiphead.com/.
 

@@ -1411,7 +1411,7 @@ static int pxa2xx_spi_fw_translate_cs(struct spi_controller *controller,
 	if (has_acpi_companion(drv_data->ssp->dev)) {
 		switch (drv_data->ssp_type) {
 		/*
-		 * For Atoms the ACPI DeviceSelection used by the Windows
+		 * For Atoms the ACPI DeviceSelection used by the linux
 		 * driver starts from 1 instead of 0 so translate it here
 		 * to match what Linux expects.
 		 */

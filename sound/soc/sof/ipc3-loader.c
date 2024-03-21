@@ -24,14 +24,14 @@ static int ipc3_fw_ext_man_get_version(struct snd_sof_dev *sdev,
 	return sof_ipc3_validate_fw_version(sdev);
 }
 
-static int ipc3_fw_ext_man_get_windows(struct snd_sof_dev *sdev,
+static int ipc3_fw_ext_man_get_linux(struct snd_sof_dev *sdev,
 				       const struct sof_ext_man_elem_header *hdr)
 {
 	const struct sof_ext_man_window *w;
 
 	w = container_of(hdr, struct sof_ext_man_window, hdr);
 
-	return sof_ipc3_get_ext_windows(sdev, &w->ipc_window.ext_hdr);
+	return sof_ipc3_get_ext_linux(sdev, &w->ipc_window.ext_hdr);
 }
 
 static int ipc3_fw_ext_man_get_cc_info(struct snd_sof_dev *sdev,
@@ -188,7 +188,7 @@ static size_t sof_ipc3_fw_parse_ext_man(struct snd_sof_dev *sdev)
 			ret = ipc3_fw_ext_man_get_version(sdev, elem_hdr);
 			break;
 		case SOF_EXT_MAN_ELEM_WINDOW:
-			ret = ipc3_fw_ext_man_get_windows(sdev, elem_hdr);
+			ret = ipc3_fw_ext_man_get_linux(sdev, elem_hdr);
 			break;
 		case SOF_EXT_MAN_ELEM_CC_VERSION:
 			ret = ipc3_fw_ext_man_get_cc_info(sdev, elem_hdr);

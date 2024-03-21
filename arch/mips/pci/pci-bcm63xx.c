@@ -246,7 +246,7 @@ static int __init bcm63xx_register_pci(void)
 	val |= MPI_L2PREMAP_ENABLED_MASK | MPI_L2PREMAP_IS_CARDBUS_MASK;
 	bcm_mpi_writel(val, MPI_L2PMEMREMAP2_REG);
 #else
-	/* disable second access windows */
+	/* disable second access linux */
 	bcm_mpi_writel(0, MPI_L2PMEMREMAP2_REG);
 #endif
 

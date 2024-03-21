@@ -109,7 +109,7 @@ ret_trap_nobufwins:
 	 */
 	LOAD_PT_INS(sp)
 
-	/* If there are already live user windows in the
+	/* If there are already live user linux in the
 	 * set we can return from trap safely.
 	 */
 	ld	[%curptr + TI_UWINMASK], %twin_tmp1

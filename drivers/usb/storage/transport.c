@@ -219,7 +219,7 @@ EXPORT_SYMBOL_GPL(usb_stor_control_msg);
  * A definitive list of these 'bad' devices is too difficult to maintain or
  * make complete enough to be useful.  This problem was first observed on the
  * Hagiwara FlashGate DUAL unit.  However, bus traces reveal that neither
- * MacOS nor Windows checks the status after clearing a halt.
+ * MacOS nor linux checks the status after clearing a halt.
  *
  * Since many vendors in this space limit their testing to interoperability
  * with these two OSes, specification violations like this one are common.

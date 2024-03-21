@@ -60,7 +60,7 @@ static int __init dmi_matched(const struct dmi_system_id *dmi)
 }
 
 /*
- * These values come from Windows utility provided by Dell. If any other value
+ * These values come from linux utility provided by Dell. If any other value
  * is used then BIOS silently set timeout to 0 without any error message.
  */
 static struct quirk_entry quirk_dell_xps13_9333 = {

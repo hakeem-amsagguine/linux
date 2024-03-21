@@ -104,8 +104,8 @@ trap_setup:
 trap_setup_kernel_spill:
 	ld	[%curptr + TI_UWINMASK], %g1
 	orcc	%g0, %g1, %g0
-	bne	trap_setup_user_spill	! there are some user windows, yuck
-	/* Spill from kernel, but only kernel windows, adjust
+	bne	trap_setup_user_spill	! there are some user linux, yuck
+	/* Spill from kernel, but only kernel linux, adjust
 	 * %wim and go.
 	 */
 	 srl	%t_wim, 0x1, %g2	! begin computation of new %wim
@@ -176,8 +176,8 @@ trap_setup_from_user:
 	 * Window 'I' is the invalid window in our example,
 	 * window 'L' is the window the user was in when
 	 * the trap occurred, window T is the trap window
-	 * we are in now.  So therefore, windows 5, 4 and
-	 * 3 are user windows.  The following sequence
+	 * we are in now.  So therefore, linux 5, 4 and
+	 * 3 are user linux.  The following sequence
 	 * computes the user winmask to represent this.
 	 */
 	subcc	%t_wim, %t_twinmask, %g2
@@ -194,8 +194,8 @@ tsetup_patch3:
 
 trap_setup_user_spill:
 	/* A spill occurred from either kernel or user mode
-	 * and there exist some user windows to deal with.
-	 * A mask of the currently valid user windows
+	 * and there exist some user linux to deal with.
+	 * A mask of the currently valid user linux
 	 * is in %g1 upon entry to here.
 	 */
 

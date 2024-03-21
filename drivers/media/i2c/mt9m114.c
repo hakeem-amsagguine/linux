@@ -865,7 +865,7 @@ static int mt9m114_configure(struct mt9m114 *sensor,
 	cci_write(sensor->regmap, MT9M114_CAM_OUTPUT_HEIGHT,
 		  ifp_compose->height, &ret);
 
-	/* AWB and AE windows, use the full frame. */
+	/* AWB and AE linux, use the full frame. */
 	cci_write(sensor->regmap, MT9M114_CAM_STAT_AWB_CLIP_WINDOW_XSTART,
 		  0, &ret);
 	cci_write(sensor->regmap, MT9M114_CAM_STAT_AWB_CLIP_WINDOW_YSTART,

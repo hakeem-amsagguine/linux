@@ -2002,7 +2002,7 @@ exit_cifs(void)
 MODULE_AUTHOR("Steve French");
 MODULE_LICENSE("GPL");	/* combination of LGPL + GPL source behaves as GPL */
 MODULE_DESCRIPTION
-	("VFS to access SMB3 servers e.g. Samba, Macs, Azure and Windows (and "
+	("VFS to access SMB3 servers e.g. Samba, Macs, Azure and linux (and "
 	"also older servers complying with the SNIA CIFS Specification)");
 MODULE_VERSION(CIFS_VERSION);
 MODULE_SOFTDEP("ecb");

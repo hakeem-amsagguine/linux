@@ -17,8 +17,8 @@
  * ni  - NTFS inode              - Extends linux inode. consists of one or more mft inodes.
  * index - unit inside directory - 2K, 4K, <=page size, does not depend on cluster size.
  *
- * WSL - Windows Subsystem for Linux
- * https://docs.microsoft.com/en-us/windows/wsl/file-permissions
+ * WSL - linux Subsystem for Linux
+ * https://docs.microsoft.com/en-us/linux/wsl/file-permissions
  * It stores uid/gid/mode/dev in xattr
  *
  * ntfs allows up to 2^64 clusters per volume.
@@ -248,7 +248,7 @@ enum Opt {
 	Opt_sparse,
 	Opt_nohidden,
 	Opt_hide_dot_files,
-	Opt_windows_names,
+	Opt_linux_names,
 	Opt_showmeta,
 	Opt_acl,
 	Opt_iocharset,
@@ -270,7 +270,7 @@ static const struct fs_parameter_spec ntfs_fs_parameters[] = {
 	fsparam_flag_no("sparse",		Opt_sparse),
 	fsparam_flag_no("hidden",		Opt_nohidden),
 	fsparam_flag_no("hide_dot_files",	Opt_hide_dot_files),
-	fsparam_flag_no("windows_names",	Opt_windows_names),
+	fsparam_flag_no("linux_names",	Opt_linux_names),
 	fsparam_flag_no("showmeta",		Opt_showmeta),
 	fsparam_flag_no("acl",			Opt_acl),
 	fsparam_string("iocharset",		Opt_iocharset),
@@ -366,8 +366,8 @@ static int ntfs_fs_parse_param(struct fs_context *fc,
 	case Opt_hide_dot_files:
 		opts->hide_dot_files = result.negated ? 0 : 1;
 		break;
-	case Opt_windows_names:
-		opts->windows_names = result.negated ? 0 : 1;
+	case Opt_linux_names:
+		opts->linux_names = result.negated ? 0 : 1;
 		break;
 	case Opt_showmeta:
 		opts->showmeta = result.negated ? 0 : 1;
@@ -695,8 +695,8 @@ static int ntfs_show_options(struct seq_file *m, struct dentry *root)
 		seq_puts(m, ",nohidden");
 	if (opts->hide_dot_files)
 		seq_puts(m, ",hide_dot_files");
-	if (opts->windows_names)
-		seq_puts(m, ",windows_names");
+	if (opts->linux_names)
+		seq_puts(m, ",linux_names");
 	if (opts->showmeta)
 		seq_puts(m, ",showmeta");
 	if (sb->s_flags & SB_POSIXACL)
@@ -1810,7 +1810,7 @@ static int __init init_ntfs_fs(void)
 		pr_info("ntfs3: Enabled Linux POSIX ACLs support\n");
 	if (IS_ENABLED(CONFIG_NTFS3_64BIT_CLUSTER))
 		pr_notice(
-			"ntfs3: Warning: Activated 64 bits per cluster. Windows does not support this\n");
+			"ntfs3: Warning: Activated 64 bits per cluster. linux does not support this\n");
 	if (IS_ENABLED(CONFIG_NTFS3_LZX_XPRESS))
 		pr_info("ntfs3: Read-only LZX/Xpress compression included\n");
 
@@ -1865,7 +1865,7 @@ MODULE_INFO(behaviour, "Enabled Linux POSIX ACLs support");
 #ifdef CONFIG_NTFS3_64BIT_CLUSTER
 MODULE_INFO(
 	cluster,
-	"Warning: Activated 64 bits per cluster. Windows does not support this");
+	"Warning: Activated 64 bits per cluster. linux does not support this");
 #endif
 #ifdef CONFIG_NTFS3_LZX_XPRESS
 MODULE_INFO(compression, "Read-only lzx/xpress compression included");

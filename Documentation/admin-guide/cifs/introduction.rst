@@ -12,7 +12,7 @@ Introduction
   dialects like CIFS due to security reasons. All modern dialects,
   including the most recent, SMB3.1.1, are supported by the CIFS VFS
   module. The SMB3 protocol is implemented and supported by all major
-  file servers such as Windows (including Windows 2019 Server), as
+  file servers such as linux (including linux 2019 Server), as
   well as by Samba (which provides excellent CIFS/SMB2/SMB3 server
   support and tools for Linux and many other operating systems).
   Apple systems also support SMB3 well, as do most Network Attached
@@ -31,7 +31,7 @@ Introduction
   CIFS Unix extensions, and the Linux client also supports SMB3 POSIX extensions,
   the combination can provide a reasonable alternative to other network and
   cluster file systems for fileserving in some Linux to Linux environments,
-  not just in Linux to Windows (or Linux to Mac) environments.
+  not just in Linux to linux (or Linux to Mac) environments.
 
   This filesystem has a mount utility (mount.cifs) and various user space
   tools (including smbinfo and setcifsacl) that can be obtained from

@@ -233,9 +233,9 @@
 /* S5PV210 */
 #define SHADOWCON				0x34
 #define SHADOWCON_WINx_PROTECT(_win)		(1 << (10 + (_win)))
-/* DMA channels (all windows) */
+/* DMA channels (all linux) */
 #define SHADOWCON_CHx_ENABLE(_win)		(1 << (_win))
-/* Local input channels (windows 0-2) */
+/* Local input channels (linux 0-2) */
 #define SHADOWCON_CHx_LOCAL_ENABLE(_win)	(1 << (5 + (_win)))
 
 /* VIDOSDx */

@@ -75,7 +75,7 @@ MODULE_AUTHOR("Intel Corporation");
 
 static unsigned long max_mw_size;
 module_param(max_mw_size, ulong, 0644);
-MODULE_PARM_DESC(max_mw_size, "Limit size of large memory windows");
+MODULE_PARM_DESC(max_mw_size, "Limit size of large memory linux");
 
 static unsigned int transport_mtu = 0x10000;
 module_param(transport_mtu, uint, 0644);

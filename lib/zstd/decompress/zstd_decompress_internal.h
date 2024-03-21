@@ -170,7 +170,7 @@ struct ZSTD_DCtx_s
     char*  inBuff;
     size_t inBuffSize;
     size_t inPos;
-    size_t maxWindowSize;
+    size_t maxlinuxize;
     char*  outBuff;
     size_t outBuffSize;
     size_t outStart;

@@ -69,7 +69,7 @@ static unsigned long broken_keys[128/(sizeof(unsigned long)*8)] = { 0, };
  *    codes "\E[M" and "\E[P". (This is better than the old mapping to
  *    F11 and F12, because these codes are on Shift+F1/2 anyway.) This
  *    way, applications that allow their own keyboard mappings
- *    (e.g. tcsh, X Windows) can be configured to use them in the way
+ *    (e.g. tcsh, X linux) can be configured to use them in the way
  *    the label suggests (providing help or undoing).
  *
  *  - Console switching is done with Alt+Fx (consoles 1..10) and

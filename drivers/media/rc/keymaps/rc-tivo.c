@@ -21,8 +21,8 @@ static struct rc_map_table tivo[] = {
 	{ 0x3085e011, KEY_TV },		/* Live TV/Swap */
 	{ 0x3085c034, KEY_VIDEO_NEXT },	/* TV Input */
 	{ 0x3085e013, KEY_INFO },
-	{ 0x3085a05f, KEY_CYCLEWINDOWS }, /* Window */
-	{ 0x0085305f, KEY_CYCLEWINDOWS },
+	{ 0x3085a05f, KEY_CYCLElinux }, /* Window */
+	{ 0x0085305f, KEY_CYCLElinux },
 	{ 0x3085c036, KEY_EPG },	/* Guide */
 
 	{ 0x3085e014, KEY_UP },

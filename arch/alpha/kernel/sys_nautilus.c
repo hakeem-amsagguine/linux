@@ -211,19 +211,19 @@ nautilus_init_pci(void)
 		return;
 
 	/* Use default IO. */
-	pci_add_resource(&bridge->windows, &ioport_resource);
+	pci_add_resource(&bridge->linux, &ioport_resource);
 	/* Irongate PCI memory aperture, calculate required size before
 	   setting it up. */
-	pci_add_resource(&bridge->windows, &irongate_mem);
+	pci_add_resource(&bridge->linux, &irongate_mem);
 
-	pci_add_resource(&bridge->windows, &busn_resource);
+	pci_add_resource(&bridge->linux, &busn_resource);
 	bridge->dev.parent = NULL;
 	bridge->sysdata = hose;
 	bridge->busnr = 0;
 	bridge->ops = alpha_mv.pci_ops;
 	bridge->swizzle_irq = alpha_mv.pci_swizzle;
 	bridge->map_irq = alpha_mv.pci_map_irq;
-	bridge->size_windows = 1;
+	bridge->size_linux = 1;
 
 	/* Scan our single hose.  */
 	if (pci_scan_root_bus_bridge(bridge)) {

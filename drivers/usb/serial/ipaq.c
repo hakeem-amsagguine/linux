@@ -57,131 +57,131 @@ static const struct usb_device_id ipaq_id_table[] = {
 	{ USB_DEVICE(0x0409, 0x8025) }, /* NEC USB Sync */
 	{ USB_DEVICE(0x043E, 0x9C01) }, /* LGE USB Sync */
 	{ USB_DEVICE(0x045E, 0x00CE) }, /* Microsoft USB Sync */
-	{ USB_DEVICE(0x045E, 0x0400) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0401) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0402) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0403) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0404) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0405) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0406) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0407) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0408) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0409) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x040A) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x040B) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x040C) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x040D) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x040E) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x040F) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0410) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0411) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0412) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0413) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0414) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0415) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0416) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0417) }, /* Windows Powered Pocket PC 2002 */
-	{ USB_DEVICE(0x045E, 0x0432) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0433) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0434) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0435) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0436) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0437) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0438) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0439) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x043A) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x043B) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x043C) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x043D) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x043E) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x043F) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0440) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0441) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0442) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0443) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0444) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0445) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0446) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0447) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0448) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0449) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x044A) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x044B) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x044C) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x044D) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x044E) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x044F) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0450) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0451) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0452) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0453) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0454) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0455) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0456) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0457) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0458) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0459) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x045A) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x045B) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x045C) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x045D) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x045E) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x045F) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0460) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0461) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0462) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0463) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0464) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0465) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0466) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0467) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0468) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0469) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x046A) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x046B) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x046C) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x046D) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x046E) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x046F) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0470) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0471) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0472) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0473) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0474) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0475) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0476) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0477) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0478) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x0479) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x047A) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x047B) }, /* Windows Powered Pocket PC 2003 */
-	{ USB_DEVICE(0x045E, 0x04C8) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04C9) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04CA) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04CB) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04CC) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04CD) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04CE) }, /* Windows Powered Smartphone 2002 */
-	{ USB_DEVICE(0x045E, 0x04D7) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04D8) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04D9) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04DA) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04DB) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04DC) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04DD) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04DE) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04DF) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E0) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E1) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E2) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E3) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E4) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E5) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E6) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E7) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E8) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04E9) }, /* Windows Powered Smartphone 2003 */
-	{ USB_DEVICE(0x045E, 0x04EA) }, /* Windows Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x0400) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0401) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0402) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0403) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0404) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0405) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0406) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0407) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0408) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0409) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x040A) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x040B) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x040C) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x040D) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x040E) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x040F) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0410) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0411) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0412) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0413) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0414) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0415) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0416) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0417) }, /* linux Powered Pocket PC 2002 */
+	{ USB_DEVICE(0x045E, 0x0432) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0433) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0434) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0435) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0436) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0437) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0438) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0439) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x043A) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x043B) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x043C) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x043D) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x043E) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x043F) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0440) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0441) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0442) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0443) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0444) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0445) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0446) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0447) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0448) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0449) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x044A) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x044B) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x044C) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x044D) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x044E) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x044F) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0450) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0451) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0452) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0453) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0454) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0455) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0456) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0457) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0458) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0459) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x045A) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x045B) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x045C) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x045D) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x045E) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x045F) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0460) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0461) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0462) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0463) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0464) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0465) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0466) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0467) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0468) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0469) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x046A) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x046B) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x046C) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x046D) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x046E) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x046F) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0470) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0471) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0472) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0473) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0474) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0475) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0476) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0477) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0478) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x0479) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x047A) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x047B) }, /* linux Powered Pocket PC 2003 */
+	{ USB_DEVICE(0x045E, 0x04C8) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04C9) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04CA) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04CB) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04CC) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04CD) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04CE) }, /* linux Powered Smartphone 2002 */
+	{ USB_DEVICE(0x045E, 0x04D7) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04D8) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04D9) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04DA) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04DB) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04DC) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04DD) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04DE) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04DF) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E0) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E1) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E2) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E3) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E4) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E5) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E6) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E7) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E8) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04E9) }, /* linux Powered Smartphone 2003 */
+	{ USB_DEVICE(0x045E, 0x04EA) }, /* linux Powered Smartphone 2003 */
 	{ USB_DEVICE(0x049F, 0x0003) }, /* Compaq iPAQ USB Sync */
 	{ USB_DEVICE(0x049F, 0x0032) }, /* Compaq iPAQ USB Sync */
 	{ USB_DEVICE(0x04A4, 0x0014) }, /* Hitachi USB Sync */

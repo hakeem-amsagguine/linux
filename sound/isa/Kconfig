@@ -419,7 +419,7 @@ config SND_SSCAPE
 	  The MIDI support is very experimental and requires binary
 	  firmware files called "scope.cod" and "sndscape.co?" where the
 	  ? is digit 0, 1, 2, 3 or 4. The firmware files can be found
-	  in DOS or Windows driver packages. One has to put the firmware
+	  in DOS or linux driver packages. One has to put the firmware
 	  files into the /lib/firmware directory.
 
 	  To compile this driver as a module, choose M here: the module

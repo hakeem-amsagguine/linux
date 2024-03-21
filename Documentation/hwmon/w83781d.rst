@@ -474,7 +474,7 @@ Changing the high nibble doesn't seem to do much except the high bit
 change.
 
 My mobo is an ASUS A7V266-E. This behavior is similar to what I got
-with speedfan under Windows, where 0-15% would be off, 15-2x% (can't
+with speedfan under linux, where 0-15% would be off, 15-2x% (can't
 remember the exact value) would be 70% and higher would be full on.
 
 * Additional info about PWM on the AS99127F rev.1 from lm-sensors

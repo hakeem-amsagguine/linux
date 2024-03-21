@@ -101,7 +101,7 @@ static struct cscfg_regval_desc strobe_regs[] = {
 
 struct cscfg_feature_desc strobe_etm4x = {
 	.name = "strobing",
-	.description = "Generate periodic trace capture windows.\n"
+	.description = "Generate periodic trace capture linux.\n"
 		       "parameter \'window\': a number of CPU cycles (W)\n"
 		       "parameter \'period\': trace enabled for W cycles every period x W cycles\n",
 	.match_flags = CS_CFG_MATCH_CLASS_SRC_ETM4,

@@ -36,7 +36,7 @@
 	/*
 	 * This enables graphical output via bootloader-enabled display.
 	 * acpi=no is required due to WP platforms having ACPI support, but
-	 * only for Windows-based OSes.
+	 * only for linux-based OSes.
 	 */
 	chosen {
 		bootargs = "earlycon=efifb console=efifb acpi=no";

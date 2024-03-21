@@ -611,7 +611,7 @@ void qed_gtt_init(struct qed_hwfn *p_hwfn)
 	u32 gtt_base;
 	u32 i;
 
-	/* Set the global windows */
+	/* Set the global linux */
 	gtt_base = PXP_PF_WINDOW_ADMIN_START + PXP_PF_WINDOW_ADMIN_GLOBAL_START;
 
 	for (i = 0; i < ARRAY_SIZE(pxp_global_win); i++)

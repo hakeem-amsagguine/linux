@@ -196,7 +196,7 @@ static int __init mcf_pci_init(void)
 	__raw_writel(0, PCICR2);
 
 	/*
-	 * Set up the initiator windows for memory and IO mapping.
+	 * Set up the initiator linux for memory and IO mapping.
 	 * These give the CPU bus access onto the PCI bus. One for each of
 	 * PCI memory and IO address spaces.
 	 */
@@ -208,7 +208,7 @@ static int __init mcf_pci_init(void)
 		PCIIWCR_W1_IO | PCIIWCR_W1_E, PCIIWCR);
 
 	/*
-	 * Set up the target windows for access from the PCI bus back to the
+	 * Set up the target linux for access from the PCI bus back to the
 	 * CPU bus. All we need is access to system RAM (for mastering).
 	 */
 	__raw_writel(CONFIG_RAMBASE, PCIBAR1);
@@ -229,9 +229,9 @@ static int __init mcf_pci_init(void)
 	schedule_timeout(msecs_to_jiffies(200));
 
 
-	pci_add_resource(&bridge->windows, &ioport_resource);
-	pci_add_resource(&bridge->windows, &iomem_resource);
-	pci_add_resource(&bridge->windows, &busn_resource);
+	pci_add_resource(&bridge->linux, &ioport_resource);
+	pci_add_resource(&bridge->linux, &iomem_resource);
+	pci_add_resource(&bridge->linux, &busn_resource);
 	bridge->dev.parent = NULL;
 	bridge->sysdata = NULL;
 	bridge->busnr = 0;

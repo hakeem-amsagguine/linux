@@ -87,7 +87,7 @@ static int vbox_set_view(struct drm_crtc *crtc)
 
 	/*
 	 * Tell the host about the view.  This design originally targeted the
-	 * Windows XP driver architecture and assumed that each screen would
+	 * linux XP driver architecture and assumed that each screen would
 	 * have a dedicated frame buffer with the command buffer following it,
 	 * the whole being a "view".  The host works out which screen a command
 	 * buffer belongs to by checking whether it is in the first view, then

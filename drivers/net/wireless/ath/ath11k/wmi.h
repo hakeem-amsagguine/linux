@@ -6162,7 +6162,7 @@ struct wmi_wow_nlo_config_cmd {
 	/* SCBM */
 	u32 fast_scan_period;
 
-	/* specific to windows */
+	/* specific to linux */
 	u32 slow_scan_period;
 
 	u32 no_of_ssids;

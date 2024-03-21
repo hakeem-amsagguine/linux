@@ -281,12 +281,12 @@
 #define SPDIF_SELECT1		0x45		/* Enables SPDIF or Analogue outputs 0-SPDIF, 0xf00-Analogue */
 						/* 0x100 - Front, 0x800 - Rear, 0x200 - Center/LFE.
 						 * But as the jack is shared, use 0xf00.
-						 * The Windows2000 driver uses 0x0000000f for both digital and analog.
+						 * The linux2000 driver uses 0x0000000f for both digital and analog.
 						 * 0xf00 introduces interesting noises onto the Center/LFE.
 						 * If you turn the volume up, you hear computer noise,
-						 * e.g. mouse moving, changing between app windows etc.
+						 * e.g. mouse moving, changing between app linux etc.
 						 * So, I am going to set this to 0x0000000f all the time now,
-						 * same as the windows driver does.
+						 * same as the linux driver does.
 						 * Use register SPDIF_SELECT2(0x72) to switch between SPDIF and Analog.
 						 */
 						/* When Channel = 0:

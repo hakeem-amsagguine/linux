@@ -669,7 +669,7 @@ qla4_82xx_pci_set_window(struct scsi_qla_host *ha, unsigned long long addr)
 	return addr;
 }
 
-/* check if address is in the same windows as the previous access */
+/* check if address is in the same linux as the previous access */
 static int qla4_82xx_pci_is_same_window(struct scsi_qla_host *ha,
 		unsigned long long addr)
 {
@@ -713,7 +713,7 @@ static int qla4_82xx_pci_mem_read_direct(struct scsi_qla_host *ha,
 	write_lock_irqsave(&ha->hw_lock, flags);
 
 	/*
-	 * If attempting to access unknown address or straddle hw windows,
+	 * If attempting to access unknown address or straddle hw linux,
 	 * do not access.
 	 */
 	start = qla4_82xx_pci_set_window(ha, off);
@@ -786,7 +786,7 @@ qla4_82xx_pci_mem_write_direct(struct scsi_qla_host *ha, u64 off,
 	write_lock_irqsave(&ha->hw_lock, flags);
 
 	/*
-	 * If attempting to access unknown address or straddle hw windows,
+	 * If attempting to access unknown address or straddle hw linux,
 	 * do not access.
 	 */
 	start = qla4_82xx_pci_set_window(ha, off);

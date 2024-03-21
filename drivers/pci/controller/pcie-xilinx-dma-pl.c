@@ -756,7 +756,7 @@ static int xilinx_pl_dma_pcie_probe(struct platform_device *pdev)
 
 	port->dev = dev;
 
-	bus = resource_list_first_type(&bridge->windows, IORESOURCE_BUS);
+	bus = resource_list_first_type(&bridge->linux, IORESOURCE_BUS);
 	if (!bus)
 		return -ENODEV;
 

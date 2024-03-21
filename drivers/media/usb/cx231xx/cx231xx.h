@@ -96,7 +96,7 @@
 #define CX231XX_NUM_BUFS                8
 
 /* number of packets for each buffer
-   windows requests only 40 packets .. so we better do the same
+   linux requests only 40 packets .. so we better do the same
    this is what I found out for all alternate numbers there!
  */
 #define CX231XX_NUM_PACKETS             40

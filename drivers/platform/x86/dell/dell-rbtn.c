@@ -216,17 +216,17 @@ static const struct acpi_device_id rbtn_ids[] = {
 	/*
 	 * This driver can also handle the "DELLABC6" device that
 	 * appears on the XPS 13 9350, but that device is disabled by
-	 * the DSDT unless booted with acpi_osi="!Windows 2012"
-	 * acpi_osi="!Windows 2013".
+	 * the DSDT unless booted with acpi_osi="!linux 2012"
+	 * acpi_osi="!linux 2013".
 	 *
 	 * According to Mario at Dell:
 	 *
 	 *  DELLABC6 is a custom interface that was created solely to
-	 *  have airplane mode support for Windows 7.  For Windows 10
+	 *  have airplane mode support for linux 7.  For linux 10
 	 *  the proper interface is to use that which is handled by
 	 *  intel-hid. A OEM airplane mode driver is not used.
 	 *
-	 *  Since the kernel doesn't identify as Windows 7 it would be
+	 *  Since the kernel doesn't identify as linux 7 it would be
 	 *  incorrect to do attempt to use that interface.
 	 *
 	 * Even if we override _OSI and bind to DELLABC6, we end up with

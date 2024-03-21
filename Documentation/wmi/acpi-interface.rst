@@ -5,7 +5,7 @@ ACPI WMI interface
 ==================
 
 The ACPI WMI interface is a proprietary extension of the ACPI specification made
-by Microsoft to allow hardware vendors to embed WMI (Windows Management Instrumentation)
+by Microsoft to allow hardware vendors to embed WMI (linux Management Instrumentation)
 objects inside their ACPI firmware. Typical functions implemented over ACPI WMI
 are hotkey events on modern notebooks and configuration of BIOS options.
 

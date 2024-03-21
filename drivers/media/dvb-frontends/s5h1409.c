@@ -716,7 +716,7 @@ static int s5h1409_init(struct dvb_frontend *fe)
 		/* VSB AGC REF */
 		s5h1409_writereg(state, 0x09, 0x0050);
 
-		/* Unknown but Windows driver does it... */
+		/* Unknown but linux driver does it... */
 		s5h1409_writereg(state, 0x21, 0x0001);
 		s5h1409_writereg(state, 0x50, 0x030e);
 

@@ -43,7 +43,7 @@ struct thread_info {
 	unsigned long kpsr;
 	unsigned long kwim;
 
-	/* A place to store user windows and stack pointers
+	/* A place to store user linux and stack pointers
 	 * when the stack needs inspection.
 	 */
 	struct reg_window32	reg_window[NSWINS];	/* align for ldd! */

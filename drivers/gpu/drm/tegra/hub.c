@@ -276,7 +276,7 @@ static int tegra_shared_plane_set_owner(struct tegra_plane *plane,
 
 	/*
 	 * This seems to happen whenever the head has been disabled with one
-	 * or more windows being active. This is harmless because we'll just
+	 * or more linux being active. This is harmless because we'll just
 	 * reassign the window to the new head anyway.
 	 */
 	if (old && owner == OWNER_MASK)

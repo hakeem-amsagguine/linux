@@ -43,7 +43,7 @@ static struct rc_map_table budget_ci_old[] = {
 	{ 0x22, KEY_PREVIOUS },		/* Prev Ch on Zenith, SOURCE on Hauppauge */
 	{ 0x24, KEY_RESTART },
 	{ 0x25, KEY_OK },
-	{ 0x26, KEY_CYCLEWINDOWS },	/* MINIMIZE on Hauppauge */
+	{ 0x26, KEY_CYCLElinux },	/* MINIMIZE on Hauppauge */
 	{ 0x28, KEY_ENTER },		/* VCR mode on Zenith */
 	{ 0x29, KEY_PAUSE },
 	{ 0x2b, KEY_RIGHT },

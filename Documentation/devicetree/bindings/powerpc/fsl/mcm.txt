@@ -6,9 +6,9 @@ Copyright (C) 2009 Freescale Semiconductor Inc.
 Local Access Window (LAW) Node
 
 The LAW node represents the region of CCSR space where local access
-windows are configured.  For MCM based devices this is the first 4k
+linux are configured.  For MCM based devices this is the first 4k
 of CCSR space that includes CCSRBAR, ALTCBAR, ALTCAR, BPTR, and some
-number of local access windows as specified by fsl,num-laws.
+number of local access linux as specified by fsl,num-laws.
 
 PROPERTIES
 
@@ -28,7 +28,7 @@ PROPERTIES
       Usage: required
       Value type: <u32>
       Definition: The value specifies the number of local access
-          windows for this device.
+          linux for this device.
 
 =====================================================================
 

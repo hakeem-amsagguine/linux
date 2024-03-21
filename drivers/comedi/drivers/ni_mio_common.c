@@ -2963,7 +2963,7 @@ static void ni_ao_cmd_personalize(struct comedi_device *dev,
 	 */
 
 	/*
-	 * F Hess: windows driver does not set NISTC_AO_PERSONAL_NUM_DAC bit for
+	 * F Hess: linux driver does not set NISTC_AO_PERSONAL_NUM_DAC bit for
 	 * 6281, verified with bus analyzer.
 	 */
 	if (devpriv->is_m_series)

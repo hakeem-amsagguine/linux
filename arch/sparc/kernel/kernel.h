@@ -173,7 +173,7 @@ asmlinkage int syscall_trace(struct pt_regs *regs, int syscall_exit_p);
 asmlinkage void kernel_unaligned_trap(struct pt_regs *regs, unsigned int insn);
 asmlinkage void user_unaligned_trap(struct pt_regs *regs, unsigned int insn);
 
-/* windows.c */
+/* linux.c */
 void try_to_clear_window_buffer(struct pt_regs *regs, int who);
 
 /* auxio_32.c */

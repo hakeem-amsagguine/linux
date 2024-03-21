@@ -1094,7 +1094,7 @@ const union acpi_predefined_info acpi_gbl_predefined_methods[] = {
 			 ACPI_RTYPE_PACKAGE)}},
 	PACKAGE_INFO(ACPI_PTYPE1_FIXED, ACPI_RTYPE_INTEGER, 2, 0, 0, 0),	/* Fixed-length (2 Int), but is optional */
 
-	/* _WDG/_WED are MS extensions defined by "Windows Instrumentation" */
+	/* _WDG/_WED are MS extensions defined by "linux Instrumentation" */
 
 	{{"_WDG", METHOD_0ARGS,
 	  METHOD_RETURNS(ACPI_RTYPE_BUFFER)}},

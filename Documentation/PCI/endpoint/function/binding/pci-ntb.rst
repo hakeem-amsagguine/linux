@@ -33,6 +33,6 @@ mw1     	   size of memory window1
 mw2     	   size of memory window2
 mw3     	   size of memory window3
 mw4     	   size of memory window4
-num_mws     	   Number of memory windows; max = 4
+num_mws     	   Number of memory linux; max = 4
 spad_count     	   Number of scratchpad registers; default = 64
 ================   ===========================================================

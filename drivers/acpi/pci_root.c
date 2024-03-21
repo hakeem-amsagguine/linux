@@ -842,7 +842,7 @@ static void acpi_pci_root_validate_resources(struct device *dev,
 				continue;
 
 			/*
-			 * I don't like throwing away windows because then
+			 * I don't like throwing away linux because then
 			 * our resources no longer match the ACPI _CRS, but
 			 * the kernel resource tree doesn't allow overlaps.
 			 */
@@ -987,7 +987,7 @@ static void acpi_pci_root_release_info(struct pci_host_bridge *bridge)
 	struct resource *res;
 	struct resource_entry *entry;
 
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		res = entry->res;
 		if (res->flags & IORESOURCE_IO)
 			pci_unmap_iospace(res);

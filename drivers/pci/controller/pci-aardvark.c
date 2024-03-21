@@ -608,7 +608,7 @@ static void advk_pcie_setup_hw(struct advk_pcie *pcie)
 	 * configurations (Default User Field: 0xD0074CFC)
 	 * are used to transparent address translation for
 	 * the outbound transactions. Thus, PCIe address
-	 * windows are not required for transparent memory
+	 * linux are not required for transparent memory
 	 * access when default outbound window configuration
 	 * is set for memory access.
 	 */
@@ -634,7 +634,7 @@ static void advk_pcie_setup_hw(struct advk_pcie *pcie)
 	advk_writel(pcie, reg, PIO_CTRL);
 
 	/*
-	 * Configure PCIe address windows for non-memory or
+	 * Configure PCIe address linux for non-memory or
 	 * non-transparent access as by default PCIe uses
 	 * transparent memory access.
 	 */
@@ -643,7 +643,7 @@ static void advk_pcie_setup_hw(struct advk_pcie *pcie)
 				     pcie->wins[i].match, pcie->wins[i].remap,
 				     pcie->wins[i].mask, pcie->wins[i].actions);
 
-	/* Disable remaining PCIe outbound windows */
+	/* Disable remaining PCIe outbound linux */
 	for (i = pcie->wins_count; i < OB_WIN_COUNT; i++)
 		advk_pcie_disable_ob_win(pcie, i);
 
@@ -1771,7 +1771,7 @@ static int advk_pcie_probe(struct platform_device *pdev)
 	pcie->pdev = pdev;
 	platform_set_drvdata(pdev, pcie);
 
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		resource_size_t start = entry->res->start;
 		resource_size_t size = resource_size(entry->res);
 		unsigned long type = resource_type(entry->res);
@@ -1983,7 +1983,7 @@ static void advk_pcie_remove(struct platform_device *pdev)
 	val &= ~LINK_TRAINING_EN;
 	advk_writel(pcie, val, PCIE_CORE_CTRL0_REG);
 
-	/* Disable outbound address windows mapping */
+	/* Disable outbound address linux mapping */
 	for (i = 0; i < OB_WIN_COUNT; i++)
 		advk_pcie_disable_ob_win(pcie, i);
 

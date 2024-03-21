@@ -387,8 +387,8 @@ struct aspeed_spi_window {
 	u32 size;
 };
 
-static void aspeed_spi_get_windows(struct aspeed_spi *aspi,
-				   struct aspeed_spi_window windows[ASPEED_SPI_MAX_NUM_CS])
+static void aspeed_spi_get_linux(struct aspeed_spi *aspi,
+				   struct aspeed_spi_window linux[ASPEED_SPI_MAX_NUM_CS])
 {
 	const struct aspeed_spi_data *data = aspi->data;
 	u32 reg_val;
@@ -396,31 +396,31 @@ static void aspeed_spi_get_windows(struct aspeed_spi *aspi,
 
 	for (cs = 0; cs < aspi->data->max_cs; cs++) {
 		reg_val = readl(aspi->regs + CE0_SEGMENT_ADDR_REG + cs * 4);
-		windows[cs].cs = cs;
-		windows[cs].size = data->segment_end(aspi, reg_val) -
+		linux[cs].cs = cs;
+		linux[cs].size = data->segment_end(aspi, reg_val) -
 			data->segment_start(aspi, reg_val);
-		windows[cs].offset = data->segment_start(aspi, reg_val) - aspi->ahb_base_phy;
+		linux[cs].offset = data->segment_start(aspi, reg_val) - aspi->ahb_base_phy;
 		dev_vdbg(aspi->dev, "CE%d offset=0x%.8x size=0x%x\n", cs,
-			 windows[cs].offset, windows[cs].size);
+			 linux[cs].offset, linux[cs].size);
 	}
 }
 
 /*
- * On the AST2600, some CE windows are closed by default at reset but
+ * On the AST2600, some CE linux are closed by default at reset but
  * U-Boot should open all.
  */
 static int aspeed_spi_chip_set_default_window(struct aspeed_spi_chip *chip)
 {
 	struct aspeed_spi *aspi = chip->aspi;
-	struct aspeed_spi_window windows[ASPEED_SPI_MAX_NUM_CS] = { 0 };
-	struct aspeed_spi_window *win = &windows[chip->cs];
+	struct aspeed_spi_window linux[ASPEED_SPI_MAX_NUM_CS] = { 0 };
+	struct aspeed_spi_window *win = &linux[chip->cs];
 
 	/* No segment registers for the AST2400 SPI controller */
 	if (aspi->data == &ast2400_spi_data) {
 		win->offset = 0;
 		win->size = aspi->ahb_window_size;
 	} else {
-		aspeed_spi_get_windows(aspi, windows);
+		aspeed_spi_get_linux(aspi, linux);
 	}
 
 	chip->ahb_base = aspi->ahb_base + win->offset;
@@ -482,8 +482,8 @@ static int aspeed_spi_chip_adjust_window(struct aspeed_spi_chip *chip,
 					 u32 local_offset, u32 size)
 {
 	struct aspeed_spi *aspi = chip->aspi;
-	struct aspeed_spi_window windows[ASPEED_SPI_MAX_NUM_CS] = { 0 };
-	struct aspeed_spi_window *win = &windows[chip->cs];
+	struct aspeed_spi_window linux[ASPEED_SPI_MAX_NUM_CS] = { 0 };
+	struct aspeed_spi_window *win = &linux[chip->cs];
 	int ret;
 
 	/* No segment registers for the AST2400 SPI controller */
@@ -511,7 +511,7 @@ static int aspeed_spi_chip_adjust_window(struct aspeed_spi_chip *chip,
 			 chip->cs, size >> 20);
 	}
 
-	aspeed_spi_get_windows(aspi, windows);
+	aspeed_spi_get_linux(aspi, linux);
 
 	/* Adjust this chip window */
 	win->offset += local_offset;
@@ -535,7 +535,7 @@ static int aspeed_spi_chip_adjust_window(struct aspeed_spi_chip *chip,
 	 * overlap with the current window.
 	 */
 	if (chip->cs < aspi->data->max_cs - 1) {
-		struct aspeed_spi_window *next = &windows[chip->cs + 1];
+		struct aspeed_spi_window *next = &linux[chip->cs + 1];
 
 		/* Change offset and size to keep the same end address */
 		if ((next->offset + next->size) > (win->offset + win->size))

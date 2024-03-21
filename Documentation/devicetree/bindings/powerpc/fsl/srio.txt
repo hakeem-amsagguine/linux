@@ -46,11 +46,11 @@ the following properties:
 	Definition: A standard property.  Matches the port id.
 
    - ranges
-	Usage: required if local access windows preset
+	Usage: required if local access linux preset
 	Value type: <prop-encoded-array>
 	Definition: A standard property. Utilized to describe the memory mapped
 		IO space utilized by the controller.  This corresponds to the
-		setting of the local access windows that are targeted to this
+		setting of the local access linux that are targeted to this
 		SRIO port.
 
    - fsl,liodn

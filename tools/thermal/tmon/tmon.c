@@ -88,7 +88,7 @@ static void tmon_cleanup(void)
 	keypad(stdscr, FALSE);
 	echo();
 	nocbreak();
-	close_windows();
+	close_linux();
 	endwin();
 	free_thermal_data();
 
@@ -285,7 +285,7 @@ int main(int argc, char **argv)
 		return -1;
 	}
 	initialize_curses();
-	setup_windows();
+	setup_linux();
 	signal(SIGWINCH, resize_handler);
 	show_title_bar();
 	show_sensors_w();

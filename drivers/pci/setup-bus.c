@@ -854,7 +854,7 @@ static resource_size_t window_alignment(struct pci_bus *bus, unsigned long type)
 		align = PCI_P2P_DEFAULT_MEM_ALIGN;
 	else if (type & IORESOURCE_IO) {
 		/*
-		 * Per spec, I/O windows are 4K-aligned, but some bridges have
+		 * Per spec, I/O linux are 4K-aligned, but some bridges have
 		 * an extension to support 1K alignment.
 		 */
 		if (bus->self && bus->self->io_window_1k)
@@ -875,8 +875,8 @@ static resource_size_t window_alignment(struct pci_bus *bus, unsigned long type)
  * @add_size:		Additional optional I/O window
  * @realloc_head:	Track the additional I/O window on this list
  *
- * Sizing the I/O windows of the PCI-PCI bridge is trivial, since these
- * windows have 1K or 4K granularity and the I/O ranges of non-bridge PCI
+ * Sizing the I/O linux of the PCI-PCI bridge is trivial, since these
+ * linux have 1K or 4K granularity and the I/O ranges of non-bridge PCI
  * devices are limited to 256 bytes.  We must be careful with the ISA
  * aliasing though.
  */
@@ -1044,7 +1044,7 @@ static int pbus_size_mem(struct pci_bus *bus, unsigned long mask,
 #endif
 			/*
 			 * aligns[0] is for 1MB (since bridge memory
-			 * windows are always at least 1MB aligned), so
+			 * linux are always at least 1MB aligned), so
 			 * keep "order" from being negative for smaller
 			 * resources.
 			 */
@@ -1235,7 +1235,7 @@ void __pci_bus_size_bridges(struct pci_bus *bus, struct list_head *realloc_head)
 	/* The root bus? */
 	if (pci_is_root_bus(bus)) {
 		host = to_pci_host_bridge(bus->bridge);
-		if (!host->size_windows)
+		if (!host->size_linux)
 			return;
 		pci_bus_for_each_resource(bus, pref)
 			if (pref && (pref->flags & IORESOURCE_PREFETCH))
@@ -1889,7 +1889,7 @@ static void pci_bus_distribute_available_resources(struct pci_bus *bus,
 	/*
 	 * Calculate the amount of space we can forward from "bus" to any
 	 * downstream buses, i.e., the space left over after assigning the
-	 * BARs and windows on "bus".
+	 * BARs and linux on "bus".
 	 */
 	list_for_each_entry(dev, &bus->devices, bus_list) {
 		if (!dev->is_virtfn)
@@ -1931,7 +1931,7 @@ static void pci_bus_distribute_available_resources(struct pci_bus *bus,
 
 		/*
 		 * Make sure the split resource space is properly aligned
-		 * for bridge windows (align it down to avoid going above
+		 * for bridge linux (align it down to avoid going above
 		 * what is available).
 		 */
 		align = pci_resource_alignment(dev, res);

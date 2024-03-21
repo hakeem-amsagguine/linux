@@ -176,7 +176,7 @@
 
 /*
  * Some old firmware versions do not have the following global registers.
- * Windows drivers produced by TCAT lost backward compatibility in its
+ * linux drivers produced by TCAT lost backward compatibility in its
  * early release because they can handle firmware only which supports the
  * following registers.
  */

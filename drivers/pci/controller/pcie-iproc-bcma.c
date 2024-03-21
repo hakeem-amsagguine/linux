@@ -59,8 +59,8 @@ static int iproc_bcma_pcie_probe(struct bcma_device *bdev)
 	pcie->mem.end = bdev->addr_s[0] + SZ_128M - 1;
 	pcie->mem.name = "PCIe MEM space";
 	pcie->mem.flags = IORESOURCE_MEM;
-	pci_add_resource(&bridge->windows, &pcie->mem);
-	ret = devm_request_pci_bus_resources(dev, &bridge->windows);
+	pci_add_resource(&bridge->linux, &pcie->mem);
+	ret = devm_request_pci_bus_resources(dev, &bridge->linux);
 	if (ret)
 		return ret;
 
@@ -68,7 +68,7 @@ static int iproc_bcma_pcie_probe(struct bcma_device *bdev)
 
 	bcma_set_drvdata(bdev, pcie);
 
-	return iproc_pcie_setup(pcie, &bridge->windows);
+	return iproc_pcie_setup(pcie, &bridge->linux);
 }
 
 static void iproc_bcma_pcie_remove(struct bcma_device *bdev)

@@ -12,8 +12,8 @@ maintainers:
 
 description: |
   The Arm Message Handling Unit (MHU) Version 2 is a mailbox controller that has
-  between 1 and 124 channel windows (each 32-bit wide) to provide unidirectional
-  communication with remote processor(s), where the number of channel windows
+  between 1 and 124 channel linux (each 32-bit wide) to provide unidirectional
+  communication with remote processor(s), where the number of channel linux
   are implementation dependent.
 
   Given the unidirectional nature of the controller, an MHUv2 mailbox may only
@@ -31,7 +31,7 @@ description: |
   Following are the possible transport protocols.
 
   - Data-transfer: Each transfer is made of one or more words, using one or more
-    channel windows.
+    channel linux.
 
   - Doorbell: Each transfer is made up of single bit flag, using any one of the
     bits in a channel window. A channel window can support up to 32 doorbells
@@ -83,11 +83,11 @@ properties:
   arm,mhuv2-protocols:
     $ref: /schemas/types.yaml#/definitions/uint32-matrix
     description: |
-      The MHUv2 controller may contain up to 124 channel windows (each 32-bit
+      The MHUv2 controller may contain up to 124 channel linux (each 32-bit
       wide). The hardware and the DT bindings allows any combination of those to
       be used for various transport protocols.
 
-      This property allows a platform to describe how these channel windows are
+      This property allows a platform to describe how these channel linux are
       used in various transport protocols. The entries in this property shall be
       present as an array of tuples, where each tuple describes details about
       one of the transport protocol being implemented over some channel
@@ -97,16 +97,16 @@ properties:
       for doorbell protocol, and 1 is reserved for data-transfer protocol.
       Using any other value in the first field of a tuple makes it invalid.
 
-      The second field of a tuple signifies the number of channel windows where
+      The second field of a tuple signifies the number of channel linux where
       the protocol would be used and should be set to a non zero value. For
       doorbell protocol this field signifies the number of 32-bit channel
-      windows that implement the doorbell protocol. For data-transfer protocol,
-      this field signifies the number of 32-bit channel windows that implement
+      linux that implement the doorbell protocol. For data-transfer protocol,
+      this field signifies the number of 32-bit channel linux that implement
       the data-transfer protocol.
 
-      The total number of channel windows specified here shouldn't be more than
+      The total number of channel linux specified here shouldn't be more than
       the ones implemented by the platform, though one can specify lesser number
-      of windows here than what the platform implements.
+      of linux here than what the platform implements.
 
       mhu: mailbox@2b1f0000 {
           ...
@@ -115,9 +115,9 @@ properties:
       }
 
       The above example defines the protocols of an ARM MHUv2 mailbox
-      controller, where a total of 15 channel windows are used. The first two
-      windows are used in doorbell protocol (64 doorbells), followed by 1, 5 and
-      7 windows (separately) used in data-transfer protocol.
+      controller, where a total of 15 channel linux are used. The first two
+      linux are used in doorbell protocol (64 doorbells), followed by 1, 5 and
+      7 linux (separately) used in data-transfer protocol.
 
     minItems: 1
     maxItems: 124
@@ -142,8 +142,8 @@ properties:
       mboxes = <&mhu 0 5>; // Channel Window Group 0, doorbell 5.
       mboxes = <&mhu 1 7>; // Channel Window Group 1, doorbell 7.
       mboxes = <&mhu 2 0>; // Channel Window Group 2, data transfer protocol with 1 window.
-      mboxes = <&mhu 3 0>; // Channel Window Group 3, data transfer protocol with 5 windows.
-      mboxes = <&mhu 4 0>; // Channel Window Group 4, data transfer protocol with 7 windows.
+      mboxes = <&mhu 3 0>; // Channel Window Group 3, data transfer protocol with 5 linux.
+      mboxes = <&mhu 4 0>; // Channel Window Group 4, data transfer protocol with 7 linux.
 
     const: 2
 
@@ -199,8 +199,8 @@ examples:
             clock-names = "ipg", "ocram", "core";
             power-domains = <&pd 0>, <&pd 1>, <&pd 2>, <&pd 3>;
             mbox-names = "txdb0", "txdb1", "rxdb0", "rxdb1";
-            mboxes = <&mhu_tx 2 0>, //data-transfer protocol with 5 windows, mhu-tx
-                     <&mhu_tx 3 0>, //data-transfer protocol with 7 windows, mhu-tx
+            mboxes = <&mhu_tx 2 0>, //data-transfer protocol with 5 linux, mhu-tx
+                     <&mhu_tx 3 0>, //data-transfer protocol with 7 linux, mhu-tx
                      <&mhu_rx 2 27>, //doorbell protocol channel 2, doorbell 27, mhu-rx
                      <&mhu_rx 0 0>;  //data-transfer protocol with 1 window, mhu-rx
             memory-region = <&dsp_reserved>;

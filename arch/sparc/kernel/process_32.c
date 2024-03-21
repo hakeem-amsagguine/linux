@@ -298,7 +298,7 @@ int copy_thread(struct task_struct *p, const struct kernel_clone_args *args)
 	p->thread.kregs = childregs;
 
 	if (unlikely(args->fn)) {
-		extern int nwindows;
+		extern int nlinux;
 		unsigned long psr;
 		memset(new_stack, 0, STACKFRAME_SZ + TRACEREG_SZ);
 		ti->kpc = (((unsigned long) ret_from_kernel_thread) - 0x8);
@@ -306,7 +306,7 @@ int copy_thread(struct task_struct *p, const struct kernel_clone_args *args)
 		childregs->u_regs[UREG_G2] = (unsigned long) args->fn_arg;
 		psr = childregs->psr = get_psr();
 		ti->kpsr = psr | PSR_PIL;
-		ti->kwim = 1 << (((psr & PSR_CWP) + 1) % nwindows);
+		ti->kwim = 1 << (((psr & PSR_CWP) + 1) % nlinux);
 		return 0;
 	}
 	memcpy(new_stack, (char *)regs - STACKFRAME_SZ, STACKFRAME_SZ + TRACEREG_SZ);

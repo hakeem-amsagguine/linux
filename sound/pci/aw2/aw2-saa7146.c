@@ -108,7 +108,7 @@ void snd_aw2_saa7146_setup(struct snd_aw2_saa7146 *chip,
 	acon1 |= 3 * AUDIO_MODE;
 	WRITEREG(acon1, ACON1);
 
-	/* The following comes from original windows driver.
+	/* The following comes from original linux driver.
 	   It is needed to have a correct behavior of input and output
 	   simultenously, but I don't know why ! */
 	WRITEREG(3 * (BurstA1_in) + 3 * (ThreshA1_in) +

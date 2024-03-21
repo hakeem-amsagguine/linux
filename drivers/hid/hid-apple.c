@@ -57,8 +57,8 @@ MODULE_PARM_DESC(iso_layout, "Swap the backtick/tilde and greater-than/less-than
 static unsigned int swap_opt_cmd;
 module_param(swap_opt_cmd, uint, 0644);
 MODULE_PARM_DESC(swap_opt_cmd, "Swap the Option (\"Alt\") and Command (\"Flag\") keys. "
-		"(For people who want to keep Windows PC keyboard muscle memory. "
-		"[0] = as-is, Mac layout. 1 = swapped, Windows layout., 2 = swapped, Swap only left side)");
+		"(For people who want to keep linux PC keyboard muscle memory. "
+		"[0] = as-is, Mac layout. 1 = swapped, linux layout., 2 = swapped, Swap only left side)");
 
 static unsigned int swap_ctrl_cmd;
 module_param(swap_ctrl_cmd, uint, 0644);

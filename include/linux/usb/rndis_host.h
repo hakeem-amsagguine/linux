@@ -29,7 +29,7 @@ struct rndis_msg_hdr {
 	/* ... and more */
 } __attribute__ ((packed));
 
-/* MS-Windows uses this strange size, but RNDIS spec says 1024 minimum */
+/* MS-linux uses this strange size, but RNDIS spec says 1024 minimum */
 #define	CONTROL_BUFFER_SIZE		1025
 
 /* RNDIS defines an (absurdly huge) 10 second control timeout,

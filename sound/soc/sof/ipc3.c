@@ -518,13 +518,13 @@ static int sof_ipc3_set_get_data(struct snd_sof_dev *sdev, void *data, size_t da
 	return ret;
 }
 
-int sof_ipc3_get_ext_windows(struct snd_sof_dev *sdev,
+int sof_ipc3_get_ext_linux(struct snd_sof_dev *sdev,
 			     const struct sof_ipc_ext_data_hdr *ext_hdr)
 {
 	const struct sof_ipc_window *w =
 		container_of(ext_hdr, struct sof_ipc_window, ext_hdr);
 
-	if (w->num_windows == 0 || w->num_windows > SOF_IPC_MAX_ELEMS)
+	if (w->num_linux == 0 || w->num_linux > SOF_IPC_MAX_ELEMS)
 		return -EINVAL;
 
 	if (sdev->info_window) {
@@ -614,7 +614,7 @@ static int ipc3_fw_parse_ext_data(struct snd_sof_dev *sdev, u32 offset)
 		/* process structure data */
 		switch (ext_hdr->type) {
 		case SOF_IPC_EXT_WINDOW:
-			ret = sof_ipc3_get_ext_windows(sdev, ext_hdr);
+			ret = sof_ipc3_get_ext_linux(sdev, ext_hdr);
 			break;
 		case SOF_IPC_EXT_CC_INFO:
 			ret = sof_ipc3_get_cc_info(sdev, ext_hdr);
@@ -648,7 +648,7 @@ static int ipc3_fw_parse_ext_data(struct snd_sof_dev *sdev, u32 offset)
 	return ret;
 }
 
-static void ipc3_get_windows(struct snd_sof_dev *sdev)
+static void ipc3_get_linux(struct snd_sof_dev *sdev)
 {
 	struct sof_ipc_window_elem *elem;
 	u32 outbox_offset = 0;
@@ -667,7 +667,7 @@ static void ipc3_get_windows(struct snd_sof_dev *sdev)
 		return;
 	}
 
-	for (i = 0; i < sdev->info_window->num_windows; i++) {
+	for (i = 0; i < sdev->info_window->num_linux; i++) {
 		elem = &sdev->info_window->window[i];
 
 		window_offset = snd_sof_dsp_get_window_offset(sdev, elem->id);
@@ -861,7 +861,7 @@ static int ipc3_fw_ready(struct snd_sof_dev *sdev, u32 cmd)
 	/* now check for extended data */
 	ipc3_fw_parse_ext_data(sdev, offset + sizeof(struct sof_ipc_fw_ready));
 
-	ipc3_get_windows(sdev);
+	ipc3_get_linux(sdev);
 
 	return ipc3_init_reply_data_buffer(sdev);
 }

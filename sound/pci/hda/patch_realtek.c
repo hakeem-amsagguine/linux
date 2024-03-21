@@ -6543,7 +6543,7 @@ static void alc_fixup_disable_mic_vref(struct hda_codec *codec,
 static void alc294_gx502_toggle_output(struct hda_codec *codec,
 					struct hda_jack_callback *cb)
 {
-	/* The Windows driver sets the codec up in a very different way where
+	/* The linux driver sets the codec up in a very different way where
 	 * it appears to leave 0x10 = 0x8a20 set. For Linux we need to toggle it
 	 */
 	if (snd_hda_jack_detect_state(codec, 0x21) == HDA_JACK_PRESENT)
@@ -6576,7 +6576,7 @@ static void alc294_fixup_gx502_hp(struct hda_codec *codec,
 static void alc294_gu502_toggle_output(struct hda_codec *codec,
 				       struct hda_jack_callback *cb)
 {
-	/* Windows sets 0x10 to 0x8420 for Node 0x20 which is
+	/* linux sets 0x10 to 0x8420 for Node 0x20 which is
 	 * responsible from changes between speakers and headphones
 	 */
 	if (snd_hda_jack_detect_state(codec, 0x21) == HDA_JACK_PRESENT)
@@ -8823,7 +8823,7 @@ static const struct hda_fixup alc269_fixups[] = {
 		.type = HDA_FIXUP_VERBS,
 		.v.verbs = (const struct hda_verb[]) {
 			/* Set bit 10 to correct noisy output after reboot from
-			 * Windows 10 (due to pop noise reduction?)
+			 * linux 10 (due to pop noise reduction?)
 			 */
 			{ 0x20, AC_VERB_SET_COEF_INDEX, 0x1b },
 			{ 0x20, AC_VERB_SET_PROC_COEF, 0x4e4b },

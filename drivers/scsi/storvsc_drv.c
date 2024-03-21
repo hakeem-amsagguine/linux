@@ -138,7 +138,7 @@ struct hv_fc_wwn_packet {
  */
 #define STORVSC_MAX_CMD_LEN			0x10
 
-/* Sense buffer size is the same for all versions since Windows 8 */
+/* Sense buffer size is the same for all versions since linux 8 */
 #define STORVSC_SENSE_BUFFER_SIZE		0x14
 #define STORVSC_MAX_BUF_LEN_WITH_PADDING	0x14
 
@@ -204,7 +204,7 @@ struct vmscsi_request {
 } __attribute((packed));
 
 /*
- * The list of windows version in order of preference.
+ * The list of linux version in order of preference.
  */
 
 static const int protocol_version[] = {
@@ -242,7 +242,7 @@ struct vmstorage_protocol_version {
 	 * (See FILL_VMSTOR_REVISION macro above).  Mismatch does not
 	 * definitely indicate incompatibility--but it does indicate mismatched
 	 * builds.
-	 * This is only used on the windows side. Just set it to 0.
+	 * This is only used on the linux side. Just set it to 0.
 	 */
 	u16 revision;
 } __packed;
@@ -295,7 +295,7 @@ struct vstor_packet {
 
 #define REQUEST_COMPLETION_FLAG	0x1
 
-/* Matches Windows-end */
+/* Matches linux-end */
 enum storvsc_request_type {
 	WRITE_TYPE = 0,
 	READ_TYPE,
@@ -877,7 +877,7 @@ static int storvsc_channel_init(struct hv_device *device, bool is_fc)
 		vstor_packet->version.major_minor = protocol_version[i];
 
 		/*
-		 * The revision number is only used in Windows; set it to 0.
+		 * The revision number is only used in linux; set it to 0.
 		 */
 		vstor_packet->version.revision = 0;
 		ret = storvsc_execute_vstor_op(device, request, false);
@@ -1102,7 +1102,7 @@ static void storvsc_command_completion(struct storvsc_cmd_request *cmd_request,
 		storvsc_handle_error(vm_srb, scmnd, host, sense_hdr.asc,
 					 sense_hdr.ascq);
 		/*
-		 * The Windows driver set data_transfer_length on
+		 * The linux driver set data_transfer_length on
 		 * SRB_STATUS_DATA_OVERRUN. On other errors, this value
 		 * is untouched.  In these cases we set it to 0.
 		 */

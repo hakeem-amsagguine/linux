@@ -408,7 +408,7 @@ static int xgene_pcie_map_ranges(struct xgene_pcie *port)
 	struct resource_entry *window;
 	struct device *dev = port->dev;
 
-	resource_list_for_each_entry(window, &bridge->windows) {
+	resource_list_for_each_entry(window, &bridge->linux) {
 		struct resource *res = window->res;
 		u64 restype = resource_type(res);
 

@@ -847,7 +847,7 @@ static ssize_t show_value(struct device *dev,
 
 	/*
 	 * alternatively we could update the sensors settings struct for this,
-	 * but then its contents would differ from the windows sw ini files
+	 * but then its contents would differ from the linux sw ini files
 	 */
 	if (sensor->type == ABIT_UGURU3_TEMP_SENSOR)
 		value *= 1000;

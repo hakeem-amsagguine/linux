@@ -96,7 +96,7 @@
 
 /*
  * The following definitions pertain to the IO special address
- * space.  They define the location of the big and little windows
+ * space.  They define the location of the big and little linux
  * of any given node.
  */
 

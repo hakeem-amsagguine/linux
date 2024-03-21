@@ -192,7 +192,7 @@ void dmub_dcn20_backdoor_load(struct dmub_srv *dmub,
 			      const struct dmub_window *cw0,
 			      const struct dmub_window *cw1);
 
-void dmub_dcn20_setup_windows(struct dmub_srv *dmub,
+void dmub_dcn20_setup_linux(struct dmub_srv *dmub,
 			      const struct dmub_window *cw2,
 			      const struct dmub_window *cw3,
 			      const struct dmub_window *cw4,

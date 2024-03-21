@@ -653,7 +653,7 @@ static int vop_enable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
 		writel_relaxed(vop->regsbak[i / 4], vop->regs + i);
 
 	/*
-	 * We need to make sure that all windows are disabled before we
+	 * We need to make sure that all linux are disabled before we
 	 * enable the crtc. Otherwise we might try to scan from a destroyed
 	 * buffer later.
 	 *
@@ -1906,7 +1906,7 @@ static int vop_create_crtc(struct vop *vop)
 	}
 
 	/*
-	 * Create drm_planes for overlay windows with possible_crtcs restricted
+	 * Create drm_planes for overlay linux with possible_crtcs restricted
 	 * to the newly created crtc.
 	 */
 	for (i = 0; i < vop_data->win_size; i++) {

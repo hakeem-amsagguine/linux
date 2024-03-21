@@ -537,7 +537,7 @@ static void rs_rate_scale_clear_window(struct iwl_rate_scale_data *window)
 	window->average_tpt = IWL_INVALID_VALUE;
 }
 
-static void rs_rate_scale_clear_tbl_windows(struct iwl_mvm *mvm,
+static void rs_rate_scale_clear_tbl_linux(struct iwl_mvm *mvm,
 					    struct iwl_scale_tbl_info *tbl)
 {
 	int i;
@@ -1472,7 +1472,7 @@ static void rs_stay_in_table(struct iwl_lq_sta *lq_sta, bool force_search)
 
 				IWL_DEBUG_RATE(mvm,
 					       "LQ: stay in table clear win\n");
-				rs_rate_scale_clear_tbl_windows(mvm, tbl);
+				rs_rate_scale_clear_tbl_linux(mvm, tbl);
 			}
 		}
 
@@ -1480,7 +1480,7 @@ static void rs_stay_in_table(struct iwl_lq_sta *lq_sta, bool force_search)
 		 * bitmaps and stats in active table (this will become the new
 		 * "search" table). */
 		if (lq_sta->rs_state == RS_STATE_SEARCH_CYCLE_STARTED) {
-			rs_rate_scale_clear_tbl_windows(mvm, tbl);
+			rs_rate_scale_clear_tbl_linux(mvm, tbl);
 		}
 	}
 }
@@ -1582,7 +1582,7 @@ static bool rs_tweak_rate_tbl(struct iwl_mvm *mvm,
 
 tweaked:
 	rs_set_expected_tpt_table(lq_sta, tbl);
-	rs_rate_scale_clear_tbl_windows(mvm, tbl);
+	rs_rate_scale_clear_tbl_linux(mvm, tbl);
 	return true;
 }
 
@@ -2093,7 +2093,7 @@ static void rs_rate_scale_perform(struct iwl_mvm *mvm,
 			       "Aggregation changed: prev %d current %d. Update expected TPT table\n",
 			       prev_agg, lq_sta->is_agg);
 		rs_set_expected_tpt_table(lq_sta, tbl);
-		rs_rate_scale_clear_tbl_windows(mvm, tbl);
+		rs_rate_scale_clear_tbl_linux(mvm, tbl);
 	}
 
 	/* current tx rate */
@@ -2308,7 +2308,7 @@ lq_update:
 		if (lq_sta->search_better_tbl) {
 			/* Access the "search" table, clear its history. */
 			tbl = &lq_sta->lq_info[rs_search_tbl(lq_sta->active_tbl)];
-			rs_rate_scale_clear_tbl_windows(mvm, tbl);
+			rs_rate_scale_clear_tbl_linux(mvm, tbl);
 
 			/* Use new "search" start rate */
 			index = tbl->rate.index;
@@ -2941,7 +2941,7 @@ static void rs_drv_rate_init(struct iwl_mvm *mvm, struct ieee80211_sta *sta,
 	mvmsta->max_amsdu_len = sta->cur->max_amsdu_len;
 
 	for (j = 0; j < LQ_SIZE; j++)
-		rs_rate_scale_clear_tbl_windows(mvm, &lq_sta->lq_info[j]);
+		rs_rate_scale_clear_tbl_linux(mvm, &lq_sta->lq_info[j]);
 
 	lq_sta->flush_timer = 0;
 	lq_sta->last_tx = jiffies;

@@ -526,7 +526,7 @@ static int msm_find_most_appropriate_phase(struct sdhci_host *host,
 	if (!ranges[0][0]) {
 		phase_0_found = true;
 		phase_0_raw_index = 0;
-		/* Check if cycle exist between 2 valid windows */
+		/* Check if cycle exist between 2 valid linux */
 		for (cnt = 1; cnt <= row_index; cnt++) {
 			if (phases_per_row[cnt]) {
 				for (i = 0; i < phases_per_row[cnt]; i++) {
@@ -540,7 +540,7 @@ static int msm_find_most_appropriate_phase(struct sdhci_host *host,
 		}
 	}
 
-	/* If 2 valid windows form cycle then merge them as single window */
+	/* If 2 valid linux form cycle then merge them as single window */
 	if (phase_0_found && phase_15_found) {
 		/* number of phases in raw where phase 0 is present */
 		u8 phases_0 = phases_per_row[phase_0_raw_index];
@@ -549,13 +549,13 @@ static int msm_find_most_appropriate_phase(struct sdhci_host *host,
 
 		if (phases_0 + phases_15 >= MAX_PHASES)
 			/*
-			 * If there are more than 1 phase windows then total
-			 * number of phases in both the windows should not be
+			 * If there are more than 1 phase linux then total
+			 * number of phases in both the linux should not be
 			 * more than or equal to MAX_PHASES.
 			 */
 			return -EINVAL;
 
-		/* Merge 2 cyclic windows */
+		/* Merge 2 cyclic linux */
 		i = phases_15;
 		for (cnt = 0; cnt < phases_0; cnt++) {
 			ranges[phase_15_raw_index][i] =

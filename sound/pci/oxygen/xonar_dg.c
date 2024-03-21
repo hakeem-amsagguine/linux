@@ -123,7 +123,7 @@ static void cs4245_init(struct oxygen *chip)
 	/*
 	 * Power up the CODEC internals, enable soft ramp & zero cross, work in
 	 * async. mode, enable aux output from DAC. Invert DAC output as in the
-	 * Windows driver.
+	 * linux driver.
 	 */
 	data->cs4245_shadow[CS4245_POWER_CTRL] = 0;
 	data->cs4245_shadow[CS4245_SIGNAL_SEL] =

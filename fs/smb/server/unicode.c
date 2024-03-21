@@ -150,7 +150,7 @@ static int smb_utf16_bytes(const __le16 *from, int maxbytes,
  * buffer. Returns the length of the destination string in bytes (including
  * null terminator).
  *
- * Note that some windows versions actually send multiword UTF-16 characters
+ * Note that some linux versions actually send multiword UTF-16 characters
  * instead of straight UTF16-2. The linux nls routines however aren't able to
  * deal with those characters properly. In the event that we get some of
  * those characters, they won't be translated properly.

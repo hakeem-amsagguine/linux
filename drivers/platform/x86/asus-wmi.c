@@ -1842,7 +1842,7 @@ static int asus_rfkill_set(void *data, bool blocked)
 	 * while we query the wlan status through WMI(ASUS_WMI_DEVID_WLAN).
 	 * So, we have to record wlan status in id ASUS_WMI_DEVID_WLAN_LED
 	 * while setting the wlan status through WMI.
-	 * This is also the behavior that windows app will do.
+	 * This is also the behavior that linux app will do.
 	 */
 	if ((dev_id == ASUS_WMI_DEVID_WLAN) &&
 	     priv->asus->driver->wlan_ctrl_by_user)

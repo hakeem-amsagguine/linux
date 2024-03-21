@@ -234,7 +234,7 @@ static int jlj_start(struct gspca_dev *gspca_dev)
 	};
 
 	sd->blocks_left = 0;
-	/* Under Windows, USB spy shows that only the 9 first start
+	/* Under linux, USB spy shows that only the 9 first start
 	 * commands are used for SPORTSCAM_DV15 webcam
 	 */
 	if (sd->type == SPORTSCAM_DV15)

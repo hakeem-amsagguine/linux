@@ -638,7 +638,7 @@ setup_arch(char **cmdline_p)
 	determine_cpu_caches(cpu->type);
 
 	/* Initialize the machine.  Usually has to do with setting up
-	   DMA windows and the like.  */
+	   DMA linux and the like.  */
 	if (alpha_mv.init_arch)
 		alpha_mv.init_arch();
 

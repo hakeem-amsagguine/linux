@@ -111,7 +111,7 @@ which the AVF is associated. The following are base mode features:
 - 16 MAC address filters for each VF
 - Stateless offloads - non-tunneled checksums
 - AVF device ID
-- HW mailbox is used for VF to PF communications (including on Windows)
+- HW mailbox is used for VF to PF communications (including on linux)
 
 IEEE 802.1ad (QinQ) Support
 ---------------------------

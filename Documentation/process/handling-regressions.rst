@@ -237,7 +237,7 @@ Regarding stable and longterm kernels:
 
  * In case of urgent regression fixes you might want to ensure prompt
    backporting by dropping the stable team a note once the fix was mainlined;
-   this is especially advisable during merge windows and shortly thereafter, as
+   this is especially advisable during merge linux and shortly thereafter, as
    the fix otherwise might land at the end of a huge patch queue.
 
 On patch flow:

@@ -53,7 +53,7 @@ enum _dmae_cmd_crc_mask {
 #define DMAE_MAX_CLIENTS        32
 
 /**
- * qed_gtt_init(): Initialize GTT windows.
+ * qed_gtt_init(): Initialize GTT linux.
  *
  * @p_hwfn: HW device data.
  *

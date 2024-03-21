@@ -39,7 +39,7 @@ e) Additional use cases can be optimized to use "compounding" (e.g.
    handle caching leases) and better using reference counters on file
    handles.
 
-f) Finish inotify support so kde and gnome file list windows
+f) Finish inotify support so kde and gnome file list linux
    will autorefresh (partially complete by Asser). Needs minor kernel
    vfs change to support removing D_NOTIFY on a file.
 
@@ -124,7 +124,7 @@ Misc testing to do
 4) More exhaustively test against less common servers
 
 5) Continue to extend the smb3 "buildbot" which does automated xfstesting
-   against Windows, Samba and Azure currently - to add additional tests and
+   against linux, Samba and Azure currently - to add additional tests and
    to allow the buildbot to execute the tests faster. The URL for the
    buildbot is: http://smb3-test-rhel-75.southcentralus.cloudapp.azure.com
 

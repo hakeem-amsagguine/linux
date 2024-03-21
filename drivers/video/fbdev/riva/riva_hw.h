@@ -102,7 +102,7 @@ typedef unsigned int   U032;
 \***************************************************************************/
 
 /*
- * Raster OPeration. Windows style ROP3.
+ * Raster OPeration. linux style ROP3.
  */
 typedef volatile struct
 {

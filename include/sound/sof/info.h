@@ -98,14 +98,14 @@ struct sof_ipc_window_elem {
 	uint32_t id;		/**< platform specific - used to map to host memory */
 	uint32_t flags;		/**< R, W, RW, etc - to define */
 	uint32_t size;		/**< size of region in bytes */
-	/* offset in window region as windows can be partitioned */
+	/* offset in window region as linux can be partitioned */
 	uint32_t offset;
 } __packed;
 
-/* extended data memory windows for IPC, trace and debug */
+/* extended data memory linux for IPC, trace and debug */
 struct sof_ipc_window {
 	struct sof_ipc_ext_data_hdr ext_hdr;
-	uint32_t num_windows;
+	uint32_t num_linux;
 	struct sof_ipc_window_elem window[SOF_IPC_MAX_ELEMS];
 }  __packed;
 

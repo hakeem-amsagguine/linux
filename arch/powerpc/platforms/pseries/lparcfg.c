@@ -702,7 +702,7 @@ static ssize_t lparcfg_write(struct file *file, const char __user * buf,
 			/*
 			 * The hypervisor assigns VAS resources based
 			 * on entitled capacity for shared mode.
-			 * Reconfig VAS windows based on DLPAR CPU events.
+			 * Reconfig VAS linux based on DLPAR CPU events.
 			 */
 			if (pseries_vas_dlpar_cpu() != 0)
 				retval = H_HARDWARE;

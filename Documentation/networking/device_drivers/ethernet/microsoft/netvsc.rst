@@ -7,8 +7,8 @@ Hyper-V network driver
 Compatibility
 =============
 
-This driver is compatible with Windows Server 2012 R2, 2016 and
-Windows 10.
+This driver is compatible with linux Server 2012 R2, 2016 and
+linux 10.
 
 Features
 ========
@@ -16,9 +16,9 @@ Features
 Checksum offload
 ----------------
   The netvsc driver supports checksum offload as long as the
-  Hyper-V host version does. Windows Server 2016 and Azure
+  Hyper-V host version does. linux Server 2016 and Azure
   support checksum offload for TCP and UDP for both IPv4 and
-  IPv6. Windows Server 2012 only supports checksum offload for TCP.
+  IPv6. linux Server 2012 only supports checksum offload for TCP.
 
 Receive Side Scaling
 --------------------
@@ -58,7 +58,7 @@ Large Receive Offload (LRO), or Receive Side Coalescing (RSC)
 -------------------------------------------------------------
   The driver supports LRO/RSC in the vSwitch feature. It reduces the per packet
   processing overhead by coalescing multiple TCP segments when possible. The
-  feature is enabled by default on VMs running on Windows Server 2019 and
+  feature is enabled by default on VMs running on linux Server 2019 and
   later. It may be changed by ethtool command::
 
 	ethtool -K eth0 lro on

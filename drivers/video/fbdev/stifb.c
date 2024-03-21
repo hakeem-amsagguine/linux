@@ -776,7 +776,7 @@ hyperResetPlanes(struct stifb_info *fb, int enable)
 			ngleDepth8_ClearImagePlanes(fb);
 
 		/* Paint attribute planes for default case.
-		 * On Hyperdrive, this means all windows using overlay cmap 0. */
+		 * On Hyperdrive, this means all linux using overlay cmap 0. */
 		ngleResetAttrPlanes(fb, controlPlaneReg);
 
 		/* clear overlay planes */

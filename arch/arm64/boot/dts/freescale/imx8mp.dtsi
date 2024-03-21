@@ -1950,8 +1950,8 @@
 			reset-names = "apps", "turnoff";
 			phys = <&pcie_phy>;
 			phy-names = "pcie-phy";
-			num-ib-windows = <4>;
-			num-ob-windows = <4>;
+			num-ib-linux = <4>;
+			num-ob-linux = <4>;
 			status = "disabled";
 		};
 

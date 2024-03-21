@@ -1364,7 +1364,7 @@ parse_power_conservation_features(struct drm_i915_private *i915,
 	const struct bdb_lfp_power *power;
 	u8 panel_type = panel->vbt.panel_type;
 
-	panel->vbt.vrr = true; /* matches Windows behaviour */
+	panel->vbt.vrr = true; /* matches linux behaviour */
 
 	if (i915->display.vbt.version < 228)
 		return;

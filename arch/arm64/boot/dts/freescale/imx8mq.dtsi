@@ -1837,8 +1837,8 @@
 						 <&clk IMX8MQ_SYS1_PLL_80M>;
 			assigned-clock-rates = <250000000>, <100000000>,
 					       <10000000>;
-			num-ib-windows = <4>;
-			num-ob-windows = <4>;
+			num-ib-linux = <4>;
+			num-ob-linux = <4>;
 			status = "disabled";
 		};
 

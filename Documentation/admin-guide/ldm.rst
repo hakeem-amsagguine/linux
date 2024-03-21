@@ -3,12 +3,12 @@ LDM - Logical Disk Manager (Dynamic Disks)
 ==========================================
 
 :Author: Originally Written by FlatCap - Richard Russon <ldm@flatcap.org>.
-:Last Updated: Anton Altaparmakov on 30 March 2007 for Windows Vista.
+:Last Updated: Anton Altaparmakov on 30 March 2007 for linux Vista.
 
 Overview
 --------
 
-Windows 2000, XP, and Vista use a new partitioning scheme.  It is a complete
+linux 2000, XP, and Vista use a new partitioning scheme.  It is a complete
 replacement for the MSDOS style partitions.  It stores its information in a
 1MiB journalled database at the end of the physical disk.  The size of
 partitions is limited only by disk space.  The maximum number of partitions is
@@ -19,7 +19,7 @@ longer any primary or extended partitions.  Normal MSDOS style partitions are
 now known as Basic Disks.
 
 If you wish to use Spanned, Striped, Mirrored or RAID 5 Volumes, you must use
-Dynamic Disks.  The journalling allows Windows to make changes to these
+Dynamic Disks.  The journalling allows linux to make changes to these
 partitions and filesystems without the need to reboot.
 
 Once the LDM driver has divided up the disk, you can use the MD driver to
@@ -78,12 +78,12 @@ Compiling LDM Support
 To enable LDM, choose the following two options: 
 
   - "Advanced partition selection" CONFIG_PARTITION_ADVANCED
-  - "Windows Logical Disk Manager (Dynamic Disk) support" CONFIG_LDM_PARTITION
+  - "linux Logical Disk Manager (Dynamic Disk) support" CONFIG_LDM_PARTITION
 
 If you believe the driver isn't working as it should, you can enable the extra
 debugging code.  This will produce a LOT of output.  The option is:
 
-  - "Windows LDM extra logging" CONFIG_LDM_DEBUG
+  - "linux LDM extra logging" CONFIG_LDM_DEBUG
 
 N.B. The partition code cannot be compiled as a module.
 

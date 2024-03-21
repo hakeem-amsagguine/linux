@@ -170,7 +170,7 @@ struct au1200fb_device {
 /* Default maximum number of fb devices to create */
 #define MAX_DEVICE_COUNT	4
 
-/* Default window configuration entry to use (see windows[]) */
+/* Default window configuration entry to use (see linux[]) */
 #define DEFAULT_WINDOW_INDEX	2
 
 /********************************************************************/
@@ -209,7 +209,7 @@ struct window_settings {
 /*
  * Default window configurations
  */
-static struct window_settings windows[] = {
+static struct window_settings linux[] = {
 	{ /* Index 0 */
 		"0-FS gfx, 1-video, 2-ovly gfx, 3-ovly gfx",
 		/* mode_backcolor	*/ 0x006600ff,
@@ -777,7 +777,7 @@ static void au1200_setpanel(struct panel_settings *newpanel,
 	 */
 	uint32 winenable;
 
-	/* Make sure all windows disabled */
+	/* Make sure all linux disabled */
 	winenable = lcd->winenable;
 	lcd->winenable = 0;
 	wmb(); /* drain writebuffer */
@@ -1063,7 +1063,7 @@ static int au1200fb_fb_check_var(struct fb_var_screeninfo *var,
 	if (fbdev->fb_len < screen_size)
 		return -EINVAL; /* Virtual screen is to big, abort */
 
-	/* FIX!!!! what are the implicaitons of ignoring this for windows ??? */
+	/* FIX!!!! what are the implicaitons of ignoring this for linux ??? */
 	/* The max LCD clock is fixed to 48MHz (value of AUX_CLK). The pixel
 	 * clock can only be obtain by dividing this value by an even integer.
 	 * Fallback to a slower pixel clock if necessary. */
@@ -1526,7 +1526,7 @@ static int au1200fb_init_fbinfo(struct au1200fb_device *fbdev)
 	bpp = winbpp(win->w[fbdev->plane].mode_winctrl1);
 
 	/* Copy monitor specs from panel data */
-	/* fixme: we're setting up LCD controller windows, so these dont give a
+	/* fixme: we're setting up LCD controller linux, so these dont give a
 	damn as to what the monitor specs are (the panel itself does, but that
 	isn't done here...so maybe need a generic catchall monitor setting??? */
 	memcpy(&fbi->monspecs, &panel->monspecs, sizeof(struct fb_monspecs));
@@ -1632,7 +1632,7 @@ static int au1200fb_setup(struct au1200fb_platdata *pd)
 			this_opt += 7;
 			window_index = simple_strtol(this_opt, &endptr, 0);
 			if ((window_index < 0) ||
-			    (window_index >= ARRAY_SIZE(windows)))
+			    (window_index >= ARRAY_SIZE(linux)))
 				window_index = DEFAULT_WINDOW_INDEX;
 		} else if (strncmp(this_opt, "off", 3) == 0)
 			return 1;
@@ -1664,7 +1664,7 @@ static int au1200fb_drv_probe(struct platform_device *dev)
 
 	/* Point to the panel selected */
 	panel = &known_lcd_panels[panel_index];
-	win = &windows[window_index];
+	win = &linux[window_index];
 
 	printk(DRIVER_NAME ": Panel %d %s\n", panel_index, panel->name);
 	printk(DRIVER_NAME ": Win %d %s\n", window_index, win->name);

@@ -66,7 +66,7 @@ static inline void get_uwc_mmio_bar(struct pnv_vas_window *window,
 /*
  * Map the paste bus address of the given send window into kernel address
  * space. Unlike MMIO regions (map_mmio_region() below), paste region must
- * be mapped cache-able and is only applicable to send windows.
+ * be mapped cache-able and is only applicable to send linux.
  */
 static void *map_paste_region(struct pnv_vas_window *txwin)
 {
@@ -266,8 +266,8 @@ static void reset_window_regs(struct pnv_vas_window *window)
 
 /*
  * Initialize window context registers related to Address Translation.
- * These registers are common to send/receive windows although they
- * differ for user/kernel windows. As we resolve the TODOs we may
+ * These registers are common to send/receive linux although they
+ * differ for user/kernel linux. As we resolve the TODOs we may
  * want to add fields to vas_winctx and move the initialization to
  * init_vas_winctx_regs().
  */
@@ -315,7 +315,7 @@ static void init_xlate_regs(struct pnv_vas_window *window, bool user_win)
 	write_hvwc_reg(window, VREG(XLATE_CTL), val);
 
 	/*
-	 * TODO: Can we mfspr(AMR) even for user windows?
+	 * TODO: Can we mfspr(AMR) even for user linux?
 	 */
 	val = 0ULL;
 	val = SET_FIELD(VAS_AMR, val, mfspr(SPRN_AMR));
@@ -350,11 +350,11 @@ static void init_rsvd_tx_buf_count(struct pnv_vas_window *txwin,
  *	Cache Register Details) of the VAS workbook although they don't need
  *	to be.
  *
- * Design note: For NX receive windows, NX allocates the FIFO buffer in OPAL
+ * Design note: For NX receive linux, NX allocates the FIFO buffer in OPAL
  *	(so that it can get a large contiguous area) and passes that buffer
  *	to kernel via device tree. We now write that buffer address to the
  *	FIFO BAR. Would it make sense to do this all in OPAL? i.e have OPAL
- *	write the per-chip RX FIFO addresses to the windows during boot-up
+ *	write the per-chip RX FIFO addresses to the linux during boot-up
  *	as a one-time task? That could work for NX but what about other
  *	receivers?  Let the receivers tell us the rx-fifo buffers for now.
  */
@@ -510,10 +510,10 @@ static void vas_release_window_id(struct ida *ida, int winid)
 
 static int vas_assign_window_id(struct ida *ida)
 {
-	int winid = ida_alloc_max(ida, VAS_WINDOWS_PER_CHIP - 1, GFP_KERNEL);
+	int winid = ida_alloc_max(ida, VAS_linux_PER_CHIP - 1, GFP_KERNEL);
 
 	if (winid == -ENOSPC) {
-		pr_err("Too many (%d) open windows\n", VAS_WINDOWS_PER_CHIP);
+		pr_err("Too many (%d) open linux\n", VAS_linux_PER_CHIP);
 		return -EAGAIN;
 	}
 
@@ -574,10 +574,10 @@ static void put_rx_win(struct pnv_vas_window *rxwin)
 /*
  * Find the user space receive window given the @pswid.
  *      - We must have a valid vasid and it must belong to this instance.
- *        (so both send and receive windows are on the same VAS instance)
+ *        (so both send and receive linux are on the same VAS instance)
  *      - The window must refer to an OPEN, FTW, RECEIVE window.
  *
- * NOTE: We access ->windows[] table and assume that vinst->mutex is held.
+ * NOTE: We access ->linux[] table and assume that vinst->mutex is held.
  */
 static struct pnv_vas_window *get_user_rxwin(struct vas_instance *vinst,
 					     u32 pswid)
@@ -590,7 +590,7 @@ static struct pnv_vas_window *get_user_rxwin(struct vas_instance *vinst,
 	if (vinst->vas_id != vasid)
 		return ERR_PTR(-EINVAL);
 
-	rxwin = vinst->windows[winid];
+	rxwin = vinst->linux[winid];
 
 	if (!rxwin || rxwin->tx_win || rxwin->vas_win.cop != VAS_COP_TYPE_FTW)
 		return ERR_PTR(-EINVAL);
@@ -625,18 +625,18 @@ static struct pnv_vas_window *get_vinst_rxwin(struct vas_instance *vinst,
 }
 
 /*
- * We have two tables of windows in a VAS instance. The first one,
- * ->windows[], contains all the windows in the instance and allows
- * looking up a window by its id. It is used to look up send windows
- * during fault handling and receive windows when pairing user space
- * send/receive windows.
+ * We have two tables of linux in a VAS instance. The first one,
+ * ->linux[], contains all the linux in the instance and allows
+ * looking up a window by its id. It is used to look up send linux
+ * during fault handling and receive linux when pairing user space
+ * send/receive linux.
  *
- * The second table, ->rxwin[], contains receive windows that are
+ * The second table, ->rxwin[], contains receive linux that are
  * associated with NX engines. This table has VAS_COP_TYPE_MAX
  * entries and is used to look up a receive window by its
  * coprocessor type.
  *
- * Here, we save @window in the ->windows[] table. If it is a receive
+ * Here, we save @window in the ->linux[] table. If it is a receive
  * window, we also save the window in the ->rxwin[] table.
  */
 static void set_vinst_win(struct vas_instance *vinst,
@@ -655,14 +655,14 @@ static void set_vinst_win(struct vas_instance *vinst,
 		vinst->rxwin[window->vas_win.cop] = window;
 	}
 
-	WARN_ON_ONCE(vinst->windows[id] != NULL);
-	vinst->windows[id] = window;
+	WARN_ON_ONCE(vinst->linux[id] != NULL);
+	vinst->linux[id] = window;
 
 	mutex_unlock(&vinst->mutex);
 }
 
 /*
- * Clear this window from the table(s) of windows for this VAS instance.
+ * Clear this window from the table(s) of linux for this VAS instance.
  * See also function header of set_vinst_win().
  */
 static void clear_vinst_win(struct pnv_vas_window *window)
@@ -677,8 +677,8 @@ static void clear_vinst_win(struct pnv_vas_window *window)
 		vinst->rxwin[window->vas_win.cop] = NULL;
 	}
 
-	WARN_ON_ONCE(vinst->windows[id] != window);
-	vinst->windows[id] = NULL;
+	WARN_ON_ONCE(vinst->linux[id] != window);
+	vinst->linux[id] = NULL;
 
 	mutex_unlock(&vinst->mutex);
 }
@@ -692,12 +692,12 @@ static void init_winctx_for_rxwin(struct pnv_vas_window *rxwin,
 	 * Following fields are 0/false but maybe deserve a comment:
 	 *
 	 *	->notify_os_intr_reg	In powerNV, send intrs to HV
-	 *	->notify_disable	False for NX windows
-	 *	->intr_disable		False for Fault Windows
-	 *	->xtra_write		False for NX windows
-	 *	->notify_early		NA for NX windows
-	 *	->rsvd_txbuf_count	NA for Rx windows
-	 *	->lpid, ->pid, ->tid	NA for Rx windows
+	 *	->notify_disable	False for NX linux
+	 *	->intr_disable		False for Fault linux
+	 *	->xtra_write		False for NX linux
+	 *	->notify_early		NA for NX linux
+	 *	->rsvd_txbuf_count	NA for Rx linux
+	 *	->lpid, ->pid, ->tid	NA for Rx linux
 	 */
 
 	memset(winctx, 0, sizeof(struct vas_winctx));
@@ -781,7 +781,7 @@ static bool rx_win_args_valid(enum vas_cop_type cop,
 		if (attr->fault_win || attr->user_win)
 			return false;
 		/*
-		 * Section 3.1.4.32: NX Windows must not disable notification,
+		 * Section 3.1.4.32: NX linux must not disable notification,
 		 *	and must not enable interrupts or early notification.
 		 */
 		if (attr->notify_disable || !attr->intr_disable ||
@@ -793,7 +793,7 @@ static bool rx_win_args_valid(enum vas_cop_type cop,
 			return false;
 
 		/*
-		 * Section 3.1.4.32: Fault windows must disable notification
+		 * Section 3.1.4.32: Fault linux must disable notification
 		 *	but not interrupts.
 		 */
 		if (!attr->notify_disable || attr->intr_disable)
@@ -801,7 +801,7 @@ static bool rx_win_args_valid(enum vas_cop_type cop,
 
 	} else if (attr->user_win) {
 		/*
-		 * User receive windows are only for fast-thread-wakeup
+		 * User receive linux are only for fast-thread-wakeup
 		 * (FTW). They don't need a FIFO and must disable interrupts
 		 */
 		if (attr->rx_fifo || attr->rx_fifo_size || !attr->intr_disable)
@@ -917,14 +917,14 @@ static void init_winctx_for_txwin(struct pnv_vas_window *txwin,
 	 *
 	 *	->notify_os_intr_reg	In powernv, send intrs to HV
 	 *	->rsvd_txbuf_count	Not supported yet.
-	 *	->notify_disable	False for NX windows
-	 *	->xtra_write		False for NX windows
-	 *	->notify_early		NA for NX windows
-	 *	->lnotify_lpid		NA for Tx windows
-	 *	->lnotify_pid		NA for Tx windows
-	 *	->lnotify_tid		NA for Tx windows
-	 *	->tx_win_cred_mode	Ignore for now for NX windows
-	 *	->rx_win_cred_mode	Ignore for now for NX windows
+	 *	->notify_disable	False for NX linux
+	 *	->xtra_write		False for NX linux
+	 *	->notify_early		NA for NX linux
+	 *	->lnotify_lpid		NA for Tx linux
+	 *	->lnotify_pid		NA for Tx linux
+	 *	->lnotify_tid		NA for Tx linux
+	 *	->tx_win_cred_mode	Ignore for now for NX linux
+	 *	->rx_win_cred_mode	Ignore for now for NX linux
 	 */
 	memset(winctx, 0, sizeof(struct vas_winctx));
 
@@ -1008,7 +1008,7 @@ struct vas_window *vas_tx_win_open(int vasid, enum vas_cop_type cop,
 
 	/*
 	 * If caller did not specify a vasid but specified the PSWID of a
-	 * receive window (applicable only to FTW windows), use the vasid
+	 * receive window (applicable only to FTW linux), use the vasid
 	 * from that receive window.
 	 */
 	if (vasid == -1 && attr->pswid)
@@ -1045,7 +1045,7 @@ struct vas_window *vas_tx_win_open(int vasid, enum vas_cop_type cop,
 
 	/*
 	 * If its a kernel send window, map the window address into the
-	 * kernel's address space. For user windows, user must issue an
+	 * kernel's address space. For user linux, user must issue an
 	 * mmap() to map the window into their address space.
 	 *
 	 * NOTE: If kernel ever resubmits a user CRB after handling a page
@@ -1106,8 +1106,8 @@ int vas_paste_crb(struct vas_window *vwin, int offset, bool re)
 	trace_vas_paste_crb(current, txwin);
 
 	/*
-	 * Only NX windows are supported for now and hardware assumes
-	 * report-enable flag is set for NX windows. Ensure software
+	 * Only NX linux are supported for now and hardware assumes
+	 * report-enable flag is set for NX linux. Ensure software
 	 * complies too.
 	 */
 	WARN_ON_ONCE(txwin->nx_win && !re);
@@ -1324,9 +1324,9 @@ EXPORT_SYMBOL_GPL(vas_win_close);
 
 /*
  * Return credit for the given window.
- * Send windows and fault window uses credit mechanism as follows:
+ * Send linux and fault window uses credit mechanism as follows:
  *
- * Send windows:
+ * Send linux:
  * - The default number of credits available for each send window is
  *   1024. It means 1024 requests can be issued asynchronously at the
  *   same time. If the credit is not available, that request will be
@@ -1371,7 +1371,7 @@ struct pnv_vas_window *vas_pswid_to_window(struct vas_instance *vinst,
 
 	decode_pswid(pswid, NULL, &winid);
 
-	if (winid >= VAS_WINDOWS_PER_CHIP)
+	if (winid >= VAS_linux_PER_CHIP)
 		return ERR_PTR(-ESRCH);
 
 	/*
@@ -1383,7 +1383,7 @@ struct pnv_vas_window *vas_pswid_to_window(struct vas_instance *vinst,
 	 * If its a kernel process, we should not get any faults and
 	 * should not get here.
 	 */
-	window = vinst->windows[winid];
+	window = vinst->linux[winid];
 
 	if (!window) {
 		pr_err("PSWID decode: Could not find window for winid %d pswid %d vinst 0x%p\n",
@@ -1393,7 +1393,7 @@ struct pnv_vas_window *vas_pswid_to_window(struct vas_instance *vinst,
 
 	/*
 	 * Do some sanity checks on the decoded window.  Window should be
-	 * NX GZIP user send window. FTW windows should not incur faults
+	 * NX GZIP user send window. FTW linux should not incur faults
 	 * since their CRBs are ignored (not queued on FIFO or processed
 	 * by NX).
 	 */

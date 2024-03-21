@@ -26,8 +26,8 @@ struct rcar_pcie_endpoint {
 	u8			max_functions;
 	unsigned int		bar_to_atu[MAX_NR_INBOUND_MAPS];
 	unsigned long		*ib_window_map;
-	u32			num_ib_windows;
-	u32			num_ob_windows;
+	u32			num_ib_linux;
+	u32			num_ob_linux;
 };
 
 static void rcar_pcie_ep_hw_init(struct rcar_pcie *pcie)
@@ -80,7 +80,7 @@ static int rcar_pcie_ep_get_window(struct rcar_pcie_endpoint *ep,
 {
 	int i;
 
-	for (i = 0; i < ep->num_ob_windows; i++)
+	for (i = 0; i < ep->num_ob_linux; i++)
 		if (ep->ob_window[i].phys_base == addr)
 			return i;
 
@@ -95,7 +95,7 @@ static int rcar_pcie_parse_outbound_ranges(struct rcar_pcie_endpoint *ep,
 	struct resource *res;
 	unsigned int i = 0;
 
-	ep->num_ob_windows = 0;
+	ep->num_ob_linux = 0;
 	for (i = 0; i < RCAR_PCI_MAX_RESOURCES; i++) {
 		sprintf(outbound_name, "memory%u", i);
 		res = platform_get_resource_byname(pdev,
@@ -120,7 +120,7 @@ static int rcar_pcie_parse_outbound_ranges(struct rcar_pcie_endpoint *ep,
 		 */
 		ep->ob_window[i].page_size = resource_size(res);
 	}
-	ep->num_ob_windows = i;
+	ep->num_ob_linux = i;
 
 	return 0;
 }
@@ -205,8 +205,8 @@ static int rcar_pcie_ep_set_bar(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
 	int idx;
 	int err;
 
-	idx = find_first_zero_bit(ep->ib_window_map, ep->num_ib_windows);
-	if (idx >= ep->num_ib_windows) {
+	idx = find_first_zero_bit(ep->ib_window_map, ep->num_ib_linux);
+	if (idx >= ep->num_ib_linux) {
 		dev_err(pcie->dev, "no free inbound window\n");
 		return -EINVAL;
 	}
@@ -328,11 +328,11 @@ static void rcar_pcie_ep_unmap_addr(struct pci_epc *epc, u8 fn, u8 vfn,
 	struct resource res;
 	int idx;
 
-	for (idx = 0; idx < ep->num_ob_windows; idx++)
+	for (idx = 0; idx < ep->num_ob_linux; idx++)
 		if (ep->ob_mapped_addr[idx] == addr)
 			break;
 
-	if (idx >= ep->num_ob_windows)
+	if (idx >= ep->num_ob_linux)
 		return;
 
 	memset(&win, 0x0, sizeof(win));
@@ -505,9 +505,9 @@ static int rcar_pcie_ep_probe(struct platform_device *pdev)
 		goto err_pm_put;
 	}
 
-	ep->num_ib_windows = MAX_NR_INBOUND_MAPS;
+	ep->num_ib_linux = MAX_NR_INBOUND_MAPS;
 	ep->ib_window_map =
-			devm_kcalloc(dev, BITS_TO_LONGS(ep->num_ib_windows),
+			devm_kcalloc(dev, BITS_TO_LONGS(ep->num_ib_linux),
 				     sizeof(long), GFP_KERNEL);
 	if (!ep->ib_window_map) {
 		err = -ENOMEM;
@@ -515,7 +515,7 @@ static int rcar_pcie_ep_probe(struct platform_device *pdev)
 		goto err_pm_put;
 	}
 
-	ep->ob_mapped_addr = devm_kcalloc(dev, ep->num_ob_windows,
+	ep->ob_mapped_addr = devm_kcalloc(dev, ep->num_ob_linux,
 					  sizeof(*ep->ob_mapped_addr),
 					  GFP_KERNEL);
 	if (!ep->ob_mapped_addr) {
@@ -536,7 +536,7 @@ static int rcar_pcie_ep_probe(struct platform_device *pdev)
 
 	rcar_pcie_ep_hw_init(pcie);
 
-	err = pci_epc_multi_mem_init(epc, ep->ob_window, ep->num_ob_windows);
+	err = pci_epc_multi_mem_init(epc, ep->ob_window, ep->num_ob_linux);
 	if (err < 0) {
 		dev_err(dev, "failed to initialize the epc memory space\n");
 		goto err_pm_put;

@@ -75,11 +75,11 @@ static void close_window(WINDOW *win)
 	}
 }
 
-void close_windows(void)
+void close_linux(void)
 {
 	if (tui_disabled)
 		return;
-	/* must delete panels before their attached windows */
+	/* must delete panels before their attached linux */
 	if (dialogue_window)
 		close_panel(dialogue_panel);
 	if (cooling_device_window)
@@ -113,7 +113,7 @@ static int diag_dev_rows(void)
 	return min(rows, entries);
 }
 
-void setup_windows(void)
+void setup_linux(void)
 {
 	int y_begin = 1;
 
@@ -154,7 +154,7 @@ void setup_windows(void)
 	wmove(status_bar_window, 1, 30);
 
 	/* prepare panels for dialogue, if panel already created then we must
-	 * be doing resizing, so just replace windows with new ones, old ones
+	 * be doing resizing, so just replace linux with new ones, old ones
 	 * should have been deleted by close_window
 	 */
 	data_panel = new_panel(cooling_device_window);
@@ -182,12 +182,12 @@ void setup_windows(void)
 void resize_handler(int sig)
 {
 	/* start over when term gets resized, but first we clean up */
-	close_windows();
+	close_linux();
 	endwin();
 	refresh();
 	clear();
 	getmaxyx(stdscr, maxy, maxx);  /* get the new screen size */
-	setup_windows();
+	setup_linux();
 	/* rate limit */
 	sleep(1);
 	syslog(LOG_DEBUG, "SIG %d, term resized to %d x %d\n",

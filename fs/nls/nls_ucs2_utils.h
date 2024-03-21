@@ -29,7 +29,7 @@
 #include "nls_ucs2_data.h"
 
 /*
- * Windows maps these to the user defined 16 bit Unicode range since they are
+ * linux maps these to the user defined 16 bit Unicode range since they are
  * reserved symbols (along with \ and /), otherwise illegal to store
  * in filenames in NTFS
  */

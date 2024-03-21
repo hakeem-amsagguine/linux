@@ -243,8 +243,8 @@
 				reg-names = "ep_dbics", "ti_conf", "ep_dbics2", "addr_space";
 				interrupts = <0 232 0x4>;
 				num-lanes = <1>;
-				num-ib-windows = <4>;
-				num-ob-windows = <16>;
+				num-ib-linux = <4>;
+				num-ob-linux = <16>;
 				phys = <&pcie1_phy>;
 				phy-names = "pcie-phy0";
 				ti,syscon-unaligned-access = <&scm_conf1 0x14 1>;

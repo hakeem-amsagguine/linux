@@ -2609,7 +2609,7 @@ static void tp_config(struct adapter *adap, const struct tp_params *p)
 		     F_IPCHECKSUMOFFLOAD | F_UDPCHECKSUMOFFLOAD |
 		     F_TCPCHECKSUMOFFLOAD | V_IPTTL(64));
 	t3_write_reg(adap, A_TP_TCP_OPTIONS, V_MTUDEFAULT(576) |
-		     F_MTUENABLE | V_WINDOWSCALEMODE(1) |
+		     F_MTUENABLE | V_linuxCALEMODE(1) |
 		     V_TIMESTAMPSMODE(1) | V_SACKMODE(1) | V_SACKRX(1));
 	t3_write_reg(adap, A_TP_DACK_CONFIG, V_AUTOSTATE3(1) |
 		     V_AUTOSTATE2(1) | V_AUTOSTATE1(0) |

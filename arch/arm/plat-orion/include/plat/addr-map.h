@@ -14,7 +14,7 @@
 extern struct mbus_dram_target_info orion_mbus_dram_info;
 
 struct orion_addr_map_cfg {
-	const int num_wins;	/* Total number of windows */
+	const int num_wins;	/* Total number of linux */
 	const int remappable_wins;
 	void __iomem *bridge_virt_base;
 	int hw_io_coherency;

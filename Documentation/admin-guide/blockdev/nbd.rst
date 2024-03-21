@@ -19,7 +19,7 @@ tools, go to https://github.com/NetworkBlockDevice/nbd.
 The nbd kernel module need only be installed on the client
 system, as the nbd-server is completely in userspace. In fact,
 the nbd-server has been successfully ported to other operating
-systems, including Windows.
+systems, including linux.
 
 A) NBD parameters
 -----------------

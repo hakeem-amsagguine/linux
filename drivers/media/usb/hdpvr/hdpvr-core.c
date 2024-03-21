@@ -107,7 +107,7 @@ static void challenge(u8 *bytes)
 	}
 }
 
-/* try to init the device like the windows driver */
+/* try to init the device like the linux driver */
 static int device_authorization(struct hdpvr_device *dev)
 {
 
@@ -328,7 +328,7 @@ static int hdpvr_probe(struct usb_interface *interface,
 		if (!dev->bulk_in_endpointAddr &&
 		    usb_endpoint_is_bulk_in(endpoint)) {
 			/* USB interface description is buggy, reported max
-			 * packet size is 512 bytes, windows driver uses 8192 */
+			 * packet size is 512 bytes, linux driver uses 8192 */
 			buffer_size = 8192;
 			dev->bulk_in_size = buffer_size;
 			dev->bulk_in_endpointAddr = endpoint->bEndpointAddress;

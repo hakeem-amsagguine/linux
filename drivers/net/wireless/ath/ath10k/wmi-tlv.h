@@ -2636,7 +2636,7 @@ struct wmi_tlv_wow_nlo_config_cmd {
 	/* SCBM */
 	__le32 fast_scan_period;
 
-	/* specific to windows */
+	/* specific to linux */
 	__le32 slow_scan_period;
 
 	__le32 no_of_ssids;

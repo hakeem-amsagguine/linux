@@ -883,12 +883,12 @@ static long tce_iommu_ioctl(void *iommu_data,
 		info.flags = 0;
 		memset(&info.ddw, 0, sizeof(info.ddw));
 
-		if (table_group->max_dynamic_windows_supported &&
+		if (table_group->max_dynamic_linux_supported &&
 				container->v2) {
 			info.flags |= VFIO_IOMMU_SPAPR_INFO_DDW;
 			info.ddw.pgsizes = table_group->pgsizes;
-			info.ddw.max_dynamic_windows_supported =
-				table_group->max_dynamic_windows_supported;
+			info.ddw.max_dynamic_linux_supported =
+				table_group->max_dynamic_linux_supported;
 			info.ddw.levels = table_group->max_levels;
 		}
 
@@ -1207,7 +1207,7 @@ static long tce_iommu_take_ownership(struct tce_container *container,
 {
 	long i, ret = 0;
 
-	/* Set all windows to the new group */
+	/* Set all linux to the new group */
 	for (i = 0; i < IOMMU_TABLE_GROUP_MAX_TABLES; ++i) {
 		struct iommu_table *tbl = container->tables[i];
 
@@ -1249,8 +1249,8 @@ static int tce_iommu_attach_group(void *iommu_data,
 		goto unlock_exit;
 	}
 
-	/* v2 requires full support of dynamic DMA windows */
-	if (container->v2 && table_group->max_dynamic_windows_supported == 0) {
+	/* v2 requires full support of dynamic DMA linux */
+	if (container->v2 && table_group->max_dynamic_linux_supported == 0) {
 		ret = -EINVAL;
 		goto unlock_exit;
 	}

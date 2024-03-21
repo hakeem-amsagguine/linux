@@ -392,7 +392,7 @@ static void ks_pcie_setup_rc_app_regs(struct keystone_pcie *ks_pcie)
 	struct resource *mem;
 	int i;
 
-	mem = resource_list_first_type(&pp->bridge->windows, IORESOURCE_MEM)->res;
+	mem = resource_list_first_type(&pp->bridge->linux, IORESOURCE_MEM)->res;
 	start = mem->start;
 	end = mem->end;
 

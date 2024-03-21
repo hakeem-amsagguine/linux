@@ -49,14 +49,14 @@ struct rt_sigframe
 
 #if defined(USER_SUPPORT_WINDOWED)
 /*
- * Flush register windows stored in pt_regs to stack.
+ * Flush register linux stored in pt_regs to stack.
  * Returns 1 for errors.
  */
 
 static int
 flush_window_regs_user(struct pt_regs *regs)
 {
-	const unsigned long ws = regs->windowstart;
+	const unsigned long ws = regs->linuxtart;
 	const unsigned long wb = regs->windowbase;
 	unsigned long sp = 0;
 	unsigned long wm;
@@ -117,7 +117,7 @@ flush_window_regs_user(struct pt_regs *regs)
 	}
 
 	regs->wmask = 1;
-	regs->windowstart = 1 << wb;
+	regs->linuxtart = 1 << wb;
 
 	return 0;
 
@@ -198,7 +198,7 @@ restore_sigcontext(struct pt_regs *regs, struct rt_sigframe __user *frame)
 
 	regs->wmask = 1;
 	regs->windowbase = 0;
-	regs->windowstart = 1;
+	regs->linuxtart = 1;
 
 	regs->syscall = NO_SYSCALL;	/* disable syscall checks */
 

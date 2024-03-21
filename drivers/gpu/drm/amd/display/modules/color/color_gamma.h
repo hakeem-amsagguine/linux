@@ -57,7 +57,7 @@ union regamma_flags {
 };
 
 struct regamma_ramp {
-	unsigned short gamma[256*3];  // gamma ramp packed  in same way as OS windows ,r , g & b
+	unsigned short gamma[256*3];  // gamma ramp packed  in same way as OS linux ,r , g & b
 };
 
 struct regamma_coeff {

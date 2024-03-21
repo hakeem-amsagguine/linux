@@ -774,7 +774,7 @@ static int sof_ipc4_init(struct snd_sof_dev *sdev)
 
 	xa_init_flags(&ipc4_data->fw_lib_xa, XA_FLAGS_ALLOC);
 
-	/* Set up the windows for IPC communication */
+	/* Set up the linux for IPC communication */
 	inbox_offset = snd_sof_dsp_get_mailbox_offset(sdev);
 	if (inbox_offset < 0) {
 		dev_err(sdev->dev, "%s: No mailbox offset\n", __func__);

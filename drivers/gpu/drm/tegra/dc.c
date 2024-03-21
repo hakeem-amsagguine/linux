@@ -198,9 +198,9 @@ static void tegra_plane_setup_blending_legacy(struct tegra_plane *plane)
 		background[1] |= BLEND_CONTROL_DEPENDENT;
 
 		/*
-		 * The region where three windows overlap is the intersection
-		 * of the two regions where two windows overlap. It contributes
-		 * to the area if all of the windows on top of it have an alpha
+		 * The region where three linux overlap is the intersection
+		 * of the two regions where two linux overlap. It contributes
+		 * to the area if all of the linux on top of it have an alpha
 		 * component.
 		 */
 		switch (state->base.normalized_zpos) {
@@ -222,7 +222,7 @@ static void tegra_plane_setup_blending_legacy(struct tegra_plane *plane)
 		foreground |= BLEND_CONTROL_ALPHA;
 
 		/*
-		 * If any of the windows on top of this window is opaque, it
+		 * If any of the linux on top of this window is opaque, it
 		 * will completely conceal this window within that area. If
 		 * top window has an alpha component, it is blended over the
 		 * bottom window.
@@ -242,8 +242,8 @@ static void tegra_plane_setup_blending_legacy(struct tegra_plane *plane)
 
 		case 1:
 			/*
-			 * When both middle and topmost windows have an alpha,
-			 * these windows a mixed together and then the result
+			 * When both middle and topmost linux have an alpha,
+			 * these linux a mixed together and then the result
 			 * is blended over the bottom window.
 			 */
 			if (state->blending[0].alpha &&
@@ -1318,8 +1318,8 @@ static struct drm_plane *tegra_dc_add_shared_planes(struct drm_device *drm,
 		const struct tegra_windowgroup_soc *wgrp = &dc->soc->wgrps[i];
 
 		if (wgrp->dc == dc->pipe) {
-			for (j = 0; j < wgrp->num_windows; j++) {
-				unsigned int index = wgrp->windows[j];
+			for (j = 0; j < wgrp->num_linux; j++) {
+				unsigned int index = wgrp->linux[j];
 
 				plane = tegra_shared_plane_create(drm, dc,
 								  wgrp->index,
@@ -2396,7 +2396,7 @@ static int tegra_crtc_calculate_memory_bandwidth(struct drm_crtc *crtc,
 	/*
 	 * The nv-display uses shared planes.  The algorithm below assumes
 	 * maximum 3 planes per-CRTC, this assumption isn't applicable to
-	 * the nv-display.  Note that T124 support has additional windows,
+	 * the nv-display.  Note that T124 support has additional linux,
 	 * but currently they aren't supported by the driver.
 	 */
 	if (dc->soc->has_nvdisplay)
@@ -2583,7 +2583,7 @@ static bool tegra_dc_has_window_groups(struct tegra_dc *dc)
 	for (i = 0; i < dc->soc->num_wgrps; i++) {
 		const struct tegra_windowgroup_soc *wgrp = &dc->soc->wgrps[i];
 
-		if (wgrp->dc == dc->pipe && wgrp->num_windows > 0)
+		if (wgrp->dc == dc->pipe && wgrp->num_linux > 0)
 			return true;
 	}
 
@@ -2949,33 +2949,33 @@ static const struct tegra_windowgroup_soc tegra186_dc_wgrps[] = {
 	{
 		.index = 0,
 		.dc = 0,
-		.windows = (const unsigned int[]) { 0 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 0 },
+		.num_linux = 1,
 	}, {
 		.index = 1,
 		.dc = 1,
-		.windows = (const unsigned int[]) { 1 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 1 },
+		.num_linux = 1,
 	}, {
 		.index = 2,
 		.dc = 1,
-		.windows = (const unsigned int[]) { 2 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 2 },
+		.num_linux = 1,
 	}, {
 		.index = 3,
 		.dc = 2,
-		.windows = (const unsigned int[]) { 3 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 3 },
+		.num_linux = 1,
 	}, {
 		.index = 4,
 		.dc = 2,
-		.windows = (const unsigned int[]) { 4 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 4 },
+		.num_linux = 1,
 	}, {
 		.index = 5,
 		.dc = 2,
-		.windows = (const unsigned int[]) { 5 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 5 },
+		.num_linux = 1,
 	},
 };
 
@@ -3000,33 +3000,33 @@ static const struct tegra_windowgroup_soc tegra194_dc_wgrps[] = {
 	{
 		.index = 0,
 		.dc = 0,
-		.windows = (const unsigned int[]) { 0 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 0 },
+		.num_linux = 1,
 	}, {
 		.index = 1,
 		.dc = 1,
-		.windows = (const unsigned int[]) { 1 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 1 },
+		.num_linux = 1,
 	}, {
 		.index = 2,
 		.dc = 1,
-		.windows = (const unsigned int[]) { 2 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 2 },
+		.num_linux = 1,
 	}, {
 		.index = 3,
 		.dc = 2,
-		.windows = (const unsigned int[]) { 3 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 3 },
+		.num_linux = 1,
 	}, {
 		.index = 4,
 		.dc = 2,
-		.windows = (const unsigned int[]) { 4 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 4 },
+		.num_linux = 1,
 	}, {
 		.index = 5,
 		.dc = 2,
-		.windows = (const unsigned int[]) { 5 },
-		.num_windows = 1,
+		.linux = (const unsigned int[]) { 5 },
+		.num_linux = 1,
 	},
 };
 

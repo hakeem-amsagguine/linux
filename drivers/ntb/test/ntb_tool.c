@@ -89,8 +89,8 @@
  * # As one can see we got:
  * # 1) four outbound message registers
  * # 2) four outbound scratchpads
- * # 3) eight inbound memory windows
- * # 4) four outbound memory windows
+ * # 3) eight inbound memory linux
+ * # 4) four outbound memory linux
  *-----------------------------------------------------------------------------
  * Eg: NTB link tests
  *
@@ -157,7 +157,7 @@
  * root@peer# echo 0x01020304 > $DBG_DIR/peer0/spad0
  * root@peer# cat $DBG_DIR/peer0/spad0
  *-----------------------------------------------------------------------------
- * Eg: Memory windows tests
+ * Eg: Memory linux tests
  *
  * # Create inbound memory window buffer of specified size/get its base address
  * root@peer# echo 16384 > $DBG_DIR/peer0/mw_trans0
@@ -197,7 +197,7 @@ MODULE_AUTHOR("Allen Hubbe <Allen.Hubbe@emc.com>");
 MODULE_DESCRIPTION("PCIe NTB Debugging Tool");
 
 /*
- * Inbound and outbound memory windows descriptor. Union members selection
+ * Inbound and outbound memory linux descriptor. Union members selection
  * depends on the MW type the structure describes. mm_base/dma_base are the
  * virtual and DMA address of an inbound MW. io_base/tr_base are the MMIO
  * mapped virtual and xlat addresses of an outbound MW respectively.
@@ -534,7 +534,7 @@ static TOOL_FOPS_RDWR(tool_peer_link_event_fops,
 		      tool_peer_link_event_write);
 
 /*==============================================================================
- *                  Memory windows read/write/setting methods
+ *                  Memory linux read/write/setting methods
  *==============================================================================
  */
 
@@ -959,7 +959,7 @@ static int tool_init_mws(struct tool_ctx *tc)
 {
 	int widx, pidx;
 
-	/* Initialize outbound memory windows */
+	/* Initialize outbound memory linux */
 	tc->outmw_cnt = ntb_peer_mw_count(tc->ntb);
 	tc->outmws = devm_kcalloc(&tc->ntb->dev, tc->outmw_cnt,
 				  sizeof(*tc->outmws), GFP_KERNEL);
@@ -972,7 +972,7 @@ static int tool_init_mws(struct tool_ctx *tc)
 		tc->outmws[widx].tc = tc;
 	}
 
-	/* Initialize inbound memory windows and outbound MWs wrapper */
+	/* Initialize inbound memory linux and outbound MWs wrapper */
 	for (pidx = 0; pidx < tc->peer_cnt; pidx++) {
 		tc->peers[pidx].inmw_cnt = ntb_mw_count(tc->ntb, pidx);
 		tc->peers[pidx].inmws =
@@ -1007,11 +1007,11 @@ static void tool_clear_mws(struct tool_ctx *tc)
 {
 	int widx, pidx;
 
-	/* Free outbound memory windows */
+	/* Free outbound memory linux */
 	for (widx = 0; widx < tc->outmw_cnt; widx++)
 		tool_free_peer_mw(tc, widx);
 
-	/* Free outbound memory windows */
+	/* Free outbound memory linux */
 	for (pidx = 0; pidx < tc->peer_cnt; pidx++)
 		for (widx = 0; widx < tc->peers[pidx].inmw_cnt; widx++)
 			tool_free_mw(tc, pidx, widx);

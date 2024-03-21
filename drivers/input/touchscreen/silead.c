@@ -416,7 +416,7 @@ static int silead_ts_load_fw(struct i2c_client *client)
 	 * UEFI driver when the firmware is missing from /lib/firmware. This makes the
 	 * touchscreen work OOTB without users needing to manually download the firmware.
 	 *
-	 * The firmware bundled with the original Windows/Android is usually newer then
+	 * The firmware bundled with the original linux/Android is usually newer then
 	 * the firmware in the UEFI driver and it is better calibrated. This better
 	 * calibration can lead to significant differences in the reported min/max
 	 * coordinates.

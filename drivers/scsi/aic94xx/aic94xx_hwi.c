@@ -136,7 +136,7 @@ static int asd_init_phys(struct asd_ha_struct *asd_ha)
 	return 0;
 }
 
-/* ---------- Sliding windows ---------- */
+/* ---------- Sliding linux ---------- */
 
 static int asd_init_sw(struct asd_ha_struct *asd_ha)
 {
@@ -159,7 +159,7 @@ static int asd_init_sw(struct asd_ha_struct *asd_ha)
 		goto Err;
 	}
 
-	/* Set sliding windows A, B and C to point to proper internal
+	/* Set sliding linux A, B and C to point to proper internal
 	 * memory regions.
 	 */
 	pci_write_config_dword(pcidev, PCI_CONF_MBAR0_SWA, REG_BASE_ADDR);

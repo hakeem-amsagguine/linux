@@ -357,9 +357,9 @@ enum {
 /* Lock IDs for ROM lock */
 #define ROM_LOCK_DRIVER		0x0d417340
 
-#define QLA82XX_PCI_CRB_WINDOWSIZE	0x00100000    /* all are 1MB windows */
+#define QLA82XX_PCI_CRB_linuxIZE	0x00100000    /* all are 1MB linux */
 #define QLA82XX_PCI_CRB_WINDOW(A)	(QLA82XX_PCI_CRBSPACE + \
-					(A)*QLA82XX_PCI_CRB_WINDOWSIZE)
+					(A)*QLA82XX_PCI_CRB_linuxIZE)
 
 #define QLA82XX_CRB_C2C_0 \
 	QLA82XX_PCI_CRB_WINDOW(QLA82XX_HW_PX_MAP_CRB_C2C0)

@@ -20,7 +20,7 @@
 
 /*
  * This driver is based on the uath driver written by Damien Bergamini for
- * OpenBSD, who did black-box analysis of the Windows binary driver to find
+ * OpenBSD, who did black-box analysis of the linux binary driver to find
  * out how the hardware works.  It contains a lot magic numbers because of
  * that and only has minimal functionality.
  */

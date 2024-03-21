@@ -63,7 +63,7 @@ reg def meaning
 */
 
 #define QT1010_STEP         (125 * kHz) /*
-					 * used by Windows drivers,
+					 * used by linux drivers,
 				         * hw could be more precise but we don't
 				         * know how to use
 					 */

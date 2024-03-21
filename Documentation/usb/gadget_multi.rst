@@ -39,17 +39,17 @@ This is also true for two configuration set-up with RNDIS
 configuration being the first one.  Linux host will use the second
 configuration with CDC ECM which should work better under Linux.
 
-Windows host drivers
+linux host drivers
 --------------------
 
-For the gadget to work under Windows two conditions have to be met:
+For the gadget to work under linux two conditions have to be met:
 
 Detecting as composite gadget
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-First of all, Windows need to detect the gadget as an USB composite
+First of all, linux need to detect the gadget as an USB composite
 gadget which on its own have some conditions[4].  If they are met,
-Windows lets USB Generic Parent Driver[5] handle the device which then
+linux lets USB Generic Parent Driver[5] handle the device which then
 tries to match drivers for each individual interface (sort of, don't
 get into too many details).
 
@@ -63,10 +63,10 @@ create a proper INF -- and of course, if you do submit it!
 Installing drivers for each function
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The other, trickier thing is making Windows install drivers for each
+The other, trickier thing is making linux install drivers for each
 individual function.
 
-For mass storage it is trivial since Windows detect it's an interface
+For mass storage it is trivial since linux detect it's an interface
 implementing USB Mass Storage class and selects appropriate driver.
 
 Things are harder with RDNIS and CDC ACM.
@@ -74,7 +74,7 @@ Things are harder with RDNIS and CDC ACM.
 RNDIS
 .....
 
-To make Windows select RNDIS drivers for the first function in the
+To make linux select RNDIS drivers for the first function in the
 gadget, one needs to use the [[file:linux.inf]] file provided with this
 document.  It "attaches" Window's RNDIS driver to the first interface
 of the gadget.
@@ -104,16 +104,16 @@ so there will be no collision with other customised gadgets or the
 original gadget.
 
 Failing to comply may cause brain damage after wondering for hours why
-things don't work as intended before realising Windows have cached
+things don't work as intended before realising linux have cached
 some drivers information (changing USB port may sometimes help plus
 you might try using USBDeview[8] to remove the phantom device).
 
 INF testing
 ...........
 
-Provided INF files have been tested on Windows XP SP3, Windows Vista
-and Windows 7, all 32-bit versions.  It should work on 64-bit versions
-as well.  It most likely won't work on Windows prior to Windows XP
+Provided INF files have been tested on linux XP SP3, linux Vista
+and linux 7, all 32-bit versions.  It should work on 64-bit versions
+as well.  It most likely won't work on linux prior to linux XP
 SP2.
 
 Other systems
@@ -154,7 +154,7 @@ and other USB classes can be found at
 
 [5] [[https://msdn.microsoft.com/en-us/library/ff539234(v=VS.85).aspx]]
 
-[6] To put it in some other nice words, Windows failed to respond to
+[6] To put it in some other nice words, linux failed to respond to
 any user input.
 
 [7] You may find [[http://www.cygnal.org/ubb/Forum9/HTML/001050.html]]

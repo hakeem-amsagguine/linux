@@ -32,7 +32,7 @@ int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge)
 	struct resource_entry *entry;
 	resource_size_t mask;
 
-	entry = resource_list_first_type(&bridge->windows, IORESOURCE_MEM);
+	entry = resource_list_first_type(&bridge->linux, IORESOURCE_MEM);
 	if (!entry) {
 		pr_err("Cannot get memory resource\n");
 		return -EINVAL;

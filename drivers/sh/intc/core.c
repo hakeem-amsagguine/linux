@@ -217,13 +217,13 @@ int __init register_intc_controller(struct intc_desc *desc)
 	d->index = nr_intc_controllers;
 
 	if (desc->num_resources) {
-		d->nr_windows = desc->num_resources;
-		d->window = kcalloc(d->nr_windows, sizeof(*d->window),
+		d->nr_linux = desc->num_resources;
+		d->window = kcalloc(d->nr_linux, sizeof(*d->window),
 				    GFP_NOWAIT);
 		if (!d->window)
 			goto err1;
 
-		for (k = 0; k < d->nr_windows; k++) {
+		for (k = 0; k < d->nr_linux; k++) {
 			res = desc->resource + k;
 			WARN_ON(resource_type(res) != IORESOURCE_MEM);
 			d->window[k].phys = res->start;
@@ -381,7 +381,7 @@ err3:
 #endif
 	kfree(d->reg);
 err2:
-	for (k = 0; k < d->nr_windows; k++)
+	for (k = 0; k < d->nr_linux; k++)
 		if (d->window[k].virt)
 			iounmap(d->window[k].virt);
 

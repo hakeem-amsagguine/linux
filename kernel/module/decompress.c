@@ -234,20 +234,20 @@ static ssize_t module_zstd_decompress(struct load_info *info,
 		retval = -EINVAL;
 		goto out;
 	}
-	if (header.windowSize > (1 << ZSTD_WINDOWLOG_MAX)) {
+	if (header.linuxize > (1 << ZSTD_WINDOWLOG_MAX)) {
 		pr_err("ZSTD-compressed data has too large a window size\n");
 		retval = -EINVAL;
 		goto out;
 	}
 
-	wksp_size = zstd_dstream_workspace_bound(header.windowSize);
+	wksp_size = zstd_dstream_workspace_bound(header.linuxize);
 	wksp = kvmalloc(wksp_size, GFP_KERNEL);
 	if (!wksp) {
 		retval = -ENOMEM;
 		goto out;
 	}
 
-	dstream = zstd_init_dstream(header.windowSize, wksp, wksp_size);
+	dstream = zstd_init_dstream(header.linuxize, wksp, wksp_size);
 	if (!dstream) {
 		pr_err("Can't initialize ZSTD stream\n");
 		retval = -ENOMEM;

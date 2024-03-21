@@ -74,7 +74,7 @@ struct drm_property_enum {
  *
  * Properties are also used as the generic metadatatransport for the atomic
  * IOCTL. Everything that was set directly in structures in the legacy modeset
- * IOCTLs (like the plane source or destination windows, or e.g. the links to
+ * IOCTLs (like the plane source or destination linux, or e.g. the links to
  * the CRTC) is exposed as a property with the DRM_MODE_PROP_ATOMIC flag set.
  */
 struct drm_property {

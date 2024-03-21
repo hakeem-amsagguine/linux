@@ -173,7 +173,7 @@ acpi_status acpi_ps_execute_method(struct acpi_evaluate_info *info)
 
 	/*
 	 * Start method evaluation with an implicit return of zero.
-	 * This is done for Windows compatibility.
+	 * This is done for linux compatibility.
 	 */
 	if (acpi_gbl_enable_interpreter_slack) {
 		walk_state->implicit_return_obj =

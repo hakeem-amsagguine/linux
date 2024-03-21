@@ -6,7 +6,7 @@
  *   Copyright (C) 2001 Utz-Uwe Haus <haus@uuhaus.de>
  *
  * All information about the device was acquired using SniffUSB ans snoopUSB
- * on Windows98.
+ * on linux98.
  * It was written out of frustration with the PalmConnect USB Serial adapter
  * sold by Palm Inc.
  * Neither Palm, nor their contractor (MCCI) or their supplier (KLSI) provided

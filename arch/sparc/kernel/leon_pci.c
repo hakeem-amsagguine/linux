@@ -40,7 +40,7 @@ void leon_pci_init(struct platform_device *ofdev, struct leon_pci_info *info)
 	info->busn.flags = IORESOURCE_BUS;
 	pci_add_resource(&resources, &info->busn);
 
-	list_splice_init(&resources, &bridge->windows);
+	list_splice_init(&resources, &bridge->linux);
 	bridge->dev.parent = &ofdev->dev;
 	bridge->sysdata = info;
 	bridge->busnr = 0;

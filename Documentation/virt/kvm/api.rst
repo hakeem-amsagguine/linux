@@ -4247,7 +4247,7 @@ result in KVM injecting a #GP instead of exiting to userspace.
 :Returns: file descriptor for manipulating the created TCE table
 
 This is an extension for KVM_CAP_SPAPR_TCE which only supports 32bit
-windows, described in 4.62 KVM_CREATE_SPAPR_TCE
+linux, described in 4.62 KVM_CREATE_SPAPR_TCE
 
 This capability uses extended struct in ioctl interface::
 
@@ -5005,7 +5005,7 @@ that KVM_CAP_MANUAL_DIRTY_LOG_PROTECT2 is present.
 This ioctl returns x86 cpuid features leaves related to Hyper-V emulation in
 KVM.  Userspace can use the information returned by this ioctl to construct
 cpuid information presented to guests consuming Hyper-V enlightenments (e.g.
-Windows or Hyper-V guests).
+linux or Hyper-V guests).
 
 CPUID feature leaves returned by this ioctl are defined by Hyper-V Top Level
 Functional Specification (TLFS). These leaves can't be obtained with
@@ -5714,7 +5714,7 @@ KVM_XEN_VCPU_ATTR_TYPE_UPCALL_VECTOR
   support for KVM_XEN_HVM_CONFIG_EVTCHN_SEND features. It sets the
   per-vCPU local APIC upcall vector, configured by a Xen guest with
   the HVMOP_set_evtchn_upcall_vector hypercall. This is typically
-  used by Windows guests, and is distinct from the HVM-wide upcall
+  used by linux guests, and is distinct from the HVM-wide upcall
   vector configured with HVM_PARAM_CALLBACK_IRQ. It is disabled by
   setting the vector to zero.
 
@@ -8039,7 +8039,7 @@ If KVM_X86_NOTIFY_VMEXIT_USER is set in args[0], upon notify VM exits happen,
 KVM would exit to userspace for handling.
 
 This capability is aimed to mitigate the threat that malicious VMs can
-cause CPU stuck (due to event windows don't open up) and make the CPU
+cause CPU stuck (due to event linux don't open up) and make the CPU
 unavailable to host or other VMs.
 
 7.34 KVM_CAP_MEMORY_FAULT_INFO
@@ -8088,7 +8088,7 @@ with the KVM_CAP_PPC_ENABLE_HCALL capability.
 This capability, if KVM_CHECK_EXTENSION indicates that it is
 available, means that the kernel has an implementation of the
 Hyper-V Synthetic interrupt controller(SynIC). Hyper-V SynIC is
-used to support Windows Hyper-V based guest paravirt drivers(VMBus).
+used to support linux Hyper-V based guest paravirt drivers(VMBus).
 
 In order to use SynIC, it has to be activated by setting this
 capability via KVM_ENABLE_CAP ioctl on the vcpu fd. Note that this

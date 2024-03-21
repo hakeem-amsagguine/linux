@@ -25,7 +25,7 @@ struct tmComResHWDescr {
 	u32	dwHostHibernatMemRegionSize;
 } __attribute__((packed));
 
-/* This is DWORD aligned on windows but I can't find the right
+/* This is DWORD aligned on linux but I can't find the right
  * gcc syntax to match the binary data from the device.
  * I've manually padded with Reserved[3] bytes to match the hardware,
  * but this could break if GCC decides to pack in a different way.

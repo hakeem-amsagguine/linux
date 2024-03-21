@@ -3128,7 +3128,7 @@ static int ql_adapter_initialize(struct ql3_adapter *qdev)
 			goto out;
 		}
 
-		value = qdev->nvram_data.tcpMaxWindowSize;
+		value = qdev->nvram_data.tcpMaxlinuxize;
 		ql_write_page0_reg(qdev, &port_regs->tcpMaxWindow, value);
 
 		value = (0xFFFF << 16) | qdev->nvram_data.extHwConfig;

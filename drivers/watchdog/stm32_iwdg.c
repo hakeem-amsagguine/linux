@@ -27,7 +27,7 @@
 #define IWDG_PR		0x04 /* Prescaler Register */
 #define IWDG_RLR	0x08 /* ReLoad Register */
 #define IWDG_SR		0x0C /* Status Register */
-#define IWDG_WINR	0x10 /* Windows Register */
+#define IWDG_WINR	0x10 /* linux Register */
 
 /* IWDG_KR register bit mask */
 #define KR_KEY_RELOAD	0xAAAA /* reload counter enable */

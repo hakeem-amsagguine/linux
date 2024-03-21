@@ -4632,7 +4632,7 @@ static int brcms_b_attach(struct brcms_c_info *wlc, struct bcma_device *core,
 		brcms_dbg_info(core, "wl%d: phy %u/%u radio %x/%u\n", unit,
 			       wlc->band->phytype, wlc->band->phyrev,
 			       wlc->band->radioid, wlc->band->radiorev);
-		/* default contention windows size limits */
+		/* default contention linux size limits */
 		wlc_hw->band->CWmin = APHY_CWMIN;
 		wlc_hw->band->CWmax = PHY_CWMAX;
 
@@ -7970,7 +7970,7 @@ brcms_c_attach(struct brcms_info *wl, struct bcma_device *core, uint unit,
 			goto fail;
 		}
 
-		/* default contention windows size limits */
+		/* default contention linux size limits */
 		wlc->band->CWmin = APHY_CWMIN;
 		wlc->band->CWmax = PHY_CWMAX;
 

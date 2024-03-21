@@ -108,7 +108,7 @@ void __init mips_pcibios_init(void)
 		end1 = GT_READ(GT_PCI0M1HD_OFS);
 		map1 = GT_READ(GT_PCI0M1REMAP_OFS);
 		end1 = (end1 & GT_PCI_HD_MSK) | (start1 & ~GT_PCI_HD_MSK);
-		/* Cannot support multiple windows, use the wider.  */
+		/* Cannot support multiple linux, use the wider.  */
 		if (end1 - start1 > end - start) {
 			start = start1;
 			end = end1;
@@ -155,7 +155,7 @@ void __init mips_pcibios_init(void)
 		       BONITO_PCIMAP_PCIMAP_LO1_SHIFT;
 		map3 = (BONITO_PCIMAP & BONITO_PCIMAP_PCIMAP_LO2) >>
 		       BONITO_PCIMAP_PCIMAP_LO2_SHIFT;
-		/* Combine as many adjacent windows as possible.  */
+		/* Combine as many adjacent linux as possible.  */
 		map = map1;
 		start = BONITO_PCILO0_BASE;
 		end = 1;

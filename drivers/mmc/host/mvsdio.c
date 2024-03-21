@@ -704,7 +704,7 @@ static const struct mmc_host_ops mvsd_ops = {
 };
 
 static void
-mv_conf_mbus_windows(struct mvsd_host *host,
+mv_conf_mbus_linux(struct mvsd_host *host,
 		     const struct mbus_dram_target_info *dram)
 {
 	void __iomem *iobase = host->base;
@@ -795,10 +795,10 @@ static int mvsd_probe(struct platform_device *pdev)
 		goto out;
 	}
 
-	/* (Re-)program MBUS remapping windows if we are asked to. */
+	/* (Re-)program MBUS remapping linux if we are asked to. */
 	dram = mv_mbus_dram_info();
 	if (dram)
-		mv_conf_mbus_windows(host, dram);
+		mv_conf_mbus_linux(host, dram);
 
 	mvsd_power_down(host);
 

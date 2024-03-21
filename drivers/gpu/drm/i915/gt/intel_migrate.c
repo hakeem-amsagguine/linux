@@ -115,9 +115,9 @@ static struct i915_address_space *migrate_vm(struct intel_gt *gt)
 	 * to another migration context that overwrites the PTE.
 	 *
 	 * This changes quite a bit on platforms with HAS_64K_PAGES support,
-	 * where we instead have three windows, each CHUNK_SIZE in size. The
+	 * where we instead have three linux, each CHUNK_SIZE in size. The
 	 * first is reserved for mapping system-memory, and that just uses the
-	 * 512 entry layout using 4K GTT pages. The other two windows just map
+	 * 512 entry layout using 4K GTT pages. The other two linux just map
 	 * lmem pages and must use the new compact 32 entry layout using 64K GTT
 	 * pages, which ensures we can address any lmem object that the user
 	 * throws at us. We then also use the xehpsdv_toggle_pdes as a way of

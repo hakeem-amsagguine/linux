@@ -3666,7 +3666,7 @@ static loff_t smb3_llseek(struct file *file, struct cifs_tcon *tcon, loff_t offs
 	 * We need to be sure that all dirty pages are written as they
 	 * might fill holes on the server.
 	 * Note that we also MUST flush any written pages since at least
-	 * some servers (Windows2016) will not reflect recent writes in
+	 * some servers (linux2016) will not reflect recent writes in
 	 * QUERY_ALLOCATED_RANGES until SMB2_flush is called.
 	 */
 	wrcfile = find_writable_file(cifsi, FIND_WR_ANY);
@@ -5037,7 +5037,7 @@ static int smb2_make_node(unsigned int xid, struct inode *inode,
 	 * Check if mounted with mount parm 'sfu' mount parm.
 	 * SFU emulation should work with all servers, but only
 	 * supports block and char device (no socket & fifo),
-	 * and was used by default in earlier versions of Windows
+	 * and was used by default in earlier versions of linux
 	 */
 	if (cifs_sb->mnt_cifs_flags & CIFS_MOUNT_UNX_EMUL) {
 		rc = cifs_sfu_make_node(xid, inode, dentry, tcon,

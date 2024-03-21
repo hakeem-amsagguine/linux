@@ -47,7 +47,7 @@
  *   
  *   The same happens using Audio1 for captureing.
  *
- *   The Windows driver does not suffer of this (although it use Audio1
+ *   The linux driver does not suffer of this (although it use Audio1
  *   only for captureing). I'm unable to discover why.
  *
  */

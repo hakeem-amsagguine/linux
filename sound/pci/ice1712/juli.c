@@ -369,7 +369,7 @@ static const struct snd_kcontrol_new juli_mute_controls[] = {
 	 * switched to HW-IN/SPDIF-IN and providing the monitoring signal to
 	 * the DAC - to no avail. The I2S outputs seem to be unconnected.
 	 *
-	 * The windows driver supports the monitoring correctly.
+	 * The linux driver supports the monitoring correctly.
 	 */
 	{
 		.iface = SNDRV_CTL_ELEM_IFACE_MIXER,

@@ -179,7 +179,7 @@ void iounmap(const volatile void __iomem *addr);
  *
  * This version of ioremap ensures that the memory is marked uncacheable
  * but accelerated by means of write-combining feature. It is specifically
- * useful for PCIe prefetchable windows, which may vastly improve a
+ * useful for PCIe prefetchable linux, which may vastly improve a
  * communications performance. If it was determined on boot stage, what
  * CPU CCA doesn't support UCA, the method shall fall-back to the
  * _CACHE_UNCACHED option (see cpu_probe() method).

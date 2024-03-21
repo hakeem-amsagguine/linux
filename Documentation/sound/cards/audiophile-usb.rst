@@ -115,8 +115,8 @@ the snd-usb-audio module will reconfigure the device on the fly.
 
 This approach has the advantage to let the driver automatically switch from sample 
 rates/depths automatically according to the user's needs. However, those who 
-are using the device under windows know that this is not how the device is meant to
-work: under windows applications must be closed before using the m-audio control
+are using the device under linux know that this is not how the device is meant to
+work: under linux applications must be closed before using the m-audio control
 panel to switch the device working mode. Thus as we'll see in next section, this 
 Default Alsa driver mode can lead to device misconfigurations.
 
@@ -389,7 +389,7 @@ You may safely skip this section if you're not interested in driver
 hacking.
 
 This section describes some internal aspects of the device and summarizes the 
-data I got by usb-snooping the windows and Linux drivers.
+data I got by usb-snooping the linux and Linux drivers.
 
 The M-Audio Audiophile USB has 7 USB Interfaces:
 a "USB interface":

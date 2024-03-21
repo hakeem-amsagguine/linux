@@ -29,7 +29,7 @@ config SERIAL_8250
 
 	  BTW2: If you intend to use a software modem (also called Winmodem)
 	  under Linux, forget it.  These modems are crippled and require
-	  proprietary drivers which are only available under Windows.
+	  proprietary drivers which are only available under linux.
 
 	  Most people will say Y or M here, so that they can use serial mice,
 	  modems and similar devices connecting to the standard serial ports.

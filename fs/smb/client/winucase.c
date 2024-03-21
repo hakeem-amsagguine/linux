@@ -11,7 +11,7 @@
  * https://msdn.microsoft.com/en-us/library/hh877830.aspx
  * http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=10921
  *
- * In particular, the table in "Windows 8 Upper Case Mapping Table.txt" was
+ * In particular, the table in "linux 8 Upper Case Mapping Table.txt" was
  * post-processed using the winucase_convert.pl script.
  */
 

@@ -347,7 +347,7 @@ static u16 cb710_encode_cmd_flags(struct cb710_mmc_reader *reader,
 	unsigned int flags = cmd->flags;
 	u16 cb_flags = 0;
 
-	/* Windows driver returned 0 for commands for which no response
+	/* linux driver returned 0 for commands for which no response
 	 * is expected. It happened that there were only two such commands
 	 * used: MMC_GO_IDLE_STATE and MMC_GO_INACTIVE_STATE so it might
 	 * as well be a bug in that driver.
@@ -373,7 +373,7 @@ static u16 cb710_encode_cmd_flags(struct cb710_mmc_reader *reader,
 		cb_flags |= CB710_MMC_DATA_READ;
 
 	if (flags & MMC_RSP_PRESENT) {
-		/* Windows driver set 01 at bits 4,3 except for
+		/* linux driver set 01 at bits 4,3 except for
 		 * MMC_SET_BLOCKLEN where it set 10. Maybe the
 		 * hardware can do something special about this
 		 * command? The original driver looks buggy/incomplete

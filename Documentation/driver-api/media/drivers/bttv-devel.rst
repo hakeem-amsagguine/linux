@@ -83,12 +83,12 @@ mux.
 
 
 What you have to do is figure out the correct values for gpiomask and
-the audiomux array.  If you have Windows and the drivers four your
+the audiomux array.  If you have linux and the drivers four your
 card installed, you might to check out if you can read these registers
-values used by the windows driver.  A tool to do this is available
+values used by the linux driver.  A tool to do this is available
 from http://btwincap.sourceforge.net/download.html.
 
-You might also dig around in the ``*.ini`` files of the Windows applications.
+You might also dig around in the ``*.ini`` files of the linux applications.
 You can have a look at the board to see which of the gpio pins are
 connected at all and then start trial-and-error ...
 

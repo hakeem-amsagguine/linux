@@ -395,11 +395,11 @@ enum {
 *******************************************************************************
 */
 
-/* all are 1MB windows */
+/* all are 1MB linux */
 
-#define QLCNIC_PCI_CRB_WINDOWSIZE	0x00100000
+#define QLCNIC_PCI_CRB_linuxIZE	0x00100000
 #define QLCNIC_PCI_CRB_WINDOW(A)	\
-	(QLCNIC_PCI_CRBSPACE + (A)*QLCNIC_PCI_CRB_WINDOWSIZE)
+	(QLCNIC_PCI_CRBSPACE + (A)*QLCNIC_PCI_CRB_linuxIZE)
 
 #define QLCNIC_CRB_NIU		QLCNIC_PCI_CRB_WINDOW(QLCNIC_HW_PX_MAP_CRB_NIU)
 #define QLCNIC_CRB_SRE		QLCNIC_PCI_CRB_WINDOW(QLCNIC_HW_PX_MAP_CRB_SRE)

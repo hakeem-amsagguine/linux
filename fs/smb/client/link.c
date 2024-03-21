@@ -539,7 +539,7 @@ cifs_hardlink(struct dentry *old_file, struct inode *inode,
 		/*
 		 * if not oplocked will force revalidate to get info on source
 		 * file from srv.  Note Samba server prior to 4.2 has bug -
-		 * not updating src file ctime on hardlinks but Windows servers
+		 * not updating src file ctime on hardlinks but linux servers
 		 * handle it properly
 		 */
 		cifsInode->time = 0;

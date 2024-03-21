@@ -4058,7 +4058,7 @@ static s32 rtw89_phy_multi_sta_cfo_calc(struct rtw89_dev *rtwdev)
 			target_cfo = clamp(cfo_avg, max_cfo_lb, min_cfo_ub);
 		} else {
 			rtw89_debug(rtwdev, RTW89_DBG_CFO,
-				    "No intersection of cfo tolerance windows\n");
+				    "No intersection of cfo tolerance linux\n");
 			target_cfo = phy_div(cfo_khz_all, (s32)sta_cnt);
 		}
 		for (i = 0; i < CFO_TRACK_MAX_USER; i++)

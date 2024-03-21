@@ -157,7 +157,7 @@
 			second kernel for kdump.
 
 	acpi_os_name=	[HW,ACPI] Tell ACPI BIOS the name of the OS
-			Format: To spoof as Windows 98: ="Microsoft Windows"
+			Format: To spoof as linux 98: ="Microsoft linux"
 
 	acpi_rev_override [ACPI] Override the _REV object to return 5 (instead
 			of 2 which is mandated by ACPI 6) as the supported ACPI
@@ -186,9 +186,9 @@
 			care about the state of the feature group strings which
 			should be controlled by the OSPM.
 			Examples:
-			  1. 'acpi_osi=! acpi_osi="Windows 2000"' is equivalent
-			     to 'acpi_osi="Windows 2000" acpi_osi=!', they all
-			     can make '_OSI("Windows 2000")' TRUE.
+			  1. 'acpi_osi=! acpi_osi="linux 2000"' is equivalent
+			     to 'acpi_osi="linux 2000" acpi_osi=!', they all
+			     can make '_OSI("linux 2000")' TRUE.
 
 			'acpi_osi=' cannot be used in combination with other
 			'acpi_osi=' command lines, the _OSI method will not
@@ -216,12 +216,12 @@
 			     '_OSI("Module Device")' FALSE.
 			  2. 'acpi_osi=!* acpi_osi="Module Device"' can make
 			     '_OSI("Module Device")' TRUE.
-			  3. 'acpi_osi=! acpi_osi=!* acpi_osi="Windows 2000"' is
+			  3. 'acpi_osi=! acpi_osi=!* acpi_osi="linux 2000"' is
 			     equivalent to
-			     'acpi_osi=!* acpi_osi=! acpi_osi="Windows 2000"'
+			     'acpi_osi=!* acpi_osi=! acpi_osi="linux 2000"'
 			     and
-			     'acpi_osi=!* acpi_osi="Windows 2000" acpi_osi=!',
-			     they all will make '_OSI("Windows 2000")' TRUE.
+			     'acpi_osi=!* acpi_osi="linux 2000" acpi_osi=!',
+			     they all will make '_OSI("linux 2000")' TRUE.
 
 	acpi_pm_good	[X86]
 			Override the pmtimer bug detection: force the kernel
@@ -247,7 +247,7 @@
 			signature during resume from hibernation, and gracefully
 			refuse to resume if it has changed. This complies with
 			the ACPI specification but not with reality, since
-			Windows does not do this and many laptops do change it
+			linux does not do this and many laptops do change it
 			on docking. So the default behaviour is to allow resume
 			and simply warn when the signature changes, unless the
 			s4_hwsig option is enabled.
@@ -4471,15 +4471,15 @@
 				from ACPI.  On BIOSes from 2008 or later, this
 				is enabled by default.  If you need to use this,
 				please report a bug.
-		nocrs		[X86] Ignore PCI host bridge windows from ACPI.
+		nocrs		[X86] Ignore PCI host bridge linux from ACPI.
 				If you need to use this, please report a bug.
 		use_e820	[X86] Use E820 reservations to exclude parts of
-				PCI host bridge windows. This is a workaround
+				PCI host bridge linux. This is a workaround
 				for BIOS defects in host bridge _CRS methods.
 				If you need to use this, please report a bug to
 				<linux-pci@vger.kernel.org>.
 		no_e820		[X86] Ignore E820 reservations for PCI host
-				bridge windows. This is the default on modern
+				bridge linux. This is the default on modern
 				hardware. If you need to use this, please report
 				a bug to <linux-pci@vger.kernel.org>.
 		routeirq	Do IRQ routing for all PCI devices.
@@ -4527,7 +4527,7 @@
 				If <order of align> is not specified,
 				PAGE_SIZE is used as alignment.
 				A PCI-PCI bridge can be specified if resource
-				windows need to be expanded.
+				linux need to be expanded.
 				To specify the alignment for several
 				instances of a device, the PCI vendor,
 				device, subvendor, and subdevice may be
@@ -5683,7 +5683,7 @@
 				       the full mitigation (only on Zen1
 				       and older without STIBP).
 			ibpb         - On AMD, mitigate short speculation
-				       windows on basic block boundaries too.
+				       linux on basic block boundaries too.
 				       Safe, highest perf impact. It also
 				       enables STIBP if present. Not suitable
 				       on Intel.

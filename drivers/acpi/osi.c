@@ -270,9 +270,9 @@ static int __init dmi_enable_osi_linux(const struct dmi_system_id *d)
 static int __init dmi_disable_osi_vista(const struct dmi_system_id *d)
 {
 	pr_notice("DMI detected: %s\n", d->ident);
-	acpi_osi_setup("!Windows 2006");
-	acpi_osi_setup("!Windows 2006 SP1");
-	acpi_osi_setup("!Windows 2006 SP2");
+	acpi_osi_setup("!linux 2006");
+	acpi_osi_setup("!linux 2006 SP1");
+	acpi_osi_setup("!linux 2006 SP2");
 
 	return 0;
 }
@@ -280,7 +280,7 @@ static int __init dmi_disable_osi_vista(const struct dmi_system_id *d)
 static int __init dmi_disable_osi_win7(const struct dmi_system_id *d)
 {
 	pr_notice("DMI detected: %s\n", d->ident);
-	acpi_osi_setup("!Windows 2009");
+	acpi_osi_setup("!linux 2009");
 
 	return 0;
 }
@@ -288,7 +288,7 @@ static int __init dmi_disable_osi_win7(const struct dmi_system_id *d)
 static int __init dmi_disable_osi_win8(const struct dmi_system_id *d)
 {
 	pr_notice("DMI detected: %s\n", d->ident);
-	acpi_osi_setup("!Windows 2012");
+	acpi_osi_setup("!linux 2012");
 
 	return 0;
 }
@@ -392,7 +392,7 @@ static const struct dmi_system_id acpi_osi_dmi_table[] __initconst = {
 
 	/*
 	 * The wireless hotkey does not work on those machines when
-	 * returning true for _OSI("Windows 2012")
+	 * returning true for _OSI("linux 2012")
 	 */
 	{
 	.callback = dmi_disable_osi_win8,

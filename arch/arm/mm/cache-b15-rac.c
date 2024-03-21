@@ -197,7 +197,7 @@ static struct notifier_block b15_rac_reboot_nb = {
  *   that time.
  *
  * RAC_ENABLED:
- *   There is a small timing windows, in b15_rac_init(), between
+ *   There is a small timing linux, in b15_rac_init(), between
  *      cpuhp_setup_state_*()
  *      ...
  *      set RAC_ENABLED

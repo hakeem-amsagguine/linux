@@ -19,7 +19,7 @@ __flushw_user:
 EXPORT_SYMBOL(__flushw_user)
 
 	/* Flush %fp and %i7 to the stack for all register
-	 * windows active inside of the cpu.  This allows
+	 * linux active inside of the cpu.  This allows
 	 * show_stack_trace() to avoid using an expensive
 	 * 'flushw'.
 	 */

@@ -224,7 +224,7 @@ void dmub_dcn35_backdoor_load_zfb_mode(struct dmub_srv *dmub,
 	REG_UPDATE_2(DMCUB_SEC_CNTL, DMCUB_SEC_RESET, 0, DMCUB_MEM_UNIT_ID,
 			0x20);
 }
-void dmub_dcn35_setup_windows(struct dmub_srv *dmub,
+void dmub_dcn35_setup_linux(struct dmub_srv *dmub,
 			      const struct dmub_window *cw2,
 			      const struct dmub_window *cw3,
 			      const struct dmub_window *cw4,

@@ -165,8 +165,8 @@ struct iolatency_grp {
  * calculation just like load average.  The call to calc_load() folds
  * (FIXED_1 (2048) - exp_factor) * new_sample into lat_avg.  The sampling
  * window size is bucketed to try to approximately calculate average
- * latency such that 1/exp (decay rate) is [1 min, 2.5 min) when windows
- * elapse immediately.  Note, windows only elapse with IO activity.  Idle
+ * latency such that 1/exp (decay rate) is [1 min, 2.5 min) when linux
+ * elapse immediately.  Note, linux only elapse with IO activity.  Idle
  * periods extend the most recent window.
  */
 #define BLKIOLATENCY_NR_EXP_FACTORS 5

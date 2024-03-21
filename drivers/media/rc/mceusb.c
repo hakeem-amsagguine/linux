@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 /*
- * Driver for USB Windows Media Center Ed. eHome Infrared Transceivers
+ * Driver for USB linux Media Center Ed. eHome Infrared Transceivers
  *
  * Copyright (c) 2010-2011, Jarod Wilson <jarod@redhat.com>
  *
@@ -19,7 +19,7 @@
  * Updated in July of 2011 with the aid of Microsoft's official
  * remote/transceiver requirements and specification document, found at
  * download.microsoft.com, title
- * Windows-Media-Center-RC-IR-Collection-Green-Button-Specification-03-08-2011-V2.pdf
+ * linux-Media-Center-RC-IR-Collection-Green-Button-Specification-03-08-2011-V2.pdf
  */
 
 #include <linux/device.h>
@@ -33,7 +33,7 @@
 
 #define DRIVER_VERSION	"1.95"
 #define DRIVER_AUTHOR	"Jarod Wilson <jarod@redhat.com>"
-#define DRIVER_DESC	"Windows Media Center Ed. eHome Infrared Transceiver " \
+#define DRIVER_DESC	"linux Media Center Ed. eHome Infrared Transceiver " \
 			"device driver"
 #define DRIVER_NAME	"mceusb"
 
@@ -1419,7 +1419,7 @@ static void mceusb_gen1_init(struct mceusb_dev *ir)
 	char data[USB_CTRL_MSG_SZ];
 
 	/*
-	 * This is a strange one. Windows issues a set address to the device
+	 * This is a strange one. linux issues a set address to the device
 	 * on the receive control pipe and expect a certain value pair back
 	 */
 	ret = usb_control_msg_recv(ir->usbdev, 0, USB_REQ_SET_ADDRESS,

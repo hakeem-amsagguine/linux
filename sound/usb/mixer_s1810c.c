@@ -4,7 +4,7 @@
  * Copyright (C) 2019 Nick Kossifidis <mickflemm@gmail.com>
  *
  * Based on reverse engineering of the communication protocol
- * between the windows driver / Univeral Control (UC) program
+ * between the linux driver / Univeral Control (UC) program
  * and the device, through usbmon.
  *
  * For now this bypasses the mixer, with all channels split,
@@ -209,7 +209,7 @@ snd_sc1810c_get_status_field(struct usb_device *dev,
  * This is what I got when bypassing the mixer with
  * all channels split. I'm not 100% sure of what's going
  * on, I could probably clean this up based on my observations
- * but I prefer to keep the same behavior as the windows driver.
+ * but I prefer to keep the same behavior as the linux driver.
  */
 static int snd_s1810c_init_mixer_maps(struct snd_usb_audio *chip)
 {

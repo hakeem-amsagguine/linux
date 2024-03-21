@@ -190,7 +190,7 @@ static struct platform_device *se_devices[] __initdata = {
 
 static int __init se_devices_setup(void)
 {
-	mrshpc_setup_windows();
+	mrshpc_setup_linux();
 	return platform_add_devices(se_devices, ARRAY_SIZE(se_devices));
 }
 device_initcall(se_devices_setup);

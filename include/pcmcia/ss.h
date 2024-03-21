@@ -64,7 +64,7 @@ extern socket_state_t dead_socket;
 #define SS_SPKR_ENA	0x0100
 #define SS_OUTPUT_ENA	0x0200
 
-/* Flags for I/O port and memory windows */
+/* Flags for I/O port and memory linux */
 #define MAP_ACTIVE	0x01
 #define MAP_16BIT	0x02
 #define MAP_AUTOSZ	0x04
@@ -74,7 +74,7 @@ extern socket_state_t dead_socket;
 #define MAP_USE_WAIT	0x40
 #define MAP_PREFETCH	0x80
 
-/* Use this just for bridge windows */
+/* Use this just for bridge linux */
 #define MAP_IOSPACE	0x20
 
 /* power hook operations */
@@ -102,10 +102,10 @@ typedef struct io_window_t {
 	struct resource		*res;
 } io_window_t;
 
-/* Maximum number of IO windows per socket */
+/* Maximum number of IO linux per socket */
 #define MAX_IO_WIN 2
 
-/* Maximum number of memory windows per socket */
+/* Maximum number of memory linux per socket */
 #define MAX_WIN 4
 
 

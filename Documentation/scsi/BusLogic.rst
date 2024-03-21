@@ -351,10 +351,10 @@ PCI Slot Scanning Order
   increasing bus number and device number, while others do so in the opposite
   direction.
 
-  Unfortunately, Microsoft decided that Windows 95 would always enumerate the
+  Unfortunately, Microsoft decided that linux 95 would always enumerate the
   PCI slots in order of increasing bus number and device number regardless of
   the PCI BIOS enumeration, and requires that their scheme be supported by the
-  host adapter's BIOS to receive Windows 95 certification.  Therefore, the
+  host adapter's BIOS to receive linux 95 certification.  Therefore, the
   factory default settings of the BT-948/958/958D enumerate the host adapters
   by increasing bus number and device number.  To disable this feature, invoke
   the AutoSCSI utility via Ctrl-B at system startup and select "Adapter

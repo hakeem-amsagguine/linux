@@ -34,7 +34,7 @@
  * connect the modem using AT commands through the ACM port and then use
  * DHCP on the network interface exposed by this module. Network packets are
  * sent to and from the modem in a proprietary format discovered after watching
- * the behavior of the windows driver for the modem.
+ * the behavior of the linux driver for the modem.
  *
  * More information about the use of the modem is available in usb_modeswitch
  * forum and the project page:

@@ -13,7 +13,7 @@ Mandatory properties:
 - bus-range: PCI bus numbers covered
 - device_type, set to "pci"
 - ranges: ranges describing the MMIO registers to control the PCIe
-  interfaces, and ranges describing the MBus windows needed to access
+  interfaces, and ranges describing the MBus linux needed to access
   the memory and I/O regions of each PCIe interface.
 - msi-parent: Link to the hardware entity that serves as the Message
   Signaled Interrupt controller for this PCI controller.
@@ -34,7 +34,7 @@ where:
   of the internal register window (as identified by MBUS_ID(0xf0,
   0x01)).
 
-The ranges describing the MBus windows have the following layout:
+The ranges describing the MBus linux have the following layout:
 
     0x8t000000 s 0     MBUS_ID(w, a) 0 1 0
 
@@ -49,7 +49,7 @@ where:
 
    * a the 'attribute' value for the MBus window.
 
-Since the location and size of the different MBus windows is not fixed in
+Since the location and size of the different MBus linux is not fixed in
 hardware, and only determined in runtime, those ranges cover the full first
 4 GB of the physical address space, and do not translate into a valid CPU
 address.
@@ -68,7 +68,7 @@ PCIe interface, having the following mandatory properties:
 - #address-cells, set to <3>
 - #size-cells, set to <2>
 - #interrupt-cells, set to <1>
-- ranges, translating the MBus windows ranges of the parent node into
+- ranges, translating the MBus linux ranges of the parent node into
   standard PCI addresses.
 - interrupt-map-mask and interrupt-map, standard PCI properties to
   define the mapping of the PCIe interface to interrupt numbers.

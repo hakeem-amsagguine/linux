@@ -41,7 +41,7 @@ struct i2c_client *hdpvr_register_ir_i2c(struct hdpvr_device *dev)
 	init_data->type = RC_PROTO_BIT_RC5 | RC_PROTO_BIT_RC6_MCE |
 			  RC_PROTO_BIT_RC6_6A_32;
 	init_data->name = "HD-PVR";
-	init_data->polling_interval = 405; /* ms, duplicated from Windows */
+	init_data->polling_interval = 405; /* ms, duplicated from linux */
 	info.platform_data = init_data;
 
 	return i2c_new_client_device(&dev->i2c_adapter, &info);

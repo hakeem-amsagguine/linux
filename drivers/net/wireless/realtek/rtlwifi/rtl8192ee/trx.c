@@ -402,7 +402,7 @@ bool rtl92ee_rx_query_desc(struct ieee80211_hw *hw,
 	/* rate_idx: index of data rate into band's
 	 * supported rates or MCS index if HT rates
 	 * are use (RX_FLAG_HT)
-	 * Notice: this is diff with windows define
+	 * Notice: this is diff with linux define
 	 */
 	rx_status->rate_idx = rtlwifi_rate_mapping(hw, status->is_ht,
 						   false, status->rate);
@@ -425,7 +425,7 @@ bool rtl92ee_rx_query_desc(struct ieee80211_hw *hw,
 	return true;
 }
 
-/*in Windows, this == Rx_92EE_Interrupt*/
+/*in linux, this == Rx_92EE_Interrupt*/
 void rtl92ee_rx_check_dma_ok(struct ieee80211_hw *hw, u8 *header_desc8,
 			     u8 queue_index)
 {

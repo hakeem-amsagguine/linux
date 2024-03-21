@@ -3095,7 +3095,7 @@ enum rt2800_eeprom_word {
  * Word1
  * ACK: 0: No Ack needed, 1: Ack needed
  * NSEQ: 0: Don't assign hw sequence number, 1: Assign hw sequence number
- * BW_WIN_SIZE: BA windows size of the recipient
+ * BW_WIN_SIZE: BA linux size of the recipient
  * WIRELESS_CLI_ID: Client ID for WCID table access
  * MPDU_TOTAL_BYTE_COUNT: Length of 802.11 frame
  * PACKETID: Will be latched into the TX_STA_FIFO register once the according

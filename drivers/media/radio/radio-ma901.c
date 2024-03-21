@@ -369,7 +369,7 @@ static int usb_ma901radio_probe(struct usb_interface *intf,
 	v4l2_ctrl_handler_init(&radio->hdl, 1);
 
 	/* TODO:It looks like this radio doesn't have mute/unmute control
-	 * and windows program just emulate it using volume control.
+	 * and linux program just emulate it using volume control.
 	 * Let's plan to do the same in this driver.
 	 *
 	 * v4l2_ctrl_new_std(&radio->hdl, &usb_ma901radio_ctrl_ops,

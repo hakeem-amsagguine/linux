@@ -170,7 +170,7 @@ typedef struct {
   uint16_t Current[2];                  //[mA] indices: VDDCR_VDD, VDDCR_SOC
   uint16_t Power[2];                    //[mW] indices: VDDCR_VDD, VDDCR_SOC
 
-  //3rd party tools in Windows need this info in the case of APUs
+  //3rd party tools in linux need this info in the case of APUs
   uint16_t CoreFrequency[8];            //[MHz]
   uint16_t CorePower[8];                //[mW]
   uint16_t CoreTemperature[8];          //[centi-Celsius]

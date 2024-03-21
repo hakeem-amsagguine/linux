@@ -797,7 +797,7 @@ dino_bridge_init(struct dino_device *dino_dev, const char *name)
 			prevres->end = end;
 		} else {
 			if(count >= DINO_MAX_LMMIO_RESOURCES) {
-				printk(KERN_ERR "%s is out of resource windows for range %d (0x%lx-0x%lx)\n", name, count, start, end);
+				printk(KERN_ERR "%s is out of resource linux for range %d (0x%lx-0x%lx)\n", name, count, start, end);
 				break;
 			}
 			prevres = res;

@@ -12,7 +12,7 @@
  *
  *  Credits:
  *	Jonathan A. Buzzard - Toshiba HCI info, and critical tips on reverse
- *		engineering the Windows drivers
+ *		engineering the linux drivers
  *	Yasushi Nagato - changes for linux kernel 2.4 -> 2.5
  *	Rob Miller - TV out and hotkeys help
  */

@@ -1159,7 +1159,7 @@ Again:
 		nwnd = likely(t > max_alloc) ? (t >> log2_bits) : wnd->nwnd;
 	}
 
-	/* Enumerate all windows. */
+	/* Enumerate all linux. */
 	for (; iw < nwnd; iw++) {
 		wbit = iw << log2_bits;
 

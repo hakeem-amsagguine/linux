@@ -3005,10 +3005,10 @@ static void dwc3_gadget_config_params(struct usb_gadget *g,
 	if (!dwc->dis_enblslpm_quirk) {
 		/*
 		 * If the recommended BESL baseline is 0 or if the BESL deep is
-		 * less than 2, Microsoft's Windows 10 host usb stack will issue
+		 * less than 2, Microsoft's linux 10 host usb stack will issue
 		 * a usb reset immediately after it receives the extended BOS
 		 * descriptor and the enumeration will fail. To maintain
-		 * compatibility with the Windows' usb stack, let's set the
+		 * compatibility with the linux' usb stack, let's set the
 		 * recommended BESL baseline to 1 and clamp the BESL deep to be
 		 * within 2 to 15.
 		 */

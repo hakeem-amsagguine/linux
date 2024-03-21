@@ -1152,7 +1152,7 @@ static int ppc4xx_edac_register_irq(struct platform_device *op,
  *
  * This routine attempts to locate in the device tree and map the DCR
  * register resources associated with the controller's indirect DCR
- * address and data windows.
+ * address and data linux.
  *
  * Returns 0 if the DCRs were successfully mapped; otherwise, < 0 on
  * error.

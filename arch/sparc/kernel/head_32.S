@@ -357,7 +357,7 @@ go_to_highmem:
  * impossible */
 		__INIT
 /* Acquire boot time privileged register values, this will help debugging.
- * I figure out and store nwindows and nwindowsm1 later on.
+ * I figure out and store nlinux and nlinuxm1 later on.
  */
 execute_in_high_mem:
 		mov	%l0, %o0		! put back romvec
@@ -555,7 +555,7 @@ continue_boot:
 
 		st	%g0, [%g6 + TI_UWINMASK]
 
-/* Compute NWINDOWS and stash it away. Now uses %wim trick explained
+/* Compute Nlinux and stash it away. Now uses %wim trick explained
  * in the V8 manual. Ok, this method seems to work, Sparc is cool...
  * No, it doesn't work, have to play the save/readCWP/restore trick.
  */
@@ -614,7 +614,7 @@ continue_boot:
 		PATCH_INSN(rtrap_7win_patch4, rtrap_patch4)
 		PATCH_INSN(rtrap_7win_patch5, rtrap_patch5)
 
-		/* Patch for killing user windows from the register file. */
+		/* Patch for killing user linux from the register file. */
 		PATCH_INSN(kuw_patch1_7win, kuw_patch1)
 
 		/* Now patch the kernel window flush sequences.
@@ -641,11 +641,11 @@ continue_boot:
 		st	%g4, [%g5 + 0x1c]
 
 2:
-		sethi	%hi(nwindows), %g4
-		st	%g3, [%g4 + %lo(nwindows)]	! store final value
+		sethi	%hi(nlinux), %g4
+		st	%g3, [%g4 + %lo(nlinux)]	! store final value
 		sub	%g3, 0x1, %g3
-		sethi	%hi(nwindowsm1), %g4
-		st	%g3, [%g4 + %lo(nwindowsm1)]
+		sethi	%hi(nlinuxm1), %g4
+		st	%g3, [%g4 + %lo(nlinuxm1)]
 
 		/* Here we go, start using Linux's trap table... */
 		set	trapbase, %g3
@@ -782,15 +782,15 @@ prom_vector_p:
 		.word 0
 
 /* We calculate the following at boot time, window fills/spills and trap entry
- * code uses these to keep track of the register windows.
+ * code uses these to keep track of the register linux.
  */
 
 	.align 4
-	.globl	nwindows
-	.globl	nwindowsm1
-nwindows:
+	.globl	nlinux
+	.globl	nlinuxm1
+nlinux:
 	.word	8
-nwindowsm1:
+nlinuxm1:
 	.word	7
 
 /* Boot time debugger vector value.  We need this later on. */

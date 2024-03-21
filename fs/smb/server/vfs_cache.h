@@ -16,7 +16,7 @@
 #include "vfs.h"
 #include "mgmt/share_config.h"
 
-/* Windows style file permissions for extended response */
+/* linux style file permissions for extended response */
 #define	FILE_GENERIC_ALL	0x1F01FF
 #define	FILE_GENERIC_READ	0x120089
 #define	FILE_GENERIC_WRITE	0x120116

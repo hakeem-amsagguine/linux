@@ -33,7 +33,7 @@ configure the mechanism.
 
 There is a relatively high cost associated with handling signals on most
 architectures, like x86, but at least for Wine, syscalls issued by
-native Windows code are currently not known to be a performance problem,
+native linux code are currently not known to be a performance problem,
 since they are quite rare, at least for modern gaming applications.
 
 Since this mechanism is designed to capture syscalls issued by

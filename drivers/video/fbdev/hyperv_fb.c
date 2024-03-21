@@ -10,8 +10,8 @@
  * Hyper-V Synthetic Video Frame Buffer Driver
  *
  * This is the driver for the Hyper-V Synthetic Video, which supports
- * screen resolution up to Full HD 1920x1080 with 32 bit color on Windows
- * Server 2012, and 1600x1200 with 16 bit color on Windows Server 2008 R2
+ * screen resolution up to Full HD 1920x1080 with 32 bit color on linux
+ * Server 2012, and 1600x1200 with 16 bit color on linux Server 2008 R2
  * or earlier.
  *
  * It also solves the double mouse cursor issue of the emulated video mode.
@@ -24,7 +24,7 @@
  * Portrait orientation is also supported:
  *     For example: video=hyperv_fb:864x1152
  *
- * When a Windows 10 RS5+ host is used, the virtual machine screen
+ * When a linux 10 RS5+ host is used, the virtual machine screen
  * resolution is obtained from the host. The "video=hyperv_fb" option is
  * not needed, but still can be used to overwrite what the host specifies.
  * The VM resolution on the host could be set by executing the powershell

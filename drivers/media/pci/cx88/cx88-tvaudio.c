@@ -2,7 +2,7 @@
 /*
  * cx88x-audio.c - Conexant CX23880/23881 audio downstream driver driver
  *
- *  (c) 2001 Michael Eskin, Tom Zakrajsek [Windows version]
+ *  (c) 2001 Michael Eskin, Tom Zakrajsek [linux version]
  *  (c) 2002 Yurij Sysoev <yurij@naturesoft.net>
  *  (c) 2003 Gerd Knorr <kraxel@bytesex.org>
  *

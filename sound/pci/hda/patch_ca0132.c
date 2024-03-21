@@ -509,7 +509,7 @@ static const struct ct_voicefx_preset ca0132_voicefx_presets[] = {
 	}
 };
 
-/* ca0132 EQ presets, taken from Windows Sound Blaster Z Driver */
+/* ca0132 EQ presets, taken from linux Sound Blaster Z Driver */
 
 #define EQ_PRESET_MAX_PARAM_COUNT 11
 
@@ -620,7 +620,7 @@ enum speaker_range_reqs {
  */
 enum speaker_tuning_reqs {
 	/*
-	 * Currently, this value is always set to 0.0f. However, on Windows,
+	 * Currently, this value is always set to 0.0f. However, on linux,
 	 * when selecting certain headphone profiles on the new Sound Blaster
 	 * connect software, the QUERY_SPEAKER_EQ_ADDRESS req on mid 0x80 is
 	 * sent. This gets the speaker EQ address area, which is then used to
@@ -654,7 +654,7 @@ enum speaker_tuning_reqs {
 	SPEAKER_TUNING_REAR_RIGHT_INVERT        = 0x2e,
 	SPEAKER_TUNING_SURROUND_LEFT_INVERT     = 0x2f,
 	SPEAKER_TUNING_SURROUND_RIGHT_INVERT    = 0x30,
-	/* Delay is used when setting surround speaker distance in Windows. */
+	/* Delay is used when setting surround speaker distance in linux. */
 	SPEAKER_TUNING_FRONT_LEFT_DELAY         = 0x31,
 	SPEAKER_TUNING_FRONT_RIGHT_DELAY        = 0x32,
 	SPEAKER_TUNING_CENTER_DELAY             = 0x33,
@@ -1204,7 +1204,7 @@ static const struct hda_pintbl alienware_pincfgs[] = {
 	{}
 };
 
-/* Sound Blaster Z pin configs taken from Windows Driver */
+/* Sound Blaster Z pin configs taken from linux Driver */
 static const struct hda_pintbl sbz_pincfgs[] = {
 	{ 0x0b, 0x01017010 }, /* Port G -- Lineout FRONT L/R */
 	{ 0x0c, 0x014510f0 }, /* SPDIF Out 1 */
@@ -1219,7 +1219,7 @@ static const struct hda_pintbl sbz_pincfgs[] = {
 	{}
 };
 
-/* Sound Blaster ZxR pin configs taken from Windows Driver */
+/* Sound Blaster ZxR pin configs taken from linux Driver */
 static const struct hda_pintbl zxr_pincfgs[] = {
 	{ 0x0b, 0x01047110 }, /* Port G -- Lineout FRONT L/R */
 	{ 0x0c, 0x414510f0 }, /* SPDIF Out 1 - Disabled*/
@@ -1234,7 +1234,7 @@ static const struct hda_pintbl zxr_pincfgs[] = {
 	{}
 };
 
-/* Recon3D pin configs taken from Windows Driver */
+/* Recon3D pin configs taken from linux Driver */
 static const struct hda_pintbl r3d_pincfgs[] = {
 	{ 0x0b, 0x01014110 }, /* Port G -- Lineout FRONT L/R */
 	{ 0x0c, 0x014510f0 }, /* SPDIF Out 1 */
@@ -1249,7 +1249,7 @@ static const struct hda_pintbl r3d_pincfgs[] = {
 	{}
 };
 
-/* Sound Blaster AE-5 pin configs taken from Windows Driver */
+/* Sound Blaster AE-5 pin configs taken from linux Driver */
 static const struct hda_pintbl ae5_pincfgs[] = {
 	{ 0x0b, 0x01017010 }, /* Port G -- Lineout FRONT L/R */
 	{ 0x0c, 0x014510f0 }, /* SPDIF Out 1 */
@@ -1264,7 +1264,7 @@ static const struct hda_pintbl ae5_pincfgs[] = {
 	{}
 };
 
-/* Recon3D integrated pin configs taken from Windows Driver */
+/* Recon3D integrated pin configs taken from linux Driver */
 static const struct hda_pintbl r3di_pincfgs[] = {
 	{ 0x0b, 0x01014110 }, /* Port G -- Lineout FRONT L/R */
 	{ 0x0c, 0x014510f0 }, /* SPDIF Out 1 */
@@ -4082,8 +4082,8 @@ static unsigned int ca0132_capture_pcm_delay(struct hda_pcm_stream *info,
 /* lookup tables */
 /*
  * Lookup table with decibel values for the DSP. When volume is changed in
- * Windows, the DSP is also sent the dB value in floating point. In Windows,
- * these values have decimal points, probably because the Windows driver
+ * linux, the DSP is also sent the dB value in floating point. In linux,
+ * these values have decimal points, probably because the linux driver
  * actually uses floating point. We can't here, so I made a lookup table of
  * values -90 to 9. -90 is the lowest decibel value for both the ADC's and the
  * DAC's, and 9 is the maximum.
@@ -4134,7 +4134,7 @@ static const unsigned int float_zero_to_one_lookup[] = {
 
 /*
  * This table counts from float 10 to 1000, which is the range of the x-bass
- * crossover slider in Windows.
+ * crossover slider in linux.
  */
 static const unsigned int float_xbass_xover_lookup[] = {
 0x41200000, 0x41A00000, 0x41F00000, 0x42200000, 0x42480000, 0x42700000,
@@ -6862,7 +6862,7 @@ static int ca0132_alt_add_mic_boost_enum(struct hda_codec *codec)
 /*
  * Add headphone gain enumerated control for the AE-5. This switches between
  * three modes, low, medium, and high. When non-headphone outputs are selected,
- * it is automatically set to high. This is the same behavior as Windows.
+ * it is automatically set to high. This is the same behavior as linux.
  */
 static int ae5_add_headphone_gain_enum(struct hda_codec *codec)
 {
@@ -7950,7 +7950,7 @@ static void ae5_post_dsp_param_setup(struct hda_codec *codec)
 	/*
 	 * Param3 in the 8051's memory is represented by the ascii string 'mch'
 	 * which seems to be 'multichannel'. This is also mentioned in the
-	 * AE-5's registry values in Windows.
+	 * AE-5's registry values in linux.
 	 */
 	chipio_set_control_param(codec, 3, 0);
 	/*
@@ -8135,7 +8135,7 @@ static void ae7_post_dsp_asi_setup_ports(struct hda_codec *codec)
 	chipio_write_no_mutex(codec, 0x18b038, 0x00000088);
 
 	/*
-	 * Now, at this point on Windows, an actual stream is setup and
+	 * Now, at this point on linux, an actual stream is setup and
 	 * seemingly sends data to the HDA node 0x09, which is the digital
 	 * audio input node. This is left out here, because obviously I don't
 	 * know what data is being sent. Interestingly, the AE-5 seems to go
@@ -8159,7 +8159,7 @@ static void ae7_post_dsp_asi_setup_ports(struct hda_codec *codec)
 
 	/*
 	 * Runs again, this has been repeated a few times, but I'm just
-	 * following what the Windows driver does.
+	 * following what the linux driver does.
 	 */
 	ae7_post_dsp_pll_setup(codec);
 	chipio_set_control_param_no_mutex(codec, CONTROL_PARAM_ASI, 7);
@@ -8168,7 +8168,7 @@ static void ae7_post_dsp_asi_setup_ports(struct hda_codec *codec)
 }
 
 /*
- * The Windows driver has commands that seem to setup ASI, which I believe to
+ * The linux driver has commands that seem to setup ASI, which I believe to
  * be some sort of audio serial interface. My current speculation is that it's
  * related to communicating with the new DAC.
  */
@@ -8463,7 +8463,7 @@ static void ae7_setup_defaults(struct hda_codec *codec)
 
 	/*
 	 * This is the second time we've called this, but this is seemingly
-	 * what Windows does.
+	 * what linux does.
 	 */
 	ca0132_alt_init_analog_mics(codec);
 
@@ -8782,10 +8782,10 @@ static void ca0132_init_chip(struct hda_codec *codec)
 	mutex_init(&spec->chipio_mutex);
 
 	/*
-	 * The Windows driver always does this upon startup, which seems to
+	 * The linux driver always does this upon startup, which seems to
 	 * clear out any previous configuration. This should help issues where
-	 * a boot into Windows prior to a boot into Linux breaks things. Also,
-	 * Windows always sends the reset twice.
+	 * a boot into linux prior to a boot into Linux breaks things. Also,
+	 * linux always sends the reset twice.
 	 */
 	if (ca0132_use_alt_functions(spec)) {
 		chipio_set_control_flag(codec, CONTROL_FLAG_IDLE_ENABLE, 0);
@@ -9134,7 +9134,7 @@ static void sbz_dsp_startup_check(struct hda_codec *codec)
  * you would take the value after the decimal point, multiply by 64, and divide
  * by 2. So for 8.59, it's (59 * 64) / 100. Useful if someone wanted to
  * implement fixed point or floating point dB volumes. For now, I'll set them
- * to 0 just incase a value has lingered from a boot into Windows.
+ * to 0 just incase a value has lingered from a boot into linux.
  */
 static void ca0132_alt_vol_setup(struct hda_codec *codec)
 {

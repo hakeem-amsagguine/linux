@@ -210,7 +210,7 @@ static int si2165_init_pll(struct si2165_state *state)
 
 	/*
 	 * hardcoded values can be deleted if calculation is verified
-	 * or it yields the same values as the windows driver
+	 * or it yields the same values as the linux driver
 	 */
 	switch (ref_freq_hz) {
 	case 16000000u:

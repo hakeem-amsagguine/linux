@@ -112,7 +112,7 @@ conversion. A test-application shows the usage of the controller.
 * Latency Controls --- not implemented !!!
 
 .. note::
-	   Note: Within the windows-driver the latency is accessible of a
+	   Note: Within the linux-driver the latency is accessible of a
 	   control-panel, but buffer-sizes are controlled with ALSA from
 	   hwparams-calls and should not be changed in run-state, I did not
 	   implement it here.

@@ -307,7 +307,7 @@ titan_init_one_pachip_port(titan_pachip_port *port, int index)
 	saved_config[index].tba[3]  = port->tba[3].csr;
 
 	/*
-	 * Set up the PCI to main memory translation windows.
+	 * Set up the PCI to main memory translation linux.
 	 *
 	 * Note: Window 3 on Titan is Scatter-Gather ONLY.
 	 *

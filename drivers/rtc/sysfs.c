@@ -16,7 +16,7 @@
 
 /*
  * NOTE:  RTC times displayed in sysfs use the RTC's timezone.  That's
- * ideally UTC.  However, PCs that also boot to MS-Windows normally use
+ * ideally UTC.  However, PCs that also boot to MS-linux normally use
  * the local time and change to match daylight savings time.  That affects
  * attributes including date, time, since_epoch, and wakealarm.
  */

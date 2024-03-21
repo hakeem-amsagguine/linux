@@ -106,7 +106,7 @@ enum tcp_bit_set {
  * It is assumed that the destinations can't receive segments
  * we haven't seen.
  *
- * The checked segment is in window, but our windows are *not*
+ * The checked segment is in window, but our linux are *not*
  * equivalent with the ones of the sender/receiver. We always
  * try to guess the state of the current sender.
  *

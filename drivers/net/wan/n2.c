@@ -38,14 +38,14 @@ static const char *devname = "RISCom/N2";
 #undef DEBUG_PKT
 #define DEBUG_RINGS
 
-#define USE_WINDOWSIZE 16384
+#define USE_linuxIZE 16384
 #define USE_BUS16BITS 1
 #define CLOCK_BASE 9830400	/* 9.8304 MHz */
 #define MAX_PAGES      16	/* 16 RAM pages at max */
 #define MAX_RAM_SIZE 0x80000	/* 512 KB */
-#if MAX_RAM_SIZE > MAX_PAGES * USE_WINDOWSIZE
+#if MAX_RAM_SIZE > MAX_PAGES * USE_linuxIZE
 #undef MAX_RAM_SIZE
-#define MAX_RAM_SIZE (MAX_PAGES * USE_WINDOWSIZE)
+#define MAX_RAM_SIZE (MAX_PAGES * USE_linuxIZE)
 #endif
 #define N2_IOPORTS 0x10
 #define NEED_DETECT_RAM
@@ -130,7 +130,7 @@ static card_t **new_card = &first_card;
 #define port_to_card(port)		((port)->card)
 #define log_node(port)			((port)->log_node)
 #define phy_node(port)			((port)->phy_node)
-#define winsize(card)			(USE_WINDOWSIZE)
+#define winsize(card)			(USE_linuxIZE)
 #define winbase(card)      	     	((card)->winbase)
 #define get_port(card, port)		((card)->ports[port].valid ? \
 					 &(card)->ports[port] : NULL)
@@ -298,7 +298,7 @@ static void n2_destroy_card(card_t *card)
 
 	if (card->winbase) {
 		iounmap(card->winbase);
-		release_mem_region(card->phy_winbase, USE_WINDOWSIZE);
+		release_mem_region(card->phy_winbase, USE_linuxIZE);
 	}
 
 	if (card->io)
@@ -366,13 +366,13 @@ static int __init n2_run(unsigned long io, unsigned long irq,
 	}
 	card->irq = irq;
 
-	if (!request_mem_region(winbase, USE_WINDOWSIZE, devname)) {
+	if (!request_mem_region(winbase, USE_linuxIZE, devname)) {
 		pr_err("could not request RAM window\n");
 		n2_destroy_card(card);
 		return -EBUSY;
 	}
 	card->phy_winbase = winbase;
-	card->winbase = ioremap(winbase, USE_WINDOWSIZE);
+	card->winbase = ioremap(winbase, USE_linuxIZE);
 	if (!card->winbase) {
 		pr_err("ioremap() failed\n");
 		n2_destroy_card(card);
@@ -382,7 +382,7 @@ static int __init n2_run(unsigned long io, unsigned long irq,
 	outb(0, io + N2_PCR);
 	outb(winbase >> 12, io + N2_BAR);
 
-	switch (USE_WINDOWSIZE) {
+	switch (USE_linuxIZE) {
 	case 16384:
 		outb(WIN16K, io + N2_PSR);
 		break;
@@ -448,7 +448,7 @@ static int __init n2_run(unsigned long io, unsigned long irq,
 		spin_lock_init(&port->lock);
 		dev->irq = irq;
 		dev->mem_start = winbase;
-		dev->mem_end = winbase + USE_WINDOWSIZE - 1;
+		dev->mem_end = winbase + USE_linuxIZE - 1;
 		dev->tx_queue_len = 50;
 		dev->netdev_ops = &n2_ops;
 		hdlc->attach = sca_attach;

@@ -343,4 +343,4 @@ the first one and ignore it, thus executing the contained command only once.
 In conclusion, this suggests a limit of at most one pending un-ACKed frame
 (per party, effectively leading to synchronous communication regarding
 frames) and at most three pending commands. The limit to synchronous frame
-transfers seems to be consistent with behavior observed on Windows.
+transfers seems to be consistent with behavior observed on linux.

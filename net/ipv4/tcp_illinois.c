@@ -129,7 +129,7 @@ static inline u32 avg_delay(const struct illinois *ca)
  * Compute value of alpha used for additive increase.
  * If small window then use 1.0, equivalent to Reno.
  *
- * For larger windows, adjust based on average delay.
+ * For larger linux, adjust based on average delay.
  * A. If average delay is at minimum (we are uncongested),
  *    then use large alpha (10.0) to increase faster.
  * B. If average delay is at maximum (getting congested)

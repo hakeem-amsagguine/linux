@@ -7468,7 +7468,7 @@ int sched_core_idle_cpu(int cpu)
  *   cpu_bw_dl()
  *
  * Where the cfs,rt and dl util numbers are tracked with the same metric and
- * synchronized windows and are thus directly comparable.
+ * synchronized linux and are thus directly comparable.
  *
  * The cfs,rt,dl utilization are the running times measured with rq->clock_task
  * which excludes things like IRQ and steal-time. These latter are then accrued
@@ -7521,7 +7521,7 @@ unsigned long effective_cpu_util(int cpu, unsigned long util_cfs,
 	/*
 	 * Because the time spend on RT/DL tasks is visible as 'lost' time to
 	 * CFS tasks and we use the same metric to track the effective
-	 * utilization (PELT windows are synchronized) we can directly add them
+	 * utilization (PELT linux are synchronized) we can directly add them
 	 * to obtain the CPU's actual utilization.
 	 */
 	util = util_cfs + cpu_util_rt(rq);

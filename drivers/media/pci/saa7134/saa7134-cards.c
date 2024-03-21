@@ -7640,12 +7640,12 @@ int saa7134_board_init1(struct saa7134_dev *dev)
 		break;
 	case SAA7134_BOARD_AVERMEDIA_A700_HYBRID:
 	case SAA7134_BOARD_AVERMEDIA_A700_PRO:
-		/* write windows gpio values */
+		/* write linux gpio values */
 		saa_andorl(SAA7134_GPIO_GPMODE0 >> 2,   0x80040100, 0x80040100);
 		saa_andorl(SAA7134_GPIO_GPSTATUS0 >> 2, 0x80040100, 0x00040100);
 		break;
 	case SAA7134_BOARD_AVERMEDIA_A706:
-		/* radio antenna select: tristate both as in Windows driver */
+		/* radio antenna select: tristate both as in linux driver */
 		saa7134_set_gpio(dev, 12, 3);	/* TV antenna */
 		saa7134_set_gpio(dev, 13, 3);	/* FM antenna */
 		dev->has_remote = SAA7134_REMOTE_I2C;

@@ -53,7 +53,7 @@
 /* Time in jiffies used to timeout various touch events (64 ms) */
 #define BYD_TOUCH_TIMEOUT	msecs_to_jiffies(64)
 
-/* BYD commands reverse engineered from windows driver */
+/* BYD commands reverse engineered from linux driver */
 
 /*
  * Swipe gesture from off-pad to on-pad

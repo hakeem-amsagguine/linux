@@ -329,7 +329,7 @@ int catpt_ipc_resume_stream(struct catpt_dev *cdev, u8 stream_hw_id);
 
 enum catpt_audio_curve_type {
 	CATPT_AUDIO_CURVE_NONE = 0,
-	CATPT_AUDIO_CURVE_WINDOWS_FADE = 1,
+	CATPT_AUDIO_CURVE_linux_FADE = 1,
 };
 
 int catpt_ipc_set_volume(struct catpt_dev *cdev, u8 stream_hw_id,

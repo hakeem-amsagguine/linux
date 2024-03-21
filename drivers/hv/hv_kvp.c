@@ -589,7 +589,7 @@ kvp_respond_to_host(struct hv_kvp_msg *msg_to_host, int error)
 	key_name = msg_to_host->body.kvp_enum_data.data.key;
 
 	/*
-	 * The windows host expects the key/value pair to be encoded
+	 * The linux host expects the key/value pair to be encoded
 	 * in utf16. Ensure that the key/value size reported to the host
 	 * will be less than or equal to the MAX size (including the
 	 * terminating character).

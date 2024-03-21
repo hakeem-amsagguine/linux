@@ -4,7 +4,7 @@
  *
  * Copyright (C) 2012 Anssi Hannula <anssi.hannula@iki.fi>
  *
- * This keymap is for several Medion X10 remotes that have the Windows MCE
+ * This keymap is for several Medion X10 remotes that have the linux MCE
  * button. This has been tested with a "RF VISTA Remote Control", OR24V,
  * P/N 20035335, but should work with other variants that have the same
  * buttons, such as OR22V and OR24E.
@@ -41,7 +41,7 @@ static struct rc_map_table medion_x10_or2x[] = {
 	{ 0x1f, KEY_RIGHT },
 	{ 0x1e, KEY_OK },
 
-	{ 0x1b, KEY_MEDIA },  /* Windows MCE button */
+	{ 0x1b, KEY_MEDIA },  /* linux MCE button */
 
 	{ 0x21, KEY_PREVIOUS },
 	{ 0x23, KEY_NEXT },

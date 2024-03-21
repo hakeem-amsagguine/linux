@@ -151,12 +151,12 @@ out:
 }
 
 /**
- * convert_to_nt_pathname() - extract and return windows path string
+ * convert_to_nt_pathname() - extract and return linux path string
  *      whose share directory prefix was removed from file path
  * @share: ksmbd_share_config pointer
  * @path: path to report
  *
- * Return : windows path string or error
+ * Return : linux path string or error
  */
 
 char *convert_to_nt_pathname(struct ksmbd_share_config *share,
@@ -189,7 +189,7 @@ char *convert_to_nt_pathname(struct ksmbd_share_config *share,
 		strcpy(nt_pathname, "/");
 	strcat(nt_pathname, &ab_pathname[share_path_len]);
 
-	ksmbd_conv_path_to_windows(nt_pathname);
+	ksmbd_conv_path_to_linux(nt_pathname);
 
 free_pathname:
 	kfree(pathname);
@@ -222,7 +222,7 @@ void ksmbd_strip_last_slash(char *path)
 	}
 }
 
-void ksmbd_conv_path_to_windows(char *path)
+void ksmbd_conv_path_to_linux(char *path)
 {
 	strreplace(path, '/', '\\');
 }
@@ -278,7 +278,7 @@ char *ksmbd_extract_sharename(struct unicode_map *um, const char *treename)
 }
 
 /**
- * convert_to_unix_name() - convert windows name to unix format
+ * convert_to_unix_name() - convert linux name to unix format
  * @share:	ksmbd_share_config pointer
  * @name:	file name that is relative to share
  *

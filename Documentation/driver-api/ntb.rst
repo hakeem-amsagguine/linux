@@ -5,14 +5,14 @@ NTB Drivers
 NTB (Non-Transparent Bridge) is a type of PCI-Express bridge chip that connects
 the separate memory systems of two or more computers to the same PCI-Express
 fabric. Existing NTB hardware supports a common feature set: doorbell
-registers and memory translation windows, as well as non common features like
+registers and memory translation linux, as well as non common features like
 scratchpad and message registers. Scratchpad registers are read-and-writable
 registers that are accessible from either side of the device, so that peers can
 exchange a small amount of information at a fixed address. Message registers can
 be utilized for the same purpose. Additionally they are provided with
 special status bits to make sure the information isn't rewritten by another
 peer. Doorbell registers provide a way for peers to send interrupt events.
-Memory windows allow translated read and write access to the peer memory.
+Memory linux allow translated read and write access to the peer memory.
 
 NTB Core Driver (ntb)
 =====================
@@ -58,7 +58,7 @@ So typical scenario of the first type memory window initialization looks:
 maps corresponding outbound memory window so to have access to the shared
 memory region.
 
-The second type of interface, that implies the shared windows being
+The second type of interface, that implies the shared linux being
 initialized by a peer device, is depicted on the figure::
 
  Outbound translation:
@@ -95,7 +95,7 @@ follows:
 
  Local device:
   1) ntb_mw_count(pidx) - retrieve number of memory ranges, which can
-     be allocated for memory windows between local device and peer device
+     be allocated for memory linux between local device and peer device
      of port with specified index.
   2) ntb_get_align(pidx, midx) - retrieve parameters restricting the
      shared memory region alignment and size. Then memory can be properly
@@ -204,7 +204,7 @@ NTB MSI Test Client (ntb\_msi\_test)
 ------------------------------------
 
 The MSI test client serves to test and debug the MSI library which
-allows for passing MSI interrupts across NTB memory windows. The
+allows for passing MSI interrupts across NTB memory linux. The
 test client is interacted with through the debugfs filesystem:
 
 * *debugfs*/ntb\_msi\_test/*hw*/

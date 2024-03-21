@@ -1276,7 +1276,7 @@ static void uea_set_bulk_timeout(struct uea_softc *sc, u32 dsrate)
 	    sc->stats.phy.dsrate == dsrate)
 		return;
 
-	/* Original timming (1Mbit/s) from ADI (used in windows driver) */
+	/* Original timming (1Mbit/s) from ADI (used in linux driver) */
 	timeout = (dsrate <= 1024*1024) ? 0 : 1;
 	ret = uea_request(sc, UEA_SET_TIMEOUT, timeout, 0, NULL);
 	uea_info(INS_TO_USBDEV(sc), "setting new timeout %d%s\n",
@@ -1826,7 +1826,7 @@ static int uea_start_reset(struct uea_softc *sc)
 	/* enter reset mode */
 	uea_request(sc, UEA_SET_MODE, UEA_START_RESET, 0, NULL);
 
-	/* original driver use 200ms, but windows driver use 100ms */
+	/* original driver use 200ms, but linux driver use 100ms */
 	ret = uea_wait(sc, 0, msecs_to_jiffies(100));
 	if (ret < 0)
 		return ret;

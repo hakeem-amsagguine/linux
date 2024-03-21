@@ -293,7 +293,7 @@ static int aspeed_p2a_release(struct inode *inode, struct file *file)
 	 */
 	regmap_update_bits(priv->parent->regmap, SCU2C, bits, bits);
 
-	/* If parent->readers is zero and open windows is 0, disable the
+	/* If parent->readers is zero and open linux is 0, disable the
 	 * bridge.
 	 */
 	if (!open_regions && priv->parent->readers == 0)

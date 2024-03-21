@@ -142,7 +142,7 @@ static inline int drff_init(struct hid_device *hid)
  * The original descriptor of joystick with PID 0x0011, represented by DVTech PC
  * JS19. It seems both copied from another device and a result of confusion
  * either about the specification or about the program used to create the
- * descriptor. In any case, it's a wonder it works on Windows.
+ * descriptor. In any case, it's a wonder it works on linux.
  *
  *  Usage Page (Desktop),             ; Generic desktop controls (01h)
  *  Usage (Joystick),                 ; Joystick (04h, application collection)

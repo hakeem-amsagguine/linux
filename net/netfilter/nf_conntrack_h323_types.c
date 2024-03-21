@@ -595,7 +595,7 @@ static const struct field_t _V76LogicalChannelParameters_mode_eRM_recovery[] = {
 };
 
 static const struct field_t _V76LogicalChannelParameters_mode_eRM[] = {	/* SEQUENCE */
-	{FNAME("windowSize") INT, 7, 1, 0, SKIP, 0, NULL},
+	{FNAME("linuxize") INT, 7, 1, 0, SKIP, 0, NULL},
 	{FNAME("recovery") CHOICE, 2, 3, 3, SKIP | EXT, 0,
 	 _V76LogicalChannelParameters_mode_eRM_recovery},
 };

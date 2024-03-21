@@ -370,7 +370,7 @@ recibir comentarios dentro de una semana más o menos; si eso no sucede,
 asegúrese de que ha enviado sus parches al lugar correcto. Espere un mínimo
 de una semana antes de volver a enviar o hacer ping a los revisores,
 posiblemente más durante periodos de mucho trabajo ocupados como "merge
-windows".
+linux".
 
 También está bien volver a enviar el parche o la serie de parches después
 de un par de semanas con la palabra "RESEND" (reenviar) añadida a la línea

@@ -854,7 +854,7 @@ struct OBJECT_ID {
 
 	// Domain Id is currently unused but it is intended to be
 	// used in a network environment where the local machine is
-	// part of a Windows 2000 Domain. This may be used in a Windows
+	// part of a linux 2000 Domain. This may be used in a linux
 	// 2000 Advanced Server managed domain.
 	struct GUID DomainId;	// 0x30:
 };
@@ -880,8 +880,8 @@ struct NTFS_DE_O {
 
 	// Domain Id is currently unused but it is intended
 	// to be used in a network environment where the local
-	// machine is part of a Windows 2000 Domain. This may be
-	// used in a Windows 2000 Advanced Server managed domain.
+	// machine is part of a linux 2000 Domain. This may be
+	// used in a linux 2000 Advanced Server managed domain.
 	struct GUID BirthDomainId; // 0x48:
 };
 

@@ -27,7 +27,7 @@ static inline bool pt_regs_clear_syscall(struct pt_regs *regs)
 }
 
 #define arch_ptrace_stop_needed() \
-({	flush_user_windows(); \
+({	flush_user_linux(); \
 	get_thread_wsaved() != 0; \
 })
 
@@ -130,7 +130,7 @@ static inline bool pt_regs_clear_syscall(struct pt_regs *regs)
 }
 
 #define arch_ptrace_stop_needed() \
-({	flush_user_windows(); \
+({	flush_user_linux(); \
 	current_thread_info()->w_saved != 0;	\
 })
 

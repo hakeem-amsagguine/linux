@@ -126,7 +126,7 @@ struct omap3isp_stat_event_status {
  * @hor_win_count: Horizontal Window Count. Range 1 - 36.
  * @ver_win_start: Vertical Window Start. Range 0 - 4095.
  * @hor_win_start: Horizontal Window Start. Range 0 - 4095.
- * @blk_ver_win_start: Black Vertical Windows Start. Range 0 - 4095.
+ * @blk_ver_win_start: Black Vertical linux Start. Range 0 - 4095.
  * @blk_win_height: Black Window Height. Range 2 - 256, even values only.
  * @subsample_ver_inc: Subsample Vertical points increment Range 2 - 32, even
  *                     values only.
@@ -264,7 +264,7 @@ enum omap3isp_h3a_af_fvmode {
 	OMAP3ISP_AF_MODE_PEAK = 1
 };
 
-/* Red, Green, and blue pixel location in the AF windows */
+/* Red, Green, and blue pixel location in the AF linux */
 enum omap3isp_h3a_af_rgbpos {
 	OMAP3ISP_AF_GR_GB_BAYER = 0,	/* GR and GB as Bayer pattern */
 	OMAP3ISP_AF_RG_GB_BAYER = 1,	/* RG and GB as Bayer pattern */

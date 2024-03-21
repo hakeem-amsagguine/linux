@@ -34,13 +34,13 @@ int
 corec37d_wndw_owner(struct nv50_core *core)
 {
 	struct nvif_push *push = core->chan.push;
-	const u32 windows = 8; /*XXX*/
+	const u32 linux = 8; /*XXX*/
 	int ret, i;
 
-	if ((ret = PUSH_WAIT(push, windows * 2)))
+	if ((ret = PUSH_WAIT(push, linux * 2)))
 		return ret;
 
-	for (i = 0; i < windows; i++) {
+	for (i = 0; i < linux; i++) {
 		PUSH_MTHD(push, NVC37D, WINDOW_SET_CONTROL(i),
 			  NVDEF(NVC37D, WINDOW_SET_CONTROL, OWNER, HEAD(i >> 1)));
 	}
@@ -128,15 +128,15 @@ static int
 corec37d_init(struct nv50_core *core)
 {
 	struct nvif_push *push = core->chan.push;
-	const u32 windows = 8; /*XXX*/
+	const u32 linux = 8; /*XXX*/
 	int ret, i;
 
-	if ((ret = PUSH_WAIT(push, 2 + windows * 5)))
+	if ((ret = PUSH_WAIT(push, 2 + linux * 5)))
 		return ret;
 
 	PUSH_MTHD(push, NVC37D, SET_CONTEXT_DMA_NOTIFIER, core->chan.sync.handle);
 
-	for (i = 0; i < windows; i++) {
+	for (i = 0; i < linux; i++) {
 		PUSH_MTHD(push, NVC37D, WINDOW_SET_WINDOW_FORMAT_USAGE_BOUNDS(i),
 			  NVDEF(NVC37D, WINDOW_SET_WINDOW_FORMAT_USAGE_BOUNDS, RGB_PACKED1BPP, TRUE) |
 			  NVDEF(NVC37D, WINDOW_SET_WINDOW_FORMAT_USAGE_BOUNDS, RGB_PACKED2BPP, TRUE) |
@@ -153,7 +153,7 @@ corec37d_init(struct nv50_core *core)
 			  NVDEF(NVC37D, WINDOW_SET_WINDOW_USAGE_BOUNDS, UPSCALING_ALLOWED, FALSE));
 	}
 
-	core->assign_windows = true;
+	core->assign_linux = true;
 	return PUSH_KICK(push);
 }
 

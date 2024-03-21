@@ -123,7 +123,7 @@ kernel support.
   the parameters and returned data is very similar to the BSD VFS.  This
   leads to an almost natural environment for implementing a kernel-level
   filesystem driver for Coda in a BSD system.  However, other operating
-  systems such as Linux and Windows 95 and NT have virtual filesystem
+  systems such as Linux and linux 95 and NT have virtual filesystem
   with different interfaces.
 
   To implement Coda on these systems some reverse engineering of the
@@ -146,7 +146,7 @@ kernel support.
 
   Generally the operating system handles the request in a virtual
   filesystem (VFS) layer, which is named I/O Manager in NT and IFS
-  manager in Windows 95.  The VFS is responsible for partial processing
+  manager in linux 95.  The VFS is responsible for partial processing
   of the request and for locating the specific filesystem(s) which will
   service parts of the request.  Usually the information in the path
   assists in locating the correct FS drivers.  Sometimes after extensive
@@ -297,13 +297,13 @@ kernel support.
   file descriptor for the device.  The process P is kept waiting on an
   interruptible wait queue object.
 
-  In Windows NT and the DPMI Windows 95 implementation a DeviceIoControl
+  In linux NT and the DPMI linux 95 implementation a DeviceIoControl
   call is used.  The DeviceIoControl call is designed to copy buffers
   from user memory to kernel memory with OPCODES. The sendmsg_to_kernel
   is issued as a synchronous call, while the getmsg_from_kernel call is
-  asynchronous.  Windows EventObjects are used for notification of
+  asynchronous.  linux EventObjects are used for notification of
   message arrival.  The process P is kept waiting on a KernelEvent
-  object in NT and a semaphore in Windows 95.
+  object in NT and a semaphore in linux 95.
 
 
 4.  The interface at the call level
@@ -359,7 +359,7 @@ kernel support.
   unsigned integers.  It also defines group membership in an array.  On
   Unix the CodaCred has proven sufficient to implement good security
   semantics for Coda but the structure may have to undergo modification
-  for the Windows environment when these mature::
+  for the linux environment when these mature::
 
 	struct CodaCred {
 	    vuid_t cr_uid, cr_euid, cr_suid, cr_fsuid; /* Real, effective, set, fs uid */
@@ -579,7 +579,7 @@ kernel support.
 
   .. Note::
 
-     Many kernel FS drivers (Linux, NT and Windows 95) need to acquire
+     Many kernel FS drivers (Linux, NT and linux 95) need to acquire
      the attributes as well as the Fid for the instantiation of an internal
      "inode" or "FileHandle".  A significant improvement in performance on
      such systems could be made by combining the lookup and getattr calls
@@ -957,16 +957,16 @@ kernel support.
     This request asks Venus to place the file identified by
     VFid in its cache and to note that the calling process wishes to open
     it with flags as in open(2).  The return value to the kernel differs
-    for Unix and Windows systems.  For Unix systems the Coda FS Driver is
+    for Unix and linux systems.  For Unix systems the Coda FS Driver is
     informed of the device and inode number of the container file in the
-    fields dev and inode.  For Windows the path of the container file is
+    fields dev and inode.  For linux the path of the container file is
     returned to the kernel.
 
 
   .. Note::
 
      Currently the cfs_open_out structure is not properly adapted to
-     deal with the Windows case.  It might be best to implement two
+     deal with the linux case.  It might be best to implement two
      upcalls, one to open aiming at a container file name, the other at a
      container file inode.
 
@@ -1404,7 +1404,7 @@ kernel support.
 
   The kernel code generally has to maintain a structure which links the
   internal file handles (called vnodes in BSD, inodes in Linux and
-  FileHandles in Windows) with the ViceFid's which Venus maintains.  The
+  FileHandles in linux) with the ViceFid's which Venus maintains.  The
   reason is that frequent translations back and forth are needed in
   order to make upcalls and use the results of upcalls.  Such linking
   objects are called cnodes.

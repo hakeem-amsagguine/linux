@@ -34,7 +34,7 @@ static struct pci_config_window *gen_pci_init(struct device *dev,
 		return ERR_PTR(err);
 	}
 
-	bus = resource_list_first_type(&bridge->windows, IORESOURCE_BUS);
+	bus = resource_list_first_type(&bridge->linux, IORESOURCE_BUS);
 	if (!bus)
 		return ERR_PTR(-ENODEV);
 
@@ -68,7 +68,7 @@ int pci_host_common_probe(struct platform_device *pdev)
 
 	of_pci_check_probe_only();
 
-	/* Parse and map our Configuration Space windows */
+	/* Parse and map our Configuration Space linux */
 	cfg = gen_pci_init(dev, bridge, ops);
 	if (IS_ERR(cfg))
 		return PTR_ERR(cfg);

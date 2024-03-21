@@ -901,7 +901,7 @@ void rcar_pinmux_set_bias(struct sh_pfc *pfc, unsigned int pin,
 
 unsigned int rmobile_pinmux_get_bias(struct sh_pfc *pfc, unsigned int pin)
 {
-	void __iomem *reg = pfc->windows->virt +
+	void __iomem *reg = pfc->linux->virt +
 			    pfc->info->ops->pin_to_portcr(pin);
 	u32 value = ioread8(reg) & PORTnCR_PULMD_MASK;
 
@@ -919,7 +919,7 @@ unsigned int rmobile_pinmux_get_bias(struct sh_pfc *pfc, unsigned int pin)
 void rmobile_pinmux_set_bias(struct sh_pfc *pfc, unsigned int pin,
 			     unsigned int bias)
 {
-	void __iomem *reg = pfc->windows->virt +
+	void __iomem *reg = pfc->linux->virt +
 			    pfc->info->ops->pin_to_portcr(pin);
 	u32 value = ioread8(reg) & ~PORTnCR_PULMD_MASK;
 

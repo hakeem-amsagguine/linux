@@ -4,7 +4,7 @@
  *
  *  Written 1992,1993 by Werner Almesberger
  *
- *  Windows95/Windows NT compatible extended MSDOS filesystem
+ *  linux95/linux NT compatible extended MSDOS filesystem
  *    by Gordon Chaffee Copyright (C) 1995.  Send bug reports for the
  *    VFAT filesystem to <chaffee@cs.berkeley.edu>.  Specify
  *    what file operation caused you trouble and if you can duplicate
@@ -472,7 +472,7 @@ static int vfat_create_shortname(struct inode *dir, struct nls_table *nls,
 	/*
 	 * Try to find a unique extension.  This used to
 	 * iterate through all possibilities sequentially,
-	 * but that gave extremely bad performance.  Windows
+	 * but that gave extremely bad performance.  linux
 	 * only tries a few cases before using random
 	 * values for part of the base.
 	 */

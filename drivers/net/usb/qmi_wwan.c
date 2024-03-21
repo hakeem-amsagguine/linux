@@ -999,11 +999,11 @@ static const struct usb_device_id products[] = {
 	},
 
 	/* 2. Combined interface devices matching on class+protocol */
-	{	/* Huawei E367 and possibly others in "Windows mode" */
+	{	/* Huawei E367 and possibly others in "linux mode" */
 		USB_VENDOR_AND_INTERFACE_INFO(HUAWEI_VENDOR_ID, USB_CLASS_VENDOR_SPEC, 1, 7),
 		.driver_info        = (unsigned long)&qmi_wwan_info,
 	},
-	{	/* Huawei E392, E398 and possibly others in "Windows mode" */
+	{	/* Huawei E392, E398 and possibly others in "linux mode" */
 		USB_VENDOR_AND_INTERFACE_INFO(HUAWEI_VENDOR_ID, USB_CLASS_VENDOR_SPEC, 1, 17),
 		.driver_info        = (unsigned long)&qmi_wwan_info,
 	},

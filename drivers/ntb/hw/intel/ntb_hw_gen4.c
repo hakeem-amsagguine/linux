@@ -104,7 +104,7 @@ static int gen4_setup_b2b_mw(struct intel_ntb_dev *ndev,
 	pdev = ndev->ntb.pdev;
 	mmio = ndev->self_mmio;
 
-	/* setup incoming bar limits == base addrs (zero length windows) */
+	/* setup incoming bar limits == base addrs (zero length linux) */
 	bar_addr = addr->bar2_addr64;
 	iowrite64(bar_addr, mmio + GEN4_IM23XLMT_OFFSET);
 	bar_addr = ioread64(mmio + GEN4_IM23XLMT_OFFSET);

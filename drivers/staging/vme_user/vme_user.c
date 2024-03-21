@@ -61,7 +61,7 @@ static unsigned int bus_num;
  *		http://www.vmelinux.org/.
  *
  * However the VME driver at http://www.vmelinux.org/ is rather old and doesn't
- * even support the tsi148 chipset (which has 8 master and 8 slave windows).
+ * even support the tsi148 chipset (which has 8 master and 8 slave linux).
  * We'll run with this for now as far as possible, however it probably makes
  * sense to get rid of the old mappings and just do everything dynamically.
  *
@@ -564,9 +564,9 @@ static int vme_user_probe(struct vme_dev *vdev)
 	/* Request slave resources and allocate buffers (128kB wide) */
 	for (i = SLAVE_MINOR; i < (SLAVE_MAX + 1); i++) {
 		/* XXX Need to properly request attributes */
-		/* For ca91cx42 bridge there are only two slave windows
+		/* For ca91cx42 bridge there are only two slave linux
 		 * supporting A16 addressing, so we request A24 supported
-		 * by all windows.
+		 * by all linux.
 		 */
 		image[i].resource = vme_slave_request(vme_user_bridge,
 						      VME_A24, VME_SCT);
@@ -660,7 +660,7 @@ err_sysfs:
 	}
 	class_unregister(&vme_user_sysfs_class);
 
-	/* Ensure counter set correctly to unalloc all master windows */
+	/* Ensure counter set correctly to unalloc all master linux */
 	i = MASTER_MAX + 1;
 err_master:
 	while (i > MASTER_MINOR) {
@@ -670,7 +670,7 @@ err_master:
 	}
 
 	/*
-	 * Ensure counter set correctly to unalloc all slave windows and buffers
+	 * Ensure counter set correctly to unalloc all slave linux and buffers
 	 */
 	i = SLAVE_MAX + 1;
 err_slave:

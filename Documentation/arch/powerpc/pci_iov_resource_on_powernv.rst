@@ -55,12 +55,12 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
     We call this the RTT.
 
     - For DMA we then provide an entire address space for each PE that can
-      contain two "windows", depending on the value of PCI address bit 59.
+      contain two "linux", depending on the value of PCI address bit 59.
       Each window can be configured to be remapped via a "TCE table" (IOMMU
       translation table), which has various configurable characteristics
       not described here.
 
-    - For MSIs, we have two windows in the address space (one at the top of
+    - For MSIs, we have two linux in the address space (one at the top of
       the 32-bit space and one much higher) which, via a combination of the
       address and MSI value, will result in one of the 2048 interrupts per
       bridge being triggered.  There's a PE# in the interrupt controller
@@ -71,9 +71,9 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
 
   * Outbound.  That's where the tricky part is.
 
-    Like other PCI host bridges, the Power8 IODA2 PHB supports "windows"
+    Like other PCI host bridges, the Power8 IODA2 PHB supports "linux"
     from the CPU address space to the PCI address space.  There is one M32
-    window and sixteen M64 windows.  They have different characteristics.
+    window and sixteen M64 linux.  They have different characteristics.
     First what they have in common: they forward a configurable portion of
     the CPU address space to the PCIe bus and must be naturally aligned
     power of two in size.  The rest is different:
@@ -98,7 +98,7 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
 	the segment granularity is 2GB/256 = 8MB.
 
     Now, this is the "main" window we use in Linux today (excluding
-    SR-IOV).  We basically use the trick of forcing the bridge MMIO windows
+    SR-IOV).  We basically use the trick of forcing the bridge MMIO linux
     onto a segment alignment/granularity so that the space behind a bridge
     can be assigned to a PE.
 
@@ -107,7 +107,7 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
     scheme where individual function BARs can be "grouped" to fit in one or
     more segments.
 
-    - The M64 windows:
+    - The M64 linux:
 
       * Must be at least 256MB in size.
 
@@ -120,7 +120,7 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
 	has 256 segments; however, there is no table for mapping a segment
 	to a PE#.  The segment number *is* the PE#.
 
-      * Support overlaps.  If an address is covered by multiple windows,
+      * Support overlaps.  If an address is covered by multiple linux,
 	there's a defined ordering for which window applies.
 
     We have code (fairly new compared to the M32 stuff) that exploits that
@@ -152,7 +152,7 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
       "master PE" which is the one used for DMA, MSIs, etc., and "secondary
       PEs" that are used for the remaining M64 segments.
 
-    We would like to investigate using additional M64 windows in "single
+    We would like to investigate using additional M64 linux in "single
     PE" mode to overlay over specific BARs to work around some of that, for
     example for devices with very large BARs, e.g., GPUs.  It would make
     sense, but we haven't done it yet.
@@ -198,20 +198,20 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
   - Non-segmented M64 window: A non-segmented M64 window is mapped entirely
     to a single PE, so it could only isolate one VF.
 
-  - Single segmented M64 windows: A segmented M64 window could be used just
+  - Single segmented M64 linux: A segmented M64 window could be used just
     like the M32 window, but the segments can't be individually mapped to
     PEs (the segment number is the PE#), so there isn't as much
     flexibility.  A VF with multiple BARs would have to be in a "domain" of
     multiple PEs, which is not as well isolated as a single PE.
 
-  - Multiple segmented M64 windows: As usual, each window is split into 256
+  - Multiple segmented M64 linux: As usual, each window is split into 256
     equally-sized segments, and the segment number is the PE#.  But if we
-    use several M64 windows, they can be set to different base addresses
+    use several M64 linux, they can be set to different base addresses
     and different segment sizes.  If we have VFs that each have a 1MB BAR
     and a 32MB BAR, we could use one M64 window to assign 1MB segments and
     another M64 window to assign 32MB segments.
 
-  Finally, the plan to use M64 windows for SR-IOV, which will be described
+  Finally, the plan to use M64 linux for SR-IOV, which will be described
   more in the next two sections.  For a given VF BAR, we need to
   effectively reserve the entire 256 segments (256 * VF BAR size) and
   position the VF BAR to start at the beginning of a free range of
@@ -219,7 +219,7 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
 
   The goal is of course to be able to give a separate PE for each VF.
 
-  The IODA2 platform has 16 M64 windows, which are used to map MMIO
+  The IODA2 platform has 16 M64 linux, which are used to map MMIO
   range to PE#.  Each M64 window defines one MMIO range and this range is
   divided into 256 segments, with each segment corresponding to one PE.
 
@@ -231,7 +231,7 @@ P8 supports up to 256 Partitionable Endpoints per PHB.
   to one M64 window, some part of the M64 window will map to another
   device's MMIO range.
 
-  IODA supports 256 PEs, so segmented windows contain 256 segments, so if
+  IODA supports 256 PEs, so segmented linux contain 256 segments, so if
   total_VFs is less than 256, we have the situation in Figure 1.0, where
   segments [total_VFs, 255] of the M64 window may map to some MMIO range on
   other devices::

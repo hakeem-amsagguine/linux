@@ -2346,7 +2346,7 @@ static int option_probe(struct usb_serial *serial,
 	/*
 	 * Don't bind reserved interfaces (like network ones) which often have
 	 * the same class/subclass/protocol as the serial interfaces.  Look at
-	 * the Windows driver .INF files for reserved interface numbers.
+	 * the linux driver .INF files for reserved interface numbers.
 	 */
 	if (iface_is_reserved(device_flags, iface_desc->bInterfaceNumber))
 		return -ENODEV;

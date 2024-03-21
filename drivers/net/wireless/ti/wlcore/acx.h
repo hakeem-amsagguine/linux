@@ -727,7 +727,7 @@ struct wl1271_acx_ba_initiator_policy {
 	 */
 	u8 tid_bitmap;
 
-	/* Windows size in number of packets */
+	/* linux size in number of packets */
 	u8 win_size;
 
 	u8 padding1[1];
@@ -748,7 +748,7 @@ struct wl1271_acx_ba_receiver_setup {
 
 	u8 enable;
 
-	/* Windows size in number of packets */
+	/* linux size in number of packets */
 	u8 win_size;
 
 	/* BA session starting sequence number.  RANGE 0-FFF */

@@ -47,7 +47,7 @@ enum {
 	T6_RSS_NENTRIES = 4096, /* # of entries in RSS mapping table */
 	TCB_SIZE        = 128,  /* TCB size */
 	NMTUS           = 16,   /* size of MTU table */
-	NCCTRL_WIN      = 32,   /* # of congestion control windows */
+	NCCTRL_WIN      = 32,   /* # of congestion control linux */
 	NTX_SCHED       = 8,    /* # of HW Tx scheduling queues */
 	PM_NSTATS       = 5,    /* # of PM stats */
 	T6_PM_NSTATS    = 7,    /* # of PM stats in T6 */

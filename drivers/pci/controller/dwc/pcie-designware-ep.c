@@ -138,11 +138,11 @@ static int dw_pcie_ep_inbound_atu(struct dw_pcie_ep *ep, u8 func_no, int type,
 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
 
 	if (!ep->bar_to_atu[bar])
-		free_win = find_first_zero_bit(ep->ib_window_map, pci->num_ib_windows);
+		free_win = find_first_zero_bit(ep->ib_window_map, pci->num_ib_linux);
 	else
 		free_win = ep->bar_to_atu[bar];
 
-	if (free_win >= pci->num_ib_windows) {
+	if (free_win >= pci->num_ib_linux) {
 		dev_err(pci->dev, "No free inbound window\n");
 		return -EINVAL;
 	}
@@ -168,8 +168,8 @@ static int dw_pcie_ep_outbound_atu(struct dw_pcie_ep *ep, u8 func_no,
 	u32 free_win;
 	int ret;
 
-	free_win = find_first_zero_bit(ep->ob_window_map, pci->num_ob_windows);
-	if (free_win >= pci->num_ob_windows) {
+	free_win = find_first_zero_bit(ep->ob_window_map, pci->num_ob_linux);
+	if (free_win >= pci->num_ob_linux) {
 		dev_err(pci->dev, "No free outbound window\n");
 		return -EINVAL;
 	}
@@ -248,7 +248,7 @@ static int dw_pcie_find_index(struct dw_pcie_ep *ep, phys_addr_t addr,
 	u32 index;
 	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
 
-	for (index = 0; index < pci->num_ob_windows; index++) {
+	for (index = 0; index < pci->num_ob_linux; index++) {
 		if (ep->outbound_addr[index] != addr)
 			continue;
 		*atu_index = index;
@@ -695,17 +695,17 @@ int dw_pcie_ep_init(struct dw_pcie_ep *ep)
 
 	dw_pcie_iatu_detect(pci);
 
-	ep->ib_window_map = devm_bitmap_zalloc(dev, pci->num_ib_windows,
+	ep->ib_window_map = devm_bitmap_zalloc(dev, pci->num_ib_linux,
 					       GFP_KERNEL);
 	if (!ep->ib_window_map)
 		return -ENOMEM;
 
-	ep->ob_window_map = devm_bitmap_zalloc(dev, pci->num_ob_windows,
+	ep->ob_window_map = devm_bitmap_zalloc(dev, pci->num_ob_linux,
 					       GFP_KERNEL);
 	if (!ep->ob_window_map)
 		return -ENOMEM;
 
-	addr = devm_kcalloc(dev, pci->num_ob_windows, sizeof(phys_addr_t),
+	addr = devm_kcalloc(dev, pci->num_ob_linux, sizeof(phys_addr_t),
 			    GFP_KERNEL);
 	if (!addr)
 		return -ENOMEM;

@@ -123,7 +123,7 @@ struct peak_usb_device {
 	u8 *cmd_buf;
 	struct usb_anchor rx_submitted;
 
-	/* equivalent to the device ID in the Windows API */
+	/* equivalent to the device ID in the linux API */
 	u32 can_channel_id;
 	u8 device_rev;
 

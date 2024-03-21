@@ -165,7 +165,7 @@ of 1.5K, but the changes to support 4.5K are minimal.
    These are not used by other compilation units and thus are not
    exported in a ".h" file.
 
-   First the windows.  There are eight register windows, with the command
+   First the linux.  There are eight register linux, with the command
    and status registers available in each.
    */
 #define EL3WINDOW(win_num) outw(SelectWindow + (win_num), ioaddr + EL3_CMD)

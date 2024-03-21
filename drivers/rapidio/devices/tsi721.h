@@ -900,11 +900,11 @@ struct tsi721_device {
 	int		omsg_init[TSI721_OMSG_CHNUM];
 	struct tsi721_omsg_ring	omsg_ring[TSI721_OMSG_CHNUM];
 
-	/* Inbound Mapping Windows */
+	/* Inbound Mapping linux */
 	struct tsi721_ib_win ib_win[TSI721_IBWIN_NUM];
 	int		ibwin_cnt;
 
-	/* Outbound Mapping Windows */
+	/* Outbound Mapping linux */
 	struct tsi721_obw_bar p2r_bar[2];
 	struct tsi721_ob_win  ob_win[TSI721_OBWIN_NUM];
 	int		obwin_cnt;

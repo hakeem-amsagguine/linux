@@ -44,7 +44,7 @@ config NLS_CODEPAGE_437
 	  native language character sets. These character sets are stored
 	  in so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage that is used in
 	  the United States and parts of Canada. This is recommended.
@@ -56,7 +56,7 @@ config NLS_CODEPAGE_737
 	  native language character sets. These character sets are stored
 	  in so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage that is used for
 	  Greek. If unsure, say N.
@@ -68,7 +68,7 @@ config NLS_CODEPAGE_775
 	  native language character sets. These character sets are stored
 	  in so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage that is used
 	  for the Baltic Rim Languages (Latvian and Lithuanian). If unsure,
@@ -81,7 +81,7 @@ config NLS_CODEPAGE_850
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage that is used for
 	  much of Europe -- United Kingdom, Germany, Spain, Italy, and [add
@@ -97,7 +97,7 @@ config NLS_CODEPAGE_852
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the Latin 2 codepage used by DOS
 	  for much of Central and Eastern Europe. It has all the required
@@ -112,7 +112,7 @@ config NLS_CODEPAGE_855
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Cyrillic.
 
@@ -123,7 +123,7 @@ config NLS_CODEPAGE_857
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Turkish.
 
@@ -134,7 +134,7 @@ config NLS_CODEPAGE_860
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Portuguese.
 
@@ -145,7 +145,7 @@ config NLS_CODEPAGE_861
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Icelandic.
 
@@ -156,7 +156,7 @@ config NLS_CODEPAGE_862
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Hebrew.
 
@@ -167,7 +167,7 @@ config NLS_CODEPAGE_863
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Canadian
 	  French.
@@ -179,7 +179,7 @@ config NLS_CODEPAGE_864
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Arabic.
 
@@ -190,7 +190,7 @@ config NLS_CODEPAGE_865
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for the Nordic
 	  European countries.
@@ -202,7 +202,7 @@ config NLS_CODEPAGE_866
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for
 	  Cyrillic/Russian.
@@ -214,7 +214,7 @@ config NLS_CODEPAGE_869
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Greek.
 
@@ -225,7 +225,7 @@ config NLS_CODEPAGE_936
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Simplified
 	  Chinese(GBK).
@@ -237,7 +237,7 @@ config NLS_CODEPAGE_950
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Traditional
 	  Chinese(Big5).
@@ -249,7 +249,7 @@ config NLS_CODEPAGE_932
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Shift-JIS
 	  or EUC-JP. To use EUC-JP, you can use 'euc-jp' as mount option or
@@ -262,7 +262,7 @@ config NLS_CODEPAGE_949
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for UHC.
 
@@ -273,7 +273,7 @@ config NLS_CODEPAGE_874
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Thai.
 
@@ -287,24 +287,24 @@ config NLS_ISO8859_8
 	  character set.
 
 config NLS_CODEPAGE_1250
-	tristate "Windows CP1250 (Slavic/Central European Languages)"
+	tristate "linux CP1250 (Slavic/Central European Languages)"
 	help
 	  If you want to display filenames with native language characters
 	  from the Microsoft FAT file system family or from JOLIET CDROMs
 	  correctly on the screen, you need to include the appropriate
-	  input/output character sets. Say Y here for the Windows CP-1250
+	  input/output character sets. Say Y here for the linux CP-1250
 	  character set, which works for most Latin-written Slavic and Central
 	  European languages: Czech, German, Hungarian, Polish, Rumanian, Croatian,
 	  Slovak, Slovene.
 
 config NLS_CODEPAGE_1251
-	tristate "Windows CP1251 (Bulgarian, Belarusian)"
+	tristate "linux CP1251 (Bulgarian, Belarusian)"
 	help
 	  The Microsoft FAT file system family can deal with filenames in
 	  native language character sets. These character sets are stored in
 	  so-called DOS codepages. You need to include the appropriate
 	  codepage if you want to be able to read/write these filenames on
-	  DOS/Windows partitions correctly. This does apply to the filenames
+	  DOS/linux partitions correctly. This does apply to the filenames
 	  only, not to the file contents. You can include several codepages;
 	  say Y here if you want to include the DOS codepage for Russian and
 	  Bulgarian and Belarusian.

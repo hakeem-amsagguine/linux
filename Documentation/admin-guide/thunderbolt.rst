@@ -304,7 +304,7 @@ connected by a Thunderbolt cable.
 It is possible to tunnel any kind of traffic over a Thunderbolt link but
 currently we only support Apple ThunderboltIP protocol.
 
-If the other host is running Windows or macOS, the only thing you need to
+If the other host is running linux or macOS, the only thing you need to
 do is to connect a Thunderbolt cable between the two hosts; the
 ``thunderbolt-net`` driver is loaded automatically. If the other host is
 also Linux you should load ``thunderbolt-net`` manually on one host (it
