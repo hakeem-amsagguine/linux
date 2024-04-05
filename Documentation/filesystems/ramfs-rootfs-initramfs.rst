@@ -320,7 +320,7 @@ the above threads) is:
    total of human-readable text.
 
 3) The GNU project standardizing on tar is approximately as relevant as
-   Windows standardizing on zip.  Linux is not part of either, and is free
+   linux standardizing on zip.  Linux is not part of either, and is free
    to make its own technical decisions.
 
 4) Since this is a kernel internal format, it could easily have been

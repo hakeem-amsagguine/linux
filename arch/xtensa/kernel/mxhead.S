@@ -40,7 +40,7 @@ _SetupOCD:
 #if XCHAL_HAVE_WINDOWED
 	movi	a1, 1
 	movi	a0, 0
-	wsr	a1, windowstart
+	wsr	a1, linuxtart
 	wsr	a0, windowbase
 	rsync
 #endif

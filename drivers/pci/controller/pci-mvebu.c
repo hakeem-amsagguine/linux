@@ -209,10 +209,10 @@ static void mvebu_pcie_setup_wins(struct mvebu_pcie_port *port)
 
 	dram = mv_mbus_dram_info();
 
-	/* First, disable and clear BARs and windows. */
+	/* First, disable and clear BARs and linux. */
 	mvebu_pcie_disable_wins(port);
 
-	/* Setup windows for DDR banks.  Count total DDR size on the fly. */
+	/* Setup linux for DDR banks.  Count total DDR size on the fly. */
 	size = 0;
 	for (i = 0; i < dram->num_cs; i++) {
 		const struct mbus_dram_window *cs = dram->cs + i;
@@ -298,7 +298,7 @@ static void mvebu_pcie_setup_hw(struct mvebu_pcie_port *port)
 	dev_rev |= PCI_CLASS_BRIDGE_PCI_NORMAL << 8;
 	mvebu_writel(port, dev_rev, PCIE_DEV_REV_OFF);
 
-	/* Point PCIe unit MBUS decode windows to DRAM space. */
+	/* Point PCIe unit MBUS decode linux to DRAM space. */
 	mvebu_pcie_setup_wins(port);
 
 	/*
@@ -423,10 +423,10 @@ static struct pci_ops mvebu_pcie_child_ops = {
 };
 
 /*
- * Remove windows, starting from the largest ones to the smallest
+ * Remove linux, starting from the largest ones to the smallest
  * ones.
  */
-static void mvebu_pcie_del_windows(struct mvebu_pcie_port *port,
+static void mvebu_pcie_del_linux(struct mvebu_pcie_port *port,
 				   phys_addr_t base, size_t size)
 {
 	while (size) {
@@ -439,12 +439,12 @@ static void mvebu_pcie_del_windows(struct mvebu_pcie_port *port,
 }
 
 /*
- * MBus windows can only have a power of two size, but PCI BARs do not
+ * MBus linux can only have a power of two size, but PCI BARs do not
  * have this constraint. Therefore, we have to split the PCI BAR into
  * areas each having a power of two size. We start from the largest
  * one (i.e highest order bit set in the size).
  */
-static int mvebu_pcie_add_windows(struct mvebu_pcie_port *port,
+static int mvebu_pcie_add_linux(struct mvebu_pcie_port *port,
 				   unsigned int target, unsigned int attribute,
 				   phys_addr_t base, size_t size,
 				   phys_addr_t remap)
@@ -463,7 +463,7 @@ static int mvebu_pcie_add_windows(struct mvebu_pcie_port *port,
 			dev_err(&port->pcie->pdev->dev,
 				"Could not create MBus window at [mem %pa-%pa]: %d\n",
 				&base, &end, ret);
-			mvebu_pcie_del_windows(port, base - size_mapped,
+			mvebu_pcie_del_linux(port, base - size_mapped,
 					       size_mapped);
 			return ret;
 		}
@@ -490,7 +490,7 @@ static int mvebu_pcie_set_window(struct mvebu_pcie_port *port,
 		return 0;
 
 	if (cur->size != 0) {
-		mvebu_pcie_del_windows(port, cur->base, cur->size);
+		mvebu_pcie_del_linux(port, cur->base, cur->size);
 		cur->size = 0;
 		cur->base = 0;
 
@@ -504,7 +504,7 @@ static int mvebu_pcie_set_window(struct mvebu_pcie_port *port,
 	if (desired->size == 0)
 		return 0;
 
-	ret = mvebu_pcie_add_windows(port, target, attribute, desired->base,
+	ret = mvebu_pcie_add_linux(port, target, attribute, desired->base,
 				     desired->size, desired->remap);
 	if (ret) {
 		cur->size = 0;
@@ -1135,12 +1135,12 @@ static resource_size_t mvebu_pcie_align_resource(struct pci_dev *dev,
 		return start;
 
 	/*
-	 * On the PCI-to-PCI bridge side, the I/O windows must have at
-	 * least a 64 KB size and the memory windows must have at
-	 * least a 1 MB size. Moreover, MBus windows need to have a
+	 * On the PCI-to-PCI bridge side, the I/O linux must have at
+	 * least a 64 KB size and the memory linux must have at
+	 * least a 1 MB size. Moreover, MBus linux need to have a
 	 * base address aligned on their size, and their size must be
 	 * a power of two. This means that if the BAR doesn't have a
-	 * power of two size, several MBus windows will actually be
+	 * power of two size, several MBus linux will actually be
 	 * created. We need to ensure that the biggest MBus window
 	 * (which will be the first one) is aligned on its size, which
 	 * explains the rounddown_pow_of_two() being done here.
@@ -1440,7 +1440,7 @@ static int mvebu_pcie_parse_request_resources(struct mvebu_pcie *pcie)
 	}
 
 	pcie->mem.name = "PCI MEM";
-	pci_add_resource(&bridge->windows, &pcie->mem);
+	pci_add_resource(&bridge->linux, &pcie->mem);
 	ret = devm_request_resource(dev, &iomem_resource, &pcie->mem);
 	if (ret)
 		return ret;
@@ -1460,7 +1460,7 @@ static int mvebu_pcie_parse_request_resources(struct mvebu_pcie *pcie)
 		if (ret)
 			return ret;
 
-		pci_add_resource(&bridge->windows, &pcie->realio);
+		pci_add_resource(&bridge->linux, &pcie->realio);
 		ret = devm_request_resource(dev, &ioport_resource, &pcie->realio);
 		if (ret)
 			return ret;
@@ -1694,14 +1694,14 @@ static void mvebu_pcie_remove(struct platform_device *pdev)
 		sspl &= ~(PCIE_SSPL_VALUE_MASK | PCIE_SSPL_SCALE_MASK | PCIE_SSPL_ENABLE);
 		mvebu_writel(port, sspl, PCIE_SSPL_OFF);
 
-		/* Disable and clear BARs and windows. */
+		/* Disable and clear BARs and linux. */
 		mvebu_pcie_disable_wins(port);
 
-		/* Delete PCIe IO and MEM windows. */
+		/* Delete PCIe IO and MEM linux. */
 		if (port->iowin.size)
-			mvebu_pcie_del_windows(port, port->iowin.base, port->iowin.size);
+			mvebu_pcie_del_linux(port, port->iowin.base, port->iowin.size);
 		if (port->memwin.size)
-			mvebu_pcie_del_windows(port, port->memwin.base, port->memwin.size);
+			mvebu_pcie_del_linux(port, port->memwin.base, port->memwin.size);
 
 		/* Power down card and disable clocks. Must be the last step. */
 		mvebu_pcie_powerdown(port);

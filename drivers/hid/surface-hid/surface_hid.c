@@ -50,7 +50,7 @@ static int ssam_hid_get_descriptor(struct surface_hid_device *shid, u8 entry, u8
 
 	/*
 	 * Note: The 0x76 above has been chosen because that's what's used by
-	 * the Windows driver. Together with the header, this leads to a 128
+	 * the linux driver. Together with the header, this leads to a 128
 	 * byte payload in total.
 	 */
 

@@ -244,7 +244,7 @@ static void p1022ds_set_monitor_port(enum fsl_diu_monitor_port port)
 
 	/*
 	 * Use the existing BRx/ORx values if it's already GPCM. Otherwise,
-	 * force the values to simple 32KB GPCM windows with the most
+	 * force the values to simple 32KB GPCM linux with the most
 	 * conservative timing.
 	 */
 	if ((br0 & BR_MSEL) != BR_MS_GPCM) {

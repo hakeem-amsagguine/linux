@@ -2386,7 +2386,7 @@ static int configure_new_function(struct controller *ctrl, struct pci_func *func
 		if (rc)
 			return rc;
 
-		/* Setup the IO, memory, and prefetchable windows */
+		/* Setup the IO, memory, and prefetchable linux */
 		io_node = get_max_resource(&(resources->io_head), 0x1000);
 		if (!io_node)
 			return -ENOMEM;
@@ -2396,7 +2396,7 @@ static int configure_new_function(struct controller *ctrl, struct pci_func *func
 		p_mem_node = get_max_resource(&(resources->p_mem_head), 0x100000);
 		if (!p_mem_node)
 			return -ENOMEM;
-		dbg("Setup the IO, memory, and prefetchable windows\n");
+		dbg("Setup the IO, memory, and prefetchable linux\n");
 		dbg("io_node\n");
 		dbg("(base, len, next) (%x, %x, %p)\n", io_node->base,
 					io_node->length, io_node->next);

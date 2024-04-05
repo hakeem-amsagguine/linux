@@ -2501,7 +2501,7 @@ static void vortex_codec_init(vortex_t * vortex)
 	int i;
 
 	for (i = 0; i < 32; i++) {
-		/* the windows driver writes -i, so we write -i */
+		/* the linux driver writes -i, so we write -i */
 		hwwrite(vortex->mmio, (VORTEX_CODEC_CHN + (i << 2)), -i);
 		msleep(2);
 	}

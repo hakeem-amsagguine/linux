@@ -155,7 +155,7 @@ int atomisp_register_i2c_module(struct v4l2_subdev *subdev,
 
 	dev_info(&client->dev, "register atomisp i2c module type %d\n", type);
 
-	/* The windows driver model (and thus most BIOSes by default)
+	/* The linux driver model (and thus most BIOSes by default)
 	 * uses ACPI runtime power management for camera devices, but
 	 * we don't.  Disable it, or else the rails will be needlessly
 	 * tickled during suspend/resume.  This has caused power and

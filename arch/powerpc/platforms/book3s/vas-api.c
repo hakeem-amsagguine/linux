@@ -156,7 +156,7 @@ void vas_update_csb(struct coprocessor_request_block *crb,
 	int rc;
 
 	/*
-	 * NX user space windows can not be opened for task->mm=NULL
+	 * NX user space linux can not be opened for task->mm=NULL
 	 * and faults will not be generated for kernel requests.
 	 */
 	if (WARN_ON_ONCE(!task_ref->mm))
@@ -342,7 +342,7 @@ static int coproc_release(struct inode *inode, struct file *fp)
 	fp->private_data = NULL;
 
 	/*
-	 * We don't know here if user has other receive windows
+	 * We don't know here if user has other receive linux
 	 * open, so we can't really call clear_thread_tidr().
 	 * So, once the process calls set_thread_tidr(), the
 	 * TIDR value sticks around until process exits, resulting
@@ -414,8 +414,8 @@ static vm_fault_t vas_mmap_fault(struct vm_fault *vmf)
 	/*
 	 * When the LPAR lost credits due to core removal or during
 	 * migration, invalidate the existing mapping for the current
-	 * paste addresses and set windows in-active (zap_vma_pages in
-	 * reconfig_close_windows()).
+	 * paste addresses and set linux in-active (zap_vma_pages in
+	 * reconfig_close_linux()).
 	 * New mapping will be done later after migration or new credits
 	 * available. So continue to receive faults if the user space
 	 * issue NX request.
@@ -453,7 +453,7 @@ static vm_fault_t vas_mmap_fault(struct vm_fault *vmf)
 	/*
 	 * The user space can retry several times until success (needed
 	 * for migration) or should fallback to SW compression or
-	 * manage with the existing open windows if available.
+	 * manage with the existing open linux if available.
 	 * Looking at sysfs interface, it can determine whether these
 	 * failures are coming during migration or core removal:
 	 * nr_used_credits > nr_total_credits when lost credits

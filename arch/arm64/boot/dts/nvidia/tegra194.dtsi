@@ -2574,8 +2574,8 @@
 			status = "disabled";
 
 			num-lanes = <4>;
-			num-ib-windows = <2>;
-			num-ob-windows = <8>;
+			num-ib-linux = <2>;
+			num-ob-linux = <8>;
 
 			clocks = <&bpmp TEGRA194_CLK_PEX0_CORE_4>;
 			clock-names = "core";
@@ -2665,8 +2665,8 @@
 			status = "disabled";
 
 			num-lanes = <8>;
-			num-ib-windows = <2>;
-			num-ob-windows = <8>;
+			num-ib-linux = <2>;
+			num-ob-linux = <8>;
 
 			clocks = <&bpmp TEGRA194_CLK_PEX0_CORE_0>;
 			clock-names = "core";
@@ -2759,8 +2759,8 @@
 			status = "disabled";
 
 			num-lanes = <8>;
-			num-ib-windows = <2>;
-			num-ob-windows = <8>;
+			num-ib-linux = <2>;
+			num-ob-linux = <8>;
 
 			pinctrl-names = "default";
 			pinctrl-0 = <&pex_clkreq_c5_bi_dir_state>;

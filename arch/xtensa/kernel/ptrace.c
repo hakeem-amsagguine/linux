@@ -50,7 +50,7 @@ static int gpr_get(struct task_struct *target,
 		.sar = regs->sar,
 		.threadptr = regs->threadptr,
 		.windowbase = regs->windowbase,
-		.windowstart = regs->windowstart,
+		.linuxtart = regs->linuxtart,
 		.syscall = regs->syscall,
 	};
 
@@ -94,17 +94,17 @@ static int gpr_set(struct task_struct *target,
 		regs->syscall = newregs.syscall;
 
 	if (newregs.windowbase != regs->windowbase ||
-	    newregs.windowstart != regs->windowstart) {
+	    newregs.linuxtart != regs->linuxtart) {
 		u32 rotws, wmask;
 
-		rotws = (((newregs.windowstart |
-			   (newregs.windowstart << WSBITS)) >>
+		rotws = (((newregs.linuxtart |
+			   (newregs.linuxtart << WSBITS)) >>
 			  newregs.windowbase) &
 			 ((1 << WSBITS) - 1)) & ~1;
 		wmask = ((rotws ? WSBITS + 1 - ffs(rotws) : 0) << 4) |
 			(rotws & 0xF) | 1;
 		regs->windowbase = newregs.windowbase;
-		regs->windowstart = newregs.windowstart;
+		regs->linuxtart = newregs.linuxtart;
 		regs->wmask = wmask;
 	}
 
@@ -301,7 +301,7 @@ static int ptrace_peekusr(struct task_struct *child, long regno,
 	case REG_WS:
 		{
 			unsigned long wb = regs->windowbase;
-			unsigned long ws = regs->windowstart;
+			unsigned long ws = regs->linuxtart;
 			tmp = ((ws >> wb) | (ws << (WSBITS - wb))) &
 				((1 << WSBITS) - 1);
 			break;

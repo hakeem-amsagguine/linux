@@ -161,7 +161,7 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
 		}
 
 	} else {
-		if (arg->en_windows & BIT(1)) {
+		if (arg->en_linux & BIT(1)) {
 			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_H2_START,
 				     arg->bls_window2.h_offs);
 			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_H2_STOP,
@@ -173,7 +173,7 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
 			new_control |= RKISP1_CIF_ISP_BLS_WINDOW_2;
 		}
 
-		if (arg->en_windows & BIT(0)) {
+		if (arg->en_linux & BIT(0)) {
 			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_H1_START,
 				     arg->bls_window1.h_offs);
 			rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_BLS_H1_STOP,

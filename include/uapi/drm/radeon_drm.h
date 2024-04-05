@@ -457,7 +457,7 @@ typedef struct {
 						       1];
 	unsigned int tex_age[RADEON_NR_TEX_HEAPS];
 	int ctx_owner;
-	int pfState;		/* number of 3d windows (0,1,2ormore) */
+	int pfState;		/* number of 3d linux (0,1,2ormore) */
 	int pfCurrentPage;	/* which buffer is being displayed? */
 	int crtc2_base;		/* CRTC2 frame offset */
 	int tiling_enabled;	/* set by drm, read by 2d + 3d clients */

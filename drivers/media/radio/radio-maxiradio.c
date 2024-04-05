@@ -7,7 +7,7 @@
  * for radio but different pci controller.
  *
  * I didn't have any specs I reversed engineered the protocol from
- * the windows driver (radio.dll).
+ * the linux driver (radio.dll).
  *
  * The card uses the TEA5757 chip that includes a search function but it
  * is useless as I haven't found any way to read back the frequency. If

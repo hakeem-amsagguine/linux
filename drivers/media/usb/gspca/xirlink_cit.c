@@ -1317,7 +1317,7 @@ static int cit_set_sharpness(struct gspca_dev *gspca_dev, s32 val)
 	{	/*
 		 * "Use a table of magic numbers.
 		 *  This setting doesn't really change much.
-		 *  But that's how Windows does it."
+		 *  But that's how linux does it."
 		 */
 		static const struct {
 			unsigned short sv1;
@@ -1848,10 +1848,10 @@ static int cit_start_model2(struct gspca_dev *gspca_dev)
 		break;
 #if 0
 	case VIDEOSIZE_352x240:
-		/* This mode doesn't work as Windows programs it; changed to work */
-		cit_model2_Packet1(gspca_dev, 0x0014, 0x0009); /* Windows sets this to 8 */
+		/* This mode doesn't work as linux programs it; changed to work */
+		cit_model2_Packet1(gspca_dev, 0x0014, 0x0009); /* linux sets this to 8 */
 		cit_model2_Packet1(gspca_dev, 0x0016, 0x0003); /* Horizontal shift */
-		cit_model2_Packet1(gspca_dev, 0x0018, 0x0044); /* Windows sets this to 0x0045 */
+		cit_model2_Packet1(gspca_dev, 0x0018, 0x0044); /* linux sets this to 0x0045 */
 		clock_div = 10;
 		break;
 #endif
@@ -1890,7 +1890,7 @@ static int cit_start_model2(struct gspca_dev *gspca_dev)
 
 	/*
 	 * This setting does not visibly affect pictures; left it here
-	 * because it was present in Windows USB data stream. This function
+	 * because it was present in linux USB data stream. This function
 	 * does not allow arbitrary values and apparently is a bit mask, to
 	 * be activated only at appropriate time. Don't change it randomly!
 	 */
@@ -2712,7 +2712,7 @@ static void sd_stop0(struct gspca_dev *gspca_dev)
 
 	switch (sd->model) {
 	case CIT_MODEL0:
-		/* HDG windows does this, but it causes the cams autogain to
+		/* HDG linux does this, but it causes the cams autogain to
 		   restart from a gain of 0, which does not look good when
 		   changing resolutions. */
 		/* cit_write_reg(gspca_dev, 0x0000, 0x0112); */
@@ -2754,7 +2754,7 @@ static void sd_stop0(struct gspca_dev *gspca_dev)
 		cit_model3_Packet1(gspca_dev, 0x0049, 0x00ff);
 		cit_write_reg(gspca_dev, 0x0006, 0x012c);
 		cit_write_reg(gspca_dev, 0x0000, 0x0116);
-		/* HDG windows does this, but I cannot get the camera
+		/* HDG linux does this, but I cannot get the camera
 		   to restart with this without redoing the entire init
 		   sequence which makes switching modes really slow */
 		/* cit_write_reg(gspca_dev, 0x0006, 0x0115); */
@@ -2762,7 +2762,7 @@ static void sd_stop0(struct gspca_dev *gspca_dev)
 		cit_write_reg(gspca_dev, 0x0000, 0x0117);
 		cit_write_reg(gspca_dev, 0x0003, 0x0133);
 		cit_write_reg(gspca_dev, 0x0000, 0x0111);
-		/* HDG windows does this, but I get a green picture when
+		/* HDG linux does this, but I get a green picture when
 		   restarting the stream after this */
 		/* cit_write_reg(gspca_dev, 0x0000, 0x0112); */
 		cit_write_reg(gspca_dev, 0x00c0, 0x0100);

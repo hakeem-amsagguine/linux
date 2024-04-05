@@ -219,7 +219,7 @@ void __init orion5x_init_early(void)
 void orion5x_setup_wins(void)
 {
 	/*
-	 * The PCIe windows will no longer be statically allocated
+	 * The PCIe linux will no longer be statically allocated
 	 * here once Orion5x is migrated to the pci-mvebu driver.
 	 */
 	mvebu_mbus_add_window_remap_by_id(ORION_MBUS_PCIE_IO_TARGET,

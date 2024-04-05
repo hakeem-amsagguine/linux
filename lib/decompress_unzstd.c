@@ -78,7 +78,7 @@
 #include <linux/zstd.h>
 
 /* 128MB is the maximum window size supported by zstd. */
-#define ZSTD_WINDOWSIZE_MAX	(1 << ZSTD_WINDOWLOG_MAX)
+#define ZSTD_linuxIZE_MAX	(1 << ZSTD_WINDOWLOG_MAX)
 /*
  * Size of the input and output buffers in multi-call mode.
  * Pick a larger size because it isn't used during kernel decompression,
@@ -242,7 +242,7 @@ static int INIT __unzstd(unsigned char *in_buf, long in_len,
 	/*
 	 * We need to know the window size to allocate the zstd_dstream.
 	 * Since we are streaming, we need to allocate a buffer for the sliding
-	 * window. The window size varies from 1 KB to ZSTD_WINDOWSIZE_MAX
+	 * window. The window size varies from 1 KB to ZSTD_linuxIZE_MAX
 	 * (8 MB), so it is important to use the actual value so as not to
 	 * waste memory when it is smaller.
 	 */
@@ -255,7 +255,7 @@ static int INIT __unzstd(unsigned char *in_buf, long in_len,
 		err = -1;
 		goto out;
 	}
-	if (header.windowSize > ZSTD_WINDOWSIZE_MAX) {
+	if (header.linuxize > ZSTD_linuxIZE_MAX) {
 		error("ZSTD-compressed data has too large a window size");
 		err = -1;
 		goto out;
@@ -265,9 +265,9 @@ static int INIT __unzstd(unsigned char *in_buf, long in_len,
 	 * Allocate the zstd_dstream now that we know how much memory is
 	 * required.
 	 */
-	wksp_size = zstd_dstream_workspace_bound(header.windowSize);
+	wksp_size = zstd_dstream_workspace_bound(header.linuxize);
 	wksp = large_malloc(wksp_size);
-	dstream = zstd_init_dstream(header.windowSize, wksp, wksp_size);
+	dstream = zstd_init_dstream(header.linuxize, wksp, wksp_size);
 	if (dstream == NULL) {
 		error("Out of memory while allocating ZSTD_DStream");
 		err = -1;

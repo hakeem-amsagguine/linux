@@ -335,7 +335,7 @@ common_init_pci(void)
 		sg_base = hose->sg_pci ? hose->sg_pci->dma_base : ~0;
 
 		/* Adjust hose mem_space limit to prevent PCI allocations
-		   in the iommu windows. */
+		   in the iommu linux. */
 		pci_mem_end = min((u32)__direct_map_base, sg_base) - 1;
 		end = hose->mem_space->start + pci_mem_end;
 		if (hose->mem_space->end > end)
@@ -351,7 +351,7 @@ common_init_pci(void)
 		if (!bridge)
 			continue;
 
-		list_splice_init(&resources, &bridge->windows);
+		list_splice_init(&resources, &bridge->linux);
 		bridge->dev.parent = NULL;
 		bridge->sysdata = hose;
 		bridge->busnr = next_busno;

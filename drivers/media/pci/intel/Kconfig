@@ -8,7 +8,7 @@ config IPU_BRIDGE
 	depends on I2C && ACPI
 	help
 	  The IPU bridge is a helper library for Intel IPU drivers to
-	  function on systems shipped with Windows.
+	  function on systems shipped with linux.
 
 	  Currently used by the ipu3-cio2 and atomisp drivers.
 

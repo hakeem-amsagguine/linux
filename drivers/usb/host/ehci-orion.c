@@ -145,7 +145,7 @@ static void orion_usb_phy_v1_setup(struct usb_hcd *hcd)
 }
 
 static void
-ehci_orion_conf_mbus_windows(struct usb_hcd *hcd,
+ehci_orion_conf_mbus_linux(struct usb_hcd *hcd,
 			     const struct mbus_dram_target_info *dram)
 {
 	int i;
@@ -284,11 +284,11 @@ static int ehci_orion_drv_probe(struct platform_device *pdev)
 	}
 
 	/*
-	 * (Re-)program MBUS remapping windows if we are asked to.
+	 * (Re-)program MBUS remapping linux if we are asked to.
 	 */
 	dram = mv_mbus_dram_info();
 	if (dram)
-		ehci_orion_conf_mbus_windows(hcd, dram);
+		ehci_orion_conf_mbus_linux(hcd, dram);
 
 	/*
 	 * setup Orion USB controller.

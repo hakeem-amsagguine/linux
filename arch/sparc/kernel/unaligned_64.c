@@ -101,7 +101,7 @@ static inline int decode_signedness(unsigned int insn)
 	return (insn & 0x400000);
 }
 
-static inline void maybe_flush_windows(unsigned int rs1, unsigned int rs2,
+static inline void maybe_flush_linux(unsigned int rs1, unsigned int rs2,
 				       unsigned int rd, int from_kernel)
 {
 	if (rs2 >= 16 || rs1 >= 16 || rd >= 16) {
@@ -175,10 +175,10 @@ unsigned long compute_effective_address(struct pt_regs *regs,
 	unsigned long addr;
 
 	if (insn & 0x2000) {
-		maybe_flush_windows(rs1, 0, rd, from_kernel);
+		maybe_flush_linux(rs1, 0, rd, from_kernel);
 		addr = (fetch_reg(rs1, regs) + sign_extend_imm13(insn));
 	} else {
-		maybe_flush_windows(rs1, rs2, rd, from_kernel);
+		maybe_flush_linux(rs1, rs2, rd, from_kernel);
 		addr = (fetch_reg(rs1, regs) + fetch_reg(rs2, regs));
 	}
 
@@ -401,10 +401,10 @@ int handle_popc(u32 insn, struct pt_regs *regs)
 	                        
 	perf_sw_event(PERF_COUNT_SW_EMULATION_FAULTS, 1, regs, 0);
 	if (insn & 0x2000) {
-		maybe_flush_windows(0, 0, rd, from_kernel);
+		maybe_flush_linux(0, 0, rd, from_kernel);
 		value = sign_extend_imm13(insn);
 	} else {
-		maybe_flush_windows(0, insn & 0x1f, rd, from_kernel);
+		maybe_flush_linux(0, insn & 0x1f, rd, from_kernel);
 		value = fetch_reg(insn & 0x1f, regs);
 	}
 	ret = hweight64(value);
@@ -575,7 +575,7 @@ void handle_ld_nf(u32 insn, struct pt_regs *regs)
 	                        
 	perf_sw_event(PERF_COUNT_SW_EMULATION_FAULTS, 1, regs, 0);
 
-	maybe_flush_windows(0, 0, rd, from_kernel);
+	maybe_flush_linux(0, 0, rd, from_kernel);
 	reg = fetch_reg_addr(rd, regs);
 	if (from_kernel || rd < 16) {
 		reg[0] = 0;

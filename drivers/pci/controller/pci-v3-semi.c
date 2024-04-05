@@ -246,10 +246,10 @@ struct v3_pci {
 };
 
 /*
- * The V3 PCI interface chip in Integrator provides several windows from
+ * The V3 PCI interface chip in Integrator provides several linux from
  * local bus memory into the PCI memory areas. Unfortunately, there
- * are not really enough windows for our usage, therefore we reuse
- * one of the windows for access to PCI configuration space. On the
+ * are not really enough linux for our usage, therefore we reuse
+ * one of the linux for access to PCI configuration space. On the
  * Integrator/AP, the memory map is as follows:
  *
  * Local Bus Memory         Usage
@@ -259,7 +259,7 @@ struct v3_pci {
  * 60000000 - 60FFFFFF      PCI IO.  16M
  * 61000000 - 61FFFFFF      PCI Configuration. 16M
  *
- * There are three V3 windows, each described by a pair of V3 registers.
+ * There are three V3 linux, each described by a pair of V3 registers.
  * These are LB_BASE0/LB_MAP0, LB_BASE1/LB_MAP1 and LB_BASE2/LB_MAP2.
  * Base0 and Base1 can be used for any type of PCI memory access.   Base2
  * can be used either for PCI I/O or for I20 accesses.  By default, uHAL
@@ -285,7 +285,7 @@ struct v3_pci {
  * IO    60000000 - 60FFFFFF      LB_BASE2/LB_MAP2
  * Cfg   61000000 - 61FFFFFF      LB_BASE1/LB_MAP1
  *
- * To make this work, the code depends on overlapping windows working.
+ * To make this work, the code depends on overlapping linux working.
  * The V3 chip translates an address by checking its range within
  * each of the BASE/MAP pairs in turn (in ascending register number
  * order).  It will use the first matching pair.   So, for example,
@@ -295,7 +295,7 @@ struct v3_pci {
  *
  * To allow PCI Configuration space access, the code enlarges the
  * window mapped by LB_BASE0/LB_MAP0 from 256M to 512M.  This occludes
- * the windows currently mapped by LB_BASE1/LB_MAP1 so that it can
+ * the linux currently mapped by LB_BASE1/LB_MAP1 so that it can
  * be remapped for use by configuration cycles.
  *
  * At the end of the PCI Configuration space accesses,
@@ -778,7 +778,7 @@ static int v3_pci_probe(struct platform_device *pdev)
 	if (readw(v3->base + V3_SYSTEM) & V3_SYSTEM_M_LOCK)
 		writew(V3_SYSTEM_UNLOCK, v3->base + V3_SYSTEM);
 
-	/* Disable all slave access while we set up the windows */
+	/* Disable all slave access while we set up the linux */
 	val = readw(v3->base + V3_PCI_CMD);
 	val &= ~(PCI_COMMAND_IO | PCI_COMMAND_MEMORY | PCI_COMMAND_MASTER);
 	writew(val, v3->base + V3_PCI_CMD);
@@ -807,7 +807,7 @@ static int v3_pci_probe(struct platform_device *pdev)
 	writew(val, v3->base + V3_PCI_CMD);
 
 	/* Get the I/O and memory ranges from DT */
-	resource_list_for_each_entry(win, &host->windows) {
+	resource_list_for_each_entry(win, &host->linux) {
 		ret = v3_pci_setup_resource(v3, host, win);
 		if (ret) {
 			dev_err(dev, "error setting up resources\n");

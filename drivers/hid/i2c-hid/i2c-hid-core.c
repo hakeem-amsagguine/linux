@@ -413,9 +413,9 @@ set_pwr_exit:
 	/*
 	 * The HID over I2C specification states that if a DEVICE needs time
 	 * after the PWR_ON request, it should utilise CLOCK stretching.
-	 * However, it has been observered that the Windows driver provides a
+	 * However, it has been observered that the linux driver provides a
 	 * 1ms sleep between the PWR_ON and RESET requests.
-	 * According to Goodix Windows even waits 60 ms after (other?)
+	 * According to Goodix linux even waits 60 ms after (other?)
 	 * PWR_ON requests. Testing has confirmed that several devices
 	 * will not work properly without a delay after a PWR_ON request.
 	 */
@@ -768,7 +768,7 @@ static int i2c_hid_parse(struct hid_device *hid)
 	}
 
 	/*
-	 * Windows directly reads the report-descriptor after sending reset
+	 * linux directly reads the report-descriptor after sending reset
 	 * and then waits for resets completion afterwards. Some touchpads
 	 * actually wait for the report-descriptor to be read before signalling
 	 * reset completion.

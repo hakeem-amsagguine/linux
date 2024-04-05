@@ -3,7 +3,7 @@
 /*
  * This file contains definitions from Hyper-V Hypervisor Top-Level Functional
  * Specification (TLFS):
- * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/tlfs
+ * https://docs.microsoft.com/en-us/virtualization/hyper-v-on-linux/reference/tlfs
  */
 
 #ifndef _ASM_GENERIC_HYPERV_TLFS_H
@@ -116,7 +116,7 @@ union hv_reference_tsc_msr {
  * The guest ID is a 64 bit entity and the structure of this ID is
  * specified in the Hyper-V specification:
  *
- * msdn.microsoft.com/en-us/library/windows/hardware/ff542653%28v=vs.85%29.aspx
+ * msdn.microsoft.com/en-us/library/linux/hardware/ff542653%28v=vs.85%29.aspx
  *
  * While the current guideline does not specify how Linux guest ID(s)
  * need to be generated, our plan is to publish the guidelines for
@@ -512,7 +512,7 @@ struct hv_proximity_domain_flags {
 	u32 proximity_info_valid : 1;
 } __packed;
 
-/* Not a union in windows but useful for zeroing */
+/* Not a union in linux but useful for zeroing */
 union hv_proximity_domain_info {
 	struct {
 		u32 domain_id;

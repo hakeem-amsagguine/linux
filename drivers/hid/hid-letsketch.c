@@ -251,7 +251,7 @@ static int letsketch_probe(struct hid_device *hdev, const struct hid_device_id *
 	 * Instead of using a set-feature request, or even a custom USB ctrl
 	 * message the tablet needs this elaborate magic reading of USB
 	 * string descriptors to kick it into raw mode. This is what the
-	 * Windows drivers are seen doing in an USB trace under Windows.
+	 * linux drivers are seen doing in an USB trace under linux.
 	 */
 	for (i = LETSKETCH_INFO_STR_IDX_BEGIN; i <= LETSKETCH_INFO_STR_IDX_END; i++) {
 		ret = letsketch_get_string(udev, i, buf, sizeof(buf));

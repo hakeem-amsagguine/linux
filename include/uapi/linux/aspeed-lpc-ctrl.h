@@ -25,7 +25,7 @@
  * window_type: The BMC resource that the host will access through the
  * window. BMC flash and BMC RAM.
  *
- * window_id: For each window type there may be multiple windows,
+ * window_id: For each window type there may be multiple linux,
  * these are referenced by ID.
  *
  * flags: Reserved for future use, this field is expected to be

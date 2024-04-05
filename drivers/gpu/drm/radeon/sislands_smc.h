@@ -364,7 +364,7 @@ struct Smc_SIslands_DTE_Configuration {
     uint32_t K;
     uint32_t T0;
     uint32_t MaxT;
-    uint8_t  WindowSize;
+    uint8_t  linuxize;
     uint8_t  Tdep_count;
     uint8_t  temp_select;
     uint8_t  DTE_mode;

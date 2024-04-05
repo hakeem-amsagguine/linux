@@ -298,7 +298,7 @@ Commands
        -  | x0,y0,x1,y1,
           | `osd_raw_window_t`_ {color}
 
-       -  Open other types of OSD windows.
+       -  Open other types of OSD linux.
 
 Description
 ~~~~~~~~~~~

@@ -83,7 +83,7 @@ void qed_init_store_rt_agg(struct qed_hwfn *p_hwfn,
 	qed_init_store_rt_agg(hwfn, offset, (u32 *)&(val), sizeof(val))
 
 /**
- * qed_gtt_init(): Initialize GTT global windows and set admin window
+ * qed_gtt_init(): Initialize GTT global linux and set admin window
  *                 related params of GTT/PTT to default values.
  *
  * @p_hwfn: HW device data.

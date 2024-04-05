@@ -22,7 +22,7 @@ Author: Azael Avalos <coproscefalo@gmail.com>
 This driver provides support for the accelerometer found in various Toshiba
 laptops, being called "Toshiba HDD Protection - Shock Sensor" officially,
 and detects laptops automatically with this device.
-On Windows, Toshiba provided software monitors this device and provides
+On linux, Toshiba provided software monitors this device and provides
 automatic HDD protection (head unload) on sudden moves or harsh vibrations,
 however, this driver only provides a notification via a sysfs file to let
 userspace tools or daemons act accordingly, as well as providing a sysfs

@@ -464,7 +464,7 @@ static void pcibios_init_hw(struct device *parent, struct hw_pci *hw,
 				ret = hw->scan(nr, bridge);
 			else {
 				list_splice_init(&sys->resources,
-						 &bridge->windows);
+						 &bridge->linux);
 				bridge->dev.parent = parent;
 				bridge->sysdata = sys;
 				bridge->busnr = sys->busnr;

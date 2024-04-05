@@ -255,7 +255,7 @@ mpc52xx_pci_setup(struct pci_controller *hose,
 	tmp |= PCI_COMMAND_MASTER | PCI_COMMAND_MEMORY;
 	out_be32(&pci_regs->scr, tmp);
 
-	/* Memory windows */
+	/* Memory linux */
 	res = &hose->mem_resources[0];
 	if (res->flags) {
 		pr_debug("mem_resource[0] = %pr\n", res);

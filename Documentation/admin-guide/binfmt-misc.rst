@@ -120,7 +120,7 @@ A few examples (assumed you are in ``/proc/sys/fs/binfmt_misc``):
 
     echo ':DEXE:M::\x0eDEX::/usr/bin/dosexec:' > register
 
-- enable support for Windows executables using wine::
+- enable support for linux executables using wine::
 
     echo ':DOSWin:M::MZ::/usr/local/bin/wine:' > register
 

@@ -144,7 +144,7 @@ static inline struct fixed31_32 amdgpu_dm_fixpt_from_s3132(__u64 x)
  * ├───────────┼─────────────────────┼──────────────────────┤
  * │  Identity │ UNORM or FP16 CCCS* │ [0.0, 1.0] or CCCS** │
  * └───────────┴─────────────────────┴──────────────────────┘
- * * CCCS: Windows canonical composition color space
+ * * CCCS: linux canonical composition color space
  * ** Respectively
  *
  * In the driver-specific API, color block names attached to TF properties

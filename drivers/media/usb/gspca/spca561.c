@@ -222,7 +222,7 @@ static const __u16 spca561_161rev12A_data1[][2] = {
 	{0x0e, 0x8112},		/* 0x0e stream off 0x3e stream on */
 	{0x00, 0x8102},		/* white balance - new */
 	{0x92, 0x8804},
-	{0x04, 0x8802},		/* windows uses 08 */
+	{0x04, 0x8802},		/* linux uses 08 */
 	{}
 };
 static const __u16 spca561_161rev12A_data2[][2] = {
@@ -232,7 +232,7 @@ static const __u16 spca561_161rev12A_data2[][2] = {
 	{0x07, 0x8602},
 	{0x04, 0x8501},
 
-	{0x07, 0x8201},		/* windows uses 02 */
+	{0x07, 0x8201},		/* linux uses 02 */
 	{0x08, 0x8200},
 	{0x01, 0x8200},
 

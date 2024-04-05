@@ -1680,7 +1680,7 @@ static int msb_cache_read(struct msb_data *msb, int lba,
  * This table content isn't that importaint,
  * One could put here different values, providing that they still
  * cover whole disk.
- * 64 MB entry is what windows reports for my 64M memstick
+ * 64 MB entry is what linux reports for my 64M memstick
  */
 
 static const struct chs_entry chs_table[] = {

@@ -117,11 +117,11 @@ struct cbe_iommu {
 	unsigned long *stab;
 	unsigned long *ptab;
 	void *pad_page;
-	struct list_head windows;
+	struct list_head linux;
 };
 
 /* Static array of iommus, one per node
- *   each contains a list of windows, keyed from dma_window property
+ *   each contains a list of linux, keyed from dma_window property
  *   - on bus setup, look for a matching window, or create one
  *   - on dev setup, assign iommu_table ptr
  */
@@ -430,9 +430,9 @@ static struct iommu_window *find_window(struct cbe_iommu *iommu,
 {
 	struct iommu_window *window;
 
-	/* todo: check for overlapping (but not equal) windows) */
+	/* todo: check for overlapping (but not equal) linux) */
 
-	list_for_each_entry(window, &(iommu->windows), list) {
+	list_for_each_entry(window, &(iommu->linux), list) {
 		if (window->offset == offset && window->size == size)
 			return window;
 	}
@@ -497,7 +497,7 @@ cell_iommu_setup_window(struct cbe_iommu *iommu, struct device_node *np,
 	pr_debug("\toffset    0x%lx\n", window->table.it_offset);
 	pr_debug("\tsize      %ld\n", window->table.it_size);
 
-	list_add(&window->list, &iommu->windows);
+	list_add(&window->list, &iommu->linux);
 
 	if (offset != 0)
 		return window;
@@ -549,12 +549,12 @@ static struct iommu_table *cell_get_iommu_table(struct device *dev)
 	 * never be necessary
 	 */
 	iommu = cell_iommu_for_node(dev_to_node(dev));
-	if (iommu == NULL || list_empty(&iommu->windows)) {
+	if (iommu == NULL || list_empty(&iommu->linux)) {
 		dev_err(dev, "iommu: missing iommu for %pOF (node %d)\n",
 		       dev->of_node, dev_to_node(dev));
 		return NULL;
 	}
-	window = list_entry(iommu->windows.next, struct iommu_window, list);
+	window = list_entry(iommu->linux.next, struct iommu_window, list);
 
 	return &window->table;
 }
@@ -632,7 +632,7 @@ static struct cbe_iommu * __init cell_iommu_alloc(struct device_node *np)
 	pr_debug("iommu: setting up iommu for node %d (%pOF)\n",
 		 nid, np);
 
-	/* XXX todo: If we can have multiple windows on the same IOMMU, which
+	/* XXX todo: If we can have multiple linux on the same IOMMU, which
 	 * isn't the case today, we probably want here to check whether the
 	 * iommu for that node is already setup.
 	 * However, there might be issue with getting the size right so let's
@@ -652,7 +652,7 @@ static struct cbe_iommu * __init cell_iommu_alloc(struct device_node *np)
 	iommu->stab = NULL;
 	iommu->nid = nid;
 	snprintf(iommu->name, sizeof(iommu->name), "iommu%d", i);
-	INIT_LIST_HEAD(&iommu->windows);
+	INIT_LIST_HEAD(&iommu->linux);
 
 	return iommu;
 }

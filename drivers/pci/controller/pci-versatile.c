@@ -88,7 +88,7 @@ static int versatile_pci_probe(struct platform_device *pdev)
 	if (IS_ERR(versatile_cfg_base[1]))
 		return PTR_ERR(versatile_cfg_base[1]);
 
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		if (resource_type(entry->res) == IORESOURCE_MEM) {
 			writel(entry->res->start >> 28, PCI_IMAP(mem));
 			writel(__pa(PAGE_OFFSET) >> 28, PCI_SMAP(mem));
@@ -126,7 +126,7 @@ static int versatile_pci_probe(struct platform_device *pdev)
 	writel(val, local_pci_cfg_base + PCI_COMMAND);
 
 	/*
-	 * Configure the PCI inbound memory windows to be 1:1 mapped to SDRAM
+	 * Configure the PCI inbound memory linux to be 1:1 mapped to SDRAM
 	 */
 	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_0);
 	writel(__pa(PAGE_OFFSET), local_pci_cfg_base + PCI_BASE_ADDRESS_1);

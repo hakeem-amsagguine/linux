@@ -60,7 +60,7 @@ _start:
 	rsr	a5, windowbase
 	ssl	a5
 	sll	a4, a4
-	wsr	a4, windowstart
+	wsr	a4, linuxtart
 	rsync
 #endif
 	movi	a4, KERNEL_PS_WOE_MASK

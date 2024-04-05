@@ -1144,7 +1144,7 @@ static int anysee_get_rc_config(struct dvb_usb_device *d, struct dvb_usb_rc *rc)
 {
 	rc->allowed_protos = RC_PROTO_BIT_NEC;
 	rc->query          = anysee_rc_query;
-	rc->interval       = 250;  /* windows driver uses 500ms */
+	rc->interval       = 250;  /* linux driver uses 500ms */
 
 	return 0;
 }

@@ -346,7 +346,7 @@ static unsigned int uds_max_width(struct vsp1_entity *entity,
 	 * in the event of up-scaling, and output pixels in the event of
 	 * downscaling.
 	 *
-	 * To support overlapping partition windows we clamp at units of 256 and
+	 * To support overlapping partition linux we clamp at units of 256 and
 	 * the remaining pixels are reserved.
 	 */
 	if (hscale <= 2)

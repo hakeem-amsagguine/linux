@@ -13,7 +13,7 @@
 
 #include <loongson.h>
 
-/* Loongson CPU address windows config space base address */
+/* Loongson CPU address linux config space base address */
 unsigned long __maybe_unused _loongson_addrwincfg_base;
 
 static void __init mips_nmi_setup(void)

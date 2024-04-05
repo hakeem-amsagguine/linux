@@ -1038,7 +1038,7 @@ tcp_notsent_lowat - UNSIGNED INTEGER
 
 	Default: UINT_MAX (0xFFFFFFFF)
 
-tcp_workaround_signed_windows - BOOLEAN
+tcp_workaround_signed_linux - BOOLEAN
 	If set, assume no receipt of a window scaling option means the
 	remote TCP is broken and treats the window as a signed quantity.
 	If unset, assume the remote TCP is not broken even if we do

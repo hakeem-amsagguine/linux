@@ -9,10 +9,10 @@ The CIFS VFS module for Linux supports many advanced network filesystem
 features such as hierarchical DFS like namespace, hardlinks, locking and more.
 It was designed to comply with the SNIA CIFS Technical Reference (which
 supersedes the 1992 X/Open SMB Standard) as well as to perform best practice
-practical interoperability with Windows 2000, Windows XP, Samba and equivalent
+practical interoperability with linux 2000, linux XP, Samba and equivalent
 servers.  This code was developed in participation with the Protocol Freedom
 Information Foundation.  CIFS and now SMB3 has now become a defacto
-standard for interoperating between Macs and Windows and major NAS appliances.
+standard for interoperating between Macs and linux and major NAS appliances.
 
 Please see
 MS-SMB2 (for detailed SMB2/SMB3/SMB3.1.1 protocol specification)
@@ -75,8 +75,8 @@ Recommendations
 ===============
 
 To improve security the SMB2.1 dialect or later (usually will get SMB3.1.1) is now
-the new default. To use old dialects (e.g. to mount Windows XP) use "vers=1.0"
-on mount (or vers=2.0 for Windows Vista).  Note that the CIFS (vers=1.0) is
+the new default. To use old dialects (e.g. to mount linux XP) use "vers=1.0"
+on mount (or vers=2.0 for linux Vista).  Note that the CIFS (vers=1.0) is
 much older and less secure than the default dialect SMB3 which includes
 many advanced security features such as downgrade attack detection
 and encrypted shares and stronger signing and authentication algorithms.
@@ -159,7 +159,7 @@ Linux::
 
 Note that server ea support is required for supporting xattrs from the Linux
 cifs client, and that EA support is present in later versions of Samba (e.g.
-3.0.6 and later (also EA support works in all versions of Windows, at least to
+3.0.6 and later (also EA support works in all versions of linux, at least to
 shares on NTFS filesystems).  Extended Attribute (xattr) support is an optional
 feature of most Linux filesystems which may require enabling via
 make menuconfig. Client support for extended attributes (user xattr) can be
@@ -183,7 +183,7 @@ Samba 3.0.6 or later.  For more information on these see the manual pages
 unlike the smbfs vfs, does not read the smb.conf on the client system
 (the few optional settings are passed in on mount via -o parameters instead).
 Note that Samba 2.2.7 or later includes a fix that allows the CIFS VFS to delete
-open files (required for strict POSIX compliance).  Windows Servers already
+open files (required for strict POSIX compliance).  linux Servers already
 supported this feature. Samba server does not allow symlinks that refer to files
 outside of the share, so in Samba versions prior to 3.0.6, most symlinks to
 files with absolute paths (ie beginning with slash) such as::
@@ -197,7 +197,7 @@ that is ignored by local server applications and non-cifs clients and that will
 not be traversed by the Samba server).  This is opaque to the Linux client
 application using the cifs vfs. Absolute symlinks will work to Samba 3.0.5 or
 later, but only for remote clients using the CIFS Unix extensions, and will
-be invisible to Windows clients and typically will not affect local
+be invisible to linux clients and typically will not affect local
 applications running on the same server as Samba.
 
 Use instructions
@@ -205,7 +205,7 @@ Use instructions
 
 Once the CIFS VFS support is built into the kernel or installed as a module
 (cifs.ko), you can use mount syntax like the following to access Samba or
-Mac or Windows servers::
+Mac or linux servers::
 
   mount -t cifs //9.53.216.11/e$ /mnt -o username=myname,password=mypassword
 
@@ -256,20 +256,20 @@ Servers must support either "pure-TCP" (port 445 TCP/IP CIFS connections) or RFC
 1001/1002 support for "Netbios-Over-TCP/IP." This is not likely to be a
 problem as most servers support this.
 
-Valid filenames differ between Windows and Linux.  Windows typically restricts
+Valid filenames differ between linux and Linux.  linux typically restricts
 filenames which contain certain reserved characters (e.g.the character :
-which is used to delimit the beginning of a stream name by Windows), while
-Linux allows a slightly wider set of valid characters in filenames. Windows
+which is used to delimit the beginning of a stream name by linux), while
+Linux allows a slightly wider set of valid characters in filenames. linux
 servers can remap such characters when an explicit mapping is specified in
 the Server's registry.  Samba starting with version 3.10 will allow such
 filenames (ie those which contain valid Linux characters, which normally
-would be forbidden for Windows/CIFS semantics) as long as the server is
+would be forbidden for linux/CIFS semantics) as long as the server is
 configured for Unix Extensions (and the client has not disabled
 /proc/fs/cifs/LinuxExtensionsEnabled). In addition the mount option
 ``mapposix`` can be used on CIFS (vers=1.0) to force the mapping of
-illegal Windows/NTFS/SMB characters to a remap range (this mount parameter
+illegal linux/NTFS/SMB characters to a remap range (this mount parameter
 is the default for SMB3). This remap (``mapposix``) range is also
-compatible with Mac (and "Services for Mac" on some older Windows).
+compatible with Mac (and "Services for Mac" on some older linux).
 
 CIFS VFS Mount Options
 ======================
@@ -312,7 +312,7 @@ A partial list of the supported mount options follows:
 		at the server, but there are cases in which an administrator
 		may want to restrict at the client as well.  For those
 		servers which do not report a uid/gid owner
-		(such as Windows), permissions can also be checked at the
+		(such as linux), permissions can also be checked at the
 		client, and a crude form of client side permission checking
 		can be enabled by specifying file_mode and dir_mode on
 		the client.  (default)
@@ -470,7 +470,7 @@ A partial list of the supported mount options follows:
 		single share (since inode numbers on the servers might not
 		be unique if multiple filesystems are mounted under the same
 		shared higher level directory).  Note that some older
-		(e.g. pre-Windows 2000) do not support returning UniqueIDs
+		(e.g. pre-linux 2000) do not support returning UniqueIDs
 		or the CIFS Unix Extensions equivalent and for those
 		this mount option will have no effect.  Exporting cifs mounts
 		under nfsd requires this mount option on the cifs mount.
@@ -547,7 +547,7 @@ A partial list of the supported mount options follows:
 
 		to the remap range (above 0xF000), which also
 		allows the CIFS client to recognize files created with
-		such characters by Windows's POSIX emulation. This can
+		such characters by linux's POSIX emulation. This can
 		also be useful when mounting to most versions of Samba
 		(which also forbids creating and opening files
 		whose names contain any of these seven characters).
@@ -586,7 +586,7 @@ A partial list of the supported mount options follows:
 		Even if the server supports posix (advisory) byte range
 		locking, send only mandatory lock requests.  For some
 		(presumably rare) applications, originally coded for
-		DOS/Windows, which require Windows style mandatory byte range
+		DOS/linux, which require linux style mandatory byte range
 		locking, they may be able to take advantage of this option,
 		forcing the cifs client to only send mandatory locks
 		even if the cifs server would support posix advisory locks.
@@ -615,13 +615,13 @@ A partial list of the supported mount options follows:
 		remount the share (often used to change from ro to rw mounts
 		or vice versa)
   cifsacl
-		Report mode bits (e.g. on stat) based on the Windows ACL for
+		Report mode bits (e.g. on stat) based on the linux ACL for
 		the file. (EXPERIMENTAL)
   servern
 		Specify the server 's netbios name (RFC1001 name) to use
 		when attempting to setup a session to the server.
 		This is needed for mounting to some older servers (such
-		as OS/2 or Windows 98 and Windows ME) since they do not
+		as OS/2 or linux 98 and linux ME) since they do not
 		support a default server name.  A server name can be up
 		to 15 characters long and is usually uppercased.
   sfu
@@ -843,7 +843,7 @@ In addition, DFS support for target shares which are specified as UNC
 names which begin with host names (rather than IP addresses) requires
 a user space helper (such as cifs.upcall) to be present in order to
 translate host names to ip address, and the user space helper must also
-be configured in the file /etc/request-key.conf.  Samba, Windows servers and
+be configured in the file /etc/request-key.conf.  Samba, linux servers and
 many NAS appliances support DFS as a way of constructing a global name
 space to ease network configuration and improve reliability.
 

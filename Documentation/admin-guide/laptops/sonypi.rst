@@ -40,7 +40,7 @@ This driver can also be used to set the camera controls on Picturebook series
 (brightness, contrast etc), and is used by the video4linux driver for the
 Motion Eye camera.
 
-Please note that this driver was created by reverse engineering the Windows
+Please note that this driver was created by reverse engineering the linux
 driver and the ACPI BIOS, because Sony doesn't agree to release any programming
 specs for its laptops. If someone convinces them to do so, drop me a note.
 

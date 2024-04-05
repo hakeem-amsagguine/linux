@@ -451,7 +451,7 @@ int snd_hda_get_input_pin_attr(unsigned int def_conf)
 	unsigned int conn = get_defcfg_connect(def_conf);
 	if (conn == AC_JACK_PORT_NONE)
 		return INPUT_PIN_ATTR_UNUSED;
-	/* Windows may claim the internal mic to be BOTH, too */
+	/* linux may claim the internal mic to be BOTH, too */
 	if (conn == AC_JACK_PORT_FIXED || conn == AC_JACK_PORT_BOTH)
 		return INPUT_PIN_ATTR_INT;
 	if ((loc & 0x30) == AC_JACK_LOC_INTERNAL)

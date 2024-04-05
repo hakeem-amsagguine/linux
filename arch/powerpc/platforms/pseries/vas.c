@@ -411,25 +411,25 @@ static struct vas_window *vas_allocate_window(int vas_id, u64 flags,
 
 	/*
 	 * The migration SUSPEND thread sets migration_in_progress and
-	 * closes all open windows from the list. But the window is
+	 * closes all open linux from the list. But the window is
 	 * added to the list after open and modify HCALLs. So possible
 	 * that migration_in_progress is set before modify HCALL which
-	 * may cause some windows are still open when the hypervisor
+	 * may cause some linux are still open when the hypervisor
 	 * initiates the migration.
 	 * So checks the migration_in_progress flag again and close all
-	 * open windows.
+	 * open linux.
 	 *
 	 * Possible to lose the acquired credit with DLPAR core
 	 * removal after the window is opened. So if there are any
-	 * closed windows (means with lost credits), do not give new
-	 * window to user space. New windows will be opened only
-	 * after the existing windows are reopened when credits are
+	 * closed linux (means with lost credits), do not give new
+	 * window to user space. New linux will be opened only
+	 * after the existing linux are reopened when credits are
 	 * available.
 	 */
 	mutex_lock(&vas_pseries_mutex);
 	if (!caps->nr_close_wins && !migration_in_progress) {
 		list_add(&txwin->win_list, &caps->list);
-		caps->nr_open_windows++;
+		caps->nr_open_linux++;
 		caps->nr_open_wins_progress--;
 		mutex_unlock(&vas_pseries_mutex);
 		vas_user_win_add_mm_context(&txwin->vas_win.task_ref);
@@ -526,7 +526,7 @@ static int vas_deallocate_window(struct vas_window *vwin)
 
 	list_del(&win->win_list);
 	atomic_dec(&caps->nr_used_credits);
-	vascaps[win->win_type].nr_open_windows--;
+	vascaps[win->win_type].nr_open_linux--;
 	mutex_unlock(&vas_pseries_mutex);
 
 	mm_context_remove_vas_window(vwin->task_ref.mm);
@@ -621,14 +621,14 @@ static int __init get_vas_capabilities(u8 feat, enum vas_cop_feat_type type,
 }
 
 /*
- * VAS windows can be closed due to lost credits when the core is
+ * VAS linux can be closed due to lost credits when the core is
  * removed. So reopen them if credits are available due to DLPAR
  * core add and set the window active status. When NX sees the page
  * fault on the unmapped paste address, the kernel handles the fault
  * by setting the remapping to new paste address if the window is
  * active.
  */
-static int reconfig_open_windows(struct vas_caps *vcaps, int creds,
+static int reconfig_open_linux(struct vas_caps *vcaps, int creds,
 				 bool migrate)
 {
 	long domain[PLPAR_HCALL9_BUFSIZE] = {VAS_DEFAULT_DOMAIN_ID};
@@ -638,23 +638,23 @@ static int reconfig_open_windows(struct vas_caps *vcaps, int creds,
 	int flag;
 
 	/*
-	 * Nothing to do if there are no closed windows.
+	 * Nothing to do if there are no closed linux.
 	 */
 	if (!vcaps->nr_close_wins)
 		return 0;
 
 	/*
 	 * For the core removal, the hypervisor reduces the credits
-	 * assigned to the LPAR and the kernel closes VAS windows
+	 * assigned to the LPAR and the kernel closes VAS linux
 	 * in the hypervisor depends on reduced credits. The kernel
-	 * uses LIFO (the last windows that are opened will be closed
+	 * uses LIFO (the last linux that are opened will be closed
 	 * first) and expects to open in the same order when credits
 	 * are available.
-	 * For example, 40 windows are closed when the LPAR lost 2 cores
+	 * For example, 40 linux are closed when the LPAR lost 2 cores
 	 * (dedicated). If 1 core is added, this LPAR can have 20 more
-	 * credits. It means the kernel can reopen 20 windows. So move
-	 * 20 entries in the VAS windows lost and reopen next 20 windows.
-	 * For partition migration, reopen all windows that are closed
+	 * credits. It means the kernel can reopen 20 linux. So move
+	 * 20 entries in the VAS linux lost and reopen next 20 linux.
+	 * For partition migration, reopen all linux that are closed
 	 * during resume.
 	 */
 	if ((vcaps->nr_close_wins > creds) && !migrate)
@@ -668,7 +668,7 @@ static int reconfig_open_windows(struct vas_caps *vcaps, int creds,
 	}
 
 	/*
-	 * Open windows if they are closed only with migration or
+	 * Open linux if they are closed only with migration or
 	 * DLPAR (lost credit) before.
 	 */
 	if (migrate)
@@ -731,14 +731,14 @@ out:
 
 /*
  * The hypervisor reduces the available credits if the LPAR lost core. It
- * means the excessive windows should not be active and the user space
- * should not be using these windows to send compression requests to NX.
- * So the kernel closes the excessive windows and unmap the paste address
+ * means the excessive linux should not be active and the user space
+ * should not be using these linux to send compression requests to NX.
+ * So the kernel closes the excessive linux and unmap the paste address
  * such that the user space receives paste instruction failure. Then up to
  * the user space to fall back to SW compression and manage with the
- * existing windows.
+ * existing linux.
  */
-static int reconfig_close_windows(struct vas_caps *vcap, int excess_creds,
+static int reconfig_close_linux(struct vas_caps *vcap, int excess_creds,
 									bool migrate)
 {
 	struct pseries_vas_window *win, *tmp;
@@ -776,7 +776,7 @@ static int reconfig_close_windows(struct vas_caps *vcap, int excess_creds,
 		vma = task_ref->vma;
 		/*
 		 * Number of available credits are reduced, So select
-		 * and close windows.
+		 * and close linux.
 		 */
 		win->vas_win.status |= flag;
 
@@ -802,7 +802,7 @@ static int reconfig_close_windows(struct vas_caps *vcap, int excess_creds,
 		/*
 		 * This failure is from the hypervisor.
 		 * No way to stop migration for these failures.
-		 * So ignore error and continue closing other windows.
+		 * So ignore error and continue closing other linux.
 		 */
 		if (rc && !migrate)
 			return rc;
@@ -812,8 +812,8 @@ static int reconfig_close_windows(struct vas_caps *vcap, int excess_creds,
 		/*
 		 * For migration, do not depend on lpar_creds in case if
 		 * mismatch with the hypervisor value (should not happen).
-		 * So close all active windows in the list and will be
-		 * reopened windows based on the new lpar_creds on the
+		 * So close all active linux in the list and will be
+		 * reopened linux based on the new lpar_creds on the
 		 * destination system during resume.
 		 */
 		if (!migrate && !--excess_creds)
@@ -850,27 +850,27 @@ int vas_reconfig_capabilties(u8 type, int new_nr_creds)
 	atomic_set(&caps->nr_total_credits, new_nr_creds);
 	/*
 	 * The total number of available credits may be decreased or
-	 * increased with DLPAR operation. Means some windows have to be
+	 * increased with DLPAR operation. Means some linux have to be
 	 * closed / reopened. Hold the vas_pseries_mutex so that the
-	 * user space can not open new windows.
+	 * user space can not open new linux.
 	 */
 	if (old_nr_creds <  new_nr_creds) {
 		/*
 		 * If the existing target credits is less than the new
-		 * target, reopen windows if they are closed due to
+		 * target, reopen linux if they are closed due to
 		 * the previous DLPAR (core removal).
 		 */
-		rc = reconfig_open_windows(vcaps, new_nr_creds - old_nr_creds,
+		rc = reconfig_open_linux(vcaps, new_nr_creds - old_nr_creds,
 					   false);
 	} else {
 		/*
-		 * # active windows is more than new LPAR available
-		 * credits. So close the excessive windows.
+		 * # active linux is more than new LPAR available
+		 * credits. So close the excessive linux.
 		 * On pseries, each window will have 1 credit.
 		 */
-		nr_active_wins = vcaps->nr_open_windows - vcaps->nr_close_wins;
+		nr_active_wins = vcaps->nr_open_linux - vcaps->nr_close_wins;
 		if (nr_active_wins > new_nr_creds)
-			rc = reconfig_close_windows(vcaps,
+			rc = reconfig_close_linux(vcaps,
 					nr_active_wins - new_nr_creds,
 					false);
 	}
@@ -910,7 +910,7 @@ int pseries_vas_dlpar_cpu(void)
  * whether processors are in shared mode or dedicated mode.
  * Get the notifier when CPU configuration is changed with DLPAR
  * operation so that get the new target_credits (vas default capabilities)
- * and then update the existing windows usage if needed.
+ * and then update the existing linux usage if needed.
  */
 static int pseries_vas_notifier(struct notifier_block *nb,
 				unsigned long action, void *data)
@@ -922,7 +922,7 @@ static int pseries_vas_notifier(struct notifier_block *nb,
 
 	/*
 	 * For shared CPU partition, the hypervisor assigns total credits
-	 * based on entitled core capacity. So updating VAS windows will
+	 * based on entitled core capacity. So updating VAS linux will
 	 * be called from lparcfg_write().
 	 */
 	if (is_shared_processor())
@@ -946,9 +946,9 @@ static struct notifier_block pseries_vas_nb = {
 };
 
 /*
- * For LPM, all windows have to be closed on the source partition
+ * For LPM, all linux have to be closed on the source partition
  * before migration and reopen them on the destination partition
- * after migration. So closing windows during suspend and
+ * after migration. So closing linux during suspend and
  * reopen them during resume.
  */
 int vas_migration_handler(int action)
@@ -983,8 +983,8 @@ int vas_migration_handler(int action)
 			new_nr_creds = be16_to_cpu(hv_cop_caps.target_lpar_creds);
 			/*
 			 * Should not happen. But incase print messages, close
-			 * all windows in the list during suspend and reopen
-			 * windows based on new lpar_creds on the destination
+			 * all linux in the list during suspend and reopen
+			 * linux based on new lpar_creds on the destination
 			 * system.
 			 */
 			if (old_nr_creds != new_nr_creds) {
@@ -993,16 +993,16 @@ int vas_migration_handler(int action)
 					action, old_nr_creds, new_nr_creds);
 				pr_err("Used creds: %d, Active creds: %d\n",
 					atomic_read(&caps->nr_used_credits),
-					vcaps->nr_open_windows - vcaps->nr_close_wins);
+					vcaps->nr_open_linux - vcaps->nr_close_wins);
 			}
 		} else {
 			pr_err("state(%d): Get VAS capabilities failed with %d\n",
 				action, rc);
 			/*
 			 * We can not stop migration with the current lpm
-			 * implementation. So continue closing all windows in
+			 * implementation. So continue closing all linux in
 			 * the list (during suspend) and return without
-			 * opening windows (during resume) if VAS capabilities
+			 * opening linux (during resume) if VAS capabilities
 			 * HCALL failed.
 			 */
 			if (action == VAS_RESUME)
@@ -1012,12 +1012,12 @@ int vas_migration_handler(int action)
 		switch (action) {
 		case VAS_SUSPEND:
 			mutex_lock(&vas_pseries_mutex);
-			rc = reconfig_close_windows(vcaps, vcaps->nr_open_windows,
+			rc = reconfig_close_linux(vcaps, vcaps->nr_open_linux,
 							true);
 			/*
-			 * Windows are included in the list after successful
+			 * linux are included in the list after successful
 			 * open. So wait for closing these in-progress open
-			 * windows in vas_allocate_window() which will be
+			 * linux in vas_allocate_window() which will be
 			 * done if the migration_in_progress is set.
 			 */
 			while (vcaps->nr_open_wins_progress) {
@@ -1030,7 +1030,7 @@ int vas_migration_handler(int action)
 		case VAS_RESUME:
 			mutex_lock(&vas_pseries_mutex);
 			atomic_set(&caps->nr_total_credits, new_nr_creds);
-			rc = reconfig_open_windows(vcaps, new_nr_creds, true);
+			rc = reconfig_open_linux(vcaps, new_nr_creds, true);
 			mutex_unlock(&vas_pseries_mutex);
 			break;
 		default:

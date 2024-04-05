@@ -794,7 +794,7 @@ static int lenovo_features_set_tpkbd(struct hid_device *hdev)
 	report->field[0]->value[0] |= data_pointer->dragging          ? 0x04 : 0x08;
 	report->field[0]->value[0] |= data_pointer->release_to_select ? 0x10 : 0x20;
 	report->field[0]->value[0] |= data_pointer->select_right      ? 0x80 : 0x40;
-	report->field[1]->value[0] = 0x03; // unknown setting, imitate windows driver
+	report->field[1]->value[0] = 0x03; // unknown setting, imitate linux driver
 	report->field[2]->value[0] = data_pointer->sensitivity;
 	report->field[3]->value[0] = data_pointer->press_speed;
 
@@ -1142,7 +1142,7 @@ static int lenovo_probe_tpkbd(struct hid_device *hdev)
 		goto err;
 	}
 
-	// set same default values as windows driver
+	// set same default values as linux driver
 	data_pointer->sensitivity = 0xa0;
 	data_pointer->press_speed = 0x38;
 
@@ -1241,7 +1241,7 @@ static int lenovo_probe_tp10ubkbd(struct hid_device *hdev)
 	 * The Thinkpad 10 ultrabook USB kbd dock's Fn-lock defaults to on.
 	 * We cannot read the state, only set it, so we force it to on here
 	 * (which should be a no-op) to make sure that our state matches the
-	 * keyboard's FN-lock state. This is the same as what Windows does.
+	 * keyboard's FN-lock state. This is the same as what linux does.
 	 */
 	data->fn_lock = true;
 	lenovo_led_set_tp10ubkbd(hdev, TP10UBKBD_FN_LOCK_LED, data->fn_lock);

@@ -432,7 +432,7 @@ MODULE_DEVICE_TABLE(pci, vortex_pci_tbl);
    These are not used by other compilation units and thus are not
    exported in a ".h" file.
 
-   First the windows.  There are eight register windows, with the command
+   First the linux.  There are eight register linux, with the command
    and status registers available in each.
    */
 #define EL3_CMD 0x0e
@@ -480,7 +480,7 @@ enum Window1 {
 enum Window0 {
 	Wn0EepromCmd = 10,		/* Window 0: EEPROM command register. */
 	Wn0EepromData = 12,		/* Window 0: EEPROM results register. */
-	IntrStatus=0x0E,		/* Valid in all windows. */
+	IntrStatus=0x0E,		/* Valid in all linux. */
 };
 enum Win0_EEPROM_bits {
 	EEPROM_Read = 0x80, EEPROM_WRITE = 0x40, EEPROM_ERASE = 0xC0,

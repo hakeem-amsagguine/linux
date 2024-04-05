@@ -103,7 +103,7 @@ the source code and comments; see in particular:
 Open DENY bits ignored
 ----------------------
 
-NFS since NFSv4 supports ALLOW and DENY bits taken from Windows, which
+NFS since NFSv4 supports ALLOW and DENY bits taken from linux, which
 allow you, for example, to open a file in a mode which forbids other
 read opens or write opens. The Linux client doesn't use them, and the
 server's support has always been incomplete: they are enforced only

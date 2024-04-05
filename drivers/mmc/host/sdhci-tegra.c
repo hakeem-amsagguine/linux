@@ -871,7 +871,7 @@ static void tegra_sdhci_tap_correction(struct sdhci_host *host, u8 thd_up,
 
 	/*
 	 * Read auto-tuned results and extract good valid passing window by
-	 * filtering out un-wanted bubble/partial/merged windows.
+	 * filtering out un-wanted bubble/partial/merged linux.
 	 */
 	for (word = 0; word < total_tuning_words; word++) {
 		val = sdhci_readl(host, SDHCI_VNDR_TUN_CTRL0_0);
@@ -957,7 +957,7 @@ static void tegra_sdhci_post_tuning(struct sdhci_host *host)
 		worstcase = period_ps / max_tap_dly;
 		/*
 		 * Upper and Lower bound thresholds used to detect merged and
-		 * bubble windows
+		 * bubble linux
 		 */
 		thdupper = (2 * worstcase + bestcase) / 2;
 		thdlower = worstcase / 4;

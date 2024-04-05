@@ -150,7 +150,7 @@ static int pvr2_encoder_cmd(void *ctxt,
 	transaction, the second word is the command to execute, the
 	third byte is zero (ivtv driver suggests that this is some
 	kind of return value), and the fourth byte is a specified
-	timeout (windows driver always uses 0x00060000 except for one
+	timeout (linux driver always uses 0x00060000 except for one
 	case when it is zero).  All successive words are the argument
 	words for the command.
 
@@ -324,7 +324,7 @@ static int pvr2_encoder_prep_config(struct pvr2_hdw *hdw)
 	int encMisc3Arg = 0;
 
 #if 0
-	/* This inexplicable bit happens in the Hauppauge windows
+	/* This inexplicable bit happens in the Hauppauge linux
 	   driver (for both 24xxx and 29xxx devices).  However I
 	   currently see no difference in behavior with or without
 	   this stuff.  Leave this here as a note of its existence,
@@ -337,7 +337,7 @@ static int pvr2_encoder_prep_config(struct pvr2_hdw *hdw)
 	} while(0); LOCK_GIVE(hdw->ctl_lock);
 #endif
 
-	/* Mike Isely <isely@pobox.com> 26-Jan-2006 The windows driver
+	/* Mike Isely <isely@pobox.com> 26-Jan-2006 The linux driver
 	   sends the following list of ENC_MISC commands (for both
 	   24xxx and 29xxx devices).  Meanings are not entirely clear,
 	   however without the ENC_MISC(3,1) command then we risk
@@ -354,7 +354,7 @@ static int pvr2_encoder_prep_config(struct pvr2_hdw *hdw)
 
 	/* This ENC_MISC(3,encMisc3Arg) command is critical - without
 	   it there will eventually be video corruption.  Also, the
-	   saa7115 case is strange - the Windows driver is passing 1
+	   saa7115 case is strange - the linux driver is passing 1
 	   regardless of device type but if we have 1 for saa7115
 	   devices the video turns sluggish.  */
 	if (hdw->hdw_desc->flag_has_cx25840) {
@@ -370,7 +370,7 @@ static int pvr2_encoder_prep_config(struct pvr2_hdw *hdw)
 #if 0
 	/* This ENC_MISC(4,1) command is poisonous, so it is commented
 	   out.  But I'm leaving it here anyway to document its
-	   existence in the Windows driver.  The effect of this
+	   existence in the linux driver.  The effect of this
 	   command is that apps displaying the stream become sluggish
 	   with stuttering video. */
 	ret |= pvr2_encoder_vcmd(hdw, CX2341X_ENC_MISC,4, 4,1,0,0);

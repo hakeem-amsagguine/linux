@@ -55,7 +55,7 @@ void pcibios_resource_to_bus(struct pci_bus *bus, struct pci_bus_region *region,
 	struct resource_entry *window;
 	resource_size_t offset = 0;
 
-	resource_list_for_each_entry(window, &bridge->windows) {
+	resource_list_for_each_entry(window, &bridge->linux) {
 		if (resource_contains(window->res, res)) {
 			offset = window->offset;
 			break;
@@ -80,7 +80,7 @@ void pcibios_bus_to_resource(struct pci_bus *bus, struct resource *res,
 	struct resource_entry *window;
 	resource_size_t offset = 0;
 
-	resource_list_for_each_entry(window, &bridge->windows) {
+	resource_list_for_each_entry(window, &bridge->linux) {
 		struct pci_bus_region bus_region;
 
 		if (resource_type(res) != resource_type(window->res))

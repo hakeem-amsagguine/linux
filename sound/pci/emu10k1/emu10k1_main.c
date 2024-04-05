@@ -239,7 +239,7 @@ static int snd_emu10k1_init(struct snd_emu10k1 *emu, int enable_ir)
 		 * GPIO6: Unknown
 		 * GPIO7: Unknown
 		 */
-		outw(0x76, emu->port + A_IOCFG); /* Windows uses 0x3f76 */
+		outw(0x76, emu->port + A_IOCFG); /* linux uses 0x3f76 */
 	}
 	if (emu->card_capabilities->i2c_adc) { /* Audigy 2 ZS Notebook with ADC Wolfson WM8775 */
 		int size, n;
@@ -1219,7 +1219,7 @@ static const struct snd_emu_chip_details emu_chip_details[] = {
 	 .invert_shared_spdif = 1,	/* digital/analog switch swapped */
 	 .ac97_chip = 1} ,
 	/* 0x20051102 also has SB0350 written on it, treated as Audigy 2 ZS by
-	   Creative's Windows driver */
+	   Creative's linux driver */
 	{.vendor = 0x1102, .device = 0x0004, .subsystem = 0x20051102,
 	 .driver = "Audigy2", .name = "SB Audigy 2 ZS [SB0350a]",
 	 .id = "Audigy2",

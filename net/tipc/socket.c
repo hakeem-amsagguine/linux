@@ -1134,7 +1134,7 @@ static int tipc_send_group_bcast(struct socket *sock, struct msghdr *m,
 	if (unlikely(rc))
 		return rc;
 
-	/* Update broadcast sequence number and send windows */
+	/* Update broadcast sequence number and send linux */
 	tipc_group_update_bc_members(tsk->group, blks, ack);
 
 	/* Broadcast link is now free to choose method for next broadcast */

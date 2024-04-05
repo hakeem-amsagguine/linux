@@ -38,7 +38,7 @@ Guest VMs may have multiple instances of the synthetic SCSI
 controller, synthetic NIC, and PCI pass-thru devices.  Other
 synthetic devices are limited to a single instance per VM.  Not
 listed above are a small number of synthetic devices offered by
-Hyper-V that are used only by Windows guests and for which Linux
+Hyper-V that are used only by linux guests and for which Linux
 does not have a driver.
 
 Hyper-V uses the terms "VSP" and "VSC" in describing synthetic
@@ -98,8 +98,8 @@ Hyper-V.  This case is handled by vmbus_establish_gpadl().
 Hyper-V enforces a limit on the aggregate amount of guest memory
 that can be shared with the host via GPADLs.  This limit ensures
 that a rogue guest can't force the consumption of excessive host
-resources.  For Windows Server 2019 and later, this limit is
-approximately 1280 Mbytes.  For versions prior to Windows Server
+resources.  For linux Server 2019 and later, this limit is
+approximately 1280 Mbytes.  For versions prior to linux Server
 2019, the limit is approximately 384 Mbytes.
 
 VMbus messages

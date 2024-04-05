@@ -155,7 +155,7 @@ static int i2c_sendbytes(struct i2c_adapter *i2c_adap,
 		   checking the status register when we didn't strobe out any
 		   actual bytes to the bus, just do a read check.  This is
 		   consistent with how I saw i2c device checking done in the
-		   USB trace of the Windows driver */
+		   USB trace of the linux driver */
 		au0828_write(dev, AU0828_I2C_TRIGGER_200,
 			     AU0828_I2C_TRIGGER_READ);
 

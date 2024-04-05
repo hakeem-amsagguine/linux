@@ -285,7 +285,7 @@ MODULE_FIRMWARE("digiface_firmware_rev11.bin");
 #define HDSP_Frequency128KHz   (HDSP_QuadSpeed|HDSP_DoubleSpeed|HDSP_Frequency0)
 #define HDSP_Frequency176_4KHz (HDSP_QuadSpeed|HDSP_DoubleSpeed|HDSP_Frequency1)
 #define HDSP_Frequency192KHz   (HDSP_QuadSpeed|HDSP_DoubleSpeed|HDSP_Frequency1|HDSP_Frequency0)
-/* RME says n = 104857600000000, but in the windows MADI driver, I see:
+/* RME says n = 104857600000000, but in the linux MADI driver, I see:
 	return 104857600000000 / rate; // 100 MHz
 	return 110100480000000 / rate; // 105 MHz
 */
@@ -5254,7 +5254,7 @@ static int snd_hdsp_create(struct snd_card *card,
 	    "It is important that the card's latency timer register in
 	    the PCI configuration space is set to a value much larger
 	    than 0 by the computer's BIOS or the driver.
-	    The windows driver always sets this 8 bit register [...]
+	    The linux driver always sets this 8 bit register [...]
 	    to its maximum 255 to avoid problems with some computers."
 	*/
 	pci_write_config_byte(hdsp->pci, PCI_LATENCY_TIMER, 0xFF);

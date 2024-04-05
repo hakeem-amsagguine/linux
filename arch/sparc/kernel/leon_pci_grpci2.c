@@ -207,7 +207,7 @@ struct grpci2_priv {
 	unsigned int		virq_err;
 	unsigned int		virq_dma;
 
-	/* AHB PCI Windows */
+	/* AHB PCI linux */
 	unsigned long		pci_area;	/* MEMORY */
 	unsigned long		pci_area_end;
 	unsigned long		pci_io;		/* I/O */
@@ -756,7 +756,7 @@ static int grpci2_of_probe(struct platform_device *ofdev)
 	else
 		priv->do_reset = 0;
 
-	/* Find PCI Memory, I/O and Configuration Space Windows */
+	/* Find PCI Memory, I/O and Configuration Space linux */
 	priv->pci_area = ofdev->resource[1].start;
 	priv->pci_area_end = ofdev->resource[1].end+1;
 	priv->pci_io = ofdev->resource[2].start;

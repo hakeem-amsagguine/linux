@@ -129,7 +129,7 @@ static void __init orion_pcie_setup_wins(void __iomem *base)
 	dram = mv_mbus_dram_info();
 
 	/*
-	 * First, disable and clear BARs and windows.
+	 * First, disable and clear BARs and linux.
 	 */
 	for (i = 1; i <= 2; i++) {
 		writel(0, base + PCIE_BAR_CTRL_OFF(i));
@@ -148,7 +148,7 @@ static void __init orion_pcie_setup_wins(void __iomem *base)
 	writel(0, base + PCIE_WIN5_REMAP_OFF);
 
 	/*
-	 * Setup windows for DDR banks.  Count total DDR size on the fly.
+	 * Setup linux for DDR banks.  Count total DDR size on the fly.
 	 */
 	size = 0;
 	for (i = 0; i < dram->num_cs; i++) {
@@ -184,7 +184,7 @@ void __init orion_pcie_setup(void __iomem *base)
 	u32 mask;
 
 	/*
-	 * Point PCIe unit MBUS decode windows to DRAM space.
+	 * Point PCIe unit MBUS decode linux to DRAM space.
 	 */
 	orion_pcie_setup_wins(base);
 

@@ -453,7 +453,7 @@ static int init_freecom(struct us_data *us)
 
 	/*
 	 * Special thanks to the people at Freecom for providing me with
-	 * this "magic sequence", which they use in their Windows and MacOS
+	 * this "magic sequence", which they use in their linux and MacOS
 	 * drivers to make sure that all the attached perhiperals are
 	 * properly reset.
 	 */

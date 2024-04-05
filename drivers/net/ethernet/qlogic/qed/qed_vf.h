@@ -76,7 +76,7 @@ struct channel_list_end_tlv {
 };
 
 #define VFPF_ACQUIRE_OS_LINUX (0)
-#define VFPF_ACQUIRE_OS_WINDOWS (1)
+#define VFPF_ACQUIRE_OS_linux (1)
 #define VFPF_ACQUIRE_OS_ESX (2)
 #define VFPF_ACQUIRE_OS_SOLARIS (3)
 #define VFPF_ACQUIRE_OS_LINUX_USERSPACE (4)

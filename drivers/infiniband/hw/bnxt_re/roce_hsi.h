@@ -1466,7 +1466,7 @@ struct creq_deregister_mr_resp {
 	#define CREQ_DEREGISTER_MR_RESP_EVENT_DEREGISTER_MR 0x10UL
 	#define CREQ_DEREGISTER_MR_RESP_EVENT_LAST CREQ_DEREGISTER_MR_RESP_EVENT_DEREGISTER_MR
 	__le16	reserved16;
-	__le32	bound_windows;
+	__le32	bound_linux;
 };
 
 /* cmdq_add_gid (size:384b/48B) */

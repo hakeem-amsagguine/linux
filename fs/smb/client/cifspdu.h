@@ -2154,7 +2154,7 @@ typedef struct {
 #ifdef CONFIG_CIFS_POSIX
 /* presumably don't need the 0x20 POSIX_PATH_OPS_CAP since we never send
    LockingX instead of posix locking call on unix sess (and we do not expect
-   LockingX to use different (ie Windows) semantics than posix locking on
+   LockingX to use different (ie linux) semantics than posix locking on
    the same session (if WINE needs to do this later, we can add this cap
    back in later */
 /* #define CIFS_UNIX_CAP_MASK              0x000000fb */

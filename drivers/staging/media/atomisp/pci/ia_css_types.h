@@ -580,7 +580,7 @@ struct ia_css_isp_config {
 	struct ia_css_xnr3_config *xnr3_config; /** eXtreme Noise Reduction v3 */
 	/* comment from Lasse: Be aware how this feature will affect coordinate
 	 *  normalization in different parts of the system. (e.g. face detection,
-	 *  touch focus, 3A statistics and windows of interest, shading correction,
+	 *  touch focus, 3A statistics and linux of interest, shading correction,
 	 *  DVS, GDC) from IQ tool level and application level down-to ISP FW level.
 	 *  the risk for regression is not in the individual blocks, but how they
 	 *  integrate together. */

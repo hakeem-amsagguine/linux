@@ -145,7 +145,7 @@ acpi_status acpi_ns_initialize_devices(u32 flags)
 
 		/*
 		 * Execute the "global" _INI method that may appear at the root.
-		 * This support is provided for Windows compatibility (Vista+) and
+		 * This support is provided for linux compatibility (Vista+) and
 		 * is not part of the ACPI specification.
 		 */
 		info.evaluate_info->prefix_node = acpi_gbl_root_node;
@@ -214,8 +214,8 @@ acpi_status acpi_ns_initialize_devices(u32 flags)
 
 		/*
 		 * Any _OSI requests should be completed by now. If the BIOS has
-		 * requested any Windows OSI strings, we will always truncate
-		 * I/O addresses to 16 bits -- for Windows compatibility.
+		 * requested any linux OSI strings, we will always truncate
+		 * I/O addresses to 16 bits -- for linux compatibility.
 		 */
 		if (acpi_gbl_osi_data >= ACPI_OSI_WIN_2000) {
 			acpi_gbl_truncate_io_addresses = TRUE;

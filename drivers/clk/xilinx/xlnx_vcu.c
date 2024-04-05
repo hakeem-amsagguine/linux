@@ -83,7 +83,7 @@ static struct regmap_config vcu_settings_regmap_config = {
  * @cp: PLL charge pump control
  * @res: PLL loop filter resistor control
  * @lfhf: PLL loop filter high frequency capacitor control
- * @lock_dly: Lock circuit configuration settings for lock windowsize
+ * @lock_dly: Lock circuit configuration settings for lock linuxize
  * @lock_cnt: Lock circuit counter setting
  */
 struct xvcu_pll_cfg {

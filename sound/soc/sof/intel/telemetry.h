@@ -5,7 +5,7 @@
  *
  * Copyright(c) 2023 Intel Corporation. All rights reserved.
  *
- * telemetry data in debug windows
+ * telemetry data in debug linux
  */
 
 #ifndef _SOF_INTEL_TELEMETRY_H

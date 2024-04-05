@@ -604,7 +604,7 @@ static void sil_thaw(struct ata_port *ap)
  *	The Maxtor quirk is in the blacklist, but I'm keeping the original
  *	pessimistic fix for the following reasons...
  *	- There seems to be less info on it, only one device gleaned off the
- *	Windows	driver, maybe only one is affected.  More info would be greatly
+ *	linux	driver, maybe only one is affected.  More info would be greatly
  *	appreciated.
  *	- But then again UDMA5 is hardly anything to complain about
  */

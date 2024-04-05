@@ -2940,7 +2940,7 @@ static int patch_aztech_azf3328_specific(struct snd_ac97 *ac97)
 
 	/*
 	 * 3D register is different from AC97 standard layout
-	 * (also do some renaming, to resemble Windows driver naming)
+	 * (also do some renaming, to resemble linux driver naming)
 	 */
 	if (kctl_3d_center) {
 		kctl_3d_center->private_value =
@@ -2953,7 +2953,7 @@ static int patch_aztech_azf3328_specific(struct snd_ac97 *ac97)
 		kctl_3d_depth->private_value =
 			AC97_SINGLE_VALUE(AC97_3D_CONTROL, 8, 0x03, 0);
 
-	/* Aztech Windows driver calls the
+	/* Aztech linux driver calls the
 	   equivalent control "Modem Playback", thus rename it: */
 	snd_ac97_rename_vol_ctl(ac97,
 		"Master Mono Playback", "Modem Playback"

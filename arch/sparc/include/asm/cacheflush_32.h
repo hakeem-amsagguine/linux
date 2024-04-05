@@ -51,13 +51,13 @@ static inline void flush_dcache_page(struct page *page)
 #define flush_cache_vmap_early(start, end)	do { } while (0)
 #define flush_cache_vunmap(start, end)		flush_cache_all()
 
-/* When a context switch happens we must flush all user windows so that
- * the windows of the current process are flushed onto its stack. This
- * way the windows are all clean for the next process and the stack
+/* When a context switch happens we must flush all user linux so that
+ * the linux of the current process are flushed onto its stack. This
+ * way the linux are all clean for the next process and the stack
  * frames are up to date.
  */
-void flush_user_windows(void);
-void kill_user_windows(void);
+void flush_user_linux(void);
+void kill_user_linux(void);
 void flushw_all(void);
 
 #endif /* _SPARC_CACHEFLUSH_H */

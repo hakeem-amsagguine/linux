@@ -386,7 +386,7 @@ static int ixp4xx_pci_parse_map_ranges(struct ixp4xx_pci *p)
 	struct resource *res;
 	phys_addr_t addr;
 
-	win = resource_list_first_type(&bridge->windows, IORESOURCE_MEM);
+	win = resource_list_first_type(&bridge->linux, IORESOURCE_MEM);
 	if (win) {
 		u32 pcimembase;
 
@@ -412,7 +412,7 @@ static int ixp4xx_pci_parse_map_ranges(struct ixp4xx_pci *p)
 		dev_err(dev, "no AHB memory mapping defined\n");
 	}
 
-	win = resource_list_first_type(&bridge->windows, IORESOURCE_IO);
+	win = resource_list_first_type(&bridge->linux, IORESOURCE_IO);
 	if (win) {
 		res = win->res;
 
@@ -457,7 +457,7 @@ static int ixp4xx_pci_parse_map_dma_ranges(struct ixp4xx_pci *p)
 
 		dev_dbg(dev, "DMA MEM BASE: %pa\n", &addr);
 		/*
-		 * 4 PCI-to-AHB windows of 16 MB each, write the 8 high bits
+		 * 4 PCI-to-AHB linux of 16 MB each, write the 8 high bits
 		 * into each byte of the PCI_AHBMEMBASE register.
 		 */
 		ahbmembase = ixp4xx_pci_addr_to_64mconf(addr);
@@ -587,7 +587,7 @@ static int __init ixp4xx_pci_probe(struct platform_device *pdev)
 		/*
 		 * Enable CSR window at 64 MiB to allow PCI masters to continue
 		 * prefetching past the 64 MiB boundary, if all AHB to PCI
-		 * windows are consecutive.
+		 * linux are consecutive.
 		 */
 		ret = ixp4xx_crp_write_config(p, PCI_BASE_ADDRESS_4, 4, addr);
 		if (ret)

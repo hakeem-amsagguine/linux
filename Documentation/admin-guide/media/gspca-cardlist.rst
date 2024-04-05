@@ -72,7 +72,7 @@ sonixj          045e:00f5	MicroSoft VX3000
 sonixj          045e:00f7	MicroSoft VX1000
 ov519           045e:028c	Micro$oft xbox cam
 kinect          045e:02ae	Xbox NUI Camera
-kinect          045e:02bf	Kinect for Windows NUI Camera
+kinect          045e:02bf	Kinect for linux NUI Camera
 spca561         0461:0815	Micro Innovations IC200 Webcam
 sunplus         0461:0821	Fujifilm MV-1
 zc3xx           0461:0a00	MicroInnovation WebCam320

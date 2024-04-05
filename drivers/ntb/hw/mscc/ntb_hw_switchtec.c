@@ -26,7 +26,7 @@ MODULE_PARM_DESC(max_mw_size,
 static bool use_lut_mws;
 module_param(use_lut_mws, bool, 0644);
 MODULE_PARM_DESC(use_lut_mws,
-		 "Enable the use of the LUT based memory windows");
+		 "Enable the use of the LUT based memory linux");
 
 #define SWITCHTEC_NTB_MAGIC 0x45CC0001
 #define MAX_MWS     128
@@ -1051,7 +1051,7 @@ static int crosslink_setup_mws(struct switchtec_ntb *sndev, int ntb_lut_idx,
 		bar_error = ioread32(&ctl->bar_error);
 		lut_error = ioread32(&ctl->lut_error);
 		dev_err(&sndev->stdev->dev,
-			"Error setting up cross link windows: %08x / %08x\n",
+			"Error setting up cross link linux: %08x / %08x\n",
 			bar_error, lut_error);
 		return rc;
 	}

@@ -63,7 +63,7 @@ int amiga_partition(struct parsed_partitions *state)
 		rdb = (struct RigidDiskBlock *)data;
 		if (checksum_block((__be32 *)data, be32_to_cpu(rdb->rdb_SummedLongs) & 0x7F) == 0)
 			break;
-		/* Try again with 0xdc..0xdf zeroed, Windows might have
+		/* Try again with 0xdc..0xdf zeroed, linux might have
 		 * trashed it.
 		 */
 		*(__be32 *)(data+0xdc) = 0;

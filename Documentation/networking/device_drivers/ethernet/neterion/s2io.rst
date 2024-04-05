@@ -117,7 +117,7 @@ Default: 2
 General:
 
 a. Set MTU to maximum(9000 for switch setup, 9600 in back-to-back configuration)
-b. Set TCP windows size to optimal value.
+b. Set TCP linux size to optimal value.
 
 For instance, for MTU=1500 a value of 210K has been observed to result in
 good performance::

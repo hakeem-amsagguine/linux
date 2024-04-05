@@ -554,19 +554,19 @@ static int pci_parse_request_of_pci_ranges(struct device *dev,
 	resource_size_t iobase;
 	struct resource_entry *win, *tmp;
 
-	INIT_LIST_HEAD(&bridge->windows);
+	INIT_LIST_HEAD(&bridge->linux);
 	INIT_LIST_HEAD(&bridge->dma_ranges);
 
-	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &bridge->windows,
+	err = devm_of_pci_get_host_bridge_resources(dev, 0, 0xff, &bridge->linux,
 						    &bridge->dma_ranges, &iobase);
 	if (err)
 		return err;
 
-	err = devm_request_pci_bus_resources(dev, &bridge->windows);
+	err = devm_request_pci_bus_resources(dev, &bridge->linux);
 	if (err)
 		return err;
 
-	resource_list_for_each_entry_safe(win, tmp, &bridge->windows) {
+	resource_list_for_each_entry_safe(win, tmp, &bridge->linux) {
 		struct resource *res = win->res;
 
 		switch (resource_type(res)) {

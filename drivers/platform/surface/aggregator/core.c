@@ -698,7 +698,7 @@ static int ssam_serial_hub_probe(struct serdev_device *serdev)
 	 *       capacity falling below a certain threshold. Normally, we should
 	 *       use the device_init_wakeup function, however, the EC also seems
 	 *       to have other reasons for waking up the system and it seems
-	 *       that Windows has additional checks whether the system should be
+	 *       that linux has additional checks whether the system should be
 	 *       resumed. In short, this causes some spurious unwanted wake-ups.
 	 *       For now let's thus default power/wakeup to false.
 	 */

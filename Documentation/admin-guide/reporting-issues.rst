@@ -833,7 +833,7 @@ case mainline for some reason does currently not work for you. An in general:
 using it for reproducing the issue is also better than not reporting it issue
 at all.
 
-Better avoid using the latest stable kernel outside merge windows, as all fixes
+Better avoid using the latest stable kernel outside merge linux, as all fixes
 must be applied to mainline first. That's why checking the latest mainline
 kernel is so important: any issue you want to see fixed in older version lines
 needs to be fixed in mainline first before it can get backported, which can
@@ -1336,7 +1336,7 @@ where they already enjoy their night away from keyboard.
 
 In general, kernel developers will take one to five business days to respond to
 reports. Sometimes it will take longer, as they might be busy with the merge
-windows, other work, visiting developer conferences, or simply enjoying a long
+linux, other work, visiting developer conferences, or simply enjoying a long
 summer holiday.
 
 The 'issues of high priority' (see above for an explanation) are an exception

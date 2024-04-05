@@ -34,12 +34,12 @@
 #define ACPI_SIG_TPM2           "TPM2"	/* Trusted Platform Module 2.0 H/W interface table */
 #define ACPI_SIG_UEFI           "UEFI"	/* Uefi Boot Optimization Table */
 #define ACPI_SIG_VIOT           "VIOT"	/* Virtual I/O Translation Table */
-#define ACPI_SIG_WAET           "WAET"	/* Windows ACPI Emulated devices Table */
+#define ACPI_SIG_WAET           "WAET"	/* linux ACPI Emulated devices Table */
 #define ACPI_SIG_WDAT           "WDAT"	/* Watchdog Action Table */
 #define ACPI_SIG_WDDT           "WDDT"	/* Watchdog Timer Description Table */
 #define ACPI_SIG_WDRT           "WDRT"	/* Watchdog Resource Table */
-#define ACPI_SIG_WPBT           "WPBT"	/* Windows Platform Binary Table */
-#define ACPI_SIG_WSMT           "WSMT"	/* Windows SMM Security Mitigations Table */
+#define ACPI_SIG_WPBT           "WPBT"	/* linux Platform Binary Table */
+#define ACPI_SIG_WSMT           "WSMT"	/* linux SMM Security Mitigations Table */
 #define ACPI_SIG_XENV           "XENV"	/* Xen Environment table */
 #define ACPI_SIG_XXXX           "XXXX"	/* Intermediate AML header for ASL/ASL+ converter */
 
@@ -561,10 +561,10 @@ struct acpi_viot_virtio_iommu_mmio {
 
 /*******************************************************************************
  *
- * WAET - Windows ACPI Emulated devices Table
+ * WAET - linux ACPI Emulated devices Table
  *        Version 1
  *
- * Conforms to "Windows ACPI Emulated Devices Table", version 1.0, April 6, 2009
+ * Conforms to "linux ACPI Emulated Devices Table", version 1.0, April 6, 2009
  *
  ******************************************************************************/
 
@@ -694,7 +694,7 @@ struct acpi_table_wddt {
  * WDRT - Watchdog Resource Table
  *        Version 1
  *
- * Conforms to "Watchdog Timer Hardware Requirements for Windows Server 2003",
+ * Conforms to "Watchdog Timer Hardware Requirements for linux Server 2003",
  * Version 1.01, August 28, 2006
  *
  ******************************************************************************/
@@ -715,10 +715,10 @@ struct acpi_table_wdrt {
 
 /*******************************************************************************
  *
- * WPBT - Windows Platform Environment Table (ACPI 6.0)
+ * WPBT - linux Platform Environment Table (ACPI 6.0)
  *        Version 1
  *
- * Conforms to "Windows Platform Binary Table (WPBT)" 29 November 2011
+ * Conforms to "linux Platform Binary Table (WPBT)" 29 November 2011
  *
  ******************************************************************************/
 
@@ -737,10 +737,10 @@ struct acpi_wpbt_unicode {
 
 /*******************************************************************************
  *
- * WSMT - Windows SMM Security Mitigations Table
+ * WSMT - linux SMM Security Mitigations Table
  *        Version 1
  *
- * Conforms to "Windows SMM Security Mitigations Table",
+ * Conforms to "linux SMM Security Mitigations Table",
  * Version 1.0, April 18, 2016
  *
  ******************************************************************************/

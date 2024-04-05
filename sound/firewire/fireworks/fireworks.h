@@ -186,7 +186,7 @@ enum snd_efw_clock_source {
 	SND_EFW_CLOCK_SOURCE_CONTINUOUS	= 6	/* internal variable clock */
 };
 enum snd_efw_transport_mode {
-	SND_EFW_TRANSPORT_MODE_WINDOWS	= 0,
+	SND_EFW_TRANSPORT_MODE_linux	= 0,
 	SND_EFW_TRANSPORT_MODE_IEC61883	= 1,
 };
 int snd_efw_command_set_resp_addr(struct snd_efw *efw,

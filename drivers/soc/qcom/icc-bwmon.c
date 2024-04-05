@@ -20,7 +20,7 @@
 
 /*
  * The BWMON samples data throughput within 'sample_ms' time. With three
- * configurable thresholds (Low, Medium and High) gives four windows (called
+ * configurable thresholds (Low, Medium and High) gives four linux (called
  * zones) of current bandwidth:
  *
  * Zone 0: byte count < THRES_LO

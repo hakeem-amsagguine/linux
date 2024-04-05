@@ -271,7 +271,7 @@ io7_init_hose(struct io7 *io7, int port)
 	}
 
 	/*
-	 * Set up the PCI to main memory translation windows.
+	 * Set up the PCI to main memory translation linux.
 	 *
 	 * Window 0 is scatter-gather 8MB at 8MB
 	 * Window 1 is direct access 1GB at 2GB
@@ -280,7 +280,7 @@ io7_init_hose(struct io7 *io7, int port)
 	 */
 
 	/*
-	 * TBIA before modifying windows.
+	 * TBIA before modifying linux.
 	 */
 	marvel_pci_tbi(hose, 0, -1);
 
@@ -326,7 +326,7 @@ io7_init_hose(struct io7 *io7, int port)
 	csrs->POx_MSK_HEI.csr &= ~(3UL << 14);
 #endif
 	/*
-	 * TBIA after modifying windows.
+	 * TBIA after modifying linux.
 	 */
 	marvel_pci_tbi(hose, 0, -1);
 }

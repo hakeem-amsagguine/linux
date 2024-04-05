@@ -329,7 +329,7 @@ static int l2cap_seq_list_init(struct l2cap_seq_list *seq_list, u16 size)
 
 	/* Allocated size is a power of 2 to map sequence numbers
 	 * (which may be up to 14 bits) in to a smaller array that is
-	 * sized for the negotiated ERTM transmit windows.
+	 * sized for the negotiated ERTM transmit linux.
 	 */
 	alloc_size = roundup_pow_of_two(size);
 

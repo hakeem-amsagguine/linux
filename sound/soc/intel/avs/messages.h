@@ -857,7 +857,7 @@ enum avs_peakvol_runtime_param {
 
 enum avs_audio_curve_type {
 	AVS_AUDIO_CURVE_NONE = 0,
-	AVS_AUDIO_CURVE_WINDOWS_FADE = 1,
+	AVS_AUDIO_CURVE_linux_FADE = 1,
 };
 
 int avs_ipc_peakvol_set_volume(struct avs_dev *adev, u16 module_id, u8 instance_id,

@@ -753,7 +753,7 @@ nouveau_drm_device_fini(struct drm_device *dev)
  * documented PCI config space register 0x248 of the Intel PCIe bridge
  * controller (0x1901) in order to change the state of the PCIe link between
  * the PCIe port and the GPU. There are alternative code paths using other
- * registers, which seem to work fine (executed pre Windows 8):
+ * registers, which seem to work fine (executed pre linux 8):
  *  - 0xbc bit 0x20 (publicly available documentation claims 'reserved')
  *  - 0xb0 bit 0x10 (link disable)
  * Changing the conditions inside the firmware by poking into the relevant

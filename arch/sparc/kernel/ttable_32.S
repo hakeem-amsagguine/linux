@@ -79,8 +79,8 @@ t_bad7e:BAD_TRAP(0x7e) BAD_TRAP(0x7f)
 t_bad80:BAD_TRAP(0x80)                      /* SunOS System Call             */
 t_sbkpt:BREAKPOINT_TRAP                     /* Software Breakpoint/KGDB      */
 t_divz:	TRAP_ENTRY(0x82, do_hw_divzero)     /* Divide by zero trap           */
-t_flwin:TRAP_ENTRY(0x83, do_flush_windows)  /* Flush Windows Trap            */
-t_clwin:BAD_TRAP(0x84)                      /* Clean Windows Trap            */
+t_flwin:TRAP_ENTRY(0x83, do_flush_linux)  /* Flush linux Trap            */
+t_clwin:BAD_TRAP(0x84)                      /* Clean linux Trap            */
 t_rchk:	BAD_TRAP(0x85)                      /* Range Check                   */
 t_funal:BAD_TRAP(0x86)                      /* Fix Unaligned Access Trap     */
 t_iovf:	BAD_TRAP(0x87)                      /* Integer Overflow Trap         */
@@ -181,7 +181,7 @@ trapbase_cpu1:
 	BAD_TRAP(0x80)
 	BREAKPOINT_TRAP
 	TRAP_ENTRY(0x82, do_hw_divzero)
-	TRAP_ENTRY(0x83, do_flush_windows)
+	TRAP_ENTRY(0x83, do_flush_linux)
 	BAD_TRAP(0x84) BAD_TRAP(0x85) BAD_TRAP(0x86)
 	BAD_TRAP(0x87) BAD_TRAP(0x88) BAD_TRAP(0x89)
 	BAD_TRAP(0x8a) BAD_TRAP(0x8b) BAD_TRAP(0x8c)
@@ -280,7 +280,7 @@ trapbase_cpu2:
 	BAD_TRAP(0x80)
 	BREAKPOINT_TRAP
 	TRAP_ENTRY(0x82, do_hw_divzero)
-	TRAP_ENTRY(0x83, do_flush_windows)
+	TRAP_ENTRY(0x83, do_flush_linux)
 	BAD_TRAP(0x84)
 	BAD_TRAP(0x85)
 	BAD_TRAP(0x86) BAD_TRAP(0x87) BAD_TRAP(0x88)
@@ -379,7 +379,7 @@ trapbase_cpu3:
 	BAD_TRAP(0x80)
 	BREAKPOINT_TRAP
 	TRAP_ENTRY(0x82, do_hw_divzero)
-	TRAP_ENTRY(0x83, do_flush_windows)
+	TRAP_ENTRY(0x83, do_flush_linux)
 	BAD_TRAP(0x84) BAD_TRAP(0x85)
 	BAD_TRAP(0x86) BAD_TRAP(0x87) BAD_TRAP(0x88)
 	BAD_TRAP(0x89) BAD_TRAP(0x8a) BAD_TRAP(0x8b) BAD_TRAP(0x8c)

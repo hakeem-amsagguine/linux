@@ -2437,7 +2437,7 @@ static int si_initialize_smc_dte_tables(struct radeon_device *rdev)
 	dte_tables->K = cpu_to_be32(table_size);
 	dte_tables->T0 = cpu_to_be32(dte_data->t0);
 	dte_tables->MaxT = cpu_to_be32(dte_data->max_t);
-	dte_tables->WindowSize = dte_data->window_size;
+	dte_tables->linuxize = dte_data->window_size;
 	dte_tables->temp_select = dte_data->temp_select;
 	dte_tables->DTE_mode = dte_data->dte_mode;
 	dte_tables->Tthreshold = cpu_to_be32(dte_data->t_threshold);

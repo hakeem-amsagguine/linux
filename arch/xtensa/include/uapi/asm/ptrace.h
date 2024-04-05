@@ -51,7 +51,7 @@ struct user_pt_regs {
 	__u32 lend;
 	__u32 lcount;
 	__u32 sar;
-	__u32 windowstart;
+	__u32 linuxtart;
 	__u32 windowbase;
 	__u32 threadptr;
 	__u32 syscall;

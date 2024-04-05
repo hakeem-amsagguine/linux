@@ -21,7 +21,7 @@ static struct rc_map_table total_media_in_hand[] = {
 	{ 0x02bd08, KEY_NUMERIC_9 },
 	{ 0x02bd09, KEY_NUMERIC_0 },
 	{ 0x02bd0a, KEY_MUTE },
-	{ 0x02bd0b, KEY_CYCLEWINDOWS },    /* yellow, [min / max] */
+	{ 0x02bd0b, KEY_CYCLElinux },    /* yellow, [min / max] */
 	{ 0x02bd0c, KEY_VIDEO },           /* TV / AV */
 	{ 0x02bd0e, KEY_VOLUMEDOWN },
 	{ 0x02bd0f, KEY_TIME },            /* TimeShift */

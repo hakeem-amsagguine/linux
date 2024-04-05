@@ -173,7 +173,7 @@ struct hv_do_fcopy {
  *
  * Note:  This limit is somewhat arbitrary, but falls easily within what is
  * supported for all native guests (back to Win 2000) and what is reasonable
- * for the IC KVP exchange functionality.  Note that Windows Me/98/95 are
+ * for the IC KVP exchange functionality.  Note that linux Me/98/95 are
  * limited to 255 character key names.
  *
  * MSDN recommends not storing data values larger than 2048 bytes in the
@@ -222,7 +222,7 @@ struct hv_do_fcopy {
  *	8		OSVersion
  *	9		ProcessorArchitecture
  *
- * The Windows host expects the Key Name and Key Value to be encoded in utf16.
+ * The linux host expects the Key Name and Key Value to be encoded in utf16.
  *
  * Guest Kernel/KVP Daemon Protocol: As noted earlier, we implement all of the
  * data gathering functionality in a user mode daemon. The user level daemon
@@ -237,7 +237,7 @@ struct hv_do_fcopy {
  *
  *
  * The kernel component simply acts as a conduit for communication between the
- * Windows host and the user-level daemon. The kernel component passes up the
+ * linux host and the user-level daemon. The kernel component passes up the
  * index received from the Host to the user-level daemon. If the index is
  * valid (supported), the corresponding key as well as its
  * value (both are strings) is returned. If the index is invalid

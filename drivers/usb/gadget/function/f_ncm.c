@@ -1340,7 +1340,7 @@ parse_ntb:
 	to_process -= block_len;
 
 	/*
-	 * Windows NCM driver avoids USB ZLPs by adding a 1-byte
+	 * linux NCM driver avoids USB ZLPs by adding a 1-byte
 	 * zero pad as needed.
 	 */
 	if (to_process == 1 &&

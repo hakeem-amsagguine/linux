@@ -995,7 +995,7 @@ static int brcm_pcie_setup(struct brcm_pcie *pcie)
 	writel(tmp, base + PCIE_RC_CFG_PRIV1_ID_VAL3);
 
 	bridge = pci_host_bridge_from_priv(pcie);
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		struct resource *res = entry->res;
 
 		if (resource_type(res) != IORESOURCE_MEM)
@@ -1010,7 +1010,7 @@ static int brcm_pcie_setup(struct brcm_pcie *pcie)
 			u64 start = res->start;
 			unsigned int j, nwins = resource_size(res) / SZ_128M;
 
-			/* bmips PCIe outbound windows have a 128MB max size */
+			/* bmips PCIe outbound linux have a 128MB max size */
 			if (nwins > BRCM_NUM_PCIE_OUT_WINS)
 				nwins = BRCM_NUM_PCIE_OUT_WINS;
 			for (j = 0; j < nwins; j++, start += SZ_128M)

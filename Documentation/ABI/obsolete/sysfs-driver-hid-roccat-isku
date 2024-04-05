@@ -21,7 +21,7 @@ What:		/sys/bus/usb/devices/<busnum>-<devnum>:<config num>.<interface num>/<hid-
 Date:		June 2011
 Contact:	Stefan Achatz <erazor_de@users.sourceforge.net>
 Description:	When written, this file lets one deactivate certain keys like
-		windows and application keys, to prevent accidental presses.
+		linux and application keys, to prevent accidental presses.
 		Profile number for which this settings occur is included in
 		written data. The data has to be 6 bytes long.
 		Before reading this file, control has to be written to select

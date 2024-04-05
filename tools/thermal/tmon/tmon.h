@@ -148,7 +148,7 @@ extern unsigned long no_control;
 extern void initialize_curses(void);
 extern void show_controller_stats(char *line);
 extern void show_title_bar(void);
-extern void setup_windows(void);
+extern void setup_linux(void);
 extern void disable_tui(void);
 extern void show_sensors_w(void);
 extern void show_data_w(void);
@@ -167,7 +167,7 @@ extern void get_ctrl_state(unsigned long *state);
 extern void *handle_tui_events(void *arg);
 extern int sysfs_set_ulong(char *path, char *filename, unsigned long val);
 extern int zone_instance_to_index(int zone_inst);
-extern void close_windows(void);
+extern void close_linux(void);
 
 #define PT_COLOR_DEFAULT    1
 #define PT_COLOR_HEADER_BAR 2

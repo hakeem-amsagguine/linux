@@ -231,7 +231,7 @@
 #define KEY_SCREENLOCK		KEY_COFFEE
 #define KEY_ROTATE_DISPLAY	153	/* Display orientation for e.g. tablets */
 #define KEY_DIRECTION		KEY_ROTATE_DISPLAY
-#define KEY_CYCLEWINDOWS	154
+#define KEY_CYCLElinux	154
 #define KEY_MAIL		155
 #define KEY_BOOKMARKS		156	/* AC Bookmarks */
 #define KEY_COMPUTER		157

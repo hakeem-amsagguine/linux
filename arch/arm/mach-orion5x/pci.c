@@ -26,7 +26,7 @@
  * follows the scanned PCIe bridged busses, if any.
  *
  * Note2: It is possible for PCI/PCIe agents to access many subsystem's
- * space, by configuring BARs and Address Decode Windows, e.g. flashes on
+ * space, by configuring BARs and Address Decode linux, e.g. flashes on
  * device bus, Orion registers, etc. However this code only enable the
  * access to DDR banks.
  ****************************************************************************/
@@ -235,7 +235,7 @@ static int __init pcie_setup(struct pci_sys_data *sys)
 #define PCIX_STAT_BUS_MASK		(0xff << PCIX_STAT_BUS_OFFS)
 
 /*
- * PCI Address Decode Windows registers
+ * PCI Address Decode linux registers
  */
 #define PCI_BAR_SIZE_DDR_CS(n)	(((n) == 0) ? ORION5X_PCI_REG(0xc08) : \
 				 ((n) == 1) ? ORION5X_PCI_REG(0xd08) : \
@@ -412,13 +412,13 @@ static void __init orion5x_setup_pci_wins(void)
 	int i;
 
 	/*
-	 * First, disable windows.
+	 * First, disable linux.
 	 */
 	win_enable = 0xffffffff;
 	writel(win_enable, PCI_BAR_ENABLE);
 
 	/*
-	 * Setup windows for DDR banks.
+	 * Setup linux for DDR banks.
 	 */
 	bus = orion5x_pci_local_bus_nr();
 
@@ -453,7 +453,7 @@ static void __init orion5x_setup_pci_wins(void)
 	}
 
 	/*
-	 * Re-enable decode windows.
+	 * Re-enable decode linux.
 	 */
 	writel(win_enable, PCI_BAR_ENABLE);
 
@@ -469,7 +469,7 @@ static int __init pci_setup(struct pci_sys_data *sys)
 	struct resource realio;
 
 	/*
-	 * Point PCI unit MBUS decode windows to DRAM space.
+	 * Point PCI unit MBUS decode linux to DRAM space.
 	 */
 	orion5x_setup_pci_wins();
 
@@ -568,7 +568,7 @@ int __init orion5x_pci_sys_scan_bus(int nr, struct pci_host_bridge *bridge)
 {
 	struct pci_sys_data *sys = pci_host_bridge_priv(bridge);
 
-	list_splice_init(&sys->resources, &bridge->windows);
+	list_splice_init(&sys->resources, &bridge->linux);
 	bridge->dev.parent = NULL;
 	bridge->sysdata = sys;
 	bridge->busnr = sys->busnr;

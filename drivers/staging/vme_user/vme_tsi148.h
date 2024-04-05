@@ -23,8 +23,8 @@
 /*
  *  Define the number of each that the Tsi148 supports.
  */
-#define TSI148_MAX_MASTER		8	/* Max Master Windows */
-#define TSI148_MAX_SLAVE		8	/* Max Slave Windows */
+#define TSI148_MAX_MASTER		8	/* Max Master linux */
+#define TSI148_MAX_SLAVE		8	/* Max Slave linux */
 #define TSI148_MAX_DMA			2	/* Max DMA Controllers */
 #define TSI148_MAX_MAILBOX		4	/* Max Mail Box registers */
 #define TSI148_MAX_SEMAPHORE		8	/* Max Semaphores */

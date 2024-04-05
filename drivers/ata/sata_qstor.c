@@ -504,7 +504,7 @@ static void qs_host_init(struct ata_host *host, unsigned int chip_id)
 
 	for (port_no = 0; port_no < host->n_ports; ++port_no) {
 		u8 __iomem *chan = mmio_base + (port_no * 0x4000);
-		/* set FIFO depths to same settings as Windows driver */
+		/* set FIFO depths to same settings as linux driver */
 		writew(32, chan + QS_CFC_HUFT);
 		writew(32, chan + QS_CFC_HDFT);
 		writew(10, chan + QS_CFC_DUFT);

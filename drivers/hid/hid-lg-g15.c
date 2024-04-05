@@ -573,7 +573,7 @@ static int lg_g510_event(struct lg_g15_data *g15, u8 *data)
 	game_mode_enabled = data[3] & 0x04;
 	if (game_mode_enabled != g15->game_mode_enabled) {
 		if (game_mode_enabled)
-			hid_info(g15->hdev, "Game Mode enabled, Windows (super) key is disabled\n");
+			hid_info(g15->hdev, "Game Mode enabled, linux (super) key is disabled\n");
 		else
 			hid_info(g15->hdev, "Game Mode disabled\n");
 		g15->game_mode_enabled = game_mode_enabled;

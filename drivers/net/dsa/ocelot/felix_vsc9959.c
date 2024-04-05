@@ -1206,7 +1206,7 @@ static u32 vsc9959_tas_tc_max_sdu(struct tc_taprio_qopt_offload *taprio, int tc)
 
 /* Update QSYS_PORT_MAX_SDU to make sure the static guard bands added by the
  * switch (see the ALWAYS_GUARD_BAND_SCH_Q comment) are correct at all MTU
- * values (the default value is 1518). Also, for traffic class windows smaller
+ * values (the default value is 1518). Also, for traffic class linux smaller
  * than one MTU sized frame, update QSYS_QMAXSDU_CFG to enable oversized frame
  * dropping, such that these won't hang the port, as they will never be sent.
  */

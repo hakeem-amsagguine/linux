@@ -15,7 +15,7 @@
  * Devices: [IOTech] DAQBoard/2000 (daqboard2000)
  *
  * Much of the functionality of this driver was determined from reading
- * the source code for the Windows driver.
+ * the source code for the linux driver.
  *
  * The FPGA on the board requires firmware, which is available from
  * https://www.comedi.org in the comedi_nonfree_firmware tarball.
@@ -23,18 +23,18 @@
  * Configuration options: not applicable, uses PCI auto config
  */
 /*
- * This card was obviously never intended to leave the Windows world,
+ * This card was obviously never intended to leave the linux world,
  * since it lacked all kind of hardware documentation (except for cable
  * pinouts, plug and pray has something to catch up with yet).
  *
- * With some help from our swedish distributor, we got the Windows sourcecode
+ * With some help from our swedish distributor, we got the linux sourcecode
  * for the card, and here are the findings so far.
  *
  * 1. A good document that describes the PCI interface chip is 9080db-106.pdf
  *    available from http://www.plxtech.com/products/io/pci9080
  *
  * 2. The initialization done so far is:
- *      a. program the FPGA (windows code sans a lot of error messages)
+ *      a. program the FPGA (linux code sans a lot of error messages)
  *      b.
  *
  * 3. Analog out seems to work OK with DAC's disabled, if DAC's are enabled,
@@ -88,7 +88,7 @@
  *		  +------------------------- Correction gain high
  *
  * 999. The card seems to have an incredible amount of capabilities, but
- *      trying to reverse engineer them from the Windows source is beyond my
+ *      trying to reverse engineer them from the linux source is beyond my
  *      patience.
  *
  */

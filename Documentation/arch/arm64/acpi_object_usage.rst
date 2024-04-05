@@ -465,7 +465,7 @@ UEFI   Signature Reserved (signature == "UEFI")
 
 WAET   Signature Reserved (signature == "WAET")
 
-       **Windows ACPI Emulated devices Table**
+       **linux ACPI Emulated devices Table**
 
        Microsoft only table, will not be supported.
 
@@ -483,7 +483,7 @@ WDRT   Signature Reserved (signature == "WDRT")
 
 WPBT   Signature Reserved (signature == "WPBT")
 
-       **Windows Platform Binary Table**
+       **linux Platform Binary Table**
 
        Microsoft only table, will not be supported.
 

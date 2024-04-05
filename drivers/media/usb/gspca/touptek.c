@@ -524,7 +524,7 @@ static int sd_config(struct gspca_dev *gspca_dev,
 	/* Yes we want URBs and we want them now! */
 	gspca_dev->cam.no_urb_create = 0;
 	gspca_dev->cam.bulk_nurbs = 4;
-	/* Largest size the windows driver uses */
+	/* Largest size the linux driver uses */
 	gspca_dev->cam.bulk_size = BULK_SIZE;
 	/* Def need to use bulk transfers */
 	gspca_dev->cam.bulk = 1;

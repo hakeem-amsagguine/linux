@@ -133,7 +133,7 @@ static const struct key_entry dell_wmi_keymap_type_0000[] = {
 	/* Dell Instant Launch key */
 	{ KE_KEY,    0xe029, { KEY_PROG4 } },
 
-	/* Untested, Windows Mobility Center button on Inspiron 7520 */
+	/* Untested, linux Mobility Center button on Inspiron 7520 */
 	/* { KE_IGNORE, 0xe02a, { KEY_RESERVED } }, */
 
 	/* Unknown, defined in ACPI DSDT */

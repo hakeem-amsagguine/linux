@@ -438,7 +438,7 @@ static int cdns_pcie_host_init_address_translation(struct cdns_pcie_rc *rc)
 	u32 addr0, addr1, desc1;
 	int r, busnr = 0;
 
-	entry = resource_list_first_type(&bridge->windows, IORESOURCE_BUS);
+	entry = resource_list_first_type(&bridge->linux, IORESOURCE_BUS);
 	if (entry)
 		busnr = entry->res->start;
 
@@ -462,7 +462,7 @@ static int cdns_pcie_host_init_address_translation(struct cdns_pcie_rc *rc)
 	cdns_pcie_writel(pcie, CDNS_PCIE_AT_OB_REGION_CPU_ADDR1(0), addr1);
 
 	r = 1;
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		struct resource *res = entry->res;
 		u64 pci_addr = res->start - entry->offset;
 

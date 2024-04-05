@@ -197,7 +197,7 @@ MODULE_LICENSE("GPL");
    These are defined as byte-offsets from the iobase value */
 #define HDSPM_statusRegister    0
 /*#define HDSPM_statusRegister2  96 */
-/* after RME Windows driver sources, status2 is 4-byte word # 48 = word at
+/* after RME linux driver sources, status2 is 4-byte word # 48 = word at
  * offset 192, for AES32 *and* MADI
  * => need to check that offset 192 is working on MADI */
 #define HDSPM_statusRegister2  192
@@ -577,7 +577,7 @@ MODULE_LICENSE("GPL");
 #define HDSPM_LockAES8  0x1
 /*
    Timecode
-   After windows driver sources, bits 4*i to 4*i+3 give the input frequency on
+   After linux driver sources, bits 4*i to 4*i+3 give the input frequency on
    AES i+1
  bits 3210
       0001  32kHz

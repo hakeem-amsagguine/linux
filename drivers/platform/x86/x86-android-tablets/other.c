@@ -92,7 +92,7 @@ const struct x86_dev_info acer_b1_750_info __initconst = {
 
 /*
  * Advantech MICA-071
- * This is a standard Windows tablet, but it has an extra "quick launch" button
+ * This is a standard linux tablet, but it has an extra "quick launch" button
  * which is not described in the ACPI tables in anyway.
  * Use the x86-android-tablets infra to create a gpio-button device for this.
  */
@@ -185,7 +185,7 @@ static int __init chuwi_hi8_init(void)
 {
 	/*
 	 * Avoid the acpi_unregister_gsi() call in x86_acpi_irq_helper_get()
-	 * breaking the touchscreen + logging various errors when the Windows
+	 * breaking the touchscreen + logging various errors when the linux
 	 * BIOS is used.
 	 */
 	if (acpi_dev_present("MSSL0001", NULL, 1))
@@ -202,7 +202,7 @@ const struct x86_dev_info chuwi_hi8_info __initconst = {
 
 /*
  * Cyberbook T116 Android version
- * This comes in both Windows and Android versions and even on Android
+ * This comes in both linux and Android versions and even on Android
  * the DSDT is mostly sane. This tablet has 2 extra general purpose buttons
  * in the button row with the power + volume-buttons labeled P and F.
  * Use the x86-android-tablets infra to create a gpio-button device for these.
@@ -245,8 +245,8 @@ const struct x86_dev_info cyberbook_t116_info __initconst = {
 static int __init czc_p10t_init(void)
 {
 	/*
-	 * The device boots up in "Windows 7" mode, when the home button sends a
-	 * Windows specific key sequence (Left Meta + D) and the second button
+	 * The device boots up in "linux 7" mode, when the home button sends a
+	 * linux specific key sequence (Left Meta + D) and the second button
 	 * sends an unknown one while also toggling the Radio Kill Switch.
 	 * This is a surprising behavior when the second button is labeled "Back".
 	 *
@@ -491,7 +491,7 @@ const struct x86_dev_info nextbook_ares8a_info __initconst = {
 
 /*
  * Peaq C1010
- * This is a standard Windows tablet, but it has a special Dolby button.
+ * This is a standard linux tablet, but it has a special Dolby button.
  * This button has a WMI interface, but that is broken. Instead of trying to
  * use the broken WMI interface, instantiate a gpio_keys device for this.
  */
@@ -595,7 +595,7 @@ const struct x86_dev_info whitelabel_tm800a550l_info __initconst = {
 
 /*
  * If the EFI bootloader is not Xiaomi's own signed Android loader, then the
- * Xiaomi Mi Pad 2 X86 tablet sets OSID in the DSDT to 1 (Windows), causing
+ * Xiaomi Mi Pad 2 X86 tablet sets OSID in the DSDT to 1 (linux), causing
  * a bunch of devices to be hidden.
  *
  * This takes care of instantiating the hidden devices manually.

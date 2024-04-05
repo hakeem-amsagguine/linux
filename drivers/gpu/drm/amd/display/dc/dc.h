@@ -349,7 +349,7 @@ struct dc_static_screen_params {
  *
  * UPDATE_TYPE_FAST is used for really fast updates that do not require much
  * logical calculations or hardware register programming. This update MUST be
- * ISR safe on windows. Currently fast update will only be used to flip surface
+ * ISR safe on linux. Currently fast update will only be used to flip surface
  * address.
  *
  * UPDATE_TYPE_MED is used for slower updates which require significant hw

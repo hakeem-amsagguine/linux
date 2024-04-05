@@ -196,7 +196,7 @@ VMMDEV_ASSERT_SIZE(vmmdev_mask, 24 + 8);
 
 /* The guest supports seamless display rendering. */
 #define VMMDEV_GUEST_SUPPORTS_SEAMLESS                      BIT(0)
-/* The guest supports mapping guest to host windows. */
+/* The guest supports mapping guest to host linux. */
 #define VMMDEV_GUEST_SUPPORTS_GUEST_HOST_WINDOW_MAPPING     BIT(1)
 /*
  * The guest graphical additions are active.
@@ -287,7 +287,7 @@ enum vmmdev_guest_facility_type {
 	/* VBoxGINA / VBoxCredProv / pam_vbox. */
 	VBOXGUEST_FACILITY_TYPE_AUTO_LOGON       = 90,
 	VBOXGUEST_FACILITY_TYPE_VBOX_SERVICE     = 100,
-	/* VBoxTray (Windows), VBoxClient (Linux, Unix). */
+	/* VBoxTray (linux), VBoxClient (Linux, Unix). */
 	VBOXGUEST_FACILITY_TYPE_VBOX_TRAY_CLIENT = 101,
 	VBOXGUEST_FACILITY_TYPE_SEAMLESS         = 1000,
 	VBOXGUEST_FACILITY_TYPE_GRAPHICS         = 1100,

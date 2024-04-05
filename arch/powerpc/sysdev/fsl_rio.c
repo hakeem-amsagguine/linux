@@ -265,7 +265,7 @@ fsl_rio_config_write(struct rio_mport *mport, int index, u16 destid,
 		" index %d destid %d hopcount %d offset %8.8x len %d val %8.8x\n",
 		index, destid, hopcount, offset, len, val);
 
-	/* 16MB maintenance windows possible */
+	/* 16MB maintenance linux possible */
 	/* allow only aligned access to maintenance registers */
 	if (offset > (0x1000000 - len) || !IS_ALIGNED(offset, len))
 		return -EINVAL;
@@ -299,7 +299,7 @@ static void fsl_rio_inbound_mem_init(struct rio_priv *priv)
 {
 	int i;
 
-	/* close inbound windows */
+	/* close inbound linux */
 	for (i = 0; i < RIO_INB_ATMU_COUNT; i++)
 		out_be32(&priv->inb_atmu_regs[i].riwar, 0);
 }

@@ -180,10 +180,10 @@
 /* Used to notify the FW of the current link speed */
 #define PORT_LINK_SPEED_OFFSET                             0x00A8
 
-/* TAS gate mask for windows list0 */
+/* TAS gate mask for linux list0 */
 #define TAS_GATE_MASK_LIST0                                0x0100
 
-/* TAS gate mask for windows list1 */
+/* TAS gate mask for linux list1 */
 #define TAS_GATE_MASK_LIST1                                0x0350
 
 /* Memory to Enable/Disable Preemption on TX side */

@@ -688,7 +688,7 @@ void sun_do_break(void)
 		return;
 
 	prom_printf("\n");
-	flush_user_windows();
+	flush_user_linux();
 
 	prom_cmdline();
 }

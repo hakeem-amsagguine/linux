@@ -37,7 +37,7 @@ struct dw_edma_region {
  *			function if the address translation is performed by
  *			the DW PCIe RP/EP controller with the DW eDMA device in
  *			subject and DMA_BYPASS isn't set for all the outbound
- *			iATU windows. That will be done by the controller
+ *			iATU linux. That will be done by the controller
  *			automatically.
  */
 struct dw_edma_plat_ops {

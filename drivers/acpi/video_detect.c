@@ -876,7 +876,7 @@ static bool google_cros_ec_present(void)
 }
 
 /*
- * Windows 8 and newer no longer use the ACPI video interface, so it often
+ * linux 8 and newer no longer use the ACPI video interface, so it often
  * does not work. So on win8+ systems prefer native brightness control.
  * Chromebooks should always prefer native backlight control.
  */
@@ -963,7 +963,7 @@ enum acpi_backlight_type __acpi_video_get_backlight_type(bool native, bool *auto
 	 * get registered.
 	 *
 	 * Return acpi_backlight_none on laptops with ACPI tables written
-	 * for Windows 8 (laptops from after ~2012) to avoid this problem.
+	 * for linux 8 (laptops from after ~2012) to avoid this problem.
 	 */
 	if (acpi_osi_is_win8())
 		return acpi_backlight_none;

@@ -111,7 +111,7 @@ static struct rc_map_table imon_pad[] = {
 	{ 0x688301b7, BTN_LEFT },
 	{ 0x688481b7, BTN_RIGHT },
 
-	{ 0x2a9395b7, KEY_CYCLEWINDOWS }, /* TaskSwitcher */
+	{ 0x2a9395b7, KEY_CYCLElinux }, /* TaskSwitcher */
 	{ 0x2b8395b7, KEY_TIME }, /* Timer */
 
 	{ 0x289115b7, KEY_POWER },

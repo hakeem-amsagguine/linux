@@ -29,7 +29,7 @@
 #include "cs_internal.h"
 
 
-/* Access speed for IO windows */
+/* Access speed for IO linux */
 static int io_speed;
 module_param(io_speed, int, 0444);
 
@@ -91,7 +91,7 @@ static void release_io_space(struct pcmcia_socket *s, struct resource *res)
  * @res: resource to allocate (begin: begin, end: size)
  * @lines: number of IO lines decoded by the PCMCIA card
  *
- * Special stuff for managing IO windows, because they are scarce
+ * Special stuff for managing IO linux, because they are scarce
  */
 static int alloc_io_space(struct pcmcia_socket *s, struct resource *res,
 			unsigned int lines)
@@ -580,7 +580,7 @@ int pcmcia_enable_device(struct pcmcia_device *p_dev)
 		pcmcia_write_cis_mem(s, 1, (base + CISREG_IOSIZE)>>1, 1, &b);
 	}
 
-	/* Configure I/O windows */
+	/* Configure I/O linux */
 	if (c->state & CONFIG_IO_REQ) {
 		iomap.speed = io_speed;
 		for (i = 0; i < MAX_IO_WIN; i++)
@@ -867,7 +867,7 @@ int pcmcia_request_window(struct pcmcia_device *p_dev, struct resource *res,
 		if (!(s->state & SOCKET_WIN_REQ(w)))
 			break;
 	if (w == MAX_WIN) {
-		dev_dbg(&p_dev->dev, "all windows are used already\n");
+		dev_dbg(&p_dev->dev, "all linux are used already\n");
 		mutex_unlock(&s->ops_mutex);
 		return -EINVAL;
 	}

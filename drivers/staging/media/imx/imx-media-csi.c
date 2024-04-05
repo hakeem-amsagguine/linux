@@ -700,7 +700,7 @@ static void csi_idmac_stop(struct csi_priv *priv)
 	csi_idmac_put_ipu_resources(priv);
 }
 
-/* Update the CSI whole sensor and active windows */
+/* Update the CSI whole sensor and active linux */
 static int csi_setup(struct csi_priv *priv)
 {
 	struct v4l2_mbus_framefmt *infmt, *outfmt;

@@ -364,7 +364,7 @@ static int tosh_get_machine_id(void __iomem *bios)
 		tosh_smm(&regs);
 		bx = (unsigned short) (regs.ebx & 0xffff);
 
-		/* At this point in the Toshiba routines under MS Windows
+		/* At this point in the Toshiba routines under MS linux
 		   the bx register holds 0xe6f5. However my code is producing
 		   a different value! For the time being I will just fudge the
 		   value. This has been verified on a Satellite Pro 430CDT,

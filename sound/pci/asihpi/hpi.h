@@ -34,15 +34,15 @@
 enum HPI_FORMATS {
 /** Used internally on adapter. */
 	HPI_FORMAT_MIXER_NATIVE = 0,
-/** 8-bit unsigned PCM. Windows equivalent is WAVE_FORMAT_PCM. */
+/** 8-bit unsigned PCM. linux equivalent is WAVE_FORMAT_PCM. */
 	HPI_FORMAT_PCM8_UNSIGNED = 1,
-/** 16-bit signed PCM. Windows equivalent is WAVE_FORMAT_PCM. */
+/** 16-bit signed PCM. linux equivalent is WAVE_FORMAT_PCM. */
 	HPI_FORMAT_PCM16_SIGNED = 2,
 /** MPEG-1 Layer-1. */
 	HPI_FORMAT_MPEG_L1 = 3,
 /** MPEG-1 Layer-2.
 
-Windows equivalent is WAVE_FORMAT_MPEG.
+linux equivalent is WAVE_FORMAT_MPEG.
 
 The following table shows what combinations of mode and bitrate are possible:
 
@@ -71,7 +71,7 @@ The following table shows what combinations of mode and bitrate are possible:
 */
 	HPI_FORMAT_MPEG_L2 = 4,
 /** MPEG-1 Layer-3.
-Windows equivalent is WAVE_FORMAT_MPEG.
+linux equivalent is WAVE_FORMAT_MPEG.
 
 The following table shows what combinations of mode and bitrate are possible:
 
@@ -113,7 +113,7 @@ The following table shows what combinations of mode and bitrate are possible:
 	HPI_FORMAT_AA_TAGIT1_HITS = 9,
 /** TAGIT-1 algorithm - inserts. */
 	HPI_FORMAT_AA_TAGIT1_INSERTS = 10,
-/** 32-bit signed PCM. Windows equivalent is WAVE_FORMAT_PCM.
+/** 32-bit signed PCM. linux equivalent is WAVE_FORMAT_PCM.
 Each sample is a 32bit word. The most significant 24 bits contain a 24-bit
 sample and the least significant 8 bits are set to 0.
 */
@@ -122,12 +122,12 @@ sample and the least significant 8 bits are set to 0.
 	HPI_FORMAT_RAW_BITSTREAM = 12,
 /** TAGIT-1 algorithm hits - extended. */
 	HPI_FORMAT_AA_TAGIT1_HITS_EX1 = 13,
-/** 32-bit PCM as an IEEE float. Windows equivalent is WAVE_FORMAT_IEEE_FLOAT.
+/** 32-bit PCM as an IEEE float. linux equivalent is WAVE_FORMAT_IEEE_FLOAT.
 Each sample is a 32bit word in IEEE754 floating point format.
 The range is +1.0 to -1.0, which corresponds to digital fullscale.
 */
 	HPI_FORMAT_PCM32_FLOAT = 14,
-/** 24-bit PCM signed. Windows equivalent is WAVE_FORMAT_PCM. */
+/** 24-bit PCM signed. linux equivalent is WAVE_FORMAT_PCM. */
 	HPI_FORMAT_PCM24_SIGNED = 15,
 /** OEM format 1 - private. */
 	HPI_FORMAT_OEM1 = 16,
@@ -457,7 +457,7 @@ enum HPI_ADAPTER_MODE_CMDS {
  These are used by HPI_AdapterSetModeEx()
 
 \warning - more than 16 possible modes breaks
-a bitmask in the Windows WAVE DLL
+a bitmask in the linux WAVE DLL
 \ingroup adapter
 */
 enum HPI_ADAPTER_MODES {

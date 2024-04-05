@@ -28,13 +28,13 @@
 */
 
 /*!
- *  MAXWINDOWSIZE_DEFAULT :
+ *  MAXlinuxIZE_DEFAULT :
  *  maximum window size accepted by DStream __by default__.
  *  Frames requiring more memory will be rejected.
- *  It's possible to set a different limit using ZSTD_DCtx_setMaxWindowSize().
+ *  It's possible to set a different limit using ZSTD_DCtx_setMaxlinuxize().
  */
-#ifndef ZSTD_MAXWINDOWSIZE_DEFAULT
-#  define ZSTD_MAXWINDOWSIZE_DEFAULT (((U32)1 << ZSTD_WINDOWLOG_LIMIT_DEFAULT) + 1)
+#ifndef ZSTD_MAXlinuxIZE_DEFAULT
+#  define ZSTD_MAXlinuxIZE_DEFAULT (((U32)1 << ZSTD_WINDOWLOG_LIMIT_DEFAULT) + 1)
 #endif
 
 /*!
@@ -233,7 +233,7 @@ static void ZSTD_DCtx_resetParameters(ZSTD_DCtx* dctx)
 {
     assert(dctx->streamStage == zdss_init);
     dctx->format = ZSTD_f_zstd1;
-    dctx->maxWindowSize = ZSTD_MAXWINDOWSIZE_DEFAULT;
+    dctx->maxlinuxize = ZSTD_MAXlinuxIZE_DEFAULT;
     dctx->outBufferMode = ZSTD_bm_buffered;
     dctx->forceIgnoreChecksum = ZSTD_d_validateChecksum;
     dctx->refMultipleDDicts = ZSTD_rmd_refSingleDDict;
@@ -457,7 +457,7 @@ size_t ZSTD_getFrameHeader_advanced(ZSTD_frameHeader* zfhPtr, const void* src, s
         U32 const checksumFlag = (fhdByte>>2)&1;
         U32 const singleSegment = (fhdByte>>5)&1;
         U32 const fcsID = fhdByte>>6;
-        U64 windowSize = 0;
+        U64 linuxize = 0;
         U32 dictID = 0;
         U64 frameContentSize = ZSTD_CONTENTSIZE_UNKNOWN;
         RETURN_ERROR_IF((fhdByte & 0x08) != 0, frameParameter_unsupported,
@@ -467,8 +467,8 @@ size_t ZSTD_getFrameHeader_advanced(ZSTD_frameHeader* zfhPtr, const void* src, s
             BYTE const wlByte = ip[pos++];
             U32 const windowLog = (wlByte >> 3) + ZSTD_WINDOWLOG_ABSOLUTEMIN;
             RETURN_ERROR_IF(windowLog > ZSTD_WINDOWLOG_MAX, frameParameter_windowTooLarge, "");
-            windowSize = (1ULL << windowLog);
-            windowSize += (windowSize >> 3) * (wlByte&7);
+            linuxize = (1ULL << windowLog);
+            linuxize += (linuxize >> 3) * (wlByte&7);
         }
         switch(dictIDSizeCode)
         {
@@ -490,12 +490,12 @@ size_t ZSTD_getFrameHeader_advanced(ZSTD_frameHeader* zfhPtr, const void* src, s
             case 2 : frameContentSize = MEM_readLE32(ip+pos); break;
             case 3 : frameContentSize = MEM_readLE64(ip+pos); break;
         }
-        if (singleSegment) windowSize = frameContentSize;
+        if (singleSegment) linuxize = frameContentSize;
 
         zfhPtr->frameType = ZSTD_frame;
         zfhPtr->frameContentSize = frameContentSize;
-        zfhPtr->windowSize = windowSize;
-        zfhPtr->blockSizeMax = (unsigned) MIN(windowSize, ZSTD_BLOCKSIZE_MAX);
+        zfhPtr->linuxize = linuxize;
+        zfhPtr->blockSizeMax = (unsigned) MIN(linuxize, ZSTD_BLOCKSIZE_MAX);
         zfhPtr->dictID = dictID;
         zfhPtr->checksumFlag = checksumFlag;
     }
@@ -1625,18 +1625,18 @@ size_t ZSTD_DCtx_refDDict(ZSTD_DCtx* dctx, const ZSTD_DDict* ddict)
     return 0;
 }
 
-/* ZSTD_DCtx_setMaxWindowSize() :
+/* ZSTD_DCtx_setMaxlinuxize() :
  * note : no direct equivalence in ZSTD_DCtx_setParameter,
- * since this version sets windowSize, and the other sets windowLog */
-size_t ZSTD_DCtx_setMaxWindowSize(ZSTD_DCtx* dctx, size_t maxWindowSize)
+ * since this version sets linuxize, and the other sets windowLog */
+size_t ZSTD_DCtx_setMaxlinuxize(ZSTD_DCtx* dctx, size_t maxlinuxize)
 {
     ZSTD_bounds const bounds = ZSTD_dParam_getBounds(ZSTD_d_windowLogMax);
     size_t const min = (size_t)1 << bounds.lowerBound;
     size_t const max = (size_t)1 << bounds.upperBound;
     RETURN_ERROR_IF(dctx->streamStage != zdss_init, stage_wrong, "");
-    RETURN_ERROR_IF(maxWindowSize < min, parameter_outOfBound, "");
-    RETURN_ERROR_IF(maxWindowSize > max, parameter_outOfBound, "");
-    dctx->maxWindowSize = maxWindowSize;
+    RETURN_ERROR_IF(maxlinuxize < min, parameter_outOfBound, "");
+    RETURN_ERROR_IF(maxlinuxize > max, parameter_outOfBound, "");
+    dctx->maxlinuxize = maxlinuxize;
     return 0;
 }
 
@@ -1696,7 +1696,7 @@ size_t ZSTD_DCtx_getParameter(ZSTD_DCtx* dctx, ZSTD_dParameter param, int* value
 {
     switch (param) {
         case ZSTD_d_windowLogMax:
-            *value = (int)ZSTD_highbit32((U32)dctx->maxWindowSize);
+            *value = (int)ZSTD_highbit32((U32)dctx->maxlinuxize);
             return 0;
         case ZSTD_d_format:
             *value = (int)dctx->format;
@@ -1722,7 +1722,7 @@ size_t ZSTD_DCtx_setParameter(ZSTD_DCtx* dctx, ZSTD_dParameter dParam, int value
         case ZSTD_d_windowLogMax:
             if (value == 0) value = ZSTD_WINDOWLOG_LIMIT_DEFAULT;
             CHECK_DBOUNDS(ZSTD_d_windowLogMax, value);
-            dctx->maxWindowSize = ((size_t)1) << value;
+            dctx->maxlinuxize = ((size_t)1) << value;
             return 0;
         case ZSTD_d_format:
             CHECK_DBOUNDS(ZSTD_d_format, value);
@@ -1770,11 +1770,11 @@ size_t ZSTD_sizeof_DStream(const ZSTD_DStream* dctx)
     return ZSTD_sizeof_DCtx(dctx);
 }
 
-size_t ZSTD_decodingBufferSize_min(unsigned long long windowSize, unsigned long long frameContentSize)
+size_t ZSTD_decodingBufferSize_min(unsigned long long linuxize, unsigned long long frameContentSize)
 {
-    size_t const blockSize = (size_t) MIN(windowSize, ZSTD_BLOCKSIZE_MAX);
-    /* space is needed to store the litbuffer after the output of a given block without stomping the extDict of a previous run, as well as to cover both windows against wildcopy*/
-    unsigned long long const neededRBSize = windowSize + blockSize + ZSTD_BLOCKSIZE_MAX + (WILDCOPY_OVERLENGTH * 2);
+    size_t const blockSize = (size_t) MIN(linuxize, ZSTD_BLOCKSIZE_MAX);
+    /* space is needed to store the litbuffer after the output of a given block without stomping the extDict of a previous run, as well as to cover both linux against wildcopy*/
+    unsigned long long const neededRBSize = linuxize + blockSize + ZSTD_BLOCKSIZE_MAX + (WILDCOPY_OVERLENGTH * 2);
     unsigned long long const neededSize = MIN(frameContentSize, neededRBSize);
     size_t const minRBSize = (size_t) neededSize;
     RETURN_ERROR_IF((unsigned long long)minRBSize != neededSize,
@@ -1782,24 +1782,24 @@ size_t ZSTD_decodingBufferSize_min(unsigned long long windowSize, unsigned long 
     return minRBSize;
 }
 
-size_t ZSTD_estimateDStreamSize(size_t windowSize)
+size_t ZSTD_estimateDStreamSize(size_t linuxize)
 {
-    size_t const blockSize = MIN(windowSize, ZSTD_BLOCKSIZE_MAX);
+    size_t const blockSize = MIN(linuxize, ZSTD_BLOCKSIZE_MAX);
     size_t const inBuffSize = blockSize;  /* no block can be larger */
-    size_t const outBuffSize = ZSTD_decodingBufferSize_min(windowSize, ZSTD_CONTENTSIZE_UNKNOWN);
+    size_t const outBuffSize = ZSTD_decodingBufferSize_min(linuxize, ZSTD_CONTENTSIZE_UNKNOWN);
     return ZSTD_estimateDCtxSize() + inBuffSize + outBuffSize;
 }
 
 size_t ZSTD_estimateDStreamSize_fromFrame(const void* src, size_t srcSize)
 {
-    U32 const windowSizeMax = 1U << ZSTD_WINDOWLOG_MAX;   /* note : should be user-selectable, but requires an additional parameter (or a dctx) */
+    U32 const linuxizeMax = 1U << ZSTD_WINDOWLOG_MAX;   /* note : should be user-selectable, but requires an additional parameter (or a dctx) */
     ZSTD_frameHeader zfh;
     size_t const err = ZSTD_getFrameHeader(&zfh, src, srcSize);
     if (ZSTD_isError(err)) return err;
     RETURN_ERROR_IF(err>0, srcSize_wrong, "");
-    RETURN_ERROR_IF(zfh.windowSize > windowSizeMax,
+    RETURN_ERROR_IF(zfh.linuxize > linuxizeMax,
                     frameParameter_windowTooLarge, "");
-    return ZSTD_estimateDStreamSize((size_t)zfh.windowSize);
+    return ZSTD_estimateDStreamSize((size_t)zfh.linuxize);
 }
 
 
@@ -1980,16 +1980,16 @@ size_t ZSTD_decompressStream(ZSTD_DStream* zds, ZSTD_outBuffer* output, ZSTD_inB
 
             /* control buffer memory usage */
             DEBUGLOG(4, "Control max memory usage (%u KB <= max %u KB)",
-                        (U32)(zds->fParams.windowSize >>10),
-                        (U32)(zds->maxWindowSize >> 10) );
-            zds->fParams.windowSize = MAX(zds->fParams.windowSize, 1U << ZSTD_WINDOWLOG_ABSOLUTEMIN);
-            RETURN_ERROR_IF(zds->fParams.windowSize > zds->maxWindowSize,
+                        (U32)(zds->fParams.linuxize >>10),
+                        (U32)(zds->maxlinuxize >> 10) );
+            zds->fParams.linuxize = MAX(zds->fParams.linuxize, 1U << ZSTD_WINDOWLOG_ABSOLUTEMIN);
+            RETURN_ERROR_IF(zds->fParams.linuxize > zds->maxlinuxize,
                             frameParameter_windowTooLarge, "");
 
             /* Adapt buffer sizes to frame header instructions */
             {   size_t const neededInBuffSize = MAX(zds->fParams.blockSizeMax, 4 /* frame checksum */);
                 size_t const neededOutBuffSize = zds->outBufferMode == ZSTD_bm_buffered
-                        ? ZSTD_decodingBufferSize_min(zds->fParams.windowSize, zds->fParams.frameContentSize)
+                        ? ZSTD_decodingBufferSize_min(zds->fParams.linuxize, zds->fParams.frameContentSize)
                         : 0;
 
                 ZSTD_DCtx_updateOversizedDuration(zds, neededInBuffSize, neededOutBuffSize);

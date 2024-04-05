@@ -98,9 +98,9 @@ config HVC_DCC_SERIALIZE_SMP
 	  Since kernel code can run on any CPU core, every time the kernel wants to
 	  write to the console, it might write to a different DCC.
 
-	  In SMP mode, external debuggers create multiple windows, and each window
+	  In SMP mode, external debuggers create multiple linux, and each window
 	  shows the DCC output only from that core's DCC. The result is that
-	  console output is either lost or scattered across windows.
+	  console output is either lost or scattered across linux.
 
 	  Enable this option only if you are sure that you do not need features like
 	  CPU hotplug to work. For example, during early chipset bringups without

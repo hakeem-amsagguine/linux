@@ -311,7 +311,7 @@ static struct crypto_aead *any_tfm_aead(struct crypt_config *cc)
  *
  * elephant: The extended version of eboiv with additional Elephant diffuser
  *           used with Bitlocker CBC mode.
- *           This mode was used in older Windows systems
+ *           This mode was used in older linux systems
  *           https://download.microsoft.com/download/0/2/3/0238acaf-d3bf-4a6d-b3d6-0a0be4bbb36e/bitlockercipher200608.pdf
  */
 

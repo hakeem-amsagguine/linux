@@ -56,7 +56,7 @@ static void dump_fifo(struct vas_instance *vinst, void *entry)
  *
  * It can raise a single interrupt for multiple faults. Expects OS to
  * process all valid faults and return credit for each fault on user
- * space and fault windows. This fault FIFO control will be done with
+ * space and fault linux. This fault FIFO control will be done with
  * credit mechanism. NX can continuously paste CRBs until credits are not
  * available on fault window. Otherwise, returns with RMA_reject.
  *
@@ -150,7 +150,7 @@ irqreturn_t vas_fault_thread_fn(int irq, void *data)
 			WARN_ON_ONCE(1);
 		} else {
 			/*
-			 * NX sees faults only with user space windows.
+			 * NX sees faults only with user space linux.
 			 */
 			if (window->user_win)
 				vas_update_csb(crb, &window->vas_win.task_ref);

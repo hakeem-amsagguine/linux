@@ -28,7 +28,7 @@ config PCIE_MOBIVEIL_PLAT
 	select PCIE_MOBIVEIL_HOST
 	help
 	  Say Y here if you want to enable support for the Mobiveil AXI PCIe
-	  Soft IP. It has up to 8 outbound and inbound windows
+	  Soft IP. It has up to 8 outbound and inbound linux
 	  for address translation and it is a PCIe Gen4 IP.
 
 endmenu

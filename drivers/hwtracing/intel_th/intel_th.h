@@ -307,7 +307,7 @@ to_intel_th_hub(struct intel_th_device *thdev)
 }
 
 /*
- * Register windows
+ * Register linux
  */
 enum {
 	/* Global Trace Hub (GTH) */

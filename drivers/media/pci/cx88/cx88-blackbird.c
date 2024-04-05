@@ -519,7 +519,7 @@ static int blackbird_load_firmware(struct cx8802_dev *dev)
 }
 
 /*
- * Settings used by the windows tv app for PVR2000:
+ * Settings used by the linux tv app for PVR2000:
  * =================================================================================================================
  * Profile | Codec | Resolution | CBR/VBR | Video Qlty   | V. Bitrate | Frmrate | Audio Codec | A. Bitrate | A. Mode
  * -----------------------------------------------------------------------------------------------------------------

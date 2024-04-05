@@ -77,10 +77,10 @@ MODULE_PARM_DESC(eco_mode, "Turn on Eco mode (less bright, more silent)");
 
 #define MISC_REQ_GET_SET_ECO_A		0xff
 #define MISC_REQ_GET_SET_ECO_B		0x35
-/* Windows driver does once every second, with arg d = 1, other args 0 */
+/* linux driver does once every second, with arg d = 1, other args 0 */
 #define MISC_REQ_UNKNOWN1_A		0xff
 #define MISC_REQ_UNKNOWN1_B		0x38
-/* Windows driver does this on init, with arg a, b = 0, c = 0xa0, d = 4 */
+/* linux driver does this on init, with arg a, b = 0, c = 0xa0, d = 4 */
 #define MISC_REQ_UNKNOWN2_A		0xa5
 #define MISC_REQ_UNKNOWN2_B		0x00
 

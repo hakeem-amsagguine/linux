@@ -67,8 +67,8 @@
 /* Default scratch mem size. */
 #define DMUB_SCRATCH_MEM_SIZE (1024)
 
-/* Number of windows in use. */
-#define DMUB_NUM_WINDOWS (DMUB_WINDOW_TOTAL)
+/* Number of linux in use. */
+#define DMUB_NUM_linux (DMUB_WINDOW_TOTAL)
 /* Base addresses. */
 
 #define DMUB_CW0_BASE (0x60000000)
@@ -171,7 +171,7 @@ static bool dmub_srv_hw_setup(struct dmub_srv *dmub, enum dmub_asic asic)
 		funcs->reset = dmub_dcn20_reset;
 		funcs->reset_release = dmub_dcn20_reset_release;
 		funcs->backdoor_load = dmub_dcn20_backdoor_load;
-		funcs->setup_windows = dmub_dcn20_setup_windows;
+		funcs->setup_linux = dmub_dcn20_setup_linux;
 		funcs->setup_mailbox = dmub_dcn20_setup_mailbox;
 		funcs->get_inbox1_wptr = dmub_dcn20_get_inbox1_wptr;
 		funcs->get_inbox1_rptr = dmub_dcn20_get_inbox1_rptr;
@@ -205,25 +205,25 @@ static bool dmub_srv_hw_setup(struct dmub_srv *dmub, enum dmub_asic asic)
 			dmub->regs = &dmub_srv_dcn30_regs;
 
 			funcs->backdoor_load = dmub_dcn30_backdoor_load;
-			funcs->setup_windows = dmub_dcn30_setup_windows;
+			funcs->setup_linux = dmub_dcn30_setup_linux;
 		}
 		if (asic == DMUB_ASIC_DCN301) {
 			dmub->regs = &dmub_srv_dcn301_regs;
 
 			funcs->backdoor_load = dmub_dcn30_backdoor_load;
-			funcs->setup_windows = dmub_dcn30_setup_windows;
+			funcs->setup_linux = dmub_dcn30_setup_linux;
 		}
 		if (asic == DMUB_ASIC_DCN302) {
 			dmub->regs = &dmub_srv_dcn302_regs;
 
 			funcs->backdoor_load = dmub_dcn30_backdoor_load;
-			funcs->setup_windows = dmub_dcn30_setup_windows;
+			funcs->setup_linux = dmub_dcn30_setup_linux;
 		}
 		if (asic == DMUB_ASIC_DCN303) {
 			dmub->regs = &dmub_srv_dcn303_regs;
 
 			funcs->backdoor_load = dmub_dcn30_backdoor_load;
-			funcs->setup_windows = dmub_dcn30_setup_windows;
+			funcs->setup_linux = dmub_dcn30_setup_linux;
 		}
 		break;
 
@@ -246,7 +246,7 @@ static bool dmub_srv_hw_setup(struct dmub_srv *dmub, enum dmub_asic asic)
 		funcs->reset = dmub_dcn31_reset;
 		funcs->reset_release = dmub_dcn31_reset_release;
 		funcs->backdoor_load = dmub_dcn31_backdoor_load;
-		funcs->setup_windows = dmub_dcn31_setup_windows;
+		funcs->setup_linux = dmub_dcn31_setup_linux;
 		funcs->setup_mailbox = dmub_dcn31_setup_mailbox;
 		funcs->get_inbox1_wptr = dmub_dcn31_get_inbox1_wptr;
 		funcs->get_inbox1_rptr = dmub_dcn31_get_inbox1_rptr;
@@ -287,7 +287,7 @@ static bool dmub_srv_hw_setup(struct dmub_srv *dmub, enum dmub_asic asic)
 		funcs->reset_release = dmub_dcn32_reset_release;
 		funcs->backdoor_load = dmub_dcn32_backdoor_load;
 		funcs->backdoor_load_zfb_mode = dmub_dcn32_backdoor_load_zfb_mode;
-		funcs->setup_windows = dmub_dcn32_setup_windows;
+		funcs->setup_linux = dmub_dcn32_setup_linux;
 		funcs->setup_mailbox = dmub_dcn32_setup_mailbox;
 		funcs->get_inbox1_wptr = dmub_dcn32_get_inbox1_wptr;
 		funcs->get_inbox1_rptr = dmub_dcn32_get_inbox1_rptr;
@@ -326,7 +326,7 @@ static bool dmub_srv_hw_setup(struct dmub_srv *dmub, enum dmub_asic asic)
 			funcs->reset_release = dmub_dcn35_reset_release;
 			funcs->backdoor_load = dmub_dcn35_backdoor_load;
 			funcs->backdoor_load_zfb_mode = dmub_dcn35_backdoor_load_zfb_mode;
-			funcs->setup_windows = dmub_dcn35_setup_windows;
+			funcs->setup_linux = dmub_dcn35_setup_linux;
 			funcs->setup_mailbox = dmub_dcn35_setup_mailbox;
 			funcs->get_inbox1_wptr = dmub_dcn35_get_inbox1_wptr;
 			funcs->get_inbox1_rptr = dmub_dcn35_get_inbox1_rptr;
@@ -458,7 +458,7 @@ enum dmub_status
 	memset(out, 0, sizeof(*out));
 	memset(window_sizes, 0, sizeof(window_sizes));
 
-	out->num_regions = DMUB_NUM_WINDOWS;
+	out->num_regions = DMUB_NUM_linux;
 
 	fw_info = dmub_get_fw_meta_info(params);
 
@@ -507,10 +507,10 @@ enum dmub_status dmub_srv_calc_mem_info(struct dmub_srv *dmub,
 
 	memset(out, 0, sizeof(*out));
 
-	if (params->region_info->num_regions != DMUB_NUM_WINDOWS)
+	if (params->region_info->num_regions != DMUB_NUM_linux)
 		return DMUB_STATUS_INVALID;
 
-	for (i = 0; i < DMUB_NUM_WINDOWS; ++i) {
+	for (i = 0; i < DMUB_NUM_linux; ++i) {
 		const struct dmub_region *reg =
 			&params->region_info->regions[i];
 
@@ -525,7 +525,7 @@ enum dmub_status dmub_srv_calc_mem_info(struct dmub_srv *dmub,
 		out->fb[i].size = reg->top - reg->base;
 	}
 
-	out->num_fb = DMUB_NUM_WINDOWS;
+	out->num_fb = DMUB_NUM_linux;
 
 	return DMUB_STATUS_OK;
 }
@@ -667,8 +667,8 @@ enum dmub_status dmub_srv_hw_init(struct dmub_srv *dmub,
 
 	dmub->scratch_mem_fb = *scratch_mem_fb;
 
-	if (dmub->hw_funcs.setup_windows)
-		dmub->hw_funcs.setup_windows(dmub, &cw2, &cw3, &cw4, &cw5, &cw6, &region6);
+	if (dmub->hw_funcs.setup_linux)
+		dmub->hw_funcs.setup_linux(dmub, &cw2, &cw3, &cw4, &cw5, &cw6, &region6);
 
 	if (dmub->hw_funcs.setup_outbox0)
 		dmub->hw_funcs.setup_outbox0(dmub, &outbox0);

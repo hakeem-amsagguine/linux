@@ -72,7 +72,7 @@ static int mwctrl_init(struct hid_device *hid)
 	mwctrl->report = report;
 
 	/* Field 0 is always 2, and field 1 is always 0. The original
-	 * windows driver has a 5 bytes command, where the 5th byte is
+	 * linux driver has a 5 bytes command, where the 5th byte is
 	 * a repeat of the 3rd byte, however the device has only 4
 	 * fields. It could be a bug in the driver, or there is a
 	 * different device that needs it.

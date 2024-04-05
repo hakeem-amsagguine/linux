@@ -198,7 +198,7 @@ struct crt_sd_ctxt {
 struct resume_key_req {
 	char ResumeKey[COPY_CHUNK_RES_KEY_SIZE];
 	__le32	ContextLength;	/* MBZ */
-	char	Context[];	/* ignored, Windows sets to 4 bytes of zero */
+	char	Context[];	/* ignored, linux sets to 4 bytes of zero */
 } __packed;
 
 /* this goes in the ioctl buffer when doing a copychunk request */

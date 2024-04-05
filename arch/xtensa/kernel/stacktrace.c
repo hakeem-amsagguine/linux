@@ -28,7 +28,7 @@ void xtensa_backtrace_user(struct pt_regs *regs, unsigned int depth,
 			   int (*ufn)(struct stackframe *frame, void *data),
 			   void *data)
 {
-	unsigned long windowstart = regs->windowstart;
+	unsigned long linuxtart = regs->linuxtart;
 	unsigned long windowbase = regs->windowbase;
 	unsigned long a0 = regs->areg[0];
 	unsigned long a1 = regs->areg[1];
@@ -59,16 +59,16 @@ void xtensa_backtrace_user(struct pt_regs *regs, unsigned int depth,
 	 */
 
 	/* Step 1.  */
-	/* Rotate WINDOWSTART to move the bit corresponding to
+	/* Rotate linuxTART to move the bit corresponding to
 	 * the current window to the bit #0.
 	 */
-	windowstart = (windowstart << WSBITS | windowstart) >> windowbase;
+	linuxtart = (linuxtart << WSBITS | linuxtart) >> windowbase;
 
 	/* Look for bits that are set, they correspond to
-	 * valid windows.
+	 * valid linux.
 	 */
 	for (index = WSBITS - 1; (index > 0) && depth; depth--, index--)
-		if (windowstart & (1 << index)) {
+		if (linuxtart & (1 << index)) {
 			/* Get the PC from a0 and a1. */
 			pc = MAKE_PC_FROM_RA(a0, pc);
 			/* Read a0 and a1 from the

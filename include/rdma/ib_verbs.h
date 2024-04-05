@@ -3484,7 +3484,7 @@ struct ib_pd *__ib_alloc_pd(struct ib_device *device, unsigned int flags,
  * @flags: protection domain flags
  *
  * A protection domain object provides an association between QPs, shared
- * receive queues, address handles, memory regions, and memory windows.
+ * receive queues, address handles, memory regions, and memory linux.
  *
  * Every PD has a local_dma_lkey which can be used as the lkey value for local
  * memory operations.
@@ -4268,7 +4268,7 @@ int ib_advise_mr(struct ib_pd *pd, enum ib_uverbs_advise_mr_advice advice,
  * @mr: The memory region to deregister.
  * @udata: Valid user data or NULL for kernel object
  *
- * This function can fail, if the memory region has memory windows bound to it.
+ * This function can fail, if the memory region has memory linux bound to it.
  */
 int ib_dereg_mr_user(struct ib_mr *mr, struct ib_udata *udata);
 
@@ -4277,7 +4277,7 @@ int ib_dereg_mr_user(struct ib_mr *mr, struct ib_udata *udata);
  *   HCA translation table.
  * @mr: The memory region to deregister.
  *
- * This function can fail, if the memory region has memory windows bound to it.
+ * This function can fail, if the memory region has memory linux bound to it.
  *
  * NOTE: for user mr use ib_dereg_mr_user with valid udata!
  */
@@ -4307,7 +4307,7 @@ static inline void ib_update_fast_reg_key(struct ib_mr *mr, u8 newkey)
 
 /**
  * ib_inc_rkey - increments the key portion of the given rkey. Can be used
- * for calculating a new rkey for type 2 memory windows.
+ * for calculating a new rkey for type 2 memory linux.
  * @rkey - the rkey to increment.
  */
 static inline u32 ib_inc_rkey(u32 rkey)

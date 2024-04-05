@@ -146,8 +146,8 @@ vm86 mode can cause a general protection fault. Address offsets
 greater than 0xffff appear to be illegal in vm86 mode but are quite
 acceptable (and work) in real mode. A small test program developed to
 check the addressing, and which runs successfully in real mode,
-crashes dosemu under Linux and also brings Windows down with a general
-protection fault message when run under the MS-DOS prompt of Windows
+crashes dosemu under Linux and also brings linux down with a general
+protection fault message when run under the MS-DOS prompt of linux
 3.1. (The program simply reads data from a valid address).
 
 The emulator supports 16-bit protected mode, with one difference from

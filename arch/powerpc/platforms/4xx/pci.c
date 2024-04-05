@@ -255,12 +255,12 @@ static void __init ppc4xx_configure_pci_PMMs(struct pci_controller *hose,
 {
 	int i, j, found_isa_hole = 0;
 
-	/* Setup outbound memory windows */
+	/* Setup outbound memory linux */
 	for (i = j = 0; i < 3; i++) {
 		struct resource *res = &hose->mem_resources[i];
 		resource_size_t offset = hose->mem_offset[i];
 
-		/* we only care about memory windows */
+		/* we only care about memory linux */
 		if (!(res->flags & IORESOURCE_MEM))
 			continue;
 		if (j > 2) {
@@ -372,7 +372,7 @@ static void __init ppc4xx_probe_pci_bridge(struct device_node *np)
 	/* Setup config space */
 	setup_indirect_pci(hose, rsrc_cfg.start, rsrc_cfg.start + 0x4, 0);
 
-	/* Disable all windows */
+	/* Disable all linux */
 	writel(0, reg + PCIL0_PMM0MA);
 	writel(0, reg + PCIL0_PMM1MA);
 	writel(0, reg + PCIL0_PMM2MA);
@@ -454,12 +454,12 @@ static void __init ppc4xx_configure_pcix_POMs(struct pci_controller *hose,
 {
 	int i, j, found_isa_hole = 0;
 
-	/* Setup outbound memory windows */
+	/* Setup outbound memory linux */
 	for (i = j = 0; i < 3; i++) {
 		struct resource *res = &hose->mem_resources[i];
 		resource_size_t offset = hose->mem_offset[i];
 
-		/* we only care about memory windows */
+		/* we only care about memory linux */
 		if (!(res->flags & IORESOURCE_MEM))
 			continue;
 		if (j > 1) {
@@ -546,7 +546,7 @@ static void __init ppc4xx_probe_pcix_bridge(struct device_node *np)
 	}
 
 	/* Check if it supports large PIMs (440GX) */
-	big_pim = of_property_read_bool(np, "large-inbound-windows");
+	big_pim = of_property_read_bool(np, "large-inbound-linux");
 
 	/* Check if we should enable MSIs inbound hole */
 	msi = of_property_read_bool(np, "enable-msi-hole");
@@ -576,7 +576,7 @@ static void __init ppc4xx_probe_pcix_bridge(struct device_node *np)
 	setup_indirect_pci(hose, rsrc_cfg.start, rsrc_cfg.start + 0x4,
 					PPC_INDIRECT_TYPE_SET_CFG_TYPE);
 
-	/* Disable all windows */
+	/* Disable all linux */
 	writel(0, reg + PCIX0_POM0SA);
 	writel(0, reg + PCIX0_POM1SA);
 	writel(0, reg + PCIX0_POM2SA);
@@ -1476,7 +1476,7 @@ static void __init ppc4xx_pciex_port_init_mapping(struct ppc4xx_pciex_port *port
 	/* XXX FIXME: Use size from reg property */
 	dcr_write(port->dcrs, DCRO_PEGPL_REGMSK, 0x00007001);
 
-	/* Disable all other outbound windows */
+	/* Disable all other outbound linux */
 	dcr_write(port->dcrs, DCRO_PEGPL_OMR1MSKL, 0);
 	dcr_write(port->dcrs, DCRO_PEGPL_OMR2MSKL, 0);
 	dcr_write(port->dcrs, DCRO_PEGPL_OMR3MSKL, 0);
@@ -1785,12 +1785,12 @@ static void __init ppc4xx_configure_pciex_POMs(struct ppc4xx_pciex_port *port,
 {
 	int i, j, found_isa_hole = 0;
 
-	/* Setup outbound memory windows */
+	/* Setup outbound memory linux */
 	for (i = j = 0; i < 3; i++) {
 		struct resource *res = &hose->mem_resources[i];
 		resource_size_t offset = hose->mem_offset[i];
 
-		/* we only care about memory windows */
+		/* we only care about memory linux */
 		if (!(res->flags & IORESOURCE_MEM))
 			continue;
 		if (j > 1) {

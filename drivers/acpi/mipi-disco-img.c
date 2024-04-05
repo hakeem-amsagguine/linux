@@ -750,7 +750,7 @@ static const char *strnext(const char *s1, const char *s2)
  * @handle: The ACPI handle of the node (which may be a port node)
  *
  * Return: true if a port node should be ignored and the data to that should
- * come from other sources instead (Windows ACPI definitions and
+ * come from other sources instead (linux ACPI definitions and
  * ipu-bridge). This is currently used to ignore bad port nodes related to IPU6
  * ("IPU?") and camera sensor devices ("LNK?") in certain Dell systems with
  * Intel VSC.

@@ -133,7 +133,7 @@ bool mobiveil_pcie_link_up(struct mobiveil_pcie *pcie)
 		LTSSM_STATUS_L0_MASK) == LTSSM_STATUS_L0;
 }
 
-void program_ib_windows(struct mobiveil_pcie *pcie, int win_num,
+void program_ib_linux(struct mobiveil_pcie *pcie, int win_num,
 			u64 cpu_addr, u64 pci_addr, u32 type, u64 size)
 {
 	u32 value;
@@ -141,7 +141,7 @@ void program_ib_windows(struct mobiveil_pcie *pcie, int win_num,
 
 	if (win_num >= pcie->ppio_wins) {
 		dev_err(&pcie->pdev->dev,
-			"ERROR: max inbound windows reached !\n");
+			"ERROR: max inbound linux reached !\n");
 		return;
 	}
 
@@ -168,9 +168,9 @@ void program_ib_windows(struct mobiveil_pcie *pcie, int win_num,
 }
 
 /*
- * routine to program the outbound windows
+ * routine to program the outbound linux
  */
-void program_ob_windows(struct mobiveil_pcie *pcie, int win_num,
+void program_ob_linux(struct mobiveil_pcie *pcie, int win_num,
 			u64 cpu_addr, u64 pci_addr, u32 type, u64 size)
 {
 	u32 value;
@@ -178,7 +178,7 @@ void program_ob_windows(struct mobiveil_pcie *pcie, int win_num,
 
 	if (win_num >= pcie->apio_wins) {
 		dev_err(&pcie->pdev->dev,
-			"ERROR: max outbound windows reached !\n");
+			"ERROR: max outbound linux reached !\n");
 		return;
 	}
 

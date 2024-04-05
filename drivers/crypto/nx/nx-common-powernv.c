@@ -685,7 +685,7 @@ static struct vas_window *nx_alloc_txwin(struct nx_coproc *coproc)
 
 	/*
 	 * Kernel requests will be high priority. So open send
-	 * windows only for high priority RxFIFO entries.
+	 * linux only for high priority RxFIFO entries.
 	 */
 	vas_init_tx_win_attr(&txattr, coproc->ct);
 	txattr.lpid = 0;	/* lpid is 0 for kernel requests */
@@ -720,7 +720,7 @@ static int nx_open_percpu_txwins(void)
 		list_for_each_entry_safe(coproc, n, &nx_coprocs, list) {
 			/*
 			 * Kernel requests use only high priority FIFOs. So
-			 * open send windows for these FIFOs.
+			 * open send linux for these FIFOs.
 			 * GZIP is not supported in kernel right now.
 			 */
 
@@ -1094,7 +1094,7 @@ static __init int nx_compress_powernv_init(void)
 
 		/*
 		 * GZIP is not supported in kernel right now.
-		 * So open tx windows only for 842.
+		 * So open tx linux only for 842.
 		 */
 		if (!ret)
 			ret = nx_open_percpu_txwins();

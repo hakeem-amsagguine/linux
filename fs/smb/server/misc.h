@@ -19,7 +19,7 @@ char *convert_to_nt_pathname(struct ksmbd_share_config *share,
 int get_nlink(struct kstat *st);
 void ksmbd_conv_path_to_unix(char *path);
 void ksmbd_strip_last_slash(char *path);
-void ksmbd_conv_path_to_windows(char *path);
+void ksmbd_conv_path_to_linux(char *path);
 char *ksmbd_casefold_sharename(struct unicode_map *um, const char *name);
 char *ksmbd_extract_sharename(struct unicode_map *um, const char *treename);
 char *convert_to_unix_name(struct ksmbd_share_config *share, const char *name);

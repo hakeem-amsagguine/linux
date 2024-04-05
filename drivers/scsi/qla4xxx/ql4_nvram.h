@@ -159,8 +159,8 @@ struct eeprom_data {
 #define EEPROM_UNUSED_2_SIZE   4
 			u8 unused_2[EEPROM_UNUSED_2_SIZE]; /* x60 */
 			u16 ipReassemblyTimeout; /* x64 */
-			u16 tcpMaxWindowSizeHi;	/* x66 */
-			u16 tcpMaxWindowSizeLo;	/* x68 */
+			u16 tcpMaxlinuxizeHi;	/* x66 */
+			u16 tcpMaxlinuxizeLo;	/* x68 */
 			u32 net_ip_addr0;	/* x6A Added for TOE
 						 * functionality. */
 			u32 net_ip_addr1;	/* x6E */
@@ -222,7 +222,7 @@ struct eeprom_data {
 
 			/* TCP/IP Parameters */
 			u16 ipReassemblyTimeout; /* x94 */
-			u16 tcpMaxWindowSize;	/* x96 */
+			u16 tcpMaxlinuxize;	/* x96 */
 			u16 ipSecurity;	/* x98 */
 			u8 reserved_156[294]; /* x9A */
 			u16 qDebug[8];	/* QLOGIC USE ONLY   x1C0 */

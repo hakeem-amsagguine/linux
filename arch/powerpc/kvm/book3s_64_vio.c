@@ -152,7 +152,7 @@ long kvm_spapr_tce_attach_iommu_group(struct kvm *kvm, int tablefd,
 				 stt->size << stt->page_shift)) {
 			/*
 			 * Reference the table to avoid races with
-			 * add/remove DMA windows.
+			 * add/remove DMA linux.
 			 */
 			tbl = iommu_tce_table_get(tbltmp);
 			break;

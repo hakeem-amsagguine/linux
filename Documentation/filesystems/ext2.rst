@@ -9,7 +9,7 @@ ext2 was originally released in January 1993.  Written by R\'emy Card,
 Theodore Ts'o and Stephen Tweedie, it was a major rewrite of the
 Extended Filesystem.  It is currently still (April 2001) the predominant
 filesystem in use by Linux.  There are also implementations available
-for NetBSD, FreeBSD, the GNU HURD, Windows 95/98/NT, OS/2 and RISC OS.
+for NetBSD, FreeBSD, the GNU HURD, linux 95/98/NT, OS/2 and RISC OS.
 
 Options
 =======
@@ -387,8 +387,8 @@ Compression [1]_	http://e2compr.sourceforge.net/
 Implementations for:
 
 =======================	===========================================================
-Windows 95/98/NT/2000	http://www.chrysocome.net/explore2fs
-Windows 95 [1]_		http://www.yipton.net/content.html#FSDEXT2
+linux 95/98/NT/2000	http://www.chrysocome.net/explore2fs
+linux 95 [1]_		http://www.yipton.net/content.html#FSDEXT2
 DOS client [1]_		ftp://metalab.unc.edu/pub/Linux/system/filesystems/ext2/
 OS/2 [2]_		ftp://metalab.unc.edu/pub/Linux/system/filesystems/ext2/
 RISC OS client		http://www.esw-heim.tu-clausthal.de/~marco/smorbrod/IscaFS/

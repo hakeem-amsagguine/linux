@@ -622,7 +622,7 @@ void tcp_retransmit_timer(struct sock *sk)
 	 * we'll have to use something other than TCP to talk to the
 	 * University of Mars.
 	 *
-	 * PAWS allows us longer timeouts and large windows, so once
+	 * PAWS allows us longer timeouts and large linux, so once
 	 * implemented ftp to mars will work nicely. We will have to fix
 	 * the 120 second clamps though!
 	 */

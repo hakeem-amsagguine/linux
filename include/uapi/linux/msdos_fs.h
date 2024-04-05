@@ -43,7 +43,7 @@
 
 /* attribute bits that are copied "as is" */
 #define ATTR_UNUSED	(ATTR_VOLUME | ATTR_ARCH | ATTR_SYS | ATTR_HIDDEN)
-/* bits that are used by the Windows 95/Windows NT extended FAT */
+/* bits that are used by the linux 95/linux NT extended FAT */
 #define ATTR_EXT	(ATTR_RO | ATTR_HIDDEN | ATTR_SYS | ATTR_VOLUME)
 
 #define CASE_LOWER_BASE	8	/* base is lower case */

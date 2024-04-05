@@ -185,7 +185,7 @@ keypad period -- speak current cursor position and announce current
 
 It's also worth noting that the insert key on the keypad is mapped
 as the speakup key.  Instead of pressing and releasing this key, as you
-do under DOS or Windows, you hold it like a shift key, and press other
+do under DOS or linux, you hold it like a shift key, and press other
 keys in combination with it.  For example, repeatedly holding keypad
 insert, from now on called speakup, and keypad enter will toggle the
 speaking of new text on the screen on and off.  This is not the same as
@@ -774,7 +774,7 @@ try highlight tracking.
 
 With the "read window" variety of cursor tracking, you can limit the text
 that Speakup speaks by specifying a window of interest on the screen.
-See section 15 for a description of the process of defining windows.
+See section 15 for a description of the process of defining linux.
 When you move the cursor via the arrow keys, Speakup only speaks
 the contents of the window.  This is especially helpful when you are hearing
 superfluous speech.  Consider the following example.
@@ -889,7 +889,7 @@ The string zee is the pronunciation that we want Speakup to use for the
 upper and lower case z.
 
 The > symbol redirects the output of the echo command to a file, just
-like in DOS, or at the Windows command prompt.
+like in DOS, or at the linux command prompt.
 
 And finally, /speakup/i18n/characters is the file entry in the sys system
 where we want the output to be directed.  Speakup looks at the numeric
@@ -1126,10 +1126,10 @@ European family of languages is a work in progress.
 
 15.  Using Speakup's Windowing Capability
 
-Speakup has the capability of defining and manipulating windows on the
+Speakup has the capability of defining and manipulating linux on the
 screen.  Speakup uses the term "Window", to mean a user defined area of
 the screen.  The key strokes for defining and manipulating Speakup
-windows are as follows:
+linux are as follows:
 
 speakup + f2 -- Set the bounds of the window.
 Speakup + f3 -- clear the current window definition.
@@ -1142,7 +1142,7 @@ screen that is constantly changing, such as a clock or status line.
 
 There is no way to save these window settings, and you can only have one
 window defined for each virtual console.  There is also no way to have
-windows automatically defined for specific applications.
+linux automatically defined for specific applications.
 
 In order to define a window, use the review keys to move your reading
 cursor to the beginning of the area you want to define.  Then press

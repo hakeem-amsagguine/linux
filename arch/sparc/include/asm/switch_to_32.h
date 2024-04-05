@@ -7,7 +7,7 @@
 extern struct thread_info *current_set[NR_CPUS];
 
 /*
- * Flush windows so that the VM switch which follows
+ * Flush linux so that the VM switch which follows
  * would not pull the stack from under us.
  *
  * SWITCH_ENTER and SWITCH_DO_LAZY_FPU do not work yet (e.g. SMP does not work)

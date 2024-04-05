@@ -34,7 +34,7 @@ Optional properties:
 - pcie-mem-aperture:	This optional property contains the aperture for
 			the memory region of the PCIe driver.
 			If it's defined, it must encode the base address and
-			size for the address decoding windows allocated for
+			size for the address decoding linux allocated for
 			the PCIe memory region.
 
 - pcie-io-aperture:	Just as explained for the above property, this
@@ -103,7 +103,7 @@ If S = 0xf, then:
 
 Following the above encoding, for each ranges entry for a MBus valid window
 (S = 0x0), an address decoding window is allocated. On the other side,
-entries for translation that do not correspond to valid windows (S = 0xf)
+entries for translation that do not correspond to valid linux (S = 0xf)
 are skipped.
 
 	soc {
@@ -195,19 +195,19 @@ unused.
 
 ** Window allocation policy
 
-The mbus-node ranges property defines a set of mbus windows that are expected
+The mbus-node ranges property defines a set of mbus linux that are expected
 to be set by the operating system and that are guaranteed to be free of overlaps
 with one another or with the system memory ranges.
 
 Each entry in the property refers to exactly one window. If the operating system
-chooses to use a different set of mbus windows, it must ensure that any address
+chooses to use a different set of mbus linux, it must ensure that any address
 translations performed from downstream devices are adapted accordingly.
 
-The operating system may insert additional mbus windows that do not conflict
+The operating system may insert additional mbus linux that do not conflict
 with the ones listed in the ranges, e.g. for mapping PCIe devices.
 As a special case, the internal register window must be set up by the boot
 loader at the address listed in the ranges property, since access to that region
-is needed to set up the other windows.
+is needed to set up the other linux.
 
 ** Example
 

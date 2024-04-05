@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# winucase_convert.pl -- convert "Windows 8 Upper Case Mapping Table.txt" to
+# winucase_convert.pl -- convert "linux 8 Upper Case Mapping Table.txt" to
 #                        a two-level set of C arrays.
 #
 #   Copyright 2013: Jeff Layton <jlayton@redhat.com>

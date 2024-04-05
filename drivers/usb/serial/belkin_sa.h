@@ -23,7 +23,7 @@
  *    I did not have a copy of the original work to support this
  *    adapter, so pardon any stupid mistakes.  All of the information
  *    I am using to write this driver was acquired by using a modified
- *    UsbSnoop on Windows2000.
+ *    UsbSnoop on linux2000.
  *
  */
 

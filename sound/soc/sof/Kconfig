@@ -207,7 +207,7 @@ config SND_SOC_SOF_DEBUG_ENABLE_DEBUGFS_CACHE
 	  memory -> DSP resource (memory, register, etc)
 	  before the audio DSP is suspended. This will increase the suspend
 	  latency and therefore should be used for debug purposes only.
-	  Say Y if you want to enable caching the memory windows.
+	  Say Y if you want to enable caching the memory linux.
 	  If unsure, select "N".
 
 config SND_SOC_SOF_DEBUG_ENABLE_FIRMWARE_TRACE

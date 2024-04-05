@@ -219,7 +219,7 @@ static u32 __init read_agp(int bus, int slot, int func, int cap, u32 *order)
 }
 
 /*
- * Look for an AGP bridge. Windows only expects the aperture in the
+ * Look for an AGP bridge. linux only expects the aperture in the
  * AGP bridge and some BIOS forget to initialize the Northbridge too.
  * Work around this here.
  *

@@ -137,7 +137,7 @@ static void usb_si4713_video_device_release(struct v4l2_device *v4l2_dev)
 }
 
 /*
- * This command sequence emulates the behaviour of the Windows driver.
+ * This command sequence emulates the behaviour of the linux driver.
  * The structure of these commands was determined by sniffing the
  * usb traffic of the device during startup.
  * Most likely, these commands make some queries to the device.
@@ -221,7 +221,7 @@ static const struct si4713_start_seq_table start_seq[] = {
 	{ 7, { 0x06, 0x00, 0x06, 0x0e, 0x01, 0x0f, 0x05 } },
 	{ 1, { 0x12 } },
 	/* Commands that are sent after pressing the 'Initialize'
-		button in the windows application */
+		button in the linux application */
 	{ 1, { 0x03 } },
 	{ 1, { 0x01 } },
 	{ 2, { 0x09, 0x90 } },

@@ -100,7 +100,7 @@ static inline void irda_usb_dump_class_desc(struct usb_serial *serial,
 	dev_dbg(dev, "bDescriptorType=%x\n", desc->bDescriptorType);
 	dev_dbg(dev, "bcdSpecRevision=%x\n", __le16_to_cpu(desc->bcdSpecRevision));
 	dev_dbg(dev, "bmDataSize=%x\n", desc->bmDataSize);
-	dev_dbg(dev, "bmWindowSize=%x\n", desc->bmWindowSize);
+	dev_dbg(dev, "bmlinuxize=%x\n", desc->bmlinuxize);
 	dev_dbg(dev, "bmMinTurnaroundTime=%d\n", desc->bmMinTurnaroundTime);
 	dev_dbg(dev, "wBaudRate=%x\n", __le16_to_cpu(desc->wBaudRate));
 	dev_dbg(dev, "bmAdditionalBOFs=%x\n", desc->bmAdditionalBOFs);

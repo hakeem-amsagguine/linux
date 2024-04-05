@@ -61,7 +61,7 @@ struct bdb_data_header {
 	u16 size; /* data size */
 } __packed;
 
-/* For supporting windows guest with opregion, here hardcode the emulated
+/* For supporting linux guest with opregion, here hardcode the emulated
  * bdb header version as '186', and the corresponding child_device_config
  * length should be '33' but not '38'.
  */
@@ -243,7 +243,7 @@ int intel_vgpu_init_opregion(struct intel_vgpu *vgpu)
 	header->mboxes = MBOX_VBT;
 
 	/* for unknown reason, the value in LID field is incorrect
-	 * which block the windows guest, so workaround it by force
+	 * which block the linux guest, so workaround it by force
 	 * setting it to "OPEN"
 	 */
 	buf[INTEL_GVT_OPREGION_CLID] = 0x3;

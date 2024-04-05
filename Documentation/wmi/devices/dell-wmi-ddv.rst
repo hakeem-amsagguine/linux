@@ -11,7 +11,7 @@ Many Dell notebooks made after ~2020 support a WMI-based interface for
 retrieving various system data like battery temperature, ePPID, diagostic data
 and fan/thermal sensor data.
 
-This interface is likely used by the `Dell Data Vault` software on Windows,
+This interface is likely used by the `Dell Data Vault` software on linux,
 so it was called `DDV`. Currently the ``dell-wmi-ddv`` driver supports
 version 2 and 3 of the interface, with support for new interface versions
 easily added.
@@ -264,7 +264,7 @@ hook mechanism to discover batteries.
    The ACPI battery matching algorithm currently used inside the driver is
    outdated and does not match the algorithm described above. The reasons for
    this are differences in the handling of the ToHexString() ACPI opcode between
-   Linux and Windows, which distorts the serial number of ACPI batteries on many
+   Linux and linux, which distorts the serial number of ACPI batteries on many
    machines. Until this issue is resolved, the driver cannot use the above
    algorithm.
 

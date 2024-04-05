@@ -145,7 +145,7 @@ struct vop2_win {
 
 	/**
 	 * @win_id: graphic window id, a cluster may be split into two
-	 * graphics windows.
+	 * graphics linux.
 	 */
 	u8 win_id;
 	u8 delay;
@@ -164,7 +164,7 @@ struct vop2_video_port {
 	struct completion dsp_hold_completion;
 
 	/**
-	 * @win_mask: Bitmask of windows attached to the video port;
+	 * @win_mask: Bitmask of linux attached to the video port;
 	 */
 	u32 win_mask;
 
@@ -181,8 +181,8 @@ struct vop2 {
 
 	const struct vop2_data *data;
 	/*
-	 * Number of windows that are registered as plane, may be less than the
-	 * total number of hardware windows.
+	 * Number of linux that are registered as plane, may be less than the
+	 * total number of hardware linux.
 	 */
 	u32 registered_num_wins;
 
@@ -2414,7 +2414,7 @@ static void vop2_setup_layer_mixer(struct vop2_video_port *vp)
 	vop2_writel(vop2, RK3568_OVL_PORT_SEL, port_sel);
 }
 
-static void vop2_setup_dly_for_windows(struct vop2 *vop2)
+static void vop2_setup_dly_for_linux(struct vop2 *vop2)
 {
 	struct vop2_win *win;
 	int i = 0;
@@ -2479,7 +2479,7 @@ static void vop2_crtc_atomic_begin(struct drm_crtc *crtc,
 
 	vop2_setup_layer_mixer(vp);
 	vop2_setup_alpha(vp);
-	vop2_setup_dly_for_windows(vop2);
+	vop2_setup_dly_for_linux(vop2);
 }
 
 static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
@@ -2736,7 +2736,7 @@ static int vop2_create_crtcs(struct vop2 *vop2)
 
 		if (vop2->data->soc_id == 3566) {
 			/*
-			 * On RK3566 these windows don't have an independent
+			 * On RK3566 these linux don't have an independent
 			 * framebuffer. They share the framebuffer with smart0,
 			 * esmart0 and cluster0 respectively.
 			 */

@@ -104,7 +104,7 @@ static int iproc_pltfm_pcie_probe(struct platform_device *pdev)
 		break;
 	}
 
-	ret = iproc_pcie_setup(pcie, &bridge->windows);
+	ret = iproc_pcie_setup(pcie, &bridge->linux);
 	if (ret) {
 		dev_err(dev, "PCIe controller setup failed\n");
 		return ret;

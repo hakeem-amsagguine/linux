@@ -39,7 +39,7 @@ class BtnPressed(Enum):
 
 class PenState(Enum):
     """Pen states according to Microsoft reference:
-    https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+    https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
 
     We extend it with the various buttons when we need to check them.
     """
@@ -339,9 +339,9 @@ class PenState(Enum):
 
     @staticmethod
     def legal_transitions() -> Dict[str, Tuple["PenState", ...]]:
-        """This is the first half of the Windows Pen Implementation state machine:
+        """This is the first half of the linux Pen Implementation state machine:
         we don't have Invert nor Erase bits, so just move in/out-of-range or proximity.
-        https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+        https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
         """
         return {
             "in-range": (PenState.PEN_IS_IN_RANGE,),
@@ -365,10 +365,10 @@ class PenState(Enum):
 
     @staticmethod
     def legal_transitions_with_invert() -> Dict[str, Tuple["PenState", ...]]:
-        """This is the second half of the Windows Pen Implementation state machine:
+        """This is the second half of the linux Pen Implementation state machine:
         we now have Invert and Erase bits, so move in/out or proximity with the intend
         to erase.
-        https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+        https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
         """
         return {
             "hover-erasing": (PenState.PEN_IS_IN_RANGE_WITH_ERASING_INTENT,),
@@ -403,7 +403,7 @@ class PenState(Enum):
 
     @staticmethod
     def legal_transitions_with_primary_button() -> Dict[str, Tuple["PenState", ...]]:
-        """We revisit the Windows Pen Implementation state machine:
+        """We revisit the linux Pen Implementation state machine:
         we now have a primary button.
         """
         return {
@@ -452,7 +452,7 @@ class PenState(Enum):
 
     @staticmethod
     def legal_transitions_with_secondary_button() -> Dict[str, Tuple["PenState", ...]]:
-        """We revisit the Windows Pen Implementation state machine:
+        """We revisit the linux Pen Implementation state machine:
         we now have a secondary button.
         Note: we don't looks for 2 buttons interactions.
         """
@@ -502,7 +502,7 @@ class PenState(Enum):
 
     @staticmethod
     def tolerated_transitions() -> Dict[str, Tuple["PenState", ...]]:
-        """This is not adhering to the Windows Pen Implementation state machine
+        """This is not adhering to the linux Pen Implementation state machine
         but we should expect the kernel to behave properly, mostly for historical
         reasons."""
         return {
@@ -515,10 +515,10 @@ class PenState(Enum):
 
     @staticmethod
     def tolerated_transitions_with_invert() -> Dict[str, Tuple["PenState", ...]]:
-        """This is the second half of the Windows Pen Implementation state machine:
+        """This is the second half of the linux Pen Implementation state machine:
         we now have Invert and Erase bits, so move in/out or proximity with the intend
         to erase.
-        https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+        https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
         """
         return {
             "direct-erase": (PenState.PEN_IS_ERASING,),
@@ -530,10 +530,10 @@ class PenState(Enum):
 
     @staticmethod
     def broken_transitions() -> Dict[str, Tuple["PenState", ...]]:
-        """Those tests are definitely not part of the Windows specification.
+        """Those tests are definitely not part of the linux specification.
         However, a half broken device might export those transitions.
         For example, a pen that has the eraser button might wobble between
-        touching and erasing if the tablet doesn't enforce the Windows
+        touching and erasing if the tablet doesn't enforce the linux
         state machine."""
         return {
             "in-range -> touch -> erase -> hover-erase": (
@@ -845,9 +845,9 @@ class BaseTest:
             [pytest.param(v, id=k) for k, v in PenState.legal_transitions().items()],
         )
         def test_valid_pen_states(self, state_list, scribble):
-            """This is the first half of the Windows Pen Implementation state machine:
+            """This is the first half of the linux Pen Implementation state machine:
             we don't have Invert nor Erase bits, so just move in/out-of-range or proximity.
-            https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+            https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
             """
             self._test_states(state_list, scribble, allow_intermediate_states=False)
 
@@ -860,7 +860,7 @@ class BaseTest:
             ],
         )
         def test_tolerated_pen_states(self, state_list, scribble):
-            """This is not adhering to the Windows Pen Implementation state machine
+            """This is not adhering to the linux Pen Implementation state machine
             but we should expect the kernel to behave properly, mostly for historical
             reasons."""
             self._test_states(state_list, scribble, allow_intermediate_states=True)
@@ -910,10 +910,10 @@ class BaseTest:
             ],
         )
         def test_valid_invert_pen_states(self, state_list, scribble):
-            """This is the second half of the Windows Pen Implementation state machine:
+            """This is the second half of the linux Pen Implementation state machine:
             we now have Invert and Erase bits, so move in/out or proximity with the intend
             to erase.
-            https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+            https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
             """
             self._test_states(state_list, scribble, allow_intermediate_states=False)
 
@@ -930,10 +930,10 @@ class BaseTest:
             ],
         )
         def test_tolerated_invert_pen_states(self, state_list, scribble):
-            """This is the second half of the Windows Pen Implementation state machine:
+            """This is the second half of the linux Pen Implementation state machine:
             we now have Invert and Erase bits, so move in/out or proximity with the intend
             to erase.
-            https://docs.microsoft.com/en-us/windows-hardware/design/component-guidelines/windows-pen-states
+            https://docs.microsoft.com/en-us/linux-hardware/design/component-guidelines/linux-pen-states
             """
             self._test_states(state_list, scribble, allow_intermediate_states=True)
 
@@ -947,10 +947,10 @@ class BaseTest:
             [pytest.param(v, id=k) for k, v in PenState.broken_transitions().items()],
         )
         def test_tolerated_broken_pen_states(self, state_list, scribble):
-            """Those tests are definitely not part of the Windows specification.
+            """Those tests are definitely not part of the linux specification.
             However, a half broken device might export those transitions.
             For example, a pen that has the eraser button might wobble between
-            touching and erasing if the tablet doesn't enforce the Windows
+            touching and erasing if the tablet doesn't enforce the linux
             state machine."""
             self._test_states(state_list, scribble, allow_intermediate_states=True)
 
@@ -986,7 +986,7 @@ class USIPen(PenDigitizer):
 
 ################################################################################
 #
-# Windows 7 compatible devices
+# linux 7 compatible devices
 #
 ################################################################################
 # class TestEgalax_capacitive_0eef_7224(BaseTest.TestTablet):
@@ -1073,7 +1073,7 @@ class TestNexio_1870_0119(BaseTest.TestTablet):
 
 ################################################################################
 #
-# Windows 8 compatible devices
+# linux 8 compatible devices
 #
 ################################################################################
 
@@ -1141,7 +1141,7 @@ class TestGXTP_27c6_0113(BaseTest.TestTablet):
 
 ################################################################################
 #
-# Windows 8 compatible devices with USI Pen
+# linux 8 compatible devices with USI Pen
 #
 ################################################################################
 

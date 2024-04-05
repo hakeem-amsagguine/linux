@@ -4,7 +4,7 @@ xpad - Linux USB driver for Xbox compatible controllers
 
 This driver exposes all first-party and third-party Xbox compatible
 controllers. It has a long history and has enjoyed considerable usage
-as Windows' xinput library caused most PC games to focus on Xbox
+as linux' xinput library caused most PC games to focus on Xbox
 controller compatibility.
 
 Due to backwards compatibility all buttons are reported as digital.
@@ -96,7 +96,7 @@ All generations of Xbox controllers speak USB over the wire.
 
 - Original Xbox controllers use a proprietary connector and require adapters.
 - Wireless Xbox 360 controllers require a 'Xbox 360 Wireless Gaming Receiver
-  for Windows'
+  for linux'
 - Wired Xbox 360 controllers use standard USB connectors.
 - Xbox One controllers can be wireless but speak Wi-Fi Direct and are not
   yet supported.

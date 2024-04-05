@@ -9,7 +9,7 @@ following file(s) to this directory.
 For DM04+/QQBOX LME2510C (Sharp 7395 Tuner)
 -------------------------------------------
 
-The Sharp 7395 driver can be found in windows/system32/drivers
+The Sharp 7395 driver can be found in linux/system32/drivers
 
 US2A0D.sys (dated 17 Mar 2009)
 
@@ -54,7 +54,7 @@ will produce dvb-usb-lme2510-lg.fw
 
 
 Other LG firmware can be extracted manually from US280D.sys
-only found in windows/system32/drivers
+only found in linux/system32/drivers
 
 dd if=US280D.sys ibs=1 skip=42360 count=3924 of=dvb-usb-lme2510-lg.fw
 
@@ -66,7 +66,7 @@ For DM04 LME2510C (LG Tuner)
 	dd if=US280D.sys ibs=1 skip=35200 count=3850 of=dvb-usb-lme2510c-lg.fw
 
 
-The Sharp 0194 tuner driver can be found in windows/system32/drivers
+The Sharp 0194 tuner driver can be found in linux/system32/drivers
 
 US290D.sys (dated 09 Apr 2009)
 
@@ -87,7 +87,7 @@ For LME2510C
 	dd if=US290D.sys ibs=1 skip=33152 count=3697 of=dvb-usb-lme2510c-s0194.fw
 
 
-The m88rs2000 tuner driver can be found in windows/system32/drivers
+The m88rs2000 tuner driver can be found in linux/system32/drivers
 
 US2B0D.sys (dated 29 Jun 2010)
 

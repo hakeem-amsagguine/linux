@@ -683,7 +683,7 @@ static bool process_mem_region(struct mem_vector *region,
  * where using that memory leads to crashes. Buggy vendor EFI code registers
  * for an event that triggers on SetVirtualAddressMap(). The handler assumes
  * that EFI_BOOT_SERVICES_DATA memory has not been touched by loader yet, which
- * is probably true for Windows.
+ * is probably true for linux.
  *
  * Preserve EFI_BOOT_SERVICES_* regions until after SetVirtualAddressMap().
  */

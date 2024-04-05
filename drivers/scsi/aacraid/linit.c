@@ -1166,7 +1166,7 @@ static int aac_cfg_open(struct inode *inode, struct file *file)
  *	@arg: argument
  *
  *	Handles a configuration ioctl. Currently this involves wrapping it
- *	up and feeding it into the nasty windowsalike glue layer.
+ *	up and feeding it into the nasty linuxalike glue layer.
  *
  *	Bugs: Needs locking against parallel ioctls lower down
  *	Bugs: Needs to handle hot plugging

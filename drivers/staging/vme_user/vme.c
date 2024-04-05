@@ -73,7 +73,7 @@ static struct vme_bridge *find_bridge(struct vme_resource *resource)
  * @dma: Pointer to variable to store physical address of allocation.
  *
  * Allocate a contiguous block of memory for use by the driver. This is used to
- * create the buffers for the slave windows.
+ * create the buffers for the slave linux.
  *
  * Return: Virtual address of allocation on success, NULL on failure.
  */

@@ -22,7 +22,7 @@
 
 /*
  * This driver provides a mechanism for enabling or disabling the read-write
- * property of specific windows into the ASPEED BMC's memory.
+ * property of specific linux into the ASPEED BMC's memory.
  *
  * A user can map a region of the BMC's memory as read-only or read-write, with
  * the caveat that once any region is mapped, all regions are unlocked for

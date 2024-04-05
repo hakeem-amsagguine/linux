@@ -635,7 +635,7 @@ bool dc_stream_configure_crc(struct dc *dc, struct dc_stream_state *stream,
 	param.dsc_mode = pipe->stream->timing.flags.DSC ? 1:0;
 	param.odm_mode = pipe->next_odm_pipe ? 1:0;
 
-	/* Default to the union of both windows */
+	/* Default to the union of both linux */
 	param.selection = UNION_WINDOW_A_B;
 	param.continuous_mode = continuous;
 	param.enable = enable;

@@ -8,7 +8,7 @@
 /*
  * Fireworks have its own transaction. The transaction can be delivered by AV/C
  * Vendor Specific command frame or usual asynchronous transaction. At least,
- * Windows driver and firmware version 5.5 or later don't use AV/C command.
+ * linux driver and firmware version 5.5 or later don't use AV/C command.
  *
  * Transaction substance:
  *  At first, 6 data exist. Following to the data, parameters for each command

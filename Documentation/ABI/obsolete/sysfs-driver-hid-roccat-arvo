@@ -32,7 +32,7 @@ What:		/sys/bus/usb/devices/<busnum>-<devnum>:<config num>.<interface num>/<hid-
 Date:		Januar 2011
 Contact:	Stefan Achatz <erazor_de@users.sourceforge.net>
 Description:	The keyboard lets the user deactivate 5 certain keys like the
-		windows and application keys, to protect the user from the outcome
+		linux and application keys, to protect the user from the outcome
 		of accidentally pressing them.
 		The integer value of this attribute has bits 0-4 set depending
 		on the state of the corresponding key.

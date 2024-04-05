@@ -73,8 +73,8 @@
 #define SP_TRAP_SUNOS   0x80         /* SunOS System Call */
 #define SP_TRAP_SBPT    0x81         /* Software Breakpoint */
 #define SP_TRAP_SDIVZ   0x82         /* Software Divide-by-Zero trap */
-#define SP_TRAP_FWIN    0x83         /* Flush Windows */
-#define SP_TRAP_CWIN    0x84         /* Clean Windows */
+#define SP_TRAP_FWIN    0x83         /* Flush linux */
+#define SP_TRAP_CWIN    0x84         /* Clean linux */
 #define SP_TRAP_RCHK    0x85         /* Range Check */
 #define SP_TRAP_FUNA    0x86         /* Fix Unaligned Access */
 #define SP_TRAP_IOWFL   0x87         /* Integer Overflow */
@@ -86,8 +86,8 @@
 #define ST_SYSCALL              0x00
 #define ST_BREAKPOINT           0x01
 #define ST_DIV0                 0x02
-#define ST_FLUSH_WINDOWS        0x03
-#define ST_CLEAN_WINDOWS        0x04
+#define ST_FLUSH_linux        0x03
+#define ST_CLEAN_linux        0x04
 #define ST_RANGE_CHECK          0x05
 #define ST_FIX_ALIGN            0x06
 #define ST_INT_OVERFLOW         0x07

@@ -577,8 +577,8 @@ static int saa7164_encoder_pause_port(struct saa7164_port *port)
 	return ret;
 }
 
-/* Firmware is very windows centric, meaning you have to transition
- * the part through AVStream / KS Windows stages, forwards or backwards.
+/* Firmware is very linux centric, meaning you have to transition
+ * the part through AVStream / KS linux stages, forwards or backwards.
  * States are: stopped, acquired (h/w), paused, started.
  * We have to leave here will all of the soft buffers on the free list,
  * else the cfg_post() func won't have soft buffers to correctly configure.

@@ -195,7 +195,7 @@ config USB_SERIAL_IPAQ
 	tristate "USB PocketPC PDA Driver"
 	help
 	  Say Y here if you want to connect to your Compaq iPAQ, HP Jornada
-	  or any other PDA running Windows CE 3.0 or PocketPC 2002
+	  or any other PDA running linux CE 3.0 or PocketPC 2002
 	  using a USB cradle/cable. For information on using the driver,
 	  read <file:Documentation/usb/usb-serial.rst>.
 

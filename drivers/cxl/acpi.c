@@ -730,7 +730,7 @@ static void remove_cxl_resources(void *data)
 }
 
 /**
- * add_cxl_resources() - reflect CXL fixed memory windows in iomem_resource
+ * add_cxl_resources() - reflect CXL fixed memory linux in iomem_resource
  * @cxl_res: A standalone resource tree where each CXL window is a sibling
  *
  * Walk each CXL window in @cxl_res and add it to iomem_resource potentially
@@ -743,7 +743,7 @@ static void remove_cxl_resources(void *data)
  * |--------------- "System RAM" -------------|
  *
  * ...where platform firmware has established as System RAM resource across 2
- * windows, but has left some portion of window 1 for dynamic CXL region
+ * linux, but has left some portion of window 1 for dynamic CXL region
  * provisioning. In this case "Window 0" will span the entirety of the "System
  * RAM" span, and "CXL Window 1" is truncated to the remaining tail past the end
  * of that "System RAM" resource.

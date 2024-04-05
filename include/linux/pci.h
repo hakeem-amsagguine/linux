@@ -107,12 +107,12 @@ enum {
 	PCI_IOV_RESOURCE_END = PCI_IOV_RESOURCES + PCI_SRIOV_NUM_BARS - 1,
 #endif
 
-/* PCI-to-PCI (P2P) bridge windows */
+/* PCI-to-PCI (P2P) bridge linux */
 #define PCI_BRIDGE_IO_WINDOW		(PCI_BRIDGE_RESOURCES + 0)
 #define PCI_BRIDGE_MEM_WINDOW		(PCI_BRIDGE_RESOURCES + 1)
 #define PCI_BRIDGE_PREF_MEM_WINDOW	(PCI_BRIDGE_RESOURCES + 2)
 
-/* CardBus bridge windows */
+/* CardBus bridge linux */
 #define PCI_CB_BRIDGE_IO_0_WINDOW	(PCI_BRIDGE_RESOURCES + 0)
 #define PCI_CB_BRIDGE_IO_1_WINDOW	(PCI_BRIDGE_RESOURCES + 1)
 #define PCI_CB_BRIDGE_MEM_0_WINDOW	(PCI_BRIDGE_RESOURCES + 2)
@@ -456,7 +456,7 @@ struct pci_dev {
 	 */
 	unsigned int	external_facing:1;
 	unsigned int	broken_intx_masking:1;	/* INTx masking can't be used */
-	unsigned int	io_window_1k:1;		/* Intel bridge 1K I/O windows */
+	unsigned int	io_window_1k:1;		/* Intel bridge 1K I/O linux */
 	unsigned int	irq_managed:1;
 	unsigned int	non_compliant_bars:1;	/* Broken BARs; ignore them */
 	unsigned int	is_probed:1;		/* Device probing in progress */
@@ -568,7 +568,7 @@ struct pci_host_bridge {
 	void		*sysdata;
 	int		busnr;
 	int		domain_nr;
-	struct list_head windows;	/* resource_entry */
+	struct list_head linux;	/* resource_entry */
 	struct list_head dma_ranges;	/* dma ranges resource list */
 	u8 (*swizzle_irq)(struct pci_dev *, u8 *); /* Platform IRQ swizzler */
 	int (*map_irq)(const struct pci_dev *, u8, u8);
@@ -585,7 +585,7 @@ struct pci_host_bridge {
 	unsigned int	native_dpc:1;		/* OS may use PCIe DPC */
 	unsigned int	native_cxl_error:1;	/* OS may use CXL RAS/Events */
 	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
-	unsigned int	size_windows:1;		/* Enable root bus sizing */
+	unsigned int	size_linux:1;		/* Enable root bus sizing */
 	unsigned int	msi_domain:1;		/* Bridge wants MSI domain */
 
 	/* Resource alignment requirements */
@@ -623,7 +623,7 @@ int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge);
 
 /*
  * The first PCI_BRIDGE_RESOURCE_NUM PCI bus resources (those that correspond
- * to P2P or CardBus bridge windows) go in a table.  Additional ones (for
+ * to P2P or CardBus bridge linux) go in a table.  Additional ones (for
  * buses below host bridges or subtractive decode bridges) go in the list.
  * Use pci_bus_for_each_resource() to iterate through all the resources.
  */
@@ -631,7 +631,7 @@ int pcibios_root_bridge_prepare(struct pci_host_bridge *bridge);
 /*
  * PCI_SUBTRACTIVE_DECODE means the bridge forwards the window implicitly
  * and there's no way to program the bridge with the details of the window.
- * This does not apply to ACPI _CRS windows, even with the _DEC subtractive-
+ * This does not apply to ACPI _CRS linux, even with the _DEC subtractive-
  * decode bit set, because they are explicit and can be programmed with _SRS.
  */
 #define PCI_SUBTRACTIVE_DECODE	0x1

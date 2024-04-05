@@ -87,7 +87,7 @@ enum {
 	CMD_STAT_BAD_QP_STATE   = 0x10,
 	/* Bad segment parameters (Address/Size): */
 	CMD_STAT_BAD_SEG_PARAM	= 0x20,
-	/* Memory Region has Memory Windows bound to: */
+	/* Memory Region has Memory linux bound to: */
 	CMD_STAT_REG_BOUND	= 0x21,
 	/* HCA local attached memory not present: */
 	CMD_STAT_LAM_NOT_PRE	= 0x22,
@@ -230,7 +230,7 @@ static int mlx4_closing_cmd_fatal_error(u16 op, u8 fw_status)
 		return 1;
 	/* Error on MLX4_CMD_HW2SW_MPT is fatal except when fw status equals
 	  * CMD_STAT_REG_BOUND.
-	  * This status indicates that memory region has memory windows bound to it
+	  * This status indicates that memory region has memory linux bound to it
 	  * which may result from invalid user space usage and is not fatal.
 	  */
 	if (op == MLX4_CMD_HW2SW_MPT && fw_status != CMD_STAT_REG_BOUND)

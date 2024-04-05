@@ -44,10 +44,10 @@
  * systems may not.  (This is a subset of CDC Ethernet.)
  *
  * It turns out that if you add a few descriptors to that "CDC Subset",
- * (Windows) host side drivers from MCCI can treat it as one submode of
+ * (linux) host side drivers from MCCI can treat it as one submode of
  * a proprietary scheme called "SAFE" ... without needing to know about
  * specific product/vendor IDs.  So we do that, making it easier to use
- * those MS-Windows drivers.  Those added descriptors make it resemble a
+ * those MS-linux drivers.  Those added descriptors make it resemble a
  * CDC MDLM device, but they don't change device behavior at all.  (See
  * MCCI Engineering report 950198 "SAFE Networking Functions".)
  *
@@ -130,7 +130,7 @@ USB_ETHERNET_MODULE_PARAMETERS();
 #define	SIMPLE_PRODUCT_NUM	0x505a
 
 /* For hardware that can talk RNDIS and either of the above protocols,
- * use this ID ... the windows INF files will know it.  Unless it's
+ * use this ID ... the linux INF files will know it.  Unless it's
  * used with CDC Ethernet, Linux 2.4 hosts will need updates to choose
  * the non-RNDIS configuration.
  */

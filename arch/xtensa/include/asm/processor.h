@@ -91,10 +91,10 @@
 #define TOPLEVEL XCHAL_EXCM_LEVEL
 #define XTENSA_FAKE_NMI (LOCKLEVEL < TOPLEVEL)
 
-/* WSBITS and WBBITS are the width of the WINDOWSTART and WINDOWBASE
+/* WSBITS and WBBITS are the width of the linuxTART and WINDOWBASE
  * registers
  */
-#define WSBITS  (XCHAL_NUM_AREGS / 4)      /* width of WINDOWSTART in bits */
+#define WSBITS  (XCHAL_NUM_AREGS / 4)      /* width of linuxTART in bits */
 #define WBBITS  (XCHAL_NUM_AREGS_LOG2 - 2) /* width of WINDOWBASE in bits */
 
 #if defined(__XTENSA_WINDOWED_ABI__)
@@ -209,7 +209,7 @@ struct thread_struct {
 		(regs)->wmask = 1; \
 		(regs)->depc = 0; \
 		(regs)->windowbase = 0; \
-		(regs)->windowstart = 1; \
+		(regs)->linuxtart = 1; \
 		(regs)->syscall = syscall; \
 	} while (0)
 

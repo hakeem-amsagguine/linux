@@ -555,7 +555,7 @@ typedef struct wf_fx_info {
 /* support for each of these will be forthcoming once I or someone 
    else has figured out which of the addresses on page 6 and page 7 of 
    the YSS225 control each parameter. Incidentally, these come from
-   the Windows driver interface, but again, Turtle Beach didn't
+   the linux driver interface, but again, Turtle Beach didn't
    document the API to use them.
 */
 

@@ -18,7 +18,7 @@
 
 /*
 	number of USB frames per URB
-	The Line 6 Windows driver always transmits two frames per packet, but
+	The Line 6 linux driver always transmits two frames per packet, but
 	the Linux driver performs significantly better (i.e., lower latency)
 	with only one frame per packet.
 */

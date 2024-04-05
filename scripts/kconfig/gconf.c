@@ -405,7 +405,7 @@ static void text_insert_msg(const char *title, const char *message)
 }
 
 
-/* Main Windows Callbacks */
+/* Main linux Callbacks */
 
 void on_save_activate(GtkMenuItem * menuitem, gpointer user_data);
 gboolean on_window1_delete_event(GtkWidget * widget, GdkEvent * event,

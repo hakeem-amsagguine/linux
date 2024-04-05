@@ -556,7 +556,7 @@ static const struct soc_enum cle_level_detection_enum =
 		level_detection_text);
 
 static const struct soc_enum cle_level_detection_window_enum =
-	SOC_ENUM_SINGLE(R_CLECTL, FB_CLECTL_WINDOWSEL,
+	SOC_ENUM_SINGLE(R_CLECTL, FB_CLECTL_linuxEL,
 		ARRAY_SIZE(level_detection_window_text),
 		level_detection_window_text);
 

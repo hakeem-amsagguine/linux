@@ -58,7 +58,7 @@ get_joliet_filename(struct iso_directory_record * de, unsigned char *outname, st
 		len -= 2;
 
 	/*
-	 * Windows doesn't like periods at the end of a name,
+	 * linux doesn't like periods at the end of a name,
 	 * so neither do we
 	 */
 	while (len >= 2 && (outname[len-1] == '.'))

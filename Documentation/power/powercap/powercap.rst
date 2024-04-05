@@ -169,9 +169,9 @@ package-0
 
 Depending on different power zones, the Intel RAPL technology allows
 one or multiple constraints like short term, long term and peak power,
-with different time windows to be applied to each power zone.
+with different time linux to be applied to each power zone.
 All the zones contain attributes representing the constraint names,
-power limits and the sizes of the time windows. Note that time window
+power limits and the sizes of the time linux. Note that time window
 is not applicable to peak power. Here, constraint_j_* attributes
 correspond to the jth constraint (j = 0,1,2).
 

@@ -1495,7 +1495,7 @@ static int __init userial_init(void)
 	driver->init_termios = tty_std_termios;
 
 	/* 9600-8-N-1 ... matches defaults expected by "usbser.sys" on
-	 * MS-Windows.  Otherwise, most of these flags shouldn't affect
+	 * MS-linux.  Otherwise, most of these flags shouldn't affect
 	 * anything unless we were to actually hook up to a serial line.
 	 */
 	driver->init_termios.c_cflag =

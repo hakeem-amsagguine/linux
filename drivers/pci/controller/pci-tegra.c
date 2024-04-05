@@ -832,7 +832,7 @@ static void tegra_pcie_setup_translations(struct tegra_pcie *pcie)
 	afi_writel(pcie, pcie->cs.start, AFI_AXI_BAR0_START);
 	afi_writel(pcie, size >> 12, AFI_AXI_BAR0_SZ);
 
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		u32 fpci_bar, axi_address;
 		struct resource *res = entry->res;
 

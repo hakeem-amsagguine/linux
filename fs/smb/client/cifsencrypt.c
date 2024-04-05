@@ -725,7 +725,7 @@ setup_ntlmv2_rsp(struct cifs_ses *ses, const struct nls_table *nls_cp)
 
 	/* Must be within 5 minutes of the server (or in range +/-2h
 	 * in case of Mac OS X), so simply carry over server timestamp
-	 * (as Windows 7 does)
+	 * (as linux 7 does)
 	 */
 	rsp_timestamp = find_timestamp(ses);
 

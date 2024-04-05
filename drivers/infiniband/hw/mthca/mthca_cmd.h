@@ -68,7 +68,7 @@ enum {
 	MTHCA_CMD_STAT_BAD_QPEE_STATE = 0x10,
 	/* Bad segment parameters (Address/Size): */
 	MTHCA_CMD_STAT_BAD_SEG_PARAM  = 0x20,
-	/* Memory Region has Memory Windows bound to: */
+	/* Memory Region has Memory linux bound to: */
 	MTHCA_CMD_STAT_REG_BOUND      = 0x21,
 	/* HCA local attached memory not present: */
 	MTHCA_CMD_STAT_LAM_NOT_PRE    = 0x22,

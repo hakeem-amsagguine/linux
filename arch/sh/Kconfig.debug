@@ -10,7 +10,7 @@ config SH_STANDARD_BIOS
 	  write characters to a system console, get a MAC address from an
 	  on-board Ethernet interface, and shut down the hardware).  Note this
 	  does not work with machines with an existing operating system in
-	  mask ROM and no flash (WindowsCE machines fall in this category).
+	  mask ROM and no flash (linuxCE machines fall in this category).
 	  If unsure, say N.
 
 config STACK_DEBUG

@@ -17,7 +17,7 @@ data can still be stored and retrieved in the proprietary format. For
 example, a device may support a proprietary compressed format.
 Applications can still capture and save the data in the compressed
 format, saving much disk space, and later use a codec to convert the
-images to the X Windows screen format when the video is to be displayed.
+images to the X linux screen format when the video is to be displayed.
 
 Even so, ultimately, some standard formats are needed, so the V4L2
 specification would not be complete without well-defined standard
@@ -38,7 +38,7 @@ In V4L2 each format has an identifier which looks like ``PIX_FMT_XXX``,
 defined in the :ref:`videodev2.h <videodev>` header file. These
 identifiers represent
 :ref:`four character (FourCC) codes <v4l2-fourcc>` which are also
-listed below, however they are not the same as those used in the Windows
+listed below, however they are not the same as those used in the linux
 world.
 
 For some formats, data is stored in separate, discontiguous memory

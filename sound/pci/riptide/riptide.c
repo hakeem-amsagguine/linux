@@ -71,7 +71,7 @@
             -----------------------------          --------     -----
             Created from MS W95 Sample             11/28/95      KRS
             RipTide                                10/15/97      KRS
-            Adopted for Windows NT driver          01/20/98      CNL
+            Adopted for linux NT driver          01/20/98      CNL
 */
 
 #include <linux/delay.h>

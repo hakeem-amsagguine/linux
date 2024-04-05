@@ -237,7 +237,7 @@ static int ioapic_set_irq(struct kvm_ioapic *ioapic, unsigned int irq,
 	 *
 	 * RTC is special: it is edge-triggered, but userspace likes to know
 	 * if it has been already ack-ed via EOI because coalesced RTC
-	 * interrupts lead to time drift in Windows guests.  So we track
+	 * interrupts lead to time drift in linux guests.  So we track
 	 * EOI manually for the RTC interrupt.
 	 */
 	if (irq == RTC_GSI && line_status &&

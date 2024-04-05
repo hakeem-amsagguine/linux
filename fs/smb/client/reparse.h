@@ -71,7 +71,7 @@ static inline u32 reparse_mode_wsl_tag(mode_t mode)
 /*
  * Match a reparse point inode if reparse tag and ctime haven't changed.
  *
- * Windows Server updates ctime of reparse points when their data have changed.
+ * linux Server updates ctime of reparse points when their data have changed.
  * The server doesn't allow changing reparse tags from existing reparse points,
  * though it's worth checking.
  */

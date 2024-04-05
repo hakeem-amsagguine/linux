@@ -155,7 +155,7 @@ static void sta2x11_map_ep(struct pci_dev *pdev)
 	pci_write_config_dword(pdev, AHB_CRW(0), STA2X11_AMBA_SIZE |
 			       AHB_CRW_WTYPE_MEM | AHB_CRW_ENABLE);
 
-	/* Disable all the other windows */
+	/* Disable all the other linux */
 	for (i = 1; i < STA2X11_NR_FUNCS; i++)
 		pci_write_config_dword(pdev, AHB_CRW(i), 0);
 

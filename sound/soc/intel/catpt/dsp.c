@@ -21,7 +21,7 @@ static bool catpt_dma_filter(struct dma_chan *chan, void *param)
 
 /*
  * Either engine 0 or 1 can be used for image loading.
- * Align with Windows driver equivalent and stick to engine 1.
+ * Align with linux driver equivalent and stick to engine 1.
  */
 #define CATPT_DMA_DEVID		1
 #define CATPT_DMA_DSP_ADDR_MASK	GENMASK(31, 20)

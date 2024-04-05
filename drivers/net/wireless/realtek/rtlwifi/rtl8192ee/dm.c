@@ -303,7 +303,7 @@ static void rtl92ee_rssi_dump_to_register(struct ieee80211_hw *hw)
 	rtl_write_byte(rtlpriv, RB_RSSIDUMP,
 		       rtlpriv->stats.rx_rssi_percentage[1]);
 	/*It seems the following values are not initialized.
-	  *According to Windows code,
+	  *According to linux code,
 	  *these value will only be valid with JAGUAR chips
 	  */
 	/* Rx EVM */

@@ -1019,7 +1019,7 @@ int intel_ntb_link_disable(struct ntb_dev *ntb)
 
 int intel_ntb_peer_mw_count(struct ntb_dev *ntb)
 {
-	/* Numbers of inbound and outbound memory windows match */
+	/* Numbers of inbound and outbound memory linux match */
 	return ntb_ndev(ntb)->mw_count;
 }
 
@@ -1433,7 +1433,7 @@ static int xeon_setup_b2b_mw(struct intel_ntb_dev *ndev,
 		dev_dbg(&pdev->dev, "SBAR5 %#010llx\n", bar_addr);
 	}
 
-	/* setup incoming bar limits == base addrs (zero length windows) */
+	/* setup incoming bar limits == base addrs (zero length linux) */
 
 	bar_addr = addr->bar2_addr64 + (b2b_bar == 2 ? ndev->b2b_off : 0);
 	iowrite64(bar_addr, mmio + XEON_SBAR23LMT_OFFSET);
@@ -1470,7 +1470,7 @@ static int xeon_setup_b2b_mw(struct intel_ntb_dev *ndev,
 		iowrite32(0, mmio + XEON_SBAR5XLAT_OFFSET);
 	}
 
-	/* zero outgoing translation limits (whole bar size windows) */
+	/* zero outgoing translation limits (whole bar size linux) */
 	iowrite64(0, mmio + XEON_PBAR23LMT_OFFSET);
 	if (!ndev->bar4_split) {
 		iowrite64(0, mmio + XEON_PBAR45LMT_OFFSET);

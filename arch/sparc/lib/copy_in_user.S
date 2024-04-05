@@ -42,7 +42,7 @@ __retl_o2_plus_1:
 	/* Don't try to get too fancy here, just nice and
 	 * simple.  This is predominantly used for well aligned
 	 * small copies in the compat layer.  It is also used
-	 * to copy register windows around during thread cloning.
+	 * to copy register linux around during thread cloning.
 	 */
 
 ENTRY(raw_copy_in_user)	/* %o0=dst, %o1=src, %o2=len */

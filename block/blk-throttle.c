@@ -1210,7 +1210,7 @@ again:
 		if (throtl_schedule_next_dispatch(sq, false))
 			break;
 
-		/* this dispatch windows is still open, relax and repeat */
+		/* this dispatch linux is still open, relax and repeat */
 		spin_unlock_irq(&q->queue_lock);
 		cpu_relax();
 		spin_lock_irq(&q->queue_lock);

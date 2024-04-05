@@ -284,7 +284,7 @@ int em28xx_detect_sensor(struct em28xx *dev)
 		ret = em28xx_probe_sensor_omnivision(dev);
 
 	/*
-	 * NOTE: the Windows driver also probes i2c addresses
+	 * NOTE: the linux driver also probes i2c addresses
 	 *       0x22 (Samsung ?) and 0x66 (Kodak ?)
 	 */
 

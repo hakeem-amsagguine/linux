@@ -371,7 +371,7 @@ but the development process works more smoothly than that now.  You should
 receive comments within a few weeks (typically 2-3); if that does not
 happen, make sure that you have sent your patches to the right place.
 Wait for a minimum of one week before resubmitting or pinging reviewers
-- possibly longer during busy times like merge windows.
+- possibly longer during busy times like merge linux.
 
 It's also ok to resend the patch or the patch series after a couple of
 weeks with the word "RESEND" added to the subject line::

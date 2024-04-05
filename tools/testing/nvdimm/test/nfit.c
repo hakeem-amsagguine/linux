@@ -2345,7 +2345,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[0];
 	dcr->code = NFIT_FIC_BLK;
-	dcr->windows = 1;
+	dcr->linux = 1;
 	dcr->window_size = DCR_SIZE;
 	dcr->command_offset = 0;
 	dcr->command_size = 8;
@@ -2361,7 +2361,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[1];
 	dcr->code = NFIT_FIC_BLK;
-	dcr->windows = 1;
+	dcr->linux = 1;
 	dcr->window_size = DCR_SIZE;
 	dcr->command_offset = 0;
 	dcr->command_size = 8;
@@ -2377,7 +2377,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[2];
 	dcr->code = NFIT_FIC_BLK;
-	dcr->windows = 1;
+	dcr->linux = 1;
 	dcr->window_size = DCR_SIZE;
 	dcr->command_offset = 0;
 	dcr->command_size = 8;
@@ -2393,7 +2393,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[3];
 	dcr->code = NFIT_FIC_BLK;
-	dcr->windows = 1;
+	dcr->linux = 1;
 	dcr->window_size = DCR_SIZE;
 	dcr->command_offset = 0;
 	dcr->command_size = 8;
@@ -2410,7 +2410,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[0];
 	dcr->code = NFIT_FIC_BYTEN;
-	dcr->windows = 0;
+	dcr->linux = 0;
 	offset += dcr->header.length;
 
 	/* dcr-descriptor1: pmem */
@@ -2422,7 +2422,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[1];
 	dcr->code = NFIT_FIC_BYTEN;
-	dcr->windows = 0;
+	dcr->linux = 0;
 	offset += dcr->header.length;
 
 	/* dcr-descriptor2: pmem */
@@ -2434,7 +2434,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[2];
 	dcr->code = NFIT_FIC_BYTEN;
-	dcr->windows = 0;
+	dcr->linux = 0;
 	offset += dcr->header.length;
 
 	/* dcr-descriptor3: pmem */
@@ -2446,7 +2446,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[3];
 	dcr->code = NFIT_FIC_BYTEN;
-	dcr->windows = 0;
+	dcr->linux = 0;
 	offset += dcr->header.length;
 
 	/* bdw0 (spa/dcr0, dimm0) */
@@ -2454,7 +2454,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	bdw->header.type = ACPI_NFIT_TYPE_DATA_REGION;
 	bdw->header.length = sizeof(*bdw);
 	bdw->region_index = 0+1;
-	bdw->windows = 1;
+	bdw->linux = 1;
 	bdw->offset = 0;
 	bdw->size = BDW_SIZE;
 	bdw->capacity = DIMM_SIZE;
@@ -2466,7 +2466,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	bdw->header.type = ACPI_NFIT_TYPE_DATA_REGION;
 	bdw->header.length = sizeof(*bdw);
 	bdw->region_index = 1+1;
-	bdw->windows = 1;
+	bdw->linux = 1;
 	bdw->offset = 0;
 	bdw->size = BDW_SIZE;
 	bdw->capacity = DIMM_SIZE;
@@ -2478,7 +2478,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	bdw->header.type = ACPI_NFIT_TYPE_DATA_REGION;
 	bdw->header.length = sizeof(*bdw);
 	bdw->region_index = 2+1;
-	bdw->windows = 1;
+	bdw->linux = 1;
 	bdw->offset = 0;
 	bdw->size = BDW_SIZE;
 	bdw->capacity = DIMM_SIZE;
@@ -2490,7 +2490,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 	bdw->header.type = ACPI_NFIT_TYPE_DATA_REGION;
 	bdw->header.length = sizeof(*bdw);
 	bdw->region_index = 3+1;
-	bdw->windows = 1;
+	bdw->linux = 1;
 	bdw->offset = 0;
 	bdw->size = BDW_SIZE;
 	bdw->capacity = DIMM_SIZE;
@@ -2554,7 +2554,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 		dcr_common_init(dcr);
 		dcr->serial_number = ~handle[4];
 		dcr->code = NFIT_FIC_BLK;
-		dcr->windows = 1;
+		dcr->linux = 1;
 		dcr->window_size = DCR_SIZE;
 		dcr->command_offset = 0;
 		dcr->command_size = 8;
@@ -2571,7 +2571,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 		dcr_common_init(dcr);
 		dcr->serial_number = ~handle[4];
 		dcr->code = NFIT_FIC_BYTEN;
-		dcr->windows = 0;
+		dcr->linux = 0;
 		offset += dcr->header.length;
 
 		/* bdw4 (spa/dcr4, dimm4) */
@@ -2579,7 +2579,7 @@ static void nfit_test0_setup(struct nfit_test *t)
 		bdw->header.type = ACPI_NFIT_TYPE_DATA_REGION;
 		bdw->header.length = sizeof(*bdw);
 		bdw->region_index = 8+1;
-		bdw->windows = 1;
+		bdw->linux = 1;
 		bdw->offset = 0;
 		bdw->size = BDW_SIZE;
 		bdw->capacity = DIMM_SIZE;
@@ -2792,7 +2792,7 @@ static void nfit_test1_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[5];
 	dcr->code = NFIT_FIC_BYTE;
-	dcr->windows = 0;
+	dcr->linux = 0;
 	offset += dcr->header.length;
 
 	memdev = nfit_buf + offset;
@@ -2820,7 +2820,7 @@ static void nfit_test1_setup(struct nfit_test *t)
 	dcr_common_init(dcr);
 	dcr->serial_number = ~handle[6];
 	dcr->code = NFIT_FIC_BYTE;
-	dcr->windows = 0;
+	dcr->linux = 0;
 	offset += dcr->header.length;
 
 	/* sanity check to make sure we've filled the buffer */

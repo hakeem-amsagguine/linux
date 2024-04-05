@@ -947,7 +947,7 @@ static int snd_byt_rt5651_mc_probe(struct platform_device *pdev)
 	if (is_bytcr) {
 		/*
 		 * Baytrail CR platforms may have CHAN package in BIOS, try
-		 * to find relevant routing quirk based as done on Windows
+		 * to find relevant routing quirk based as done on linux
 		 * platforms. We have to read the information directly from the
 		 * BIOS, at this stage the card is not created and the links
 		 * with the codec driver/pdata are non-existent

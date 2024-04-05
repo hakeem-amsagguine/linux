@@ -252,7 +252,7 @@ static void al_pcie_config_prepare(struct al_pcie *pcie)
 	u8 secondary_bus;
 	u32 cfg_control;
 	u32 reg;
-	struct resource *bus = resource_list_first_type(&pp->bridge->windows, IORESOURCE_BUS)->res;
+	struct resource *bus = resource_list_first_type(&pp->bridge->linux, IORESOURCE_BUS)->res;
 
 	target_bus_cfg = &pcie->target_bus_cfg;
 

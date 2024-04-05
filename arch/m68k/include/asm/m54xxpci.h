@@ -93,7 +93,7 @@
 #define	PCICAR_DWORDN	0			/* Move dword bits */
 
 /*
- *	The initiator windows hold the memory and IO mapping information.
+ *	The initiator linux hold the memory and IO mapping information.
  *	This macro creates the register values from the desired addresses.
  */
 #define	WXBTAR(hostaddr, pciaddr, size)	\

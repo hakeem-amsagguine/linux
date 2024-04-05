@@ -63,7 +63,7 @@ struct pt_regs {
 	unsigned long lcount;		/*  40 */
 	unsigned long sar;		/*  44 */
 	unsigned long windowbase;	/*  48 */
-	unsigned long windowstart;	/*  52 */
+	unsigned long linuxtart;	/*  52 */
 	unsigned long syscall;		/*  56 */
 	unsigned long icountlevel;	/*  60 */
 	unsigned long scompare1;	/*  64 */

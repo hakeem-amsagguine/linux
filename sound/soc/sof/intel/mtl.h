@@ -64,7 +64,7 @@
 
 #define MTL_DSP_REG_POLL_INTERVAL_US	10	/* 10 us */
 
-/* Memory windows */
+/* Memory linux */
 #define MTL_SRAM_WINDOW_OFFSET(x)	(0x180000 + 0x8000 * (x))
 
 #define MTL_DSP_MBOX_UPLINK_OFFSET	(MTL_SRAM_WINDOW_OFFSET(0) + 0x1000)

@@ -5,10 +5,10 @@
  * Copyright (C) 2020 ARM Ltd.
  * Copyright (C) 2020 Linaro Ltd.
  *
- * An MHUv2 mailbox controller can provide up to 124 channel windows (each 32
+ * An MHUv2 mailbox controller can provide up to 124 channel linux (each 32
  * bit long) and the driver allows any combination of both the transport
  * protocol modes: data-transfer and doorbell, to be used on those channel
- * windows.
+ * linux.
  *
  * The transport protocols should be specified in the device tree entry for the
  * device. The transport protocols determine how the underlying hardware
@@ -16,7 +16,7 @@
  * device tree bindings of the ARM MHUv2 controller for more details.
  *
  * The number of registered mailbox channels is dependent on both the underlying
- * hardware - mainly the number of channel windows implemented by the platform,
+ * hardware - mainly the number of channel linux implemented by the platform,
  * as well as the selected transport protocols.
  *
  * The MHUv2 controller can work both as a sender and receiver, but the driver
@@ -35,7 +35,7 @@
 
 /* ====== MHUv2 Registers ====== */
 
-/* Maximum number of channel windows */
+/* Maximum number of channel linux */
 #define MHUV2_CH_WN_MAX			124
 /* Number of combined interrupt status registers */
 #define MHUV2_CMB_INT_ST_REG_CNT	4
@@ -164,7 +164,7 @@ enum mhuv2_frame {
  * @recv:	Base address of the register mapping region.
  * @frame:	Frame type: RECEIVER_FRAME or SENDER_FRAME.
  * @irq:	Interrupt.
- * @windows:	Channel windows implemented by the platform.
+ * @linux:	Channel linux implemented by the platform.
  * @minor:	Minor version of the controller.
  * @length:	Length of the protocols array in bytes.
  * @protocols:	Raw protocol information, derived from device tree.
@@ -179,7 +179,7 @@ struct mhuv2 {
 	};
 	enum mhuv2_frame frame;
 	unsigned int irq;
-	unsigned int windows;
+	unsigned int linux;
 	unsigned int minor;
 	unsigned int length;
 	u32 *protocols;
@@ -219,7 +219,7 @@ struct mhuv2_protocol_ops {
  *
  * @ops:	protocol specific ops for the channel.
  * @ch_wn_idx:	Channel window index allocated to the channel.
- * @windows:	Total number of windows consumed by the channel, only relevant
+ * @linux:	Total number of linux consumed by the channel, only relevant
  *		in DATA_TRANSFER protocol.
  * @doorbell:	Doorbell bit number within the ch_wn_idx window, only relevant
  *		in DOORBELL protocol.
@@ -230,7 +230,7 @@ struct mhuv2_mbox_chan_priv {
 	const struct mhuv2_protocol_ops *ops;
 	u32 ch_wn_idx;
 	union {
-		u32 windows;
+		u32 linux;
 		struct {
 			u32 doorbell;
 			u32 pending;
@@ -326,7 +326,7 @@ static int mhuv2_data_transfer_rx_startup(struct mhuv2 *mhu,
 					  struct mbox_chan *chan)
 {
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	int i = priv->ch_wn_idx + priv->windows - 1;
+	int i = priv->ch_wn_idx + priv->linux - 1;
 
 	/*
 	 * The protocol mandates that all but the last status register must be
@@ -340,7 +340,7 @@ static void mhuv2_data_transfer_rx_shutdown(struct mhuv2 *mhu,
 					    struct mbox_chan *chan)
 {
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	int i = priv->ch_wn_idx + priv->windows - 1;
+	int i = priv->ch_wn_idx + priv->linux - 1;
 
 	writel_relaxed(0xFFFFFFFF, &mhu->recv->ch_wn[i].mask_set);
 }
@@ -349,17 +349,17 @@ static void *mhuv2_data_transfer_read_data(struct mhuv2 *mhu,
 					   struct mbox_chan *chan)
 {
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	const int windows = priv->windows;
+	const int linux = priv->linux;
 	struct arm_mhuv2_mbox_msg *msg;
 	u32 *data;
 	int i, idx;
 
-	msg = kzalloc(sizeof(*msg) + windows * MHUV2_STAT_BYTES, GFP_KERNEL);
+	msg = kzalloc(sizeof(*msg) + linux * MHUV2_STAT_BYTES, GFP_KERNEL);
 	if (!msg)
 		return ERR_PTR(-ENOMEM);
 
 	data = msg->data = msg + 1;
-	msg->len = windows * MHUV2_STAT_BYTES;
+	msg->len = linux * MHUV2_STAT_BYTES;
 
 	/*
 	 * Messages are expected in order of most significant word to least
@@ -373,9 +373,9 @@ static void *mhuv2_data_transfer_read_data(struct mhuv2 *mhu,
 	 * clearing the last channel window register, which is unmasked in
 	 * data-transfer protocol, the interrupt is de-asserted.
 	 */
-	for (i = 0; i < windows; i++) {
+	for (i = 0; i < linux; i++) {
 		idx = priv->ch_wn_idx + i;
-		data[windows - 1 - i] = readl_relaxed(&mhu->recv->ch_wn[idx].stat);
+		data[linux - 1 - i] = readl_relaxed(&mhu->recv->ch_wn[idx].stat);
 		writel_relaxed(0xFFFFFFFF, &mhu->recv->ch_wn[idx].stat_clear);
 	}
 
@@ -386,7 +386,7 @@ static void mhuv2_data_transfer_tx_startup(struct mhuv2 *mhu,
 					   struct mbox_chan *chan)
 {
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	int i = priv->ch_wn_idx + priv->windows - 1;
+	int i = priv->ch_wn_idx + priv->linux - 1;
 
 	/* Enable interrupts only for the last window */
 	if (mhu->minor) {
@@ -399,7 +399,7 @@ static void mhuv2_data_transfer_tx_shutdown(struct mhuv2 *mhu,
 					    struct mbox_chan *chan)
 {
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	int i = priv->ch_wn_idx + priv->windows - 1;
+	int i = priv->ch_wn_idx + priv->linux - 1;
 
 	if (mhu->minor)
 		writel_relaxed(0x0, &mhu->send->ch_wn[i].int_en);
@@ -409,7 +409,7 @@ static int mhuv2_data_transfer_last_tx_done(struct mhuv2 *mhu,
 					    struct mbox_chan *chan)
 {
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	int i = priv->ch_wn_idx + priv->windows - 1;
+	int i = priv->ch_wn_idx + priv->linux - 1;
 
 	/* Just checking the last channel window should be enough */
 	return !readl_relaxed(&mhu->send->ch_wn[i].stat);
@@ -417,7 +417,7 @@ static int mhuv2_data_transfer_last_tx_done(struct mhuv2 *mhu,
 
 /*
  * Message will be transmitted from most significant to least significant word.
- * This is to allow for messages shorter than channel windows to still trigger
+ * This is to allow for messages shorter than channel linux to still trigger
  * the receiver interrupt which gets activated when the last stat register is
  * written. As an example, a 6-word message is to be written on a 4-channel MHU
  * connection: Registers marked with '*' are masked, and will not generate an
@@ -448,7 +448,7 @@ static int mhuv2_data_transfer_send_data(struct mhuv2 *mhu,
 	const struct arm_mhuv2_mbox_msg *msg = arg;
 	int bytes_left = msg->len, bytes_to_send, bytes_in_round, i;
 	struct mhuv2_mbox_chan_priv *priv = chan->con_priv;
-	int windows = priv->windows;
+	int linux = priv->linux;
 	u32 *data = msg->data, word;
 
 	while (bytes_left) {
@@ -460,10 +460,10 @@ static int mhuv2_data_transfer_send_data(struct mhuv2 *mhu,
 		while(!mhuv2_data_transfer_last_tx_done(mhu, chan))
 			continue;
 
-		bytes_in_round = min(bytes_left, (int)(windows * MHUV2_STAT_BYTES));
+		bytes_in_round = min(bytes_left, (int)(linux * MHUV2_STAT_BYTES));
 
-		for (i = windows - 1; i >= 0; i--) {
-			/* Data less than windows can transfer ? */
+		for (i = linux - 1; i >= 0; i--) {
+			/* Data less than linux can transfer ? */
 			if (unlikely(bytes_in_round <= i * MHUV2_STAT_BYTES))
 				continue;
 
@@ -474,12 +474,12 @@ static int mhuv2_data_transfer_send_data(struct mhuv2 *mhu,
 			else
 				bytes_to_send = MHUV2_STAT_BYTES;
 
-			writel_relaxed(word, &mhu->send->ch_wn[priv->ch_wn_idx + windows - 1 - i].stat_set);
+			writel_relaxed(word, &mhu->send->ch_wn[priv->ch_wn_idx + linux - 1 - i].stat_set);
 			bytes_left -= bytes_to_send;
 			bytes_in_round -= bytes_to_send;
 		}
 
-		data += windows;
+		data += linux;
 	}
 
 	return 0;
@@ -500,7 +500,7 @@ static const struct mhuv2_protocol_ops mhuv2_data_transfer_ops = {
 static struct mbox_chan *get_irq_chan_comb(struct mhuv2 *mhu, u32 __iomem *reg)
 {
 	struct mbox_chan *chans = mhu->mbox.chans;
-	int channel = 0, i, offset = 0, windows, protocol, ch_wn;
+	int channel = 0, i, offset = 0, linux, protocol, ch_wn;
 	u32 stat;
 
 	for (i = 0; i < MHUV2_CMB_INT_ST_REG_CNT; i++) {
@@ -512,15 +512,15 @@ static struct mbox_chan *get_irq_chan_comb(struct mhuv2 *mhu, u32 __iomem *reg)
 
 		for (i = 0; i < mhu->length; i += 2) {
 			protocol = mhu->protocols[i];
-			windows = mhu->protocols[i + 1];
+			linux = mhu->protocols[i + 1];
 
-			if (ch_wn >= offset + windows) {
+			if (ch_wn >= offset + linux) {
 				if (protocol == DOORBELL)
-					channel += MHUV2_STAT_BITS * windows;
+					channel += MHUV2_STAT_BITS * linux;
 				else
 					channel++;
 
-				offset += windows;
+				offset += linux;
 				continue;
 			}
 
@@ -553,7 +553,7 @@ static irqreturn_t mhuv2_sender_interrupt(int irq, void *data)
 	priv = chan->con_priv;
 
 	if (!IS_PROTOCOL_DOORBELL(priv)) {
-		for (i = 0; i < priv->windows; i++)
+		for (i = 0; i < priv->linux; i++)
 			writel_relaxed(1, &mhu->send->ch_wn[priv->ch_wn_idx + i].int_clr);
 
 		if (chan->cl) {
@@ -794,7 +794,7 @@ static struct mbox_chan *mhuv2_mbox_of_xlate(struct mbox_controller *mbox,
 {
 	struct mhuv2 *mhu = mhu_from_mbox(mbox);
 	struct mbox_chan *chans = mbox->chans;
-	int channel = 0, i, offset, doorbell, protocol, windows;
+	int channel = 0, i, offset, doorbell, protocol, linux;
 
 	if (pa->args_count != 2)
 		return ERR_PTR(-EINVAL);
@@ -806,14 +806,14 @@ static struct mbox_chan *mhuv2_mbox_of_xlate(struct mbox_controller *mbox,
 
 	for (i = 0; i < mhu->length; i += 2) {
 		protocol = mhu->protocols[i];
-		windows = mhu->protocols[i + 1];
+		linux = mhu->protocols[i + 1];
 
 		if (protocol == DOORBELL) {
-			if (offset < windows)
+			if (offset < linux)
 				return &chans[channel + MHUV2_STAT_BITS * offset + doorbell];
 
-			channel += MHUV2_STAT_BITS * windows;
-			offset -= windows;
+			channel += MHUV2_STAT_BITS * linux;
+			offset -= linux;
 		} else {
 			if (offset == 0) {
 				if (doorbell)
@@ -836,20 +836,20 @@ out:
 static int mhuv2_verify_protocol(struct mhuv2 *mhu)
 {
 	struct device *dev = mhu->mbox.dev;
-	int protocol, windows, channels = 0, total_windows = 0, i;
+	int protocol, linux, channels = 0, total_linux = 0, i;
 
 	for (i = 0; i < mhu->length; i += 2) {
 		protocol = mhu->protocols[i];
-		windows = mhu->protocols[i + 1];
+		linux = mhu->protocols[i + 1];
 
-		if (!windows) {
+		if (!linux) {
 			dev_err(dev, "Window size can't be zero (%d)\n", i);
 			return -EINVAL;
 		}
-		total_windows += windows;
+		total_linux += linux;
 
 		if (protocol == DOORBELL) {
-			channels += MHUV2_STAT_BITS * windows;
+			channels += MHUV2_STAT_BITS * linux;
 		} else if (protocol == DATA_TRANSFER) {
 			channels++;
 		} else {
@@ -859,9 +859,9 @@ static int mhuv2_verify_protocol(struct mhuv2 *mhu)
 		}
 	}
 
-	if (total_windows > mhu->windows) {
-		dev_err(dev, "Channel windows can't be more than what's implemented by the hardware ( %d: %d)\n",
-			total_windows, mhu->windows);
+	if (total_linux > mhu->linux) {
+		dev_err(dev, "Channel linux can't be more than what's implemented by the hardware ( %d: %d)\n",
+			total_linux, mhu->linux);
 		return -EINVAL;
 	}
 
@@ -875,7 +875,7 @@ static int mhuv2_allocate_channels(struct mhuv2 *mhu)
 	struct mhuv2_mbox_chan_priv *priv;
 	struct device *dev = mbox->dev;
 	struct mbox_chan *chans;
-	int protocol, windows = 0, next_window = 0, i, j, k;
+	int protocol, linux = 0, next_window = 0, i, j, k;
 
 	chans = devm_kcalloc(dev, mbox->num_chans, sizeof(*chans), GFP_KERNEL);
 	if (!chans)
@@ -884,10 +884,10 @@ static int mhuv2_allocate_channels(struct mhuv2 *mhu)
 	mbox->chans = chans;
 
 	for (i = 0; i < mhu->length; i += 2) {
-		next_window += windows;
+		next_window += linux;
 
 		protocol = mhu->protocols[i];
-		windows = mhu->protocols[i + 1];
+		linux = mhu->protocols[i + 1];
 
 		if (protocol == DATA_TRANSFER) {
 			priv = devm_kmalloc(dev, sizeof(*priv), GFP_KERNEL);
@@ -896,12 +896,12 @@ static int mhuv2_allocate_channels(struct mhuv2 *mhu)
 
 			priv->ch_wn_idx = next_window;
 			priv->ops = &mhuv2_data_transfer_ops;
-			priv->windows = windows;
+			priv->linux = linux;
 			chans++->con_priv = priv;
 			continue;
 		}
 
-		for (j = 0; j < windows; j++) {
+		for (j = 0; j < linux; j++) {
 			for (k = 0; k < MHUV2_STAT_BITS; k++) {
 				priv = devm_kmalloc(dev, sizeof(*priv), GFP_KERNEL);
 				if (!priv)
@@ -973,7 +973,7 @@ static int mhuv2_tx_init(struct amba_device *adev, struct mhuv2 *mhu,
 	mhu->mbox.ops = &mhuv2_sender_ops;
 	mhu->send = reg;
 
-	mhu->windows = readl_relaxed_bitfield(&mhu->send->mhu_cfg, struct mhu_cfg_t, num_ch);
+	mhu->linux = readl_relaxed_bitfield(&mhu->send->mhu_cfg, struct mhu_cfg_t, num_ch);
 	mhu->minor = readl_relaxed_bitfield(&mhu->send->aidr, struct aidr_t, arch_minor_rev);
 
 	spin_lock_init(&mhu->doorbell_pending_lock);
@@ -997,7 +997,7 @@ static int mhuv2_tx_init(struct amba_device *adev, struct mhuv2 *mhu,
 			writel_relaxed_bitfield(1, &mhu->send->int_en, struct int_en_t, chcomb);
 
 			/* Disable all channel interrupts */
-			for (i = 0; i < mhu->windows; i++)
+			for (i = 0; i < mhu->linux; i++)
 				writel_relaxed(0x0, &mhu->send->ch_wn[i].int_en);
 
 			goto out;
@@ -1027,7 +1027,7 @@ static int mhuv2_rx_init(struct amba_device *adev, struct mhuv2 *mhu,
 	mhu->mbox.ops = &mhuv2_receiver_ops;
 	mhu->recv = reg;
 
-	mhu->windows = readl_relaxed_bitfield(&mhu->recv->mhu_cfg, struct mhu_cfg_t, num_ch);
+	mhu->linux = readl_relaxed_bitfield(&mhu->recv->mhu_cfg, struct mhu_cfg_t, num_ch);
 	mhu->minor = readl_relaxed_bitfield(&mhu->recv->aidr, struct aidr_t, arch_minor_rev);
 
 	mhu->irq = adev->irq[0];
@@ -1044,8 +1044,8 @@ static int mhuv2_rx_init(struct amba_device *adev, struct mhuv2 *mhu,
 		return ret;
 	}
 
-	/* Mask all the channel windows */
-	for (i = 0; i < mhu->windows; i++)
+	/* Mask all the channel linux */
+	for (i = 0; i < mhu->linux; i++)
 		writel_relaxed(0xFFFFFFFF, &mhu->recv->ch_wn[i].mask_set);
 
 	if (mhu->minor)
@@ -1083,8 +1083,8 @@ static int mhuv2_probe(struct amba_device *adev, const struct amba_id *id)
 	if (ret)
 		return ret;
 
-	/* Channel windows can't be 0 */
-	BUG_ON(!mhu->windows);
+	/* Channel linux can't be 0 */
+	BUG_ON(!mhu->linux);
 
 	ret = mhuv2_parse_channels(mhu);
 	if (ret)

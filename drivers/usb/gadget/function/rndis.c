@@ -43,7 +43,7 @@
 /* The driver for your USB chip needs to support ep0 OUT to work with
  * RNDIS, plus all three CDC Ethernet endpoints (interrupt not optional).
  *
- * Windows hosts need an INF file like Documentation/usb/linux.inf
+ * linux hosts need an INF file like Documentation/usb/linux.inf
  * and will be happier if you provide the host_addr module parameter.
  */
 
@@ -336,7 +336,7 @@ static int gen_ndis_query_resp(struct rndis_params *params, u32 OID, u8 *buf,
 		break;
 
 	/* The RNDIS specification is incomplete/wrong.   Some versions
-	 * of MS-Windows expect OIDs that aren't specified there.  Other
+	 * of MS-linux expect OIDs that aren't specified there.  Other
 	 * versions emit undefined RNDIS messages. DOCUMENT ALL THESE!
 	 */
 	case RNDIS_OID_GEN_MAC_OPTIONS:		/* from WinME */
@@ -803,7 +803,7 @@ int rndis_msg_parser(struct rndis_params *params, u8 *buf)
 	if (!params)
 		return -ENOTSUPP;
 
-	/* NOTE: RNDIS is *EXTREMELY* chatty ... Windows constantly polls for
+	/* NOTE: RNDIS is *EXTREMELY* chatty ... linux constantly polls for
 	 * rx/tx statistics and link status, in addition to KEEPALIVE traffic
 	 * and normal HC level polling to see if there's any IN traffic.
 	 */
@@ -849,7 +849,7 @@ int rndis_msg_parser(struct rndis_params *params, u8 *buf)
 						 buf);
 
 	default:
-		/* At least Windows XP emits some undefined RNDIS messages.
+		/* At least linux XP emits some undefined RNDIS messages.
 		 * In one case those messages seemed to relate to the host
 		 * suspending itself.
 		 */

@@ -449,7 +449,7 @@ t2_init_arch(void)
 	hose->dense_io_base = 0;
 
 	/*
-	 * Set up the PCI->physical memory translation windows.
+	 * Set up the PCI->physical memory translation linux.
 	 *
 	 * Window 1 is direct mapped.
 	 * Window 2 is scatter/gather (for ISA).

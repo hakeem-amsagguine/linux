@@ -28,8 +28,8 @@
 /* VIDI uses fixed refresh rate of 50Hz */
 #define VIDI_REFRESH_TIME (1000 / 50)
 
-/* vidi has totally three virtual windows. */
-#define WINDOWS_NR		3
+/* vidi has totally three virtual linux. */
+#define linux_NR		3
 
 #define ctx_from_connector(c)	container_of(c, struct vidi_context, \
 					connector)
@@ -40,7 +40,7 @@ struct vidi_context {
 	struct device			*dev;
 	struct exynos_drm_crtc		*crtc;
 	struct drm_connector		connector;
-	struct exynos_drm_plane		planes[WINDOWS_NR];
+	struct exynos_drm_plane		planes[linux_NR];
 	struct edid			*raw_edid;
 	unsigned int			clkdiv;
 	unsigned int			connected;
@@ -85,7 +85,7 @@ static const uint32_t formats[] = {
 	DRM_FORMAT_NV12,
 };
 
-static const enum drm_plane_type vidi_win_types[WINDOWS_NR] = {
+static const enum drm_plane_type vidi_win_types[linux_NR] = {
 	DRM_PLANE_TYPE_PRIMARY,
 	DRM_PLANE_TYPE_OVERLAY,
 	DRM_PLANE_TYPE_CURSOR,
@@ -392,7 +392,7 @@ static int vidi_bind(struct device *dev, struct device *master, void *data)
 	plane_config.pixel_formats = formats;
 	plane_config.num_pixel_formats = ARRAY_SIZE(formats);
 
-	for (i = 0; i < WINDOWS_NR; i++) {
+	for (i = 0; i < linux_NR; i++) {
 		plane_config.zpos = i;
 		plane_config.type = vidi_win_types[i];
 

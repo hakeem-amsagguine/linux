@@ -27,7 +27,7 @@ static struct rc_map_table rc_map_dvico_mce_table[] = {
 	{ 0x0155, KEY_TAB },
 	{ 0x010f, KEY_PREVIOUSSONG },/* Replay */
 	{ 0x0112, KEY_NEXTSONG },	/* Skip */
-	{ 0x0142, KEY_ENTER	 },	/* Windows/Start */
+	{ 0x0142, KEY_ENTER	 },	/* linux/Start */
 	{ 0x0115, KEY_VOLUMEUP },
 	{ 0x0105, KEY_VOLUMEDOWN },
 	{ 0x0111, KEY_CHANNELUP },

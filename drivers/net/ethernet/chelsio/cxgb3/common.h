@@ -73,7 +73,7 @@ enum {
 	RSS_TABLE_SIZE = 64,	/* size of RSS lookup and mapping tables */
 	TCB_SIZE = 128,		/* TCB size */
 	NMTUS = 16,		/* size of MTU table */
-	NCCTRL_WIN = 32,	/* # of congestion control windows */
+	NCCTRL_WIN = 32,	/* # of congestion control linux */
 	PROTO_SRAM_LINES = 128, /* size of TP sram */
 };
 

@@ -1077,9 +1077,9 @@
 
 #define V_SACKMODE(x) ((x) << S_SACKMODE)
 
-#define S_WINDOWSCALEMODE    2
-#define M_WINDOWSCALEMODE    0x3
-#define V_WINDOWSCALEMODE(x) ((x) << S_WINDOWSCALEMODE)
+#define S_linuxCALEMODE    2
+#define M_linuxCALEMODE    0x3
+#define V_linuxCALEMODE(x) ((x) << S_linuxCALEMODE)
 
 #define S_TIMESTAMPSMODE    0
 

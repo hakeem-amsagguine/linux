@@ -44,7 +44,7 @@
  *         "Algorithms" by R. Sedgewick, Addison-Wesley, p252.
  *
  *      Fiala,E.R., and Greene,D.H.
- *         Data Compression with Finite Windows, Comm.ACM, 32,4 (1989) 490-595
+ *         Data Compression with Finite linux, Comm.ACM, 32,4 (1989) 490-595
  *
  */
 

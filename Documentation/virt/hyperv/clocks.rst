@@ -46,7 +46,7 @@ to a host with a different TSC frequency, Hyper-V adjusts the
 scale and offset values in the shared page so that the 10 MHz
 frequency is maintained.
 
-Starting with Windows Server 2022 Hyper-V, Hyper-V uses hardware
+Starting with linux Server 2022 Hyper-V, Hyper-V uses hardware
 support for TSC frequency scaling to enable live migration of VMs
 across Hyper-V hosts where the TSC frequency may be different.
 When a Linux guest detects that this Hyper-V functionality is

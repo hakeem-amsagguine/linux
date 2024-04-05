@@ -323,7 +323,7 @@ bool usb_check_int_endpoints(
  * (b) Some (many) devices actually need more than 20 ms of resume signalling,
  * and while we can argue that's against the USB Specification, we don't have
  * control over which devices a certification laboratory will be using for
- * certification. If CertLab uses a device which was tested against Windows and
+ * certification. If CertLab uses a device which was tested against linux and
  * that happens to have relaxed resume signalling rules, we might fall into
  * situations where we fail interoperability and electrical tests.
  *

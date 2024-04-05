@@ -111,7 +111,7 @@ union amd_sriov_reg_access_flags {
 
 union amd_sriov_msg_os_info {
 	struct {
-		uint32_t windows  : 1;
+		uint32_t linux  : 1;
 		uint32_t reserved : 31;
 	} info;
 	uint32_t all;

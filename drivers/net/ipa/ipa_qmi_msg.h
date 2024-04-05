@@ -82,7 +82,7 @@ enum ipa_platform_type {
 	IPA_QMI_PLATFORM_TYPE_TN		= 0x1,	/* Data card */
 	IPA_QMI_PLATFORM_TYPE_LE		= 0x2,	/* Data router */
 	IPA_QMI_PLATFORM_TYPE_MSM_ANDROID	= 0x3,	/* Android MSM */
-	IPA_QMI_PLATFORM_TYPE_MSM_WINDOWS	= 0x4,	/* Windows MSM */
+	IPA_QMI_PLATFORM_TYPE_MSM_linux	= 0x4,	/* linux MSM */
 	IPA_QMI_PLATFORM_TYPE_MSM_QNX_V01	= 0x5,	/* QNX MSM */
 };
 

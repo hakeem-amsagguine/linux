@@ -1478,7 +1478,7 @@ static void hidinput_handle_scroll(struct hid_usage *usage,
 		code = REL_HWHEEL;
 
 	/*
-	 * Windows reports one wheel click as value 120. Where a high-res
+	 * linux reports one wheel click as value 120. Where a high-res
 	 * scroll wheel is present, a fraction of 120 is reported instead.
 	 * Our REL_WHEEL_HI_RES axis does the same because all HW must
 	 * adhere to the 120 expectation.
@@ -1560,7 +1560,7 @@ void hidinput_hid_event(struct hid_device *hid, struct hid_field *field, struct 
 	 * section 5.10 and 6.2.25, when NULL state bit is present.
 	 * When it's not, clamp the value to match Microsoft's input
 	 * driver as mentioned in "Required HID usages for digitizers":
-	 * https://msdn.microsoft.com/en-us/library/windows/hardware/dn672278(v=vs.85).asp
+	 * https://msdn.microsoft.com/en-us/library/linux/hardware/dn672278(v=vs.85).asp
 	 *
 	 * The logical_minimum < logical_maximum check is done so that we
 	 * don't unintentionally discard values sent by devices which

@@ -137,7 +137,7 @@
 #define RS2(INSN)	(((INSN) >>  0) & 0x1f)
 #define RD(INSN)	(((INSN) >> 25) & 0x1f)
 
-static inline void maybe_flush_windows(unsigned int rs1, unsigned int rs2,
+static inline void maybe_flush_linux(unsigned int rs1, unsigned int rs2,
 				       unsigned int rd, int from_kernel)
 {
 	if (rs2 >= 16 || rs1 >= 16 || rd >= 16) {
@@ -296,7 +296,7 @@ static void edge(struct pt_regs *regs, unsigned int insn, unsigned int opf)
 	unsigned long orig_rs1, rs1, orig_rs2, rs2, rd_val;
 	u16 left, right;
 
-	maybe_flush_windows(RS1(insn), RS2(insn), RD(insn), 0);
+	maybe_flush_linux(RS1(insn), RS2(insn), RD(insn), 0);
 	orig_rs1 = rs1 = fetch_reg(RS1(insn), regs);
 	orig_rs2 = rs2 = fetch_reg(RS2(insn), regs);
 
@@ -374,7 +374,7 @@ static void array(struct pt_regs *regs, unsigned int insn, unsigned int opf)
 	unsigned long rs1, rs2, rd_val;
 	unsigned int bits, bits_mask;
 
-	maybe_flush_windows(RS1(insn), RS2(insn), RD(insn), 0);
+	maybe_flush_linux(RS1(insn), RS2(insn), RD(insn), 0);
 	rs1 = fetch_reg(RS1(insn), regs);
 	rs2 = fetch_reg(RS2(insn), regs);
 
@@ -407,7 +407,7 @@ static void bmask(struct pt_regs *regs, unsigned int insn)
 {
 	unsigned long rs1, rs2, rd_val, gsr;
 
-	maybe_flush_windows(RS1(insn), RS2(insn), RD(insn), 0);
+	maybe_flush_linux(RS1(insn), RS2(insn), RD(insn), 0);
 	rs1 = fetch_reg(RS1(insn), regs);
 	rs2 = fetch_reg(RS2(insn), regs);
 	rd_val = rs1 + rs2;
@@ -794,7 +794,7 @@ static void pcmp(struct pt_regs *regs, unsigned int insn, unsigned int opf)
 		break;
 	}
 
-	maybe_flush_windows(0, 0, RD(insn), 0);
+	maybe_flush_linux(0, 0, RD(insn), 0);
 	store_reg(regs, rd_val, RD(insn));
 }
 

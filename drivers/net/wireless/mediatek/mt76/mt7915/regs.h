@@ -387,7 +387,7 @@ enum offs_rev {
 /* rx ampdu valid subframe bytes count, 32bits */
 #define MT_MIB_SDR25(_band)		MT_WF_MIB(_band, __OFFS(MIB_SDR25))
 
-/* remaining windows protected stats */
+/* remaining linux protected stats */
 #define MT_MIB_SDR27(_band)		MT_WF_MIB(_band, __OFFS(MIB_SDR27))
 #define MT_MIB_SDR27_TX_RWP_FAIL_CNT_MASK	GENMASK(15, 0)
 

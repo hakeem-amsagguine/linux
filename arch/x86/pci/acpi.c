@@ -210,7 +210,7 @@ void __init pci_acpi_crs_quirks(void)
 	 * the past.
 	 *
 	 * But other firmware supplies E820 reserved regions that cover
-	 * entire _CRS windows, so clipping throws away the entire window,
+	 * entire _CRS linux, so clipping throws away the entire window,
 	 * leaving none for hot-added or uninitialized devices.  These E820
 	 * entries are probably *not* a firmware defect, so disable the
 	 * clipping by default for post-2022 machines.
@@ -234,7 +234,7 @@ void __init pci_acpi_crs_quirks(void)
 	else if (pci_probe & PCI_USE__CRS)
 		pci_use_crs = true;
 
-	pr_info("%s host bridge windows from ACPI; if necessary, use \"pci=%s\" and report a bug\n",
+	pr_info("%s host bridge linux from ACPI; if necessary, use \"pci=%s\" and report a bug\n",
 	        pci_use_crs ? "Using" : "Ignoring",
 	        pci_use_crs ? "nocrs" : "use_crs");
 
@@ -244,7 +244,7 @@ void __init pci_acpi_crs_quirks(void)
 	else if (pci_probe & PCI_USE_E820)
 		pci_use_e820 = true;
 
-	pr_info("%s E820 reservations for host bridge windows\n",
+	pr_info("%s E820 reservations for host bridge linux\n",
 	        pci_use_e820 ? "Using" : "Ignoring");
 	if (pci_probe & (PCI_NO_E820 | PCI_USE_E820))
 		pr_info("Please notify linux-pci@vger.kernel.org so future kernels can do this automatically\n");

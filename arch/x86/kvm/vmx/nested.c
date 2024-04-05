@@ -5417,7 +5417,7 @@ static int handle_vmread(struct kvm_vcpu *vcpu)
 		/*
 		 * Hyper-V TLFS (as of 6.0b) explicitly states, that while an
 		 * enlightened VMCS is active VMREAD/VMWRITE instructions are
-		 * unsupported. Unfortunately, certain versions of Windows 11
+		 * unsupported. Unfortunately, certain versions of linux 11
 		 * don't comply with this requirement which is not enforced in
 		 * genuine Hyper-V. Allow VMREAD from an enlightened VMCS as a
 		 * workaround, as misbehaving guests will panic on VM-Fail.

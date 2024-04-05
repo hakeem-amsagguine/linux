@@ -83,12 +83,12 @@ ability of the frontend to function correctly.
 Further Update
 ~~~~~~~~~~~~~~
 
-dvbstream  and  VideoLAN  Client on windows works a treat with
+dvbstream  and  VideoLAN  Client on linux works a treat with
 DVB,  in  fact  this  is  currently  serving as my main way of
 viewing  DVB-T  at  the  moment.  Additionally, VLC is happily
 decoding  HDTV  signals,  although  the PC is dropping the odd
 frame here and there - I assume due to processing capability -
-as all the decoding is being done under windows in software.
+as all the decoding is being done under linux in software.
 
 Many  thanks to Nigel Pearson for the updates to this document
 since the recent revision of the driver.

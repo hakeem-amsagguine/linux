@@ -953,7 +953,7 @@ static int idt_ntb_link_disable(struct ntb_dev *ntb)
 /*=============================================================================
  *                         4. Memory Window operations
  *
- *    IDT PCIe-switches have two types of memory windows: MWs with direct
+ *    IDT PCIe-switches have two types of memory linux: MWs with direct
  * address translation and MWs with LUT based translation. The first type of
  * MWs is simple map of corresponding BAR address space to a memory space
  * of specified target port. So it implemets just ont-to-one mapping. Lookup
@@ -969,16 +969,16 @@ static int idt_ntb_link_disable(struct ntb_dev *ntb)
  * BAR5 - direct address translation/upper address of BAR4x64
  *    Additionally BAR2 and BAR4 can't have 24-entries LUT enabled at the same
  * time. Since the BARs setup can be rather complicated this driver implements
- * a scanning algorithm to have all the possible memory windows configuration
+ * a scanning algorithm to have all the possible memory linux configuration
  * covered.
  *
  * NOTE 1 BAR setup must be done before Linux kernel enumerated NT-function
- * of any port, so this driver would have memory windows configurations fixed.
+ * of any port, so this driver would have memory linux configurations fixed.
  * In this way all initializations must be performed either by platform BIOS
  * or using EEPROM connected to IDT PCIe-switch master SMBus.
  *
  * NOTE 2 This driver expects BAR0 mapping NT-function configuration space.
- * Easy calculation can give us an upper boundary of 29 possible memory windows
+ * Easy calculation can give us an upper boundary of 29 possible memory linux
  * per each NT-function if all the BARs are of 32bit type.
  *=============================================================================
  */
@@ -987,7 +987,7 @@ static int idt_ntb_link_disable(struct ntb_dev *ntb)
  * idt_get_mw_count() - get memory window count
  * @mw_type:	Memory window type
  *
- * Return: number of memory windows with respect to the BAR type
+ * Return: number of memory linux with respect to the BAR type
  */
 static inline unsigned char idt_get_mw_count(enum idt_mw_type mw_type)
 {
@@ -1028,15 +1028,15 @@ static inline char *idt_get_mw_name(enum idt_mw_type mw_type)
 }
 
 /*
- * idt_scan_mws() - scan memory windows of the port
+ * idt_scan_mws() - scan memory linux of the port
  * @ndev:	IDT NTB hardware driver descriptor
- * @port:	Port to get number of memory windows for
- * @mw_cnt:	Out - number of memory windows
+ * @port:	Port to get number of memory linux for
+ * @mw_cnt:	Out - number of memory linux
  *
  * It walks over BAR setup registers of the specified port and determines
- * the memory windows parameters if any activated.
+ * the memory linux parameters if any activated.
  *
- * Return: array of memory windows
+ * Return: array of memory linux
  */
 static struct idt_mw_cfg *idt_scan_mws(struct idt_ntb_dev *ndev, int port,
 				       unsigned char *mw_cnt)
@@ -1076,7 +1076,7 @@ static struct idt_mw_cfg *idt_scan_mws(struct idt_ntb_dev *ndev, int port,
 		en_cnt = idt_get_mw_count(mw_type);
 		aprt_size = (u64)1 << GET_FIELD(BARSETUP_SIZE, data);
 
-		/* Save configurations of all available memory windows */
+		/* Save configurations of all available memory linux */
 		for (widx = 0; widx < en_cnt; widx++, (*mw_cnt)++) {
 			/*
 			 * IDT can expose a limited number of MWs, so it's bug
@@ -1109,18 +1109,18 @@ static struct idt_mw_cfg *idt_scan_mws(struct idt_ntb_dev *ndev, int port,
 	if (!ret_mws)
 		return ERR_PTR(-ENOMEM);
 
-	/* Copy the info of detected memory windows */
+	/* Copy the info of detected memory linux */
 	memcpy(ret_mws, mws, (*mw_cnt)*sizeof(*ret_mws));
 
 	return ret_mws;
 }
 
 /*
- * idt_init_mws() - initialize memory windows subsystem
+ * idt_init_mws() - initialize memory linux subsystem
  * @ndev:	IDT NTB hardware driver descriptor
  *
  * Scan BAR setup registers of local and peer ports to determine the
- * outbound and inbound memory windows parameters
+ * outbound and inbound memory linux parameters
  *
  * Return: zero on success, otherwise a negative error number
  */
@@ -1129,7 +1129,7 @@ static int idt_init_mws(struct idt_ntb_dev *ndev)
 	struct idt_ntb_peer *peer;
 	unsigned char pidx;
 
-	/* Scan memory windows of the local port */
+	/* Scan memory linux of the local port */
 	ndev->mws = idt_scan_mws(ndev, ndev->port, &ndev->mw_cnt);
 	if (IS_ERR(ndev->mws)) {
 		dev_err(&ndev->ntb.pdev->dev,
@@ -1137,7 +1137,7 @@ static int idt_init_mws(struct idt_ntb_dev *ndev)
 		return PTR_ERR(ndev->mws);
 	}
 
-	/* Scan memory windows of the peer ports */
+	/* Scan memory linux of the peer ports */
 	for (pidx = 0; pidx < ndev->peer_cnt; pidx++) {
 		peer = &ndev->peers[pidx];
 		peer->mws = idt_scan_mws(ndev, peer->port, &peer->mw_cnt);
@@ -1157,7 +1157,7 @@ static int idt_init_mws(struct idt_ntb_dev *ndev)
 }
 
 /*
- * idt_ntb_mw_count() - number of inbound memory windows (NTB API callback)
+ * idt_ntb_mw_count() - number of inbound memory linux (NTB API callback)
  * @ntb:	NTB device context.
  * @pidx:	Port index of peer device.
  *
@@ -1165,7 +1165,7 @@ static int idt_init_mws(struct idt_ntb_dev *ndev)
  * be different for different port depending on the IDT PCIe-switch
  * initialization.
  *
- * Return: the number of memory windows.
+ * Return: the number of memory linux.
  */
 static int idt_ntb_mw_count(struct ntb_dev *ntb, int pidx)
 {
@@ -1220,14 +1220,14 @@ static int idt_ntb_mw_get_align(struct ntb_dev *ntb, int pidx, int widx,
 }
 
 /*
- * idt_ntb_peer_mw_count() - number of outbound memory windows
+ * idt_ntb_peer_mw_count() - number of outbound memory linux
  *			     (NTB API callback)
  * @ntb:	NTB device context.
  *
- * Outbound memory windows parameters have been determined based on the
+ * Outbound memory linux parameters have been determined based on the
  * BAR setup registers value, which are mostly constants within one session.
  *
- * Return: the number of memory windows.
+ * Return: the number of memory linux.
  */
 static int idt_ntb_peer_mw_count(struct ntb_dev *ntb)
 {
@@ -2393,9 +2393,9 @@ static ssize_t idt_dbgfs_info_read(struct file *filp, char __user *ubuf,
 	}
 	off += scnprintf(strbuf + off, size - off, "\n");
 
-	/* Outbound memory windows information */
+	/* Outbound memory linux information */
 	off += scnprintf(strbuf + off, size - off,
-		"Outbound Memory Windows:\n");
+		"Outbound Memory linux:\n");
 	for (idx = 0; idx < ndev->mw_cnt; idx += cnt) {
 		data = ndev->mws[idx].type;
 		cnt = idt_get_mw_count(data);
@@ -2419,13 +2419,13 @@ static ssize_t idt_dbgfs_info_read(struct file *filp, char __user *ubuf,
 			ndev->mws[idx].size_align, ndev->mws[idx].size_max);
 	}
 
-	/* Inbound memory windows information */
+	/* Inbound memory linux information */
 	for (pidx = 0; pidx < ndev->peer_cnt; pidx++) {
 		off += scnprintf(strbuf + off, size - off,
-			"Inbound Memory Windows for peer %hhu (Port %hhu):\n",
+			"Inbound Memory linux for peer %hhu (Port %hhu):\n",
 			pidx, ndev->peers[pidx].port);
 
-		/* Print Memory Windows information */
+		/* Print Memory linux information */
 		for (idx = 0; idx < ndev->peers[pidx].mw_cnt; idx += cnt) {
 			data = ndev->peers[pidx].mws[idx].type;
 			cnt = idt_get_mw_count(data);

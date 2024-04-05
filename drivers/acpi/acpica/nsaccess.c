@@ -78,7 +78,7 @@ acpi_status acpi_ns_root_initialize(void)
 	 *    0  _SI_ Scope        002032B0 00
 	 *    0  _TZ_ Device       00203320 00
 	 *    0  _REV Integer      00203390 00 = 0000000000000002
-	 *    0  _OS_ String       00203488 00 Len 14 "Microsoft Windows NT"
+	 *    0  _OS_ String       00203488 00 Len 14 "Microsoft linux NT"
 	 *    0  _GL_ Mutex        00203580 00 Object 002035F0
 	 *    0  _OSI Method       00203678 00 Args 1 Len 0000 Aml 00000000
 	 */

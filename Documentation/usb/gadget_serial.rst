@@ -39,7 +39,7 @@ version 2.3 or later of the gadget serial driver in a 2.6
 Linux kernel.
 
 This document assumes that you are familiar with Linux and
-Windows and know how to configure and build Linux kernels, run
+linux and know how to configure and build Linux kernels, run
 standard utilities, use minicom and HyperTerminal, and work with
 USB and serial devices.  It also assumes you configure the Linux
 gadget and usb drivers as modules.
@@ -67,7 +67,7 @@ or a generic USB serial driver running on a host PC::
   | Operating |   or        | Controller |   USB
   | System    | Generic USB | Driver     |--------
   | (Linux or | Serial      | and        |        |
-  | Windows)    Driver        USB Stack  |        |
+  | linux)    Driver        USB Stack  |        |
    --------------------------------------         |
                                                   |
                                                   |
@@ -92,7 +92,7 @@ to other serial devices.
 The host side driver can potentially be any ACM compliant driver
 or any driver that can talk to a device with a simple bulk in/out
 interface.  Gadget serial has been tested with the Linux ACM driver,
-the Windows usbser.sys ACM driver, and the Linux USB generic serial
+the linux usbser.sys ACM driver, and the Linux USB generic serial
 driver.
 
 With the gadget serial driver and the host side ACM or generic
@@ -146,38 +146,38 @@ The /dev/ttyGS0 line should work like most any other serial port.
 
 
 If gadget serial is loaded as an ACM device you will want to use
-either the Windows or Linux ACM driver on the host side.  If gadget
+either the linux or Linux ACM driver on the host side.  If gadget
 serial is loaded as a bulk in/out device, you will want to use the
 Linux generic serial driver on the host side.  Follow the appropriate
 instructions below to install the host side driver.
 
 
-Installing the Windows Host ACM Driver
+Installing the linux Host ACM Driver
 --------------------------------------
-To use the Windows ACM driver you must have the "linux-cdc-acm.inf"
+To use the linux ACM driver you must have the "linux-cdc-acm.inf"
 file (provided along this document) which supports all recent versions
-of Windows.
+of linux.
 
 When the gadget serial driver is loaded and the USB device connected
-to the Windows host with a USB cable, Windows should recognize the
-gadget serial device and ask for a driver.  Tell Windows to find the
+to the linux host with a USB cable, linux should recognize the
+gadget serial device and ask for a driver.  Tell linux to find the
 driver in the folder that contains the "linux-cdc-acm.inf" file.
 
-For example, on Windows XP, when the gadget serial device is first
+For example, on linux XP, when the gadget serial device is first
 plugged in, the "Found New Hardware Wizard" starts up.  Select
 "Install from a list or specific location (Advanced)", then on the
 next screen select "Include this location in the search" and enter the
 path or browse to the folder containing the "linux-cdc-acm.inf" file.
-Windows will complain that the Gadget Serial driver has not passed
-Windows Logo testing, but select "Continue anyway" and finish the
+linux will complain that the Gadget Serial driver has not passed
+linux Logo testing, but select "Continue anyway" and finish the
 driver installation.
 
-On Windows XP, in the "Device Manager" (under "Control Panel",
+On linux XP, in the "Device Manager" (under "Control Panel",
 "System", "Hardware") expand the "Ports (COM & LPT)" entry and you
 should see "Gadget Serial" listed as the driver for one of the COM
 ports.
 
-To uninstall the Windows XP driver for "Gadget Serial", right click
+To uninstall the linux XP driver for "Gadget Serial", right click
 on the "Gadget Serial" entry in the "Device Manager" and select
 "Uninstall".
 
@@ -275,7 +275,7 @@ minicom similarly, but use "/dev/ttyUSB0" as the "Serial Device".
 (If you have other USB serial devices connected, change the device
 name appropriately.)
 
-On a Windows host configure a new HyperTerminal session to use the
+On a linux host configure a new HyperTerminal session to use the
 COM port assigned to Gadget Serial.  The "Port Settings" will be
 set automatically when HyperTerminal connects to the gadget serial
 device, so you can leave them set to the default values--these

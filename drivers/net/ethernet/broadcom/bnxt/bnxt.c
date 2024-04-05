@@ -11601,8 +11601,8 @@ static int bnxt_update_phy_setting(struct bnxt *bp)
 }
 
 /* Common routine to pre-map certain register block to different GRC window.
- * A PF has 16 4K windows and a VF has 4 4K windows. However, only 15 windows
- * in PF and 3 windows in VF that can be customized to map in different
+ * A PF has 16 4K linux and a VF has 4 4K linux. However, only 15 linux
+ * in PF and 3 linux in VF that can be customized to map in different
  * register blocks.
  */
 static void bnxt_preset_reg_win(struct bnxt *bp)

@@ -2,12 +2,12 @@
   {
     "EventName": "ic_fw32",
     "EventCode": "0x80",
-    "BriefDescription": "The number of 32B fetch windows transferred from IC pipe to DE instruction decoder (includes non-cacheable and cacheable fill responses)."
+    "BriefDescription": "The number of 32B fetch linux transferred from IC pipe to DE instruction decoder (includes non-cacheable and cacheable fill responses)."
   },
   {
     "EventName": "ic_fw32_miss",
     "EventCode": "0x81",
-    "BriefDescription": "The number of 32B fetch windows tried to read the L1 IC and missed in the full tag."
+    "BriefDescription": "The number of 32B fetch linux tried to read the L1 IC and missed in the full tag."
   },
   {
     "EventName": "ic_cache_fill_l2",

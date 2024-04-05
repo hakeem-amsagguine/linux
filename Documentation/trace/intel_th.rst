@@ -138,13 +138,13 @@ The API has two main parts::
    collection; when this happens, the MSU driver will automatically
    switch to the next window in the buffer if it is unlocked, or stop
    the trace capture if it's not;
- - tracking the "locked" state of windows and providing a way for the
+ - tracking the "locked" state of linux and providing a way for the
    software sink driver to notify the MSU driver when a window is
    unlocked and can be used again to collect trace data.
 
 An example sink driver, msu-sink illustrates the implementation of a
-software sink. Functionally, it simply unlocks windows as soon as they
+software sink. Functionally, it simply unlocks linux as soon as they
 are full, keeping the MSU running in a circular buffer mode. Unlike the
-"multi" mode, it will fill out all the windows in the buffer as opposed
+"multi" mode, it will fill out all the linux in the buffer as opposed
 to just the first one. It can be enabled by writing "sink" to the "mode"
 file (assuming msu-sink.ko is loaded).

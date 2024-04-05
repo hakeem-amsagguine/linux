@@ -783,7 +783,7 @@ int nfit_get_smbios_id(u32 device_handle, u16 *flags)
 EXPORT_SYMBOL_GPL(nfit_get_smbios_id);
 
 /*
- * An implementation may provide a truncated control region if no block windows
+ * An implementation may provide a truncated control region if no block linux
  * are defined.
  */
 static size_t sizeof_dcr(struct acpi_nfit_control_region *dcr)
@@ -791,7 +791,7 @@ static size_t sizeof_dcr(struct acpi_nfit_control_region *dcr)
 	if (dcr->header.length < offsetof(struct acpi_nfit_control_region,
 				window_size))
 		return 0;
-	if (dcr->windows)
+	if (dcr->linux)
 		return sizeof(*dcr);
 	return offsetof(struct acpi_nfit_control_region, window_size);
 }
@@ -819,8 +819,8 @@ static bool add_dcr(struct acpi_nfit_desc *acpi_desc,
 	INIT_LIST_HEAD(&nfit_dcr->list);
 	memcpy(nfit_dcr->dcr, dcr, sizeof_dcr(dcr));
 	list_add_tail(&nfit_dcr->list, &acpi_desc->dcrs);
-	dev_dbg(dev, "dcr index: %d windows: %d\n",
-			dcr->region_index, dcr->windows);
+	dev_dbg(dev, "dcr index: %d linux: %d\n",
+			dcr->region_index, dcr->linux);
 	return true;
 }
 
@@ -846,8 +846,8 @@ static bool add_bdw(struct acpi_nfit_desc *acpi_desc,
 	INIT_LIST_HEAD(&nfit_bdw->list);
 	memcpy(nfit_bdw->bdw, bdw, sizeof(*bdw));
 	list_add_tail(&nfit_bdw->list, &acpi_desc->bdws);
-	dev_dbg(dev, "bdw dcr: %d windows: %d\n",
-			bdw->region_index, bdw->windows);
+	dev_dbg(dev, "bdw dcr: %d linux: %d\n",
+			bdw->region_index, bdw->linux);
 	return true;
 }
 
@@ -1066,8 +1066,8 @@ static int __nfit_mem_init(struct acpi_nfit_desc *acpi_desc,
 			 */
 			if (!nfit_mem->dcr)
 				nfit_mem->dcr = nfit_dcr->dcr;
-			else if (nfit_mem->dcr->windows == 0
-					&& nfit_dcr->dcr->windows)
+			else if (nfit_mem->dcr->linux == 0
+					&& nfit_dcr->dcr->linux)
 				nfit_mem->dcr = nfit_dcr->dcr;
 			break;
 		}

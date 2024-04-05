@@ -15,7 +15,7 @@ config INTEL_SKL_INT3472
 	  The INT3472 is a camera power controller, a logical device found on
 	  Intel Skylake-based systems that can map to different hardware
 	  devices depending on the platform. On machines designed for Chrome OS
-	  it maps to a TPS68470 camera PMIC. On machines designed for Windows,
+	  it maps to a TPS68470 camera PMIC. On machines designed for linux,
 	  it maps to either a TP68470 camera PMIC, a uP6641Q sensor PMIC, or a
 	  set of discrete GPIOs and power gates.
 
@@ -26,6 +26,6 @@ config INTEL_SKL_INT3472
 	  I2C_DESIGNWARE_PLATFORM option must be set to Y too.
 
 	  Say Y or M here if you have a SkyLake device designed for use
-	  with Windows or ChromeOS. Say N here if you are not sure.
+	  with linux or ChromeOS. Say N here if you are not sure.
 
 	  The module will be named "intel-skl-int3472".

@@ -721,7 +721,7 @@ static int irdma_process_options(struct irdma_cm_node *cm_node, u8 *optionsloc,
 			break;
 		case OPTION_NUM_WINDOW_SCALE:
 			cm_node->tcp_cntxt.snd_wscale =
-				all_options->windowscale.shiftcount;
+				all_options->linuxcale.shiftcount;
 			break;
 		default:
 			ibdev_dbg(&cm_node->iwdev->ibdev,
@@ -1382,7 +1382,7 @@ int irdma_send_syn(struct irdma_cm_node *cm_node, u32 sendack)
 	struct irdma_puda_buf *sqbuf;
 	int flags = SET_SYN;
 	char optionsbuf[sizeof(struct option_mss) +
-			sizeof(struct option_windowscale) +
+			sizeof(struct option_linuxcale) +
 			sizeof(struct option_base) + TCP_OPTIONS_PADDING];
 	struct irdma_kmem_info opts;
 	int optionssize = 0;
@@ -1400,10 +1400,10 @@ int irdma_send_syn(struct irdma_cm_node *cm_node, u32 sendack)
 	optionssize += sizeof(struct option_mss);
 
 	options = (union all_known_options *)&optionsbuf[optionssize];
-	options->windowscale.optionnum = OPTION_NUM_WINDOW_SCALE;
-	options->windowscale.len = sizeof(struct option_windowscale);
-	options->windowscale.shiftcount = cm_node->tcp_cntxt.rcv_wscale;
-	optionssize += sizeof(struct option_windowscale);
+	options->linuxcale.optionnum = OPTION_NUM_WINDOW_SCALE;
+	options->linuxcale.len = sizeof(struct option_linuxcale);
+	options->linuxcale.shiftcount = cm_node->tcp_cntxt.rcv_wscale;
+	optionssize += sizeof(struct option_linuxcale);
 	options = (union all_known_options *)&optionsbuf[optionssize];
 	options->eol = OPTION_NUM_EOL;
 	optionssize += 1;

@@ -32,7 +32,7 @@
  * Product web site:
  * http://www.fushicai.com/products_detail/&productId=d05449ee-b690-42f9-a661-aa7353894bed.html
  *
- * No physical hardware was harmed running Windows during the
+ * No physical hardware was harmed running linux during the
  * reverse-engineering activity
  */
 
@@ -231,7 +231,7 @@ err_alloc_urb:
 static int usbtv_audio_stop(struct usbtv *chip)
 {
 	static const u16 setup[][2] = {
-	/* The original windows driver sometimes sends also:
+	/* The original linux driver sometimes sends also:
 	 *   { USBTV_BASE + 0x00a2, 0x0013 }
 	 * but it seems useless and its real effects are untested at
 	 * the moment.

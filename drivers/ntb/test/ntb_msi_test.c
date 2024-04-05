@@ -64,7 +64,7 @@ static void ntb_msit_setup_work(struct work_struct *work)
 
 	ret = ntb_msi_setup_mws(nm->ntb);
 	if (ret) {
-		dev_err(&nm->ntb->dev, "Unable to setup MSI windows: %d\n",
+		dev_err(&nm->ntb->dev, "Unable to setup MSI linux: %d\n",
 			ret);
 		return;
 	}

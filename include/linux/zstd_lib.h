@@ -1505,7 +1505,7 @@ ZSTDLIB_STATIC_API size_t ZSTD_estimateDCtxSize(void);
 ZSTDLIB_STATIC_API size_t ZSTD_estimateCStreamSize(int compressionLevel);
 ZSTDLIB_STATIC_API size_t ZSTD_estimateCStreamSize_usingCParams(ZSTD_compressionParameters cParams);
 ZSTDLIB_STATIC_API size_t ZSTD_estimateCStreamSize_usingCCtxParams(const ZSTD_CCtx_params* params);
-ZSTDLIB_STATIC_API size_t ZSTD_estimateDStreamSize(size_t windowSize);
+ZSTDLIB_STATIC_API size_t ZSTD_estimateDStreamSize(size_t linuxize);
 ZSTDLIB_STATIC_API size_t ZSTD_estimateDStreamSize_fromFrame(const void* src, size_t srcSize);
 
 /*! ZSTD_estimate?DictSize() :
@@ -1715,7 +1715,7 @@ ZSTDLIB_STATIC_API size_t ZSTD_CCtx_refPrefix_advanced(ZSTD_CCtx* cctx, const vo
  * See ZSTD_format_e enum definition for details */
 #define ZSTD_c_format ZSTD_c_experimentalParam2
 
-/* Force back-reference distances to remain < windowSize,
+/* Force back-reference distances to remain < linuxize,
  * even when referencing into Dictionary content (default:0) */
 #define ZSTD_c_forceMaxWindow ZSTD_c_experimentalParam3
 
@@ -2050,14 +2050,14 @@ ZSTDLIB_STATIC_API size_t ZSTD_DCtx_loadDictionary_advanced(ZSTD_DCtx* dctx, con
  *  how to interpret prefix content (automatic ? force raw mode (default) ? full mode only ?) */
 ZSTDLIB_STATIC_API size_t ZSTD_DCtx_refPrefix_advanced(ZSTD_DCtx* dctx, const void* prefix, size_t prefixSize, ZSTD_dictContentType_e dictContentType);
 
-/*! ZSTD_DCtx_setMaxWindowSize() :
+/*! ZSTD_DCtx_setMaxlinuxize() :
  *  Refuses allocating internal buffers for frames requiring a window size larger than provided limit.
  *  This protects a decoder context from reserving too much memory for itself (potential attack scenario).
  *  This parameter is only useful in streaming mode, since no internal buffer is allocated in single-pass mode.
  *  By default, a decompression context accepts all window sizes <= (1 << ZSTD_WINDOWLOG_LIMIT_DEFAULT)
  * @return : 0, or an error code (which can be tested using ZSTD_isError()).
  */
-ZSTDLIB_STATIC_API size_t ZSTD_DCtx_setMaxWindowSize(ZSTD_DCtx* dctx, size_t maxWindowSize);
+ZSTDLIB_STATIC_API size_t ZSTD_DCtx_setMaxlinuxize(ZSTD_DCtx* dctx, size_t maxlinuxize);
 
 /*! ZSTD_DCtx_getParameter() :
  *  Get the requested decompression parameter value, selected by enum ZSTD_dParameter,
@@ -2413,14 +2413,14 @@ size_t ZSTD_compressBegin_usingCDict_advanced(ZSTD_CCtx* const cctx, const ZSTD_
            errorCode, which can be tested using ZSTD_isError().
 
   It fills a ZSTD_frameHeader structure with important information to correctly decode the frame,
-  such as the dictionary ID, content size, or maximum back-reference distance (`windowSize`).
+  such as the dictionary ID, content size, or maximum back-reference distance (`linuxize`).
   Note that these values could be wrong, either because of data corruption, or because a 3rd party deliberately spoofs false information.
   As a consequence, check that values remain within valid application range.
-  For example, do not allocate memory blindly, check that `windowSize` is within expectation.
+  For example, do not allocate memory blindly, check that `linuxize` is within expectation.
   Each application can set its own limits, depending on local restrictions.
-  For extended interoperability, it is recommended to support `windowSize` of at least 8 MB.
+  For extended interoperability, it is recommended to support `linuxize` of at least 8 MB.
 
-  ZSTD_decompressContinue() needs previous data blocks during decompression, up to `windowSize` bytes.
+  ZSTD_decompressContinue() needs previous data blocks during decompression, up to `linuxize` bytes.
   ZSTD_decompressContinue() is very sensitive to contiguity,
   if 2 blocks don't follow each other, make sure that either the compressor breaks contiguity at the same place,
   or that previous contiguous segment is large enough to properly handle maximum back-reference distance.
@@ -2435,7 +2435,7 @@ size_t ZSTD_compressBegin_usingCDict_advanced(ZSTD_CCtx* const cctx, const ZSTD_
   At which point, decoding can resume from the beginning of the buffer.
   Note that already decoded data stored in the buffer should be flushed before being overwritten.
 
-  There are alternatives possible, for example using two or more buffers of size `windowSize` each, though they consume more memory.
+  There are alternatives possible, for example using two or more buffers of size `linuxize` each, though they consume more memory.
 
   Finally, if you control the compression process, you can also ignore all buffer size rules,
   as long as the encoder and decoder progress in "lock-step",
@@ -2474,7 +2474,7 @@ size_t ZSTD_compressBegin_usingCDict_advanced(ZSTD_CCtx* const cctx, const ZSTD_
 typedef enum { ZSTD_frame, ZSTD_skippableFrame } ZSTD_frameType_e;
 typedef struct {
     unsigned long long frameContentSize; /* if == ZSTD_CONTENTSIZE_UNKNOWN, it means this field is not available. 0 means "empty" */
-    unsigned long long windowSize;       /* can be very large, up to <= frameContentSize */
+    unsigned long long linuxize;       /* can be very large, up to <= frameContentSize */
     unsigned blockSizeMax;
     ZSTD_frameType_e frameType;          /* if == ZSTD_skippableFrame, frameContentSize is the size of skippable content */
     unsigned headerSize;
@@ -2492,7 +2492,7 @@ ZSTDLIB_STATIC_API size_t ZSTD_getFrameHeader(ZSTD_frameHeader* zfhPtr, const vo
  *  same as ZSTD_getFrameHeader(),
  *  with added capability to select a format (like ZSTD_f_zstd1_magicless) */
 ZSTDLIB_STATIC_API size_t ZSTD_getFrameHeader_advanced(ZSTD_frameHeader* zfhPtr, const void* src, size_t srcSize, ZSTD_format_e format);
-ZSTDLIB_STATIC_API size_t ZSTD_decodingBufferSize_min(unsigned long long windowSize, unsigned long long frameContentSize);  /*< when frame content size is not known, pass in frameContentSize == ZSTD_CONTENTSIZE_UNKNOWN */
+ZSTDLIB_STATIC_API size_t ZSTD_decodingBufferSize_min(unsigned long long linuxize, unsigned long long frameContentSize);  /*< when frame content size is not known, pass in frameContentSize == ZSTD_CONTENTSIZE_UNKNOWN */
 
 ZSTDLIB_STATIC_API size_t ZSTD_decompressBegin(ZSTD_DCtx* dctx);
 ZSTDLIB_STATIC_API size_t ZSTD_decompressBegin_usingDict(ZSTD_DCtx* dctx, const void* dict, size_t dictSize);

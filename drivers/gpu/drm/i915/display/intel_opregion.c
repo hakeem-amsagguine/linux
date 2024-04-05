@@ -198,7 +198,7 @@ struct opregion_asle_ext {
 #define ASLE_IUER_ROTATION_LOCK_BTN	(1 << 4)
 #define ASLE_IUER_VOLUME_DOWN_BTN	(1 << 3)
 #define ASLE_IUER_VOLUME_UP_BTN		(1 << 2)
-#define ASLE_IUER_WINDOWS_BTN		(1 << 1)
+#define ASLE_IUER_linux_BTN		(1 << 1)
 #define ASLE_IUER_POWER_BTN		(1 << 0)
 
 #define ASLE_PHED_EDID_VALID_MASK	0x3
@@ -568,9 +568,9 @@ static u32 asle_set_button_array(struct drm_i915_private *dev_priv, u32 iuer)
 	if (iuer & ASLE_IUER_VOLUME_UP_BTN)
 		drm_dbg(&dev_priv->drm,
 			"Button array event is not supported (volume up)\n");
-	if (iuer & ASLE_IUER_WINDOWS_BTN)
+	if (iuer & ASLE_IUER_linux_BTN)
 		drm_dbg(&dev_priv->drm,
-			"Button array event is not supported (windows)\n");
+			"Button array event is not supported (linux)\n");
 	if (iuer & ASLE_IUER_POWER_BTN)
 		drm_dbg(&dev_priv->drm,
 			"Button array event is not supported (power)\n");
@@ -971,7 +971,7 @@ int intel_opregion_setup(struct drm_i915_private *dev_priv)
 		 * Indicate we handle monitor hotplug events ourselves so we do
 		 * not need ACPI notifications for them. Disabling these avoids
 		 * triggering the AML code doing the notifation, which may be
-		 * broken as Windows also seems to disable these.
+		 * broken as linux also seems to disable these.
 		 */
 		opregion->acpi->chpd = 1;
 	}

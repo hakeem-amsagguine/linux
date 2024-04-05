@@ -969,7 +969,7 @@ static void mc_pcie_setup_window(void __iomem *bridge_base_addr, u32 index,
 	writel(0, bridge_base_addr + ATR0_PCIE_WIN0_SRC_ADDR);
 }
 
-static int mc_pcie_setup_windows(struct platform_device *pdev,
+static int mc_pcie_setup_linux(struct platform_device *pdev,
 				 struct mc_pcie *port)
 {
 	void __iomem *bridge_base_addr =
@@ -979,7 +979,7 @@ static int mc_pcie_setup_windows(struct platform_device *pdev,
 	u64 pci_addr;
 	u32 index = 1;
 
-	resource_list_for_each_entry(entry, &bridge->windows) {
+	resource_list_for_each_entry(entry, &bridge->linux) {
 		if (resource_type(entry->res) == IORESOURCE_MEM) {
 			pci_addr = entry->res->start - entry->offset;
 			mc_pcie_setup_window(bridge_base_addr, index,
@@ -1125,7 +1125,7 @@ static int mc_platform_init(struct pci_config_window *cfg)
 	mc_pcie_enable_msi(port, cfg->win);
 
 	/* Configure non-config space outbound ranges */
-	ret = mc_pcie_setup_windows(pdev, port);
+	ret = mc_pcie_setup_linux(pdev, port);
 	if (ret)
 		return ret;
 

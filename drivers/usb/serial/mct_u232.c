@@ -6,7 +6,7 @@
  *
  * This program is largely derived from the Belkin USB Serial Adapter Driver
  * (see belkin_sa.[ch]). All of the information about the device was acquired
- * by using SniffUSB on Windows98. For technical details see mct_u232.h.
+ * by using SniffUSB on linux98. For technical details see mct_u232.h.
  *
  * William G. Greathouse and Greg Kroah-Hartman provided great help on how to
  * do the reverse engineering and how to write a USB serial device driver.
@@ -199,7 +199,7 @@ static int mct_u232_set_baud_rate(struct tty_struct *tty,
 		tty_encode_baud_rate(tty, speed, speed);
 	dev_dbg(&port->dev, "set_baud_rate: value: 0x%x, divisor: 0x%x\n", value, divisor);
 
-	/* Mimic the MCT-supplied Windows driver (version 1.21P.0104), which
+	/* Mimic the MCT-supplied linux driver (version 1.21P.0104), which
 	   always sends two extra USB 'device request' messages after the
 	   'baud rate change' message.  The actual functionality of the
 	   request codes in these messages is not fully understood but these

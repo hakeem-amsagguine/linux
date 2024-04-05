@@ -569,7 +569,7 @@ static int xilinx_cpm_pcie_probe(struct platform_device *pdev)
 	if (err)
 		return err;
 
-	bus = resource_list_first_type(&bridge->windows, IORESOURCE_BUS);
+	bus = resource_list_first_type(&bridge->linux, IORESOURCE_BUS);
 	if (!bus)
 		return -ENODEV;
 

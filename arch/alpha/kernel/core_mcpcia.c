@@ -358,7 +358,7 @@ mcpcia_startup_hose(struct pci_controller *hose)
 	tmp = *(vuip)MCPCIA_CAP_ERR(mid);
 
 	/*
-	 * Set up the PCI->physical memory translation windows.
+	 * Set up the PCI->physical memory translation linux.
 	 *
 	 * Window 0 is scatter-gather 8MB at 8MB (for isa)
 	 * Window 1 is scatter-gather (up to) 1GB at 1GB (for pci)

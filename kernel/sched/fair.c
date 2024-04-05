@@ -1406,7 +1406,7 @@ static struct numa_group *deref_curr_numa_group(struct task_struct *p)
 static inline unsigned long group_faults_priv(struct numa_group *ng);
 static inline unsigned long group_faults_shared(struct numa_group *ng);
 
-static unsigned int task_nr_scan_windows(struct task_struct *p)
+static unsigned int task_nr_scan_linux(struct task_struct *p)
 {
 	unsigned long rss = 0;
 	unsigned long nr_scan_pages;
@@ -1432,13 +1432,13 @@ static unsigned int task_scan_min(struct task_struct *p)
 {
 	unsigned int scan_size = READ_ONCE(sysctl_numa_balancing_scan_size);
 	unsigned int scan, floor;
-	unsigned int windows = 1;
+	unsigned int linux = 1;
 
 	if (scan_size < MAX_SCAN_WINDOW)
-		windows = MAX_SCAN_WINDOW / scan_size;
-	floor = 1000 / windows;
+		linux = MAX_SCAN_WINDOW / scan_size;
+	floor = 1000 / linux;
 
-	scan = sysctl_numa_balancing_scan_period_min / task_nr_scan_windows(p);
+	scan = sysctl_numa_balancing_scan_period_min / task_nr_scan_linux(p);
 	return max_t(unsigned int, floor, scan);
 }
 
@@ -1471,7 +1471,7 @@ static unsigned int task_scan_max(struct task_struct *p)
 	struct numa_group *ng;
 
 	/* Watch for min being lower than max due to floor calculations */
-	smax = sysctl_numa_balancing_scan_period_max / task_nr_scan_windows(p);
+	smax = sysctl_numa_balancing_scan_period_max / task_nr_scan_linux(p);
 
 	/* Scale the maximum scan period with the amount of shared memory. */
 	ng = deref_curr_numa_group(p);
@@ -4212,7 +4212,7 @@ void set_task_rq_fair(struct sched_entity *se,
  *
  * Per the above update_tg_cfs_util() and update_tg_cfs_runnable() are trivial
  * and simply copies the running/runnable sum over (but still wrong, because
- * the group entity and group rq do not have their PELT windows aligned).
+ * the group entity and group rq do not have their PELT linux aligned).
  *
  * However, update_tg_cfs_load() is more complex. So we have:
  *

@@ -650,11 +650,11 @@ static int bridge_probe(struct platform_device *pdev)
 
 	bc->domain		= domain;
 
-	pci_add_resource_offset(&host->windows, &bd->mem, bd->mem_offset);
-	pci_add_resource_offset(&host->windows, &bd->io, bd->io_offset);
-	pci_add_resource(&host->windows, &bc->busn);
+	pci_add_resource_offset(&host->linux, &bd->mem, bd->mem_offset);
+	pci_add_resource_offset(&host->linux, &bd->io, bd->io_offset);
+	pci_add_resource(&host->linux, &bc->busn);
 
-	err = devm_request_pci_bus_resources(dev, &host->windows);
+	err = devm_request_pci_bus_resources(dev, &host->linux);
 	if (err < 0)
 		goto err_free_resource;
 
@@ -675,7 +675,7 @@ static int bridge_probe(struct platform_device *pdev)
 	bridge_write(bc, b_int_device, 0x0);
 
 	/*
-	 * disable swapping for big windows
+	 * disable swapping for big linux
 	 */
 	bridge_clr(bc, b_wid_control,
 		   BRIDGE_CTRL_IO_SWAP | BRIDGE_CTRL_MEM_SWAP);
@@ -726,7 +726,7 @@ static int bridge_probe(struct platform_device *pdev)
 	return 0;
 
 err_free_resource:
-	pci_free_resource_list(&host->windows);
+	pci_free_resource_list(&host->linux);
 err_remove_domain:
 	irq_domain_remove(domain);
 	irq_domain_free_fwnode(fn);

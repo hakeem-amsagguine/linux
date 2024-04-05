@@ -30,34 +30,34 @@
 static int sh_pfc_map_resources(struct sh_pfc *pfc,
 				struct platform_device *pdev)
 {
-	struct sh_pfc_window *windows;
+	struct sh_pfc_window *linux;
 	unsigned int *irqs = NULL;
-	unsigned int num_windows;
+	unsigned int num_linux;
 	struct resource *res;
 	unsigned int i;
 	int num_irqs;
 
 	/* Count the MEM and IRQ resources. */
-	for (num_windows = 0;; num_windows++) {
-		res = platform_get_resource(pdev, IORESOURCE_MEM, num_windows);
+	for (num_linux = 0;; num_linux++) {
+		res = platform_get_resource(pdev, IORESOURCE_MEM, num_linux);
 		if (!res)
 			break;
 	}
-	if (num_windows == 0)
+	if (num_linux == 0)
 		return -EINVAL;
 
 	num_irqs = platform_irq_count(pdev);
 	if (num_irqs < 0)
 		return num_irqs;
 
-	/* Allocate memory windows and IRQs arrays. */
-	windows = devm_kcalloc(pfc->dev, num_windows, sizeof(*windows),
+	/* Allocate memory linux and IRQs arrays. */
+	linux = devm_kcalloc(pfc->dev, num_linux, sizeof(*linux),
 			       GFP_KERNEL);
-	if (windows == NULL)
+	if (linux == NULL)
 		return -ENOMEM;
 
-	pfc->num_windows = num_windows;
-	pfc->windows = windows;
+	pfc->num_linux = num_linux;
+	pfc->linux = linux;
 
 	if (num_irqs) {
 		irqs = devm_kcalloc(pfc->dev, num_irqs, sizeof(*irqs),
@@ -70,13 +70,13 @@ static int sh_pfc_map_resources(struct sh_pfc *pfc,
 	}
 
 	/* Fill them. */
-	for (i = 0; i < num_windows; i++) {
-		windows->virt = devm_platform_get_and_ioremap_resource(pdev, i, &res);
-		if (IS_ERR(windows->virt))
+	for (i = 0; i < num_linux; i++) {
+		linux->virt = devm_platform_get_and_ioremap_resource(pdev, i, &res);
+		if (IS_ERR(linux->virt))
 			return -ENOMEM;
-		windows->phys = res->start;
-		windows->size = resource_size(res);
-		windows++;
+		linux->phys = res->start;
+		linux->size = resource_size(res);
+		linux++;
 	}
 	for (i = 0; i < num_irqs; i++)
 		*irqs++ = platform_get_irq(pdev, i);
@@ -90,9 +90,9 @@ static void __iomem *sh_pfc_phys_to_virt(struct sh_pfc *pfc, u32 reg)
 	phys_addr_t address = reg;
 	unsigned int i;
 
-	/* scan through physical windows and convert address */
-	for (i = 0; i < pfc->num_windows; i++) {
-		window = pfc->windows + i;
+	/* scan through physical linux and convert address */
+	for (i = 0; i < pfc->num_linux; i++) {
+		window = pfc->linux + i;
 
 		if (address < window->phys)
 			continue;

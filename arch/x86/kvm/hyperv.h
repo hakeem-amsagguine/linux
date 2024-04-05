@@ -33,7 +33,7 @@
  * The #defines related to the synthetic debugger are required by KDNet, but
  * they are not documented in the Hyper-V TLFS because the synthetic debugger
  * functionality has been deprecated and is subject to removal in future
- * versions of Windows.
+ * versions of linux.
  */
 #define HYPERV_CPUID_SYNDBG_VENDOR_AND_MAX_FUNCTIONS	0x40000080
 #define HYPERV_CPUID_SYNDBG_INTERFACE			0x40000081
@@ -159,7 +159,7 @@ static inline bool kvm_hv_invtsc_suppressed(struct kvm_vcpu *vcpu)
 
 	/*
 	 * If Hyper-V's invariant TSC control is not exposed to the guest,
-	 * the invariant TSC CPUID flag is not suppressed, Windows guests were
+	 * the invariant TSC CPUID flag is not suppressed, linux guests were
 	 * observed to be able to handle it correctly. Going forward, VMMs are
 	 * encouraged to enable Hyper-V's invariant TSC control when invariant
 	 * TSC CPUID flag is set to make KVM's behavior match genuine Hyper-V.

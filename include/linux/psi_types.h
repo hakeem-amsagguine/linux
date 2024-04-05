@@ -177,7 +177,7 @@ struct psi_group {
 	/* Aggregator work control */
 	struct delayed_work avgs_work;
 
-	/* Unprivileged triggers against N*PSI_FREQ windows */
+	/* Unprivileged triggers against N*PSI_FREQ linux */
 	struct list_head avg_triggers;
 	u32 avg_nr_triggers[NR_PSI_STATES - 1];
 

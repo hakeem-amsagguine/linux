@@ -162,7 +162,7 @@ static void amdgpu_evict_flags(struct ttm_buffer_object *bo,
 }
 
 /**
- * amdgpu_ttm_map_buffer - Map memory into the GART windows
+ * amdgpu_ttm_map_buffer - Map memory into the GART linux
  * @bo: buffer object to map
  * @mem: memory object to map
  * @mm_cur: range to map
@@ -172,7 +172,7 @@ static void amdgpu_evict_flags(struct ttm_buffer_object *bo,
  * @size: in number of bytes to map, out number of bytes mapped
  * @addr: resulting address inside the MC address space
  *
- * Setup one of the GART windows to access a specific piece of memory or return
+ * Setup one of the GART linux to access a specific piece of memory or return
  * the physical address for local memory.
  */
 static int amdgpu_ttm_map_buffer(struct ttm_buffer_object *bo,

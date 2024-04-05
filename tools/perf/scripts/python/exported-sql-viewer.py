@@ -4245,21 +4245,21 @@ def CreateAction(label, tip, callback, parent=None, shortcut=None):
 # Typical application actions
 
 def CreateExitAction(app, parent=None):
-	return CreateAction("&Quit", "Exit the application", app.closeAllWindows, parent, QKeySequence.Quit)
+	return CreateAction("&Quit", "Exit the application", app.closeAlllinux, parent, QKeySequence.Quit)
 
 # Typical MDI actions
 
 def CreateCloseActiveWindowAction(mdi_area):
 	return CreateAction("Cl&ose", "Close the active window", mdi_area.closeActiveSubWindow, mdi_area)
 
-def CreateCloseAllWindowsAction(mdi_area):
-	return CreateAction("Close &All", "Close all the windows", mdi_area.closeAllSubWindows, mdi_area)
+def CreateCloseAlllinuxAction(mdi_area):
+	return CreateAction("Close &All", "Close all the linux", mdi_area.closeAllSublinux, mdi_area)
 
-def CreateTileWindowsAction(mdi_area):
-	return CreateAction("&Tile", "Tile the windows", mdi_area.tileSubWindows, mdi_area)
+def CreateTilelinuxAction(mdi_area):
+	return CreateAction("&Tile", "Tile the linux", mdi_area.tileSublinux, mdi_area)
 
-def CreateCascadeWindowsAction(mdi_area):
-	return CreateAction("&Cascade", "Cascade the windows", mdi_area.cascadeSubWindows, mdi_area)
+def CreateCascadelinuxAction(mdi_area):
+	return CreateAction("&Cascade", "Cascade the linux", mdi_area.cascadeSublinux, mdi_area)
 
 def CreateNextWindowAction(mdi_area):
 	return CreateAction("Ne&xt", "Move the focus to the next window", mdi_area.activateNextSubWindow, mdi_area, QKeySequence.NextChild)
@@ -4273,11 +4273,11 @@ class WindowMenu():
 
 	def __init__(self, mdi_area, menu):
 		self.mdi_area = mdi_area
-		self.window_menu = menu.addMenu("&Windows")
+		self.window_menu = menu.addMenu("&linux")
 		self.close_active_window = CreateCloseActiveWindowAction(mdi_area)
-		self.close_all_windows = CreateCloseAllWindowsAction(mdi_area)
-		self.tile_windows = CreateTileWindowsAction(mdi_area)
-		self.cascade_windows = CreateCascadeWindowsAction(mdi_area)
+		self.close_all_linux = CreateCloseAlllinuxAction(mdi_area)
+		self.tile_linux = CreateTilelinuxAction(mdi_area)
+		self.cascade_linux = CreateCascadelinuxAction(mdi_area)
 		self.next_window = CreateNextWindowAction(mdi_area)
 		self.previous_window = CreatePreviousWindowAction(mdi_area)
 		self.window_menu.aboutToShow.connect(self.Update)
@@ -4285,18 +4285,18 @@ class WindowMenu():
 	def Update(self):
 		self.window_menu.clear()
 		sub_window_count = len(self.mdi_area.subWindowList())
-		have_sub_windows = sub_window_count != 0
-		self.close_active_window.setEnabled(have_sub_windows)
-		self.close_all_windows.setEnabled(have_sub_windows)
-		self.tile_windows.setEnabled(have_sub_windows)
-		self.cascade_windows.setEnabled(have_sub_windows)
-		self.next_window.setEnabled(have_sub_windows)
-		self.previous_window.setEnabled(have_sub_windows)
+		have_sub_linux = sub_window_count != 0
+		self.close_active_window.setEnabled(have_sub_linux)
+		self.close_all_linux.setEnabled(have_sub_linux)
+		self.tile_linux.setEnabled(have_sub_linux)
+		self.cascade_linux.setEnabled(have_sub_linux)
+		self.next_window.setEnabled(have_sub_linux)
+		self.previous_window.setEnabled(have_sub_linux)
 		self.window_menu.addAction(self.close_active_window)
-		self.window_menu.addAction(self.close_all_windows)
+		self.window_menu.addAction(self.close_all_linux)
 		self.window_menu.addSeparator()
-		self.window_menu.addAction(self.tile_windows)
-		self.window_menu.addAction(self.cascade_windows)
+		self.window_menu.addAction(self.tile_linux)
+		self.window_menu.addAction(self.cascade_linux)
 		self.window_menu.addSeparator()
 		self.window_menu.addAction(self.next_window)
 		self.window_menu.addAction(self.previous_window)
@@ -4568,7 +4568,7 @@ def ShrinkFont(widget):
 def EnlargeFont(widget):
 	ResizeFont(widget, 1)
 
-# Unique name for sub-windows
+# Unique name for sub-linux
 
 def NumberedWindowName(name, nr):
 	if nr > 1:

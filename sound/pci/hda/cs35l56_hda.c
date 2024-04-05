@@ -32,7 +32,7 @@
   *  ASP1_TX_WL = 24 bits per sample
   *  ASP1_RXn_EN 1..3 and ASP1_TXn_EN 1..4 disabled
   *
-  * Override any Windows-specific mixer settings applied by the firmware.
+  * Override any linux-specific mixer settings applied by the firmware.
   */
 static const struct reg_sequence cs35l56_hda_dai_config[] = {
 	{ CS35L56_ASP1_CONTROL1,	0x00000021 },

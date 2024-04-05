@@ -38,7 +38,7 @@
 #define _SV	save	%sp, -STACKFRAME_SZ, %sp
 #define _RS     restore 
 
-#define FLUSH_ALL_KERNEL_WINDOWS \
+#define FLUSH_ALL_KERNEL_linux \
 	_SV; _SV; _SV; _SV; _SV; _SV; _SV; \
 	_RS; _RS; _RS; _RS; _RS; _RS; _RS;
 
@@ -662,8 +662,8 @@ do_hw_divzero:
 	RESTORE_ALL
 
 	.align	4
-	.globl	do_flush_windows
-do_flush_windows:
+	.globl	do_flush_linux
+do_flush_linux:
 	SAVE_ALL
 
 	wr	%l0, PSR_ET, %psr
@@ -673,7 +673,7 @@ do_flush_windows:
 	bne	dfw_kernel
 	 nop
 
-	call	flush_user_windows
+	call	flush_user_linux
 	 nop
 
 	/* Advance over the trap instruction. */
@@ -689,7 +689,7 @@ do_flush_windows:
 	/* We get these for debugging routines using __builtin_return_address() */
 dfw_kernel:
 flush_patch_one:
-	FLUSH_ALL_KERNEL_WINDOWS
+	FLUSH_ALL_KERNEL_linux
 
 	/* Advance over the trap instruction. */
 	ld	[%sp + STACKFRAME_SZ + PT_NPC], %l1
@@ -865,7 +865,7 @@ sys_rt_sigreturn:
 sys_fork:
 	mov	%o7, %l5
 flush_patch_two:
-	FLUSH_ALL_KERNEL_WINDOWS;
+	FLUSH_ALL_KERNEL_linux;
 	ld	[%curptr + TI_TASK], %o4
 	rd	%psr, %g4
 	WRITE_PAUSE
@@ -881,7 +881,7 @@ flush_patch_two:
 sys_clone:
 	mov	%o7, %l5
 flush_patch_three:
-	FLUSH_ALL_KERNEL_WINDOWS;
+	FLUSH_ALL_KERNEL_linux;
 	ld	[%curptr + TI_TASK], %o4
 	rd	%psr, %g4
 	WRITE_PAUSE
@@ -896,7 +896,7 @@ flush_patch_three:
 	.globl	sys_vfork, flush_patch_four
 sys_vfork:
 flush_patch_four:
-	FLUSH_ALL_KERNEL_WINDOWS;
+	FLUSH_ALL_KERNEL_linux;
 	ld	[%curptr + TI_TASK], %o4
 	rd	%psr, %g4
 	WRITE_PAUSE
@@ -1214,21 +1214,21 @@ breakpoint_trap:
 	.align	4
 	.globl	flush_patch_exception
 flush_patch_exception:
-	FLUSH_ALL_KERNEL_WINDOWS;
+	FLUSH_ALL_KERNEL_linux;
 	ldd	[%o0], %o6
 	jmpl	%o7 + 0xc, %g0			! see asm-sparc/processor.h
 	 mov	1, %g1				! signal EFAULT condition
 
 	.align	4
-	.globl	kill_user_windows, kuw_patch1_7win
+	.globl	kill_user_linux, kuw_patch1_7win
 	.globl	kuw_patch1
 kuw_patch1_7win:	sll	%o3, 6, %o3
 
 	/* No matter how much overhead this routine has in the worst
 	 * case scenario, it is several times better than taking the
-	 * traps with the old method of just doing flush_user_windows().
+	 * traps with the old method of just doing flush_user_linux().
 	 */
-kill_user_windows:
+kill_user_linux:
 	ld	[%g6 + TI_UWINMASK], %o0	! get current umask
 	orcc	%g0, %o0, %g0			! if no bits set, we are done
 	be	3f				! nothing to do
@@ -1255,7 +1255,7 @@ kuw_patch1:
 	WRITE_PAUSE				! burn baby burn
 3:
 	retl					! return
-	 st	%g0, [%g6 + TI_W_SAVED]		! no windows saved
+	 st	%g0, [%g6 + TI_W_SAVED]		! no linux saved
 
 	.align	4
 	.globl	restore_current

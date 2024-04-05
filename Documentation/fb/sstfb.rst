@@ -172,7 +172,7 @@ Bugs
 	[Actually from inspection it seems to be safe - Alan]
 
 - When using XFree86 FBdev (X over fbdev) you may see strange color
-  patterns at the border of your windows (the pixels lose the lowest
+  patterns at the border of your linux (the pixels lose the lowest
   byte -> basically the blue component and some of the green). I'm unable
   to reproduce this with XFree86-3.3, but one of the testers has this
   problem with XFree86-4. Apparently recent Xfree86-4.x solve this

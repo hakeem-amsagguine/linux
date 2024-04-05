@@ -35,7 +35,7 @@
  * code that will not execute the _OSI method unless _OS matches the string
  * below.  Therefore, change this string at your own risk.
  */
-#define ACPI_OS_NAME                    "Microsoft Windows NT"
+#define ACPI_OS_NAME                    "Microsoft linux NT"
 
 /* Maximum objects in the various object caches */
 

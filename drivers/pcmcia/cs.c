@@ -52,7 +52,7 @@ INT_MODULE_PARM(unreset_delay,	10);		/* centiseconds */
 INT_MODULE_PARM(unreset_check,	10);		/* centiseconds */
 INT_MODULE_PARM(unreset_limit,	30);		/* unreset_check's */
 
-/* Access speed for attribute memory windows */
+/* Access speed for attribute memory linux */
 INT_MODULE_PARM(cis_speed,	300);		/* ns */
 
 

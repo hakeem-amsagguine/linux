@@ -401,7 +401,7 @@ static void window_reset(struct psi_window *win, u64 now, u64 value,
  * PSI growth tracking window update and growth calculation routine.
  *
  * This approximates a sliding tracking window by interpolating
- * partially elapsed windows using historical growth data from the
+ * partially elapsed linux using historical growth data from the
  * previous intervals. This minimizes memory requirements (by not storing
  * all the intermediate values in the previous window) and simplifies
  * the calculations. It works well because PSI signal changes only in
@@ -674,7 +674,7 @@ static void psi_rtpoll_work(struct psi_group *group)
 	collect_percpu_times(group, PSI_POLL, &changed_states);
 
 	if (changed_states & group->rtpoll_states) {
-		/* Initialize trigger windows when entering rtpolling mode */
+		/* Initialize trigger linux when entering rtpolling mode */
 		if (now > group->rtpoll_until)
 			init_rtpoll_triggers(group, now);
 
@@ -1305,7 +1305,7 @@ struct psi_trigger *psi_trigger_create(struct psi_group *group, char *buf,
 		return ERR_PTR(-EINVAL);
 
 	/*
-	 * Unprivileged users can only use 2s windows so that averages aggregation
+	 * Unprivileged users can only use 2s linux so that averages aggregation
 	 * work is used, and no RT threads need to be spawned.
 	 */
 	if (!privileged && window_us % 2000000)

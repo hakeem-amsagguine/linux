@@ -576,9 +576,9 @@ the remote via /dev/input/event devices.
 
     -  .. row 73
 
-       -  ``KEY_CYCLEWINDOWS``
+       -  ``KEY_CYCLElinux``
 
-       -  Minimize windows and move to the next one
+       -  Minimize linux and move to the next one
 
        -  ALT-TAB / MINIMIZE / DESKTOP
 

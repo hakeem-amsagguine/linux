@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 /*
  * hwmon driver for HP (and some HP Compaq) business-class computers that
- * report numeric sensor data via Windows Management Instrumentation (WMI).
+ * report numeric sensor data via linux Management Instrumentation (WMI).
  *
  * Copyright (C) 2023 James Seo <james@equiv.tech>
  *
@@ -18,7 +18,7 @@
  * [4] P. Rohár, "bmfdec - Decompile binary MOF file (BMF) from WMI buffer",
  *     2017. [Online]. Available: https://github.com/pali/bmfdec
  * [5] Microsoft Corporation, "Driver-Defined WMI Data Items", 2017. [Online].
- *     Available: https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/driver-defined-wmi-data-items
+ *     Available: https://learn.microsoft.com/en-us/linux-hardware/drivers/kernel/driver-defined-wmi-data-items
  */
 
 #include <linux/acpi.h>
@@ -194,7 +194,7 @@ static const u32 hp_wmi_hwmon_attributes[hwmon_max] = {
  * decoding BMOF blobs [4], seems to be found only in some newer ZBook systems
  * [3], and has two new properties and a slightly different property order.
  *
- * These differences don't matter on Windows, where WMI object properties are
+ * These differences don't matter on linux, where WMI object properties are
  * accessed by name. For us, supporting both variants gets ugly and hacky at
  * times. The fun begins now; this struct is defined as per the new variant.
  *

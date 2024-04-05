@@ -30,7 +30,7 @@
  * models are often not necessary, and in any case don't do much in
  * this bare-bones implementation.
  *
- * Note that even MS-Windows has some support for ACM.  However, that
+ * Note that even MS-linux has some support for ACM.  However, that
  * support is somewhat broken because when you use ACM in a composite
  * device, having multiple interfaces confuses the poor OS.  It doesn't
  * seem to understand CDC Union descriptors.  The new "association"

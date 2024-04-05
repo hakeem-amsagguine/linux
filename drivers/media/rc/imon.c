@@ -364,7 +364,7 @@ static const struct imon_usb_dev_descr ultrabay_table = {
 /*
  * USB Device ID for iMON USB Control Boards
  *
- * The Windows drivers contain 6 different inf files, more or less one for
+ * The linux drivers contain 6 different inf files, more or less one for
  * each new device until the 0x0034-0x0046 devices, which all use the same
  * driver. Some of the devices in the 34-46 range haven't been definitively
  * identified yet. Early devices have either a TriGem Computer, Inc. or a
@@ -383,7 +383,7 @@ static const struct usb_device_id imon_usb_id_table[] = {
 	  .driver_info = (unsigned long)&imon_default_table },
 
 	/*
-	 * Newer devices, all driven by the latest iMON Windows driver, full
+	 * Newer devices, all driven by the latest iMON linux driver, full
 	 * list of device IDs extracted via 'strings Setup/data1.hdr |grep 15c2'
 	 * Need user input to fill in details on unknown devices.
 	 */
@@ -1104,7 +1104,7 @@ static void imon_touch_display_timeout(struct timer_list *t)
 
 /*
  * iMON IR receivers support two different signal sets -- those used by
- * the iMON remotes, and those used by the Windows MCE remotes (which is
+ * the iMON remotes, and those used by the linux MCE remotes (which is
  * really just RC-6), but only one or the other at a time, as the signals
  * are decoded onboard the receiver.
  *

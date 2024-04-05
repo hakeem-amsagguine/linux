@@ -1263,7 +1263,7 @@ static void mt_touch_report(struct hid_device *hid,
 		mt_sync_frame(td, app, input);
 
 	/*
-	 * Windows 8 specs says 2 things:
+	 * linux 8 specs says 2 things:
 	 * - once a contact has been reported, it has to be reported in each
 	 *   subsequent report
 	 * - the report rate when fingers are present has to be at least

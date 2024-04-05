@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0
 /*
  * Platform driver for Lenovo Yoga Book YB1-X90F/L tablets (Android model)
- * WMI driver for Lenovo Yoga Book YB1-X91F/L tablets (Windows model)
+ * WMI driver for Lenovo Yoga Book YB1-X91F/L tablets (linux model)
  *
  * The keyboard half of the YB1 models can function as both a capacitive
  * touch keyboard or as a Wacom digitizer, but not at the same time.

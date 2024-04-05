@@ -21,7 +21,7 @@
 #define HGSMI_CH_VBVA					0x02
 /* Graphics: Seamless with a single guest region */
 #define HGSMI_CH_SEAMLESS				0x03
-/* Graphics: Seamless with separate host windows */
+/* Graphics: Seamless with separate host linux */
 #define HGSMI_CH_SEAMLESS2				0x04
 /* Graphics: OpenGL HW acceleration */
 #define HGSMI_CH_OPENGL					0x05

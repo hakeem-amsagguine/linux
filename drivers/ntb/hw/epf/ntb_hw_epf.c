@@ -92,7 +92,7 @@ struct ntb_epf_data {
 	enum pci_barno peer_spad_reg_bar;
 	/* BAR that contains Doorbell region and Memory window '1' */
 	enum pci_barno db_reg_bar;
-	/* BAR that contains memory windows*/
+	/* BAR that contains memory linux*/
 	enum pci_barno mw_bar;
 };
 

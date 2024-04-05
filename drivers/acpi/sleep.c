@@ -108,7 +108,7 @@ static bool pwr_btn_event_pending;
 
 /*
  * The ACPI specification wants us to save NVS memory regions during hibernation
- * and to restore them during the subsequent resume.  Windows does that also for
+ * and to restore them during the subsequent resume.  linux does that also for
  * suspend to RAM.  However, it is known that this mechanism does not work on
  * all machines, so we allow the user to disable it with the help of the
  * 'acpi_sleep=nonvs' kernel command line option.
@@ -122,7 +122,7 @@ void __init acpi_nvs_nosave(void)
 
 /*
  * The ACPI specification wants us to save NVS memory regions during hibernation
- * but says nothing about saving NVS during S3.  Not all versions of Windows
+ * but says nothing about saving NVS during S3.  Not all versions of linux
  * save NVS on S3 suspend either, and it is clear that not all systems need
  * NVS to be saved at S3 time.  To improve suspend/resume time, allow the
  * user to disable saving NVS on S3 if their system does not require it, but
@@ -1100,7 +1100,7 @@ int __init acpi_sleep_init(void)
 					 acpi_power_off, NULL);
 
 		/*
-		 * Windows uses S5 for reboot, so some BIOSes depend on it to
+		 * linux uses S5 for reboot, so some BIOSes depend on it to
 		 * perform proper reboot.
 		 */
 		register_sys_off_handler(SYS_OFF_MODE_RESTART_PREPARE,

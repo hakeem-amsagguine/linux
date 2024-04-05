@@ -101,7 +101,7 @@ u8                              sysctl_tcp_nometrics_save                    -  
 u8                              sysctl_tcp_no_ssthresh_metrics_save          -                   -                   TCP_LAST_ACK/tcp_(update/init)_metrics
 u8                              sysctl_tcp_moderate_rcvbuf                   read_mostly         read_mostly         tcp_tso_should_defer(tx);tcp_rcv_space_adjust(rx)
 u8                              sysctl_tcp_tso_win_divisor                   read_mostly         -                   tcp_tso_should_defer(tcp_write_xmit)
-u8                              sysctl_tcp_workaround_signed_windows         -                   -                   tcp_select_window
+u8                              sysctl_tcp_workaround_signed_linux         -                   -                   tcp_select_window
 int                             sysctl_tcp_limit_output_bytes                read_mostly         -                   tcp_small_queue_check(tcp_write_xmit)
 int                             sysctl_tcp_challenge_ack_limit               -                   -                   
 int                             sysctl_tcp_min_rtt_wlen                      read_mostly         -                   tcp_ack_update_rtt

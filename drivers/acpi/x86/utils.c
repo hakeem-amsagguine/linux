@@ -19,10 +19,10 @@
 
 /*
  * Some ACPI devices are hidden (status == 0x0) in recent BIOS-es because
- * some recent Windows drivers bind to one device but poke at multiple
+ * some recent linux drivers bind to one device but poke at multiple
  * devices at the same time, so the others get hidden.
  *
- * Some BIOS-es (temporarily) hide specific APCI devices to work around Windows
+ * Some BIOS-es (temporarily) hide specific APCI devices to work around linux
  * driver bugs. We use DMI matching to match known cases of this.
  *
  * Likewise sometimes some not-actually present devices are sometimes
@@ -102,7 +102,7 @@ static const struct override_status_id override_status_ids[] = {
 
 	/*
 	 * The GPD win BIOS dated 20170221 has disabled the accelerometer, the
-	 * drivers sometimes cause crashes under Windows and this is how the
+	 * drivers sometimes cause crashes under linux and this is how the
 	 * manufacturer has solved this :|  The DMI match may not seem unique,
 	 * but it is. In the 67000+ DMI decode dumps from linux-hardware.org
 	 * only 116 have board_vendor set to "AMI Corporation" and of those 116
@@ -205,7 +205,7 @@ bool acpi_device_override_status(struct acpi_device *adev, unsigned long long *s
  * but this property was introduced after many of these systems launched
  * and most OEM systems don't have it in their BIOS.
  *
- * The Microsoft documentation for StorageD3Enable mentioned that Windows has
+ * The Microsoft documentation for StorageD3Enable mentioned that linux has
  * a hardcoded allowlist for D3 support, which was used for these platforms.
  *
  * This allows quirking on Linux in a similar fashion.

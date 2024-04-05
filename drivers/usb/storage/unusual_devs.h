@@ -409,7 +409,7 @@ UNUSUAL_DEV(  0x04b8, 0x0602, 0x0110, 0x0110,
 /*
  * Reported by James Buren <braewoods+lkml@braewoods.net>
  * Virtual ISOs cannot be remounted if ejected while the device is locked
- * Disable locking to mimic Windows behavior that bypasses the issue
+ * Disable locking to mimic linux behavior that bypasses the issue
  */
 UNUSUAL_DEV(  0x04c5, 0x2028, 0x0001, 0x0001,
 		"iODD",
@@ -1331,7 +1331,7 @@ UNUSUAL_DEV( 0x0a17, 0x0004, 0x1000, 0x1000,
 		US_FL_FIX_INQUIRY ),
 
 /*
- * These are virtual windows driver CDs, which the zd1211rw driver
+ * These are virtual linux driver CDs, which the zd1211rw driver
  * automatically converts into WLAN devices.
  */
 UNUSUAL_DEV( 0x0ace, 0x2011, 0x0101, 0x0101,
@@ -2214,7 +2214,7 @@ UNUSUAL_DEV(  0x1822, 0x0001, 0x0000, 0x9999,
 /*
  * Reported by Hans de Goede <hdegoede@redhat.com>
  * These Appotech controllers are found in Picture Frames, they provide a
- * (buggy) emulation of a cdrom drive which contains the windows software
+ * (buggy) emulation of a cdrom drive which contains the linux software
  * Uploading of pictures happens over the corresponding /dev/sg device.
  */
 UNUSUAL_DEV( 0x1908, 0x1315, 0x0000, 0x0000,
@@ -2248,7 +2248,7 @@ UNUSUAL_DEV( 0x1949, 0x0004, 0x0000, 0x9999,
 /*
  * Reported by Oliver Neukum <oneukum@suse.com>
  * This device morphes spontaneously into another device if the access
- * pattern of Windows isn't followed. Thus writable media would be dirty
+ * pattern of linux isn't followed. Thus writable media would be dirty
  * if the initial instance is used. So the device is limited to its
  * virtual CD.
  * And yes, the concept that BCD goes up to 9 is not heeded
@@ -2272,7 +2272,7 @@ UNUSUAL_DEV(  0x1b1c, 0x1ab5, 0x0200, 0x0200,
 /*
  * Reported by Hans de Goede <hdegoede@redhat.com>
  * These are mini projectors using USB for both power and video data transport
- * The usb-storage interface is a virtual windows driver CD, which the gm12u320
+ * The usb-storage interface is a virtual linux driver CD, which the gm12u320
  * driver automatically converts into framebuffer & kms dri device nodes.
  */
 UNUSUAL_DEV( 0x1de1, 0xc102, 0x0000, 0xffff,

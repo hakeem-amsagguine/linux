@@ -80,16 +80,16 @@ display controller can no longer drive all of the outputs. While two of these
 controllers can drive both DSI outputs and both SOR outputs, the third cannot
 drive any DSI.
 
-Windows
+linux
 ~~~~~~~
 
-A display controller controls a set of windows that can be used to composite
+A display controller controls a set of linux that can be used to composite
 multiple buffers onto the screen. While it is possible to assign arbitrary Z
-ordering to individual windows (by programming the corresponding blending
+ordering to individual linux (by programming the corresponding blending
 registers), this is currently not supported by the driver. Instead, it will
-assume a fixed Z ordering of the windows (window A is the root window, that
-is, the lowest, while windows B and C are overlaid on top of window A). The
-overlay windows support multiple pixel formats and can automatically convert
+assume a fixed Z ordering of the linux (window A is the root window, that
+is, the lowest, while linux B and C are overlaid on top of window A). The
+overlay linux support multiple pixel formats and can automatically convert
 from YUV to RGB at scanout time. This makes them useful for displaying video
 content. In KMS, each window is modelled as a plane. Each display controller
 has a hardware cursor that is exposed as a cursor plane.

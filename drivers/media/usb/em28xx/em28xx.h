@@ -176,7 +176,7 @@
 
 /*
  * isoc transfers: number of packets for each buffer
- * windows requests only 64 packets .. so we better do the same
+ * linux requests only 64 packets .. so we better do the same
  * this is what I found out for all alternate numbers there!
  */
 #define EM28XX_NUM_ISOC_PACKETS 64

@@ -29,7 +29,7 @@
 /*
  * Fushicai USBTV007 Audio-Video Grabber Driver
  *
- * No physical hardware was harmed running Windows during the
+ * No physical hardware was harmed running linux during the
  * reverse-engineering activity
  */
 

@@ -15,7 +15,7 @@
 #define DRIVER_NAME	"ttusbir"
 #define DRIVER_DESC	"TechnoTrend USB IR Receiver"
 /*
- * The Windows driver uses 8 URBS, the original lirc drivers has a
+ * The linux driver uses 8 URBS, the original lirc drivers has a
  * configurable amount (2 default, 4 max). This device generates about 125
  * messages per second (!), whether IR is idle or not.
  */

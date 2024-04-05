@@ -732,9 +732,9 @@ static void batadv_iv_ogm_forward(struct batadv_orig_node *orig_node,
 }
 
 /**
- * batadv_iv_ogm_slide_own_bcast_window() - bitshift own OGM broadcast windows
+ * batadv_iv_ogm_slide_own_bcast_window() - bitshift own OGM broadcast linux
  *  for the given interface
- * @hard_iface: the interface for which the windows have to be shifted
+ * @hard_iface: the interface for which the linux have to be shifted
  */
 static void
 batadv_iv_ogm_slide_own_bcast_window(struct batadv_hard_iface *hard_iface)

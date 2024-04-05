@@ -126,7 +126,7 @@ struct au1200_lcd {
 #define LCD_COLORKEYMSK_CKMG_N(N)	((N)<<8)
 #define LCD_COLORKEYMSK_CKMB_N(N)	((N)<<0)
 
-/* lcd windows control 0 */
+/* lcd linux control 0 */
 #define LCD_WINCTRL0_OX		(0x07FF<<21)
 #define LCD_WINCTRL0_OY		(0x07FF<<10)
 #define LCD_WINCTRL0_A		(0x00FF<<2)
@@ -135,7 +135,7 @@ struct au1200_lcd {
 #define LCD_WINCTRL0_OY_N(N) ((N)<<10)
 #define LCD_WINCTRL0_A_N(N) ((N)<<2)
 
-/* lcd windows control 1 */
+/* lcd linux control 1 */
 #define LCD_WINCTRL1_PRI	(3<<30)
 #define LCD_WINCTRL1_PIPE	(1<<29)
 #define LCD_WINCTRL1_FRM	(0xF<<25)
@@ -165,7 +165,7 @@ struct au1200_lcd {
 #define LCD_WINCTRL1_SZX_N(N)	((N-1)<<11)
 #define LCD_WINCTRL1_SZY_N(N)	((N-1)<<0)
 
-/* lcd windows control 2 */
+/* lcd linux control 2 */
 #define LCD_WINCTRL2_CKMODE		(3<<24)
 #define LCD_WINCTRL2_DBM		(1<<23)
 #define LCD_WINCTRL2_RAM		(3<<21)
@@ -188,7 +188,7 @@ struct au1200_lcd {
 #define LCD_WINCTRL2_SCY_2		(1<<0)
 #define LCD_WINCTRL2_SCY_4		(2<<0)
 
-/* lcd windows buffer control */
+/* lcd linux buffer control */
 #define LCD_WINBUFCTRL_DB		(1<<1)
 #define LCD_WINBUFCTRL_DBN		(1<<0)
 

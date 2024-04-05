@@ -3,7 +3,7 @@
  * Helper code to detect 360 degree hinges (yoga) style 2-in-1 devices using 2 accelerometers
  * to allow the OS to determine the angle between the display and the base of the device.
  *
- * On Windows these are read by a special HingeAngleService process which calls undocumented
+ * On linux these are read by a special HingeAngleService process which calls undocumented
  * ACPI methods, to let the firmware know if the 2-in-1 is in tablet- or laptop-mode.
  * The firmware may use this to disable the kbd and touchpad to avoid spurious input in
  * tablet-mode as well as to report SW_TABLET_MODE info to the OS.

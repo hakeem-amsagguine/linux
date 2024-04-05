@@ -16,7 +16,7 @@ description: |+
   or sensors.
 
   The specification has been written by Microsoft and is currently available here:
-  https://msdn.microsoft.com/en-us/library/windows/hardware/hh852380.aspx
+  https://msdn.microsoft.com/en-us/library/linux/hardware/hh852380.aspx
 
   If this binding is used, the kernel module i2c-hid will handle the communication
   with the device and the generic hid core layer will handle the protocol.

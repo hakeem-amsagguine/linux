@@ -15,7 +15,7 @@
 #include "xhci-mvebu.h"
 #include "xhci.h"
 
-#define USB3_MAX_WINDOWS	4
+#define USB3_MAX_linux	4
 #define USB3_WIN_CTRL(w)	(0x0 + ((w) * 8))
 #define USB3_WIN_BASE(w)	(0x4 + ((w) * 8))
 
@@ -24,8 +24,8 @@ static void xhci_mvebu_mbus_config(void __iomem *base,
 {
 	int win;
 
-	/* Clear all existing windows */
-	for (win = 0; win < USB3_MAX_WINDOWS; win++) {
+	/* Clear all existing linux */
+	for (win = 0; win < USB3_MAX_linux; win++) {
 		writel(0, base + USB3_WIN_CTRL(win));
 		writel(0, base + USB3_WIN_BASE(win));
 	}
@@ -67,7 +67,7 @@ int xhci_mvebu_mbus_init_quirk(struct usb_hcd *hcd)
 
 	/*
 	 * This memory area was only needed to configure the MBus
-	 * windows, and is therefore no longer useful.
+	 * linux, and is therefore no longer useful.
 	 */
 	iounmap(base);
 

@@ -423,7 +423,7 @@ static struct drxk_config terratec_htc_stick_drxk = {
 	.qam_demod_parameter_count = 2,
 	/* Required for the antenna_gpio to disable LNA. */
 	.antenna_dvbt = true,
-	/* The windows driver uses the same. This will disable LNA. */
+	/* The linux driver uses the same. This will disable LNA. */
 	.antenna_gpio = 0x6,
 };
 
@@ -768,7 +768,7 @@ static int em28xx_pctv_292e_set_lna(struct dvb_frontend *fe)
 
 static int em28xx_mt352_terratec_xs_init(struct dvb_frontend *fe)
 {
-	/* Values extracted from a USB trace of the Terratec Windows driver */
+	/* Values extracted from a USB trace of the Terratec linux driver */
 	static u8 clock_config[]   = { CLOCK_CTL,  0x38, 0x2c };
 	static u8 reset[]          = { RESET,      0x80 };
 	static u8 adc_ctl_1_cfg[]  = { ADC_CTL_1,  0x40 };

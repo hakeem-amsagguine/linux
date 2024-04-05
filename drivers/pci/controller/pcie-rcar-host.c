@@ -356,7 +356,7 @@ static void rcar_pcie_hw_enable(struct rcar_pcie_host *host)
 	rcar_pcie_force_speedup(pcie);
 
 	/* Setup PCI resources */
-	resource_list_for_each_entry(win, &bridge->windows) {
+	resource_list_for_each_entry(win, &bridge->linux) {
 		struct resource *res = win->res;
 
 		if (!res->flags)

@@ -786,18 +786,18 @@ static inline int ntb_link_disable(struct ntb_dev *ntb)
 }
 
 /**
- * ntb_mw_count() - get the number of inbound memory windows, which could
+ * ntb_mw_count() - get the number of inbound memory linux, which could
  *                  be created for a specified peer device
  * @ntb:	NTB device context.
  * @pidx:	Port index of peer device.
  *
- * Hardware and topology may support a different number of memory windows.
+ * Hardware and topology may support a different number of memory linux.
  * Moreover different peer devices can support different number of memory
- * windows. Simply speaking this method returns the number of possible inbound
- * memory windows to share with specified peer device. Note: this may return
+ * linux. Simply speaking this method returns the number of possible inbound
+ * memory linux to share with specified peer device. Note: this may return
  * zero if the link is not up yet.
  *
- * Return: the number of memory windows.
+ * Return: the number of memory linux.
  */
 static inline int ntb_mw_count(struct ntb_dev *ntb, int pidx)
 {
@@ -847,7 +847,7 @@ static inline int ntb_mw_get_align(struct ntb_dev *ntb, int pidx, int widx,
  * of that method.
  *
  * This method may not be implemented due to the hardware specific memory
- * windows interface.
+ * linux interface.
  *
  * Return: Zero on success, otherwise an error number.
  */
@@ -881,15 +881,15 @@ static inline int ntb_mw_clear_trans(struct ntb_dev *ntb, int pidx, int widx)
 }
 
 /**
- * ntb_peer_mw_count() - get the number of outbound memory windows, which could
+ * ntb_peer_mw_count() - get the number of outbound memory linux, which could
  *                       be mapped to access a shared memory
  * @ntb:	NTB device context.
  *
- * Hardware and topology may support a different number of memory windows.
- * This method returns the number of outbound memory windows supported by
+ * Hardware and topology may support a different number of memory linux.
+ * This method returns the number of outbound memory linux supported by
  * local device.
  *
- * Return: the number of memory windows.
+ * Return: the number of memory linux.
  */
 static inline int ntb_peer_mw_count(struct ntb_dev *ntb)
 {
@@ -928,8 +928,8 @@ static inline int ntb_peer_mw_get_addr(struct ntb_dev *ntb, int widx,
  * access shared memory allocated by a peer device sent the address.
  *
  * This method may not be implemented due to the hardware specific memory
- * windows interface, so a translation address can be only set on the side,
- * where shared memory (inbound memory windows) is allocated.
+ * linux interface, so a translation address can be only set on the side,
+ * where shared memory (inbound memory linux) is allocated.
  *
  * Return: Zero on success, otherwise an error number.
  */
@@ -953,7 +953,7 @@ static inline int ntb_peer_mw_set_trans(struct ntb_dev *ntb, int pidx, int widx,
  * longer access a shared memory through the window.
  *
  * This method may not be implemented due to the hardware specific memory
- * windows interface.
+ * linux interface.
  *
  * Return: Zero on success, otherwise an error number.
  */
@@ -1584,7 +1584,7 @@ static inline int ntb_peer_msg_write(struct ntb_dev *ntb, int pidx, int midx,
  * 3              0    1    2    3    3
  *
  * For example, if this function is used to program peer's memory
- * windows, port 0 will program MW 0 on all it's peers to point to itself.
+ * linux, port 0 will program MW 0 on all it's peers to point to itself.
  * port 1 will program MW 0 in port 0 to point to itself and MW 1 on all
  * other ports. etc.
  *
@@ -1612,7 +1612,7 @@ static inline int ntb_peer_resource_idx(struct ntb_dev *ntb, int pidx)
 
 /**
  * ntb_peer_highest_mw_idx() - get a memory window index for a given peer idx
- *	using the highest index memory windows first
+ *	using the highest index memory linux first
  *
  * @ntb:	NTB device context.
  * @pidx:	Peer port index.

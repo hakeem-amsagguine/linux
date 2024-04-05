@@ -24,7 +24,7 @@ static void bcma_host_pci_switch_core(struct bcma_device *core)
 }
 
 /* Provides access to the requested core. Returns base offset that has to be
- * used. It makes use of fixed windows when possible. */
+ * used. It makes use of fixed linux when possible. */
 static u16 bcma_host_pci_provide_access_to_core(struct bcma_device *core)
 {
 	switch (core->id.id) {

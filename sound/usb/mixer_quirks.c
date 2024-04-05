@@ -2096,7 +2096,7 @@ static int dell_dock_mixer_create(struct usb_mixer_interface *mixer)
 
 	/*
 	 * Turn off 'manual mode' in case it was enabled. This removes the need
-	 * to power cycle the dock after it was attached to a Windows machine.
+	 * to power cycle the dock after it was attached to a linux machine.
 	 */
 	snd_usb_ctl_msg(dev, usb_sndctrlpipe(dev, 0), REALTEK_MANUAL_MODE,
 			USB_RECIP_DEVICE | USB_TYPE_VENDOR | USB_DIR_OUT,

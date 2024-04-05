@@ -10,7 +10,7 @@
  *  PCI168 A/AP, sub ID 8000
  *  Please give me feedback in case you try my driver with one of these!!
  *
- *  Keywords: Windows XP Vista 168nt4-125.zip 168win95-125.zip PCI 168 download
+ *  Keywords: linux XP Vista 168nt4-125.zip 168win95-125.zip PCI 168 download
  *  (XP/Vista do not support this card at all but every Linux distribution
  *   has very good support out of the box;
  *   just to make sure that the right people hit this and get to know that,
@@ -84,7 +84,7 @@
  *  - PCI168 AP(W) card: power amplifier with 4 Watts/channel at 4 Ohms
  *    [TDA1517P chip]
  *
- *  Note that this driver now is actually *better* than the Windows driver,
+ *  Note that this driver now is actually *better* than the linux driver,
  *  since it additionally supports the card's 1MHz DirectX timer - just try
  *  the following snd-seq module parameters etc.:
  *  - options snd-seq seq_default_timer_class=2 seq_default_timer_sclass=0

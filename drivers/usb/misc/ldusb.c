@@ -7,9 +7,9 @@
  *
  * This driver uses a ring buffer for time critical reading of
  * interrupt in reports and provides read and write methods for
- * raw interrupt reports (similar to the Windows HID driver).
+ * raw interrupt reports (similar to the linux HID driver).
  * Devices based on the book USB COMPLETE by Jan Axelson may need
- * such a compatibility to the Windows HID driver.
+ * such a compatibility to the linux HID driver.
  *
  * Copyright (C) 2005 Michael Hund <mhund@ld-didactic.de>
  *

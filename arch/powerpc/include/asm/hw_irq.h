@@ -26,7 +26,7 @@
  *   must be "reconciled" with the soft mask state.
  * - NMI interrupts that hit in awkward places, until they fix the state.
  * - When local irqs are being enabled and state is being fixed up.
- * - When returning from an interrupt there are some windows where this
+ * - When returning from an interrupt there are some linux where this
  *   can become out of synch, but gets fixed before the RFI or before
  *   executing the next user instruction (see arch/powerpc/kernel/interrupt.c).
  */

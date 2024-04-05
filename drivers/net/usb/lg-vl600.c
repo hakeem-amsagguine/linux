@@ -28,7 +28,7 @@
  * replaces the standard ethernet header in a packet so only actual
  * ethernet frames are allowed.  The headers allow some form of
  * multiplexing by using non standard values of the .h_proto field.
- * Windows/Mac drivers do send a couple of such frames to the device
+ * linux/Mac drivers do send a couple of such frames to the device
  * during initialisation, with protocol set to 0x0906 or 0x0b06 and (what
  * seems to be) a flag in the .dummy_flags.  This doesn't seem necessary
  * for modem operation but can possibly be used for GPS or other functions.

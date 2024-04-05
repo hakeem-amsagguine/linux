@@ -1548,7 +1548,7 @@ ia_css_pipe_set_irq_mask(struct ia_css_pipe *pipe,
 	 * Alternatives that were not chosen:
 	 * - add a conditional #define for UINT16_MAX
 	 * - compare with (uint16_t)~0 or 0xffff
-	 * - different assert for Linux and Windows
+	 * - different assert for Linux and linux
 	 */
 
 	(void)HIVE_ADDR_host_sp_com; /* Suppres warnings in CRUN */

@@ -277,7 +277,7 @@ static int tegra_plane_calculate_memory_bandwidth(struct drm_plane_state *state)
 
 	/*
 	 * Tegra30/114 Memory Controller can't interleave DC memory requests
-	 * for the tiled windows because DC uses 16-bytes atom, while DDR3
+	 * for the tiled linux because DC uses 16-bytes atom, while DDR3
 	 * uses 32-bytes atom.  Hence there is x2 memory overfetch for tiled
 	 * framebuffer and DDR3 on these SoCs.
 	 */
@@ -694,7 +694,7 @@ static void tegra_plane_update_transparency(struct tegra_plane *tegra,
 		/*
 		 * Missing framebuffer means that plane is disabled, in this
 		 * case mark B / C window as top to be able to differentiate
-		 * windows indices order in regards to zPos for the middle
+		 * linux indices order in regards to zPos for the middle
 		 * window X / Y registers programming.
 		 */
 		if (!new->fb)

@@ -4,7 +4,7 @@
  */
 
 /*
- * The rdma_rxe driver supports type 1 or type 2B memory windows.
+ * The rdma_rxe driver supports type 1 or type 2B memory linux.
  * Type 1 MWs are created by ibv_alloc_mw() verbs calls and bound by
  * ibv_bind_mw() calls. Type 2 MWs are also created by ibv_alloc_mw()
  * but bound by bind_mw work requests. The ibv_bind_mw() call is converted

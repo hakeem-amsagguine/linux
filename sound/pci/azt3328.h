@@ -6,7 +6,7 @@
  * "WRITE_ONLY"  == register does not indicate actual bit values */
 
 /*** main I/O area port indices ***/
-/* (only 0x70 of 0x80 bytes saved/restored by Windows driver) */
+/* (only 0x70 of 0x80 bytes saved/restored by linux driver) */
 #define AZF_IO_SIZE_CTRL	0x80
 #define AZF_IO_SIZE_CTRL_PM	0x70
 
@@ -64,7 +64,7 @@
   #define SOUNDFORMAT_FREQUENCY_MASK	0x000f
   #define SOUNDFORMAT_XTAL1		0x00
   #define SOUNDFORMAT_XTAL2		0x01
-    /* all _SUSPECTED_ values are not used by Windows drivers, so we don't
+    /* all _SUSPECTED_ values are not used by linux drivers, so we don't
      * have any hard facts, only rough measurements.
      * All we know is that the crystal used on the board has 24.576MHz,
      * like many soundcards (which results in the frequencies below when
@@ -175,10 +175,10 @@ enum azf_freq_t {
    * still lets us evaluate button states, but not axis states */
   #define IO_6A_SOMETHING2_GAMEPORT      0x0400
 	/* writing 0x0300: causes quite some crackling during
-	 * PC activity such as switching windows (PCI traffic??
+	 * PC activity such as switching linux (PCI traffic??
 	 * --> FIFO/timing settings???) */
 	/* writing 0x0100 plus/or 0x0200 inhibits playback */
-	/* since the Windows .INF file has Flag_Enable_JoyStick and
+	/* since the linux .INF file has Flag_Enable_JoyStick and
 	 * Flag_Enable_SB_DOS_Emulation directly together, it stands to reason
 	 * that some other bit in this same register might be responsible
 	 * for SB DOS Emulation activation (note that the file did NOT define
@@ -194,7 +194,7 @@ enum azf_freq_t {
 
 
 /*** Gameport area port indices ***/
-/* (only 0x06 of 0x08 bytes saved/restored by Windows driver) */ 
+/* (only 0x06 of 0x08 bytes saved/restored by linux driver) */ 
 #define AZF_IO_SIZE_GAME		0x08
 #define AZF_IO_SIZE_GAME_PM		0x06
 
@@ -277,7 +277,7 @@ enum {
 #define AZF_IO_SIZE_MPU_PM	0x04
 
 /*** OPL3 synth ***/
-/* (only 0x06 of 0x08 bytes saved/restored by Windows driver) */
+/* (only 0x06 of 0x08 bytes saved/restored by linux driver) */
 #define AZF_IO_SIZE_OPL3	0x08
 #define AZF_IO_SIZE_OPL3_PM	0x06
 /* hmm, given that a standard OPL3 has 4 registers only,
@@ -285,7 +285,7 @@ enum {
  * (especially since register 0x04 has a "non-empty" value 0xfe) */
 
 /*** mixer I/O area port indices ***/
-/* (only 0x22 of 0x40 bytes saved/restored by Windows driver)
+/* (only 0x22 of 0x40 bytes saved/restored by linux driver)
  * UNFORTUNATELY azf3328 is NOT truly AC97 compliant: see main file intro */
 #define AZF_IO_SIZE_MIXER	0x40
 #define AZF_IO_SIZE_MIXER_PM	0x22

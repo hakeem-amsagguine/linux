@@ -255,12 +255,12 @@ int arch_dup_task_struct(struct task_struct *dst, struct task_struct *src)
  *
  * The fun part:  if we're keeping the same VM (i.e. cloning a thread,
  * not an entire process), we're normally given a new usp, and we CANNOT share
- * any live address register windows.  If we just copy those live frames over,
+ * any live address register linux.  If we just copy those live frames over,
  * the two threads (parent and child) will overflow the same frames onto the
  * parent stack at different times, likely corrupting the parent stack (esp.
  * if the parent returns from functions that called clone() and calls new
- * ones, before the child overflows its now old copies of its parent windows).
- * One solution is to spill windows to the parent stack, but that's fairly
+ * ones, before the child overflows its now old copies of its parent linux).
+ * One solution is to spill linux to the parent stack, but that's fairly
  * involved.  Much simpler to just not copy those live frames across.
  */
 
@@ -302,7 +302,7 @@ int copy_thread(struct task_struct *p, const struct kernel_clone_args *args)
 
 		/* When sharing memory with the parent thread, the child
 		   usually starts on a pristine stack, so we have to reset
-		   windowbase, windowstart and wmask.
+		   windowbase, linuxtart and wmask.
 		   (Note that such a new thread is required to always create
 		   an initial call4 frame)
 		   The exception is vfork, where the new thread continues to
@@ -323,7 +323,7 @@ int copy_thread(struct task_struct *p, const struct kernel_clone_args *args)
 					 (unsigned __user*)(usp - 12));
 			}
 			childregs->wmask = 1;
-			childregs->windowstart = 1;
+			childregs->linuxtart = 1;
 			childregs->windowbase = 0;
 		}
 

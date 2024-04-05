@@ -144,7 +144,7 @@ static int get_key_haup_xvr(struct IR_i2c *ir, enum rc_proto *protocol,
 
 	/*
 	 * This is the same apparent "are you ready?" poll command observed
-	 * watching Windows driver traffic and implemented in lirc_zilog. With
+	 * watching linux driver traffic and implemented in lirc_zilog. With
 	 * this added, we get far saner remote behavior with z8 chips on usb
 	 * connected devices, even with the default polling interval of 100ms.
 	 */
@@ -691,7 +691,7 @@ static int zilog_tx(struct rc_dev *rcdev, unsigned int *txbuf,
 
 	/*
 	 * This bit NAKs until the device is ready, so we retry it
-	 * sleeping a bit each time.  This seems to be what the windows
+	 * sleeping a bit each time.  This seems to be what the linux
 	 * driver does, approximately.
 	 * Try for up to 1s.
 	 */

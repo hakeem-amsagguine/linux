@@ -554,7 +554,7 @@ int ivtv_start_v4l2_encode_stream(struct ivtv_stream *s)
 		/*ivtv_vapi(itv, CX2341X_ENC_SET_DMA_BLOCK_SIZE, 2, 128, 0); */
 		ivtv_vapi(itv, CX2341X_ENC_SET_DMA_BLOCK_SIZE, 2, 1, 1);
 
-		/* Stuff from Windows, we don't know what it is */
+		/* Stuff from linux, we don't know what it is */
 		ivtv_vapi(itv, CX2341X_ENC_SET_VERT_CROP_LINE, 1, 0);
 		/* According to the docs, this should be correct. However, this is
 		   untested. I don't dare enable this without having tested it.

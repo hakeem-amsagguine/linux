@@ -33,11 +33,11 @@ enum iproc_pcie_type {
  * struct iproc_pcie_ob - iProc PCIe outbound mapping
  * @axi_offset: offset from the AXI address to the internal address used by
  * the iProc PCIe core
- * @nr_windows: total number of supported outbound mapping windows
+ * @nr_linux: total number of supported outbound mapping linux
  */
 struct iproc_pcie_ob {
 	resource_size_t axi_offset;
-	unsigned int nr_windows;
+	unsigned int nr_linux;
 };
 
 /**

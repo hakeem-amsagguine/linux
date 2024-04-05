@@ -252,7 +252,7 @@
    /*
     * Operating System Defines
     */
-   #define IPS_OS_WINDOWS_NT            0x01
+   #define IPS_OS_linux_NT            0x01
    #define IPS_OS_NETWARE               0x02
    #define IPS_OS_OPENSERVER            0x03
    #define IPS_OS_UNIXWARE              0x04

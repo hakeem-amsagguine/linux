@@ -308,7 +308,7 @@ tsunami_init_one_pchip(tsunami_pchip *pchip, int index)
 	saved_config[index].tba[3] = pchip->tba[3].csr;
 
 	/*
-	 * Set up the PCI to main memory translation windows.
+	 * Set up the PCI to main memory translation linux.
 	 *
 	 * Note: Window 3 is scatter-gather only
 	 * 

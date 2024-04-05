@@ -6,7 +6,7 @@ When Linux developers talk about a "Real Time Clock", they usually mean
 something that tracks wall clock time and is battery backed so that it
 works even with system power off.  Such clocks will normally not track
 the local time zone or daylight savings time -- unless they dual boot
-with MS-Windows -- but will instead be set to Coordinated Universal Time
+with MS-linux -- but will instead be set to Coordinated Universal Time
 (UTC, formerly "Greenwich Mean Time").
 
 The newest non-PC hardware tends to just count seconds, like the time(2)

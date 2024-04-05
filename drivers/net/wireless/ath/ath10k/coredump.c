@@ -524,7 +524,7 @@ static const struct ath10k_mem_section qca6174_hw30_sdio_register_sections[] = {
 	{0x38070, 0x380E0},
 	{0x3A000, 0x3A074},
 
-	/* DBI windows is skipped here, it can be only accessed when pcie
+	/* DBI linux is skipped here, it can be only accessed when pcie
 	 * is active (not in reset) and CORE_CTRL_PCIE_LTSSM_EN = 0 &&
 	 * PCIE_CTRL_APP_LTSSM_ENALBE=0.
 	 * {0x3C000 , 0x3C004},

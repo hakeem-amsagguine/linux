@@ -515,7 +515,7 @@ static void __ocfs2_resv_find_window(struct ocfs2_reservation_map *resmap,
 		 * reservation can safely be placed there.
 		 *
 		 * Otherwise we fall back to a linear search, checking
-		 * the gaps in between windows for a place to
+		 * the gaps in between linux for a place to
 		 * allocate.
 		 */
 
@@ -647,7 +647,7 @@ static void ocfs2_cannibalize_resv(struct ocfs2_reservation_map *resmap,
 		/*
 		 * Discard completely if size is less than or equal to a
 		 * reasonable threshold - 50% of window bits for non temporary
-		 * windows.
+		 * linux.
 		 */
 		resv->r_start = lru_resv->r_start;
 		resv->r_len = lru_resv->r_len;
@@ -721,7 +721,7 @@ int ocfs2_resmap_resv_bits(struct ocfs2_reservation_map *resmap,
 	if (ocfs2_resv_empty(resv)) {
 		/*
 		 * We don't want to over-allocate for temporary
-		 * windows. Otherwise, we run the risk of fragmenting the
+		 * linux. Otherwise, we run the risk of fragmenting the
 		 * allocation space.
 		 */
 		unsigned int wanted = ocfs2_resv_window_bits(resmap, resv);
@@ -732,7 +732,7 @@ int ocfs2_resmap_resv_bits(struct ocfs2_reservation_map *resmap,
 		/*
 		 * Try to get a window here. If it works, we must fall
 		 * through and test the bitmap . This avoids some
-		 * ping-ponging of windows due to non-reserved space
+		 * ping-ponging of linux due to non-reserved space
 		 * being allocation before we initialize a window for
 		 * that inode.
 		 */

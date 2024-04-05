@@ -2574,7 +2574,7 @@ static inline bool name_has_forbidden_chars(const struct le_str *fname)
 			return true;
 
 		switch (ch) {
-		/* disallowed by Windows */
+		/* disallowed by linux */
 		case '\\':
 		case '/':
 		case ':':
@@ -2635,9 +2635,9 @@ static inline bool is_reserved_name(const struct ntfs_sb_info *sbi,
 }
 
 /*
- * valid_windows_name - Check if a file name is valid in Windows.
+ * valid_linux_name - Check if a file name is valid in linux.
  */
-bool valid_windows_name(struct ntfs_sb_info *sbi, const struct le_str *fname)
+bool valid_linux_name(struct ntfs_sb_info *sbi, const struct le_str *fname)
 {
 	return !name_has_forbidden_chars(fname) &&
 	       !is_reserved_name(sbi, fname);

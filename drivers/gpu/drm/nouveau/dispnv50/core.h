@@ -8,7 +8,7 @@
 struct nv50_core {
 	const struct nv50_core_func *func;
 	struct nv50_dmac chan;
-	bool assign_windows;
+	bool assign_linux;
 };
 
 int nv50_core_new(struct nouveau_drm *, struct nv50_core **);

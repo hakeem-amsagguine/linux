@@ -42,8 +42,8 @@
 	 */
 
 	/* Datum current_thread_info->uwinmask contains at all times a bitmask
-	 * where if any user windows are active, at least one bit will
-	 * be set in to mask.  If no user windows are active, the bitmask
+	 * where if any user linux are active, at least one bit will
+	 * be set in to mask.  If no user linux are active, the bitmask
 	 * will be all zeroes.
 	 */
 
@@ -154,7 +154,7 @@ fwin_user_stack_is_bolixed:
 	STORE_PT_GLOBALS(l5)
 	STORE_PT_YREG(l5, g3)
 
-	/* Save current in a global while we change windows. */
+	/* Save current in a global while we change linux. */
 	mov	%l4, %curptr
 
 	save	%g0, %g0, %g0
@@ -183,7 +183,7 @@ fwin_user_stack_is_bolixed:
 	mov	0x1, %g5
 	sll	%g5, %g3, %g5
 	st	%g5, [%curptr + TI_UWINMASK]		! one live user window still
-	st	%g0, [%curptr + TI_W_SAVED]		! no windows in the buffer
+	st	%g0, [%curptr + TI_W_SAVED]		! no linux in the buffer
 
 	wr	%t_psr, PSR_ET, %psr			! enable traps
 	nop

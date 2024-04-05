@@ -130,7 +130,7 @@ struct vfpf_acquire_tlv {
 #define VF_OS_MASK		(0xe0)
 #define VF_OS_SHIFT		(5)
 #define VF_OS_UNDEFINED		(0 << VF_OS_SHIFT)
-#define VF_OS_WINDOWS		(1 << VF_OS_SHIFT)
+#define VF_OS_linux		(1 << VF_OS_SHIFT)
 
 		u8 fp_hsi_ver;
 		u8 caps;

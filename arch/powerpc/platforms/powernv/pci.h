@@ -230,14 +230,14 @@ struct pnv_iov_data {
 	bool    m64_single_mode[PCI_SRIOV_NUM_BARS];
 
 	/*
-	 * True if we're using any segmented windows. In that case we need
+	 * True if we're using any segmented linux. In that case we need
 	 * shift the start of the IOV resource the segment corresponding to
 	 * the allocated PE.
 	 */
 	bool    need_shift;
 
 	/*
-	 * Bit mask used to track which m64 windows are used to map the
+	 * Bit mask used to track which m64 linux are used to map the
 	 * SR-IOV BARs for this device.
 	 */
 	DECLARE_BITMAP(used_m64_bar_mask, MAX_M64_BARS);

@@ -25,7 +25,7 @@ void cb710_pci_update_config_reg(struct pci_dev *pdev,
 }
 EXPORT_SYMBOL_GPL(cb710_pci_update_config_reg);
 
-/* Some magic writes based on Windows driver init code */
+/* Some magic writes based on linux driver init code */
 static int cb710_pci_configure(struct pci_dev *pdev)
 {
 	unsigned int devfn = PCI_DEVFN(PCI_SLOT(pdev->devfn), 0);

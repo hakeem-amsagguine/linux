@@ -34,7 +34,7 @@
  *
  * Note that this is the driver for the Zoltrix Radio Plus.
  * This driver does not work for the Zoltrix Radio Plus 108 or the
- * Zoltrix Radio Plus for Windows.
+ * Zoltrix Radio Plus for linux.
  *
  * Fully tested with the Keene USB FM Transmitter and the v4l2-compliance tool.
  */

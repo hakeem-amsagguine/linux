@@ -1600,7 +1600,7 @@ void pnv_pci_ioda2_setup_dma_pe(struct pnv_phb *phb,
 	/* Setup linux iommu table */
 	pe->table_group.tce32_start = 0;
 	pe->table_group.tce32_size = phb->ioda.m32_pci_base;
-	pe->table_group.max_dynamic_windows_supported =
+	pe->table_group.max_dynamic_linux_supported =
 			IOMMU_TABLE_GROUP_MAX_TABLES;
 	pe->table_group.max_levels = POWERNV_IOMMU_MAX_LEVELS;
 	pe->table_group.pgsizes = pnv_ioda_parse_tce_sizes(phb);
@@ -2059,7 +2059,7 @@ static void pnv_ioda_setup_pe_seg(struct pnv_ioda_pe *pe)
 
 		/*
 		 * If the PE contains all subordinate PCI buses, the
-		 * windows of the child bridges should be mapped to
+		 * linux of the child bridges should be mapped to
 		 * the PE as well.
 		 */
 		if (!(pe->flags & PNV_IODA_PE_BUS_ALL) || !pci_is_bridge(pdev))
@@ -2187,7 +2187,7 @@ static void pnv_pci_ioda_fixup(void)
 }
 
 /*
- * Returns the alignment for I/O or memory windows for P2P
+ * Returns the alignment for I/O or memory linux for P2P
  * bridges. That actually depends on how PEs are segmented.
  * For now, we return I/O or M32 segment size for PE sensitive
  * P2P bridges. Otherwise, the default values (4KiB for I/O,
@@ -2231,7 +2231,7 @@ static resource_size_t pnv_pci_window_alignment(struct pci_bus *bus,
 
 /*
  * We are updating root port or the upstream port of the
- * bridge behind the root port with PHB's windows in order
+ * bridge behind the root port with PHB's linux in order
  * to accommodate the changes on required resources during
  * PCI (slot) hotplug, which is connected to either root
  * port or the downstream ports of PCIe switch behind the
@@ -2247,7 +2247,7 @@ static void pnv_pci_fixup_bridge_resources(struct pci_bus *bus,
 	bool msi_region = false;
 	int i;
 
-	/* Check if we need apply fixup to the bridge's windows */
+	/* Check if we need apply fixup to the bridge's linux */
 	if (!pci_is_root_bus(bridge->bus) &&
 	    !pci_is_root_bus(bridge->bus->self->bus))
 		return;

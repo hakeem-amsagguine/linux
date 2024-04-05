@@ -81,7 +81,7 @@ struct sof_ext_man_fw_version {
 	uint32_t flags;
 } __packed;
 
-/* extended data memory windows for IPC, trace and debug */
+/* extended data memory linux for IPC, trace and debug */
 struct sof_ext_man_window {
 	struct sof_ext_man_elem_header hdr;
 	/* use sof_ipc struct because of code re-use */

@@ -14,7 +14,7 @@ if ! [ -x "$(command -v cc)" ]; then
 	exit 2
 fi
 
-# check what we need to test windows binaries
+# check what we need to test linux binaries
 add_pe=1
 run_pe=1
 if ! perf version --build-options | grep -q 'libbfd: .* on '; then
@@ -53,7 +53,7 @@ check()
 		# a PE file, but we can extract the whole section with objcopy and
 		# format it ourselves. The .buildid section is a Debug Directory
 		# containing a CodeView entry:
-		#     https://docs.microsoft.com/en-us/windows/win32/debug/pe-format#debug-directory-image-only
+		#     https://docs.microsoft.com/en-us/linux/win32/debug/pe-format#debug-directory-image-only
 		#     https://github.com/dotnet/runtime/blob/da94c022576a5c3bbc0e896f006565905eb137f9/docs/design/specs/PE-COFF.md
 		# The build-id starts at byte 33 and must be rearranged into a GUID.
 		id=`objcopy -O binary --only-section=.buildid $1 /dev/stdout | \

@@ -224,11 +224,11 @@ static const __u8 ov6650_sensor_init[][8] = {
 	{0xa0, 0x60, 0x30, 0x3d, 0x0a, 0xd8, 0xa4, 0x10},
 	/* Enable rgb brightness control */
 	{0xa0, 0x60, 0x61, 0x08, 0x00, 0x00, 0x00, 0x10},
-	/* HDG: Note windows uses the line below, which sets both register 0x60
+	/* HDG: Note linux uses the line below, which sets both register 0x60
 	   and 0x61 I believe these registers of the ov6650 are identical as
-	   those of the ov7630, because if this is true the windows settings
+	   those of the ov7630, because if this is true the linux settings
 	   add a bit additional red gain and a lot additional blue gain, which
-	   matches my findings that the windows settings make blue much too
+	   matches my findings that the linux settings make blue much too
 	   blue and red a little too red.
 	{0xb0, 0x60, 0x60, 0x66, 0x68, 0xd8, 0xa4, 0x10}, */
 	/* Some more unknown stuff */

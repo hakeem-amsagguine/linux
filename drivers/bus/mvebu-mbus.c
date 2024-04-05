@@ -9,36 +9,36 @@
  * two sets of registers:
  *
  * - One to configure the access of the CPU to the devices. Depending
- *   on the families, there are between 8 and 20 configurable windows,
+ *   on the families, there are between 8 and 20 configurable linux,
  *   each can be use to create a physical memory window that maps to a
  *   specific device. Devices are identified by a tuple (target,
  *   attribute).
  *
  * - One to configure the access to the CPU to the SDRAM. There are
- *   either 2 (for Dove) or 4 (for other families) windows to map the
+ *   either 2 (for Dove) or 4 (for other families) linux to map the
  *   SDRAM into the physical address space.
  *
  * This driver:
  *
- * - Reads out the SDRAM address decoding windows at initialization
+ * - Reads out the SDRAM address decoding linux at initialization
  *   time, and fills the mvebu_mbus_dram_info structure with these
  *   information. The exported function mv_mbus_dram_info() allow
  *   device drivers to get those information related to the SDRAM
- *   address decoding windows. This is because devices also have their
- *   own windows (configured through registers that are part of each
+ *   address decoding linux. This is because devices also have their
+ *   own linux (configured through registers that are part of each
  *   device register space), and therefore the drivers for Marvell
- *   devices have to configure those device -> SDRAM windows to ensure
+ *   devices have to configure those device -> SDRAM linux to ensure
  *   that DMA works properly.
  *
  * - Provides an API for platform code or device drivers to
- *   dynamically add or remove address decoding windows for the CPU ->
+ *   dynamically add or remove address decoding linux for the CPU ->
  *   device accesses. This API is mvebu_mbus_add_window_by_id(),
  *   mvebu_mbus_add_window_remap_by_id() and
  *   mvebu_mbus_del_window().
  *
  * - Provides a debugfs interface in /sys/kernel/debug/mvebu-mbus/ to
- *   see the list of CPU -> SDRAM windows and their configuration
- *   (file 'sdram') and the list of CPU -> devices windows and their
+ *   see the list of CPU -> SDRAM linux and their configuration
+ *   (file 'sdram') and the list of CPU -> devices linux and their
  *   configuration (file 'devices').
  */
 
@@ -63,7 +63,7 @@
 #define TARGET_DDR		0
 
 /*
- * CPU Address Decode Windows registers
+ * CPU Address Decode linux registers
  */
 #define WIN_CTRL_OFF		0x0000
 #define   WIN_CTRL_ENABLE       BIT(0)
@@ -102,7 +102,7 @@
 #define MBUS_BRIDGE_CTRL_OFF	0x0
 #define MBUS_BRIDGE_BASE_OFF	0x4
 
-/* Maximum number of windows, for all known platforms */
+/* Maximum number of linux, for all known platforms */
 #define MBUS_WINS_MAX           20
 
 struct mvebu_mbus_state;
@@ -154,13 +154,13 @@ static struct mvebu_mbus_state mbus_state;
  * We provide two variants of the mv_mbus_dram_info() function:
  *
  * - The normal one, where the described DRAM ranges may overlap with
- *   the I/O windows, but for which the DRAM ranges are guaranteed to
+ *   the I/O linux, but for which the DRAM ranges are guaranteed to
  *   have a power of two size. Such ranges are suitable for the DMA
  *   masters that only DMA between the RAM and the device, which is
  *   actually all devices except the crypto engines.
  *
  * - The 'nooverlap' one, where the described DRAM ranges are
- *   guaranteed to not overlap with the I/O windows, but for which the
+ *   guaranteed to not overlap with the I/O linux, but for which the
  *   DRAM ranges will not have power of two sizes. They will only be
  *   aligned on a 64 KB boundary, and have a size multiple of 64
  *   KB. Such ranges are suitable for the DMA masters that DMA between
@@ -191,7 +191,7 @@ static bool mvebu_mbus_window_is_remappable(struct mvebu_mbus_state *mbus,
 }
 
 /*
- * Functions to manipulate the address decoding windows
+ * Functions to manipulate the address decoding linux
  */
 
 static void mvebu_mbus_read_window(struct mvebu_mbus_state *mbus,
@@ -521,13 +521,13 @@ static unsigned int armada_370_xp_mbus_win_cfg_offset(int win)
 	/* The register layout is a bit annoying and the below code
 	 * tries to cope with it.
 	 * - At offset 0x0, there are the registers for the first 8
-	 *   windows, with 4 registers of 32 bits per window (ctrl,
+	 *   linux, with 4 registers of 32 bits per window (ctrl,
 	 *   base, remap low, remap high)
 	 * - Then at offset 0x80, there is a hole of 0x10 bytes for
 	 *   the internal registers base address and internal units
 	 *   sync barrier register.
 	 * - Then at offset 0x90, there the registers for 12
-	 *   windows, with only 2 registers of 32 bits per window
+	 *   linux, with only 2 registers of 32 bits per window
 	 *   (ctrl, base).
 	 */
 	if (win < 8)
@@ -611,7 +611,7 @@ mvebu_mbus_find_bridge_hole(uint64_t *start, uint64_t *end)
 /*
  * This function fills in the mvebu_mbus_dram_info_nooverlap data
  * structure, by looking at the mvebu_mbus_dram_info data, and
- * removing the parts of it that overlap with I/O windows.
+ * removing the parts of it that overlap with I/O linux.
  */
 static void __init
 mvebu_mbus_setup_cpu_target_nooverlap(struct mvebu_mbus_state *mbus)
@@ -815,7 +815,7 @@ static const struct mvebu_mbus_soc_data dove_mbus_data = {
 };
 
 /*
- * Some variants of Orion5x have 4 remappable windows, some other have
+ * Some variants of Orion5x have 4 remappable linux, some other have
  * only two of them.
  */
 static const struct mvebu_mbus_soc_data orion5x_4win_mbus_data = {
@@ -1172,7 +1172,7 @@ static int __init mbus_dt_setup_win(struct mvebu_mbus_state *mbus,
 
 	if (mvebu_mbus_alloc_window(mbus, base, size, MVEBU_MBUS_NO_REMAP,
 				    target, attr)) {
-		pr_err("cannot add window '%04x:%04x', too many windows\n",
+		pr_err("cannot add window '%04x:%04x', too many linux\n",
 		       target, attr);
 		return -ENOMEM;
 	}
@@ -1310,7 +1310,7 @@ int __init mvebu_mbus_dt_init(bool is_coherent)
 	if (ret)
 		return ret;
 
-	/* Setup statically declared windows in the DT */
+	/* Setup statically declared linux in the DT */
 	return mbus_dt_setup(&mbus_state, np);
 }
 #endif

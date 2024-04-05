@@ -354,15 +354,15 @@ struct MXL_HYDRA_DEMOD_LOCK_T {
 
 struct MXL_HYDRA_DEMOD_STATUS_DVBS_T {
 	u32 rs_errors;        /* RS decoder err counter */
-	u32 ber_window;       /* Ber Windows */
+	u32 ber_window;       /* Ber linux */
 	u32 ber_count;        /* BER count */
-	u32 ber_window_iter1; /* Ber Windows - post viterbi */
+	u32 ber_window_iter1; /* Ber linux - post viterbi */
 	u32 ber_count_iter1;  /* BER count - post viterbi */
 };
 
 struct MXL_HYDRA_DEMOD_STATUS_DSS_T {
 	u32 rs_errors;  /* RS decoder err counter */
-	u32 ber_window; /* Ber Windows */
+	u32 ber_window; /* Ber linux */
 	u32 ber_count;  /* BER count */
 };
 

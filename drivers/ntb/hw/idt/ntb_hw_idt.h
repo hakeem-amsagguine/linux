@@ -177,7 +177,7 @@
 #define IDT_NT_NTMTBLDATA		0x004D8U
 /* Requester ID (Bus:Device:Function) Capture	(DWORD) */
 #define IDT_NT_REQIDCAP			0x004DCU
-/* Memory Windows Lookup table registers */
+/* Memory linux Lookup table registers */
 /* Lookup Table Offset/Lower, Middle and Upper data	(DWORD) */
 #define IDT_NT_LUTOFFSET		0x004E0U
 #define IDT_NT_LUTLDATA			0x004E4U
@@ -1024,7 +1024,7 @@ enum idt_temp_val {
 };
 
 /*
- * IDT Memory Windows type. Depending on the device settings, IDT supports
+ * IDT Memory linux type. Depending on the device settings, IDT supports
  * Direct Address Translation MW registers and Lookup Table registers
  * @IDT_MW_DIR:		Direct address translation
  * @IDT_MW_LUT12:	12-entry lookup table entry
@@ -1078,8 +1078,8 @@ struct idt_mw_cfg {
  * @port:		NT-function port
  * @part:		NT-function partition
  *
- * @mw_cnt:		Number of memory windows supported by NT-function
- * @mws:		Array of memory windows descriptors
+ * @mw_cnt:		Number of memory linux supported by NT-function
+ * @mws:		Array of memory linux descriptors
  */
 struct idt_ntb_peer {
 	unsigned char port;
@@ -1105,8 +1105,8 @@ struct idt_ntb_peer {
  *
  * @mtbl_lock:		Mapping table access lock
  *
- * @mw_cnt:		Number of memory windows supported by NT-function
- * @mws:		Array of memory windows descriptors
+ * @mw_cnt:		Number of memory linux supported by NT-function
+ * @mws:		Array of memory linux descriptors
  * @lut_lock:		Lookup table access lock
  *
  * @msg_locks:		Message registers mapping table lockers

@@ -540,7 +540,7 @@ static int kye_tablet_enable(struct hid_device *hdev)
 
 	/*
 	 * The code is for DataFormat 2 of config xml. They have no obvious
-	 * meaning (at least not configurable in Windows driver) except enabling
+	 * meaning (at least not configurable in linux driver) except enabling
 	 * fully-functional tablet mode (absolute positioning). Otherwise, the
 	 * tablet acts like a relative mouse.
 	 *

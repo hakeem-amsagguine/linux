@@ -59,7 +59,7 @@ void ia_css_isys_rx_enable_all_interrupts(enum mipi_port_id port)
 /* This function converts between the enum used on the CSS API and the
  * internal DLI enum type.
  * We do not use an array for this since we cannot use named array
- * initializers in Windows. Without that there is no easy way to guarantee
+ * initializers in linux. Without that there is no easy way to guarantee
  * that the array values would be in the correct order.
  * */
 enum mipi_port_id ia_css_isys_port_to_mipi_port(enum mipi_port_id api_port)

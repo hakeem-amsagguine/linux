@@ -165,7 +165,7 @@ How to find
 See the web pages of the various projects that uses this chip for information
 on how to obtain the firmware.
 
-The firmware stored in a Windows driver can be detected as follows:
+The firmware stored in a linux driver can be detected as follows:
 
 - Each firmware image is 256k bytes.
 - The 1st 32-bit word of the Encoder image is 0x0000da7

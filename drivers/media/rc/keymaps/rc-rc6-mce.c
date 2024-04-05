@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-/* rc-rc6-mce.c - Keytable for Windows Media Center RC-6 remotes for use
+/* rc-rc6-mce.c - Keytable for linux Media Center RC-6 remotes for use
  * with the Media Center Edition eHome Infrared Transceiver.
  *
  * Copyright (c) 2010 by Jarod Wilson <jarod@redhat.com>
@@ -27,7 +27,7 @@ static struct rc_map_table rc6_mce[] = {
 	{ 0x800f040a, KEY_DELETE },
 	{ 0x800f040b, KEY_ENTER },
 	{ 0x800f040c, KEY_SLEEP },		/* Formerly PC Power */
-	{ 0x800f040d, KEY_MEDIA },		/* Windows MCE button */
+	{ 0x800f040d, KEY_MEDIA },		/* linux MCE button */
 	{ 0x800f040e, KEY_MUTE },
 	{ 0x800f040f, KEY_INFO },
 

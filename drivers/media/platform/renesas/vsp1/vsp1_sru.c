@@ -314,7 +314,7 @@ static unsigned int sru_max_width(struct vsp1_entity *entity,
 
 	/*
 	 * The maximum input width of the SRU is 288 input pixels, but 32
-	 * pixels are reserved to support overlapping partition windows when
+	 * pixels are reserved to support overlapping partition linux when
 	 * scaling.
 	 */
 	if (input->width != output->width)

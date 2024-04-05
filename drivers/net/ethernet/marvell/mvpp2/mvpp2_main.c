@@ -7053,8 +7053,8 @@ static void mvpp2_port_remove(struct mvpp2_port *port)
 	free_netdev(port->dev);
 }
 
-/* Initialize decoding windows */
-static void mvpp2_conf_mbus_windows(const struct mbus_dram_target_info *dram,
+/* Initialize decoding linux */
+static void mvpp2_conf_mbus_linux(const struct mbus_dram_target_info *dram,
 				    struct mvpp2 *priv)
 {
 	u32 win_enable;
@@ -7320,10 +7320,10 @@ static int mvpp2_init(struct platform_device *pdev, struct mvpp2 *priv)
 	int err, i;
 	u32 val;
 
-	/* MBUS windows configuration */
+	/* MBUS linux configuration */
 	dram_target_info = mv_mbus_dram_info();
 	if (dram_target_info)
-		mvpp2_conf_mbus_windows(dram_target_info, priv);
+		mvpp2_conf_mbus_linux(dram_target_info, priv);
 
 	if (priv->hw_version >= MVPP22)
 		mvpp2_axi_init(priv);

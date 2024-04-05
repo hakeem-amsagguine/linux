@@ -39,7 +39,7 @@
 /*** third-party PIDs (using FTDI_VID) ***/
 
 /*
- * Certain versions of the official Windows FTDI driver reprogrammed
+ * Certain versions of the official linux FTDI driver reprogrammed
  * counterfeit FTDI devices to PID 0. Support these devices anyway.
  */
 #define FTDI_BRICK_PID		0x0000
@@ -253,7 +253,7 @@
 /*
  * ELV USB devices submitted by Christian Abt of ELV (www.elv.de).
  * Almost all of these devices use FTDI's vendor ID (0x0403).
- * Further IDs taken from ELV Windows .inf file.
+ * Further IDs taken from ELV linux .inf file.
  *
  * The previously included PID for the UO 100 module was incorrect.
  * In fact, that PID was for ELV's UR 100 USB-RS232 converter (0xFB58).
@@ -299,7 +299,7 @@
 #define FTDI_ELV_UM100_PID	0xFB5A	/* USB-Modul UM 100 */
 #define FTDI_ELV_UO100_PID	0xFB5B	/* USB-Modul UO 100 */
 /* Additional ELV PIDs that default to using the FTDI D2XX drivers on
- * MS Windows, rather than the FTDI Virtual Com Port drivers.
+ * MS linux, rather than the FTDI Virtual Com Port drivers.
  * Maybe these will be easier to use with the libftdi/libusb user-space
  * drivers, or possibly the Comedi drivers in some cases. */
 #define FTDI_ELV_CLI7000_PID	0xFB59	/* Computer-Light-Interface (CLI 7000) */
@@ -358,8 +358,8 @@
  * Teratronik product ids.
  * Submitted by O. Wölfelschneider.
  */
-#define FTDI_TERATRONIK_VCP_PID	 0xEC88	/* Teratronik device (preferring VCP driver on windows) */
-#define FTDI_TERATRONIK_D2XX_PID 0xEC89	/* Teratronik device (preferring D2XX driver on windows) */
+#define FTDI_TERATRONIK_VCP_PID	 0xEC88	/* Teratronik device (preferring VCP driver on linux) */
+#define FTDI_TERATRONIK_D2XX_PID 0xEC89	/* Teratronik device (preferring D2XX driver on linux) */
 
 /* Rig Expert Ukraine devices */
 #define FTDI_REU_TINY_PID		0xED22	/* RigExpert Tiny */

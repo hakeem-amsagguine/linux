@@ -40,7 +40,7 @@ static ssize_t update_total_credits_store(struct vas_cop_feat_caps *caps,
 	 * The user space interface from the management console
 	 * notifies OS with the new QoS credits and then the
 	 * hypervisor. So OS has to use this new credits value
-	 * and reconfigure VAS windows (close or reopen depends
+	 * and reconfigure VAS linux (close or reopen depends
 	 * on the credits available) instead of depending on VAS
 	 * QoS capabilities from the hypervisor.
 	 */

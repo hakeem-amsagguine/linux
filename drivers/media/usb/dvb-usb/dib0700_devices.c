@@ -3434,7 +3434,7 @@ static int s5h1411_frontend_attach(struct dvb_usb_adapter *adap)
 	/* The s5h1411 requires the dib0700 to not be in master mode */
 	st->disable_streaming_master_mode = 1;
 
-	/* All msleep values taken from Windows USB trace */
+	/* All msleep values taken from linux USB trace */
 	dib0700_set_gpio(adap->dev, GPIO0, GPIO_OUT, 0);
 	dib0700_set_gpio(adap->dev, GPIO3, GPIO_OUT, 0);
 	dib0700_set_gpio(adap->dev, GPIO6, GPIO_OUT, 1);

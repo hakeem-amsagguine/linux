@@ -1004,7 +1004,7 @@ static int sdhci_pci_o2_probe(struct sdhci_pci_chip *chip)
 					       O2_SD_FUNC_REG4, scratch_32);
 		}
 
-		/* Set Tuning Windows to 5 */
+		/* Set Tuning linux to 5 */
 		pci_write_config_byte(chip->pdev,
 				O2_SD_TUNING_CTRL, 0x55);
 		//Adjust 1st and 2nd CD debounce time

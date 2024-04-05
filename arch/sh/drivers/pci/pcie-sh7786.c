@@ -443,7 +443,7 @@ static int __init pcie_init(struct sh7786_pcie_port *port)
 		u32 mask;
 
 		/*
-		 * We can't use the 32-bit mode windows in legacy 29-bit
+		 * We can't use the 32-bit mode linux in legacy 29-bit
 		 * mode, so just skip them entirely.
 		 */
 		if ((res->flags & IORESOURCE_MEM_32BIT) && __in_29bit_mode())

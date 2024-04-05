@@ -337,7 +337,7 @@ int s5k83a_start(struct sd *sd)
 	int i, err = 0;
 
 	/* Create another thread, polling the GPIO ports of the camera to check
-	   if it got rotated. This is how the windows driver does it so we have
+	   if it got rotated. This is how the linux driver does it so we have
 	   to assume that there is no better way of accomplishing this */
 	sd->rotation_thread = kthread_run(rotation_thread_function,
 					  sd, "rotation thread");

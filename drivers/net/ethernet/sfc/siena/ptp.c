@@ -274,9 +274,9 @@ struct efx_ptp_timeset {
  * @bad_syncs: Number of failed synchronisations.
  * @sync_timeouts: Number of synchronisation timeouts
  * @no_time_syncs: Number of synchronisations with no good times.
- * @invalid_sync_windows: Number of sync windows with bad durations.
- * @undersize_sync_windows: Number of corrected sync windows that are too small
- * @oversize_sync_windows: Number of corrected sync windows that are too large
+ * @invalid_sync_linux: Number of sync linux with bad durations.
+ * @undersize_sync_linux: Number of corrected sync linux that are too small
+ * @oversize_sync_linux: Number of corrected sync linux that are too large
  * @rx_no_timestamp: Number of packets received without a timestamp.
  * @timeset: Last set of synchronisation statistics.
  * @xmit_skb: Transmit SKB function.
@@ -338,9 +338,9 @@ struct efx_ptp_data {
 	unsigned int bad_syncs;
 	unsigned int sync_timeouts;
 	unsigned int no_time_syncs;
-	unsigned int invalid_sync_windows;
-	unsigned int undersize_sync_windows;
-	unsigned int oversize_sync_windows;
+	unsigned int invalid_sync_linux;
+	unsigned int undersize_sync_linux;
+	unsigned int oversize_sync_linux;
 	unsigned int rx_no_timestamp;
 	struct efx_ptp_timeset
 	timeset[MC_CMD_PTP_OUT_SYNCHRONIZE_TIMESET_MAXNUM];
@@ -378,9 +378,9 @@ static const struct efx_hw_stat_desc efx_ptp_stat_desc[] = {
 	PTP_SW_STAT(ptp_bad_syncs, bad_syncs),
 	PTP_SW_STAT(ptp_sync_timeouts, sync_timeouts),
 	PTP_SW_STAT(ptp_no_time_syncs, no_time_syncs),
-	PTP_SW_STAT(ptp_invalid_sync_windows, invalid_sync_windows),
-	PTP_SW_STAT(ptp_undersize_sync_windows, undersize_sync_windows),
-	PTP_SW_STAT(ptp_oversize_sync_windows, oversize_sync_windows),
+	PTP_SW_STAT(ptp_invalid_sync_linux, invalid_sync_linux),
+	PTP_SW_STAT(ptp_undersize_sync_linux, undersize_sync_linux),
+	PTP_SW_STAT(ptp_oversize_sync_linux, oversize_sync_linux),
 	PTP_SW_STAT(ptp_rx_no_timestamp, rx_no_timestamp),
 	PTP_MC_STAT(ptp_tx_timestamp_packets, TX),
 	PTP_MC_STAT(ptp_rx_timestamp_packets, RX),
@@ -968,11 +968,11 @@ efx_ptp_process_times(struct efx_nic *efx, MCDI_DECLARE_STRUCT_PTR(synch_buf),
 		 * time and writing it to MC memory.
 		 */
 		if (window < SYNCHRONISATION_GRANULARITY_NS) {
-			++ptp->invalid_sync_windows;
+			++ptp->invalid_sync_linux;
 		} else if (corrected >= MAX_SYNCHRONISATION_NS) {
-			++ptp->oversize_sync_windows;
+			++ptp->oversize_sync_linux;
 		} else if (corrected < ptp->min_synchronisation_ns) {
-			++ptp->undersize_sync_windows;
+			++ptp->undersize_sync_linux;
 		} else {
 			ngood++;
 			last_good = i;

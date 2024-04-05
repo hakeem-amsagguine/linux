@@ -1667,7 +1667,7 @@ struct iwl_link_qual_agg_params {
  *
  * 6)  Re-evaluate the rate after each tx frame.  If working with block-
  *     acknowledge, history and statistics may be calculated for the entire
- *     block (including prior history that fits within the history windows),
+ *     block (including prior history that fits within the history linux),
  *     before re-evaluation.
  *
  * FINDING BEST STARTING MODULATION MODE:

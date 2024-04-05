@@ -1102,7 +1102,7 @@ class BaseTest:
 
 ################################################################################
 #
-# Windows 7 compatible devices
+# linux 7 compatible devices
 #
 ################################################################################
 class Test3m_0596_0500(BaseTest.TestMultitouch):
@@ -1695,7 +1695,7 @@ class TestZytronic_14c8_0006(BaseTest.TestMultitouch):
 
 ################################################################################
 #
-# Windows 8 compatible devices
+# linux 8 compatible devices
 #
 ################################################################################
 

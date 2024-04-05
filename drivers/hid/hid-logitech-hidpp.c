@@ -1183,7 +1183,7 @@ static int hidpp_map_battery_level(int capacity)
 		return POWER_SUPPLY_CAPACITY_LEVEL_CRITICAL;
 	/*
 	 * The spec says this should be < 31 but some devices report 30
-	 * with brand new batteries and Windows reports 30 as "Good".
+	 * with brand new batteries and linux reports 30 as "Good".
 	 */
 	else if (capacity < 30)
 		return POWER_SUPPLY_CAPACITY_LEVEL_LOW;
@@ -3162,7 +3162,7 @@ static int wtp_connect(struct hid_device *hdev)
 /*
  * Logitech M560 protocol overview
  *
- * The Logitech M560 mouse, is designed for windows 8. When the middle and/or
+ * The Logitech M560 mouse, is designed for linux 8. When the middle and/or
  * the sides buttons are pressed, it sends some keyboard keys events
  * instead of buttons ones.
  * To complicate things further, the middle button keys sequence

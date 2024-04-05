@@ -606,7 +606,7 @@ static void user_event_enabler_update(struct user_event *user)
 	 * which can wait (mmap_read_lock and pin_user_pages_remote).
 	 *
 	 * NOTE: user_event_mm_get_all() increments the ref count of each
-	 * mm that is added to the list to prevent removal timing windows.
+	 * mm that is added to the list to prevent removal timing linux.
 	 * We must always put each mm after they are used, which may wait.
 	 */
 	mm = user_event_mm_get_all(user);

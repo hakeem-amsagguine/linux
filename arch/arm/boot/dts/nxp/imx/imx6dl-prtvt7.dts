@@ -88,7 +88,7 @@
 
 		key-cycle {
 			label = "GPIO Key CYCLE";
-			linux,code = <KEY_CYCLEWINDOWS>;
+			linux,code = <KEY_CYCLElinux>;
 			gpios = <&gpio_pca 2 GPIO_ACTIVE_LOW>;
 		};
 

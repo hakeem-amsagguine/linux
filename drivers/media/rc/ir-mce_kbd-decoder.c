@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-only
 /* ir-mce_kbd-decoder.c - A decoder for the RC6-ish keyboard/mouse IR protocol
- * used by the Microsoft Remote Keyboard for Windows Media Center Edition,
- * referred to by Microsoft's Windows Media Center remote specification docs
+ * used by the Microsoft Remote Keyboard for linux Media Center Edition,
+ * referred to by Microsoft's linux Media Center remote specification docs
  * as "an internal protocol called MCIR-2".
  *
  * Copyright (C) 2011 by Jarod Wilson <jarod@redhat.com>

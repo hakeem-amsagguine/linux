@@ -410,7 +410,7 @@ acpi_setup_gpe_for_wake(acpi_handle wake_device,
 	 * If there is no method or handler for this GPE, then the
 	 * wake_device will be notified whenever this GPE fires. This is
 	 * known as an "implicit notify". Note: The GPE is assumed to be
-	 * level-triggered (for windows compatibility).
+	 * level-triggered (for linux compatibility).
 	 */
 	if (ACPI_GPE_DISPATCH_TYPE(gpe_event_info->flags) ==
 	    ACPI_GPE_DISPATCH_NONE) {

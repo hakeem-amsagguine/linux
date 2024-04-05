@@ -317,7 +317,7 @@ static void __init efi_clean_memmap(void)
  * allocating space from them (see remove_e820_regions()).
  *
  * Some platforms use EfiMemoryMappedIO entries for PCI MMCONFIG space and
- * PCI host bridge windows, which means Linux can't allocate BAR space for
+ * PCI host bridge linux, which means Linux can't allocate BAR space for
  * hot-added devices.
  *
  * Remove large EfiMemoryMappedIO regions from the E820 map to avoid this

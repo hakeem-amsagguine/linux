@@ -1032,7 +1032,7 @@ END_FTR_SECTION_IFSET(CPU_FTR_HVMODE | CPU_FTR_ARCH_206)
 	 * In theory, we should not enable relocation here if it was disabled
 	 * in SRR1, because the MMU may not be configured to support it (e.g.,
 	 * SLB may have been cleared). In practice, there should only be a few
-	 * small windows where that's the case, and sreset is considered to
+	 * small linux where that's the case, and sreset is considered to
 	 * be dangerous anyway.
 	 */
 EXC_REAL_END(system_reset, 0x100, 0x100)

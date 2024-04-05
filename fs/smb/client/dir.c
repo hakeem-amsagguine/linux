@@ -113,7 +113,7 @@ char *__build_path_from_dentry_optional_prefix(struct dentry *direntry, void *pa
 		*s = '/';
 	}
 	if (dirsep != '/') {
-		/* BB test paths to Windows with '/' in the midst of prepath */
+		/* BB test paths to linux with '/' in the midst of prepath */
 		char *p;
 
 		for (p = s; *p; p++)
@@ -348,7 +348,7 @@ static int cifs_do_create(struct inode *inode, struct dentry *direntry, unsigned
 				       current->tgid);
 	} else {
 		/*
-		 * BB implement mode setting via Windows security
+		 * BB implement mode setting via linux security
 		 * descriptors e.g.
 		 */
 		/* CIFSSMBWinSetPerms(xid,tcon,path,mode,-1,-1,nls);*/

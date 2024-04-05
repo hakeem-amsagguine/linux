@@ -522,7 +522,7 @@ static int si4713_wait_stc(struct si4713_device *sdev, const int usecs)
 			return err < 0 ? err : -EIO;
 		/* We sleep here for 3-4 ms in order to avoid flooding the device
 		 * with USB requests. The si4713 USB driver was developed
-		 * by reverse engineering the Windows USB driver. The windows
+		 * by reverse engineering the linux USB driver. The linux
 		 * driver also has a ~2.5 ms delay between responses. */
 		usleep_range(3000, 4000);
 	}

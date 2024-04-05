@@ -398,8 +398,8 @@ static int mtk_pcie_startup_port(struct mtk_gen3_pcie *pcie)
 
 	mtk_pcie_enable_msi(pcie);
 
-	/* Set PCIe translation windows */
-	resource_list_for_each_entry(entry, &host->windows) {
+	/* Set PCIe translation linux */
+	resource_list_for_each_entry(entry, &host->linux) {
 		struct resource *res = entry->res;
 		unsigned long type = resource_type(res);
 		resource_size_t cpu_addr;

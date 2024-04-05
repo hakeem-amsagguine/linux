@@ -50,7 +50,7 @@ established connection or send window by closing the file descriptor
 (close(fd)) or upon the process exit.
 
 Note that applications can send several requests with the same window or
-can establish multiple windows, but one window for each file descriptor.
+can establish multiple linux, but one window for each file descriptor.
 
 Following sections provide additional details and references about the
 individual steps.
@@ -98,7 +98,7 @@ Open /dev/crypto/nx-gzip
 
 The nx-gzip device should be opened for read and write. No special
 privileges are needed to open the device. Each window corresponds to one
-file descriptor. So if the userspace process needs multiple windows,
+file descriptor. So if the userspace process needs multiple linux,
 several open calls have to be issued.
 
 See open(2) system call man pages for other details such as return values,
@@ -153,7 +153,7 @@ a connection with NX co-processor engine:
 		EINVAL	version is not set with proper value
 		EEXIST	Window is already opened for the given fd
 		ENOMEM	Memory is not available to allocate window
-		ENOSPC	System has too many active windows (connections)
+		ENOSPC	System has too many active linux (connections)
 			opened
 		EINVAL	reserved fields are not set to 0.
 		======	================================================
@@ -242,7 +242,7 @@ issued. This signal returns with the following siginfo struct::
 	siginfo.si_code = SEGV_MAPERR;
 	siginfo.si_addr = CSB address;
 
-In the case of multi-thread applications, NX send windows can be shared
+In the case of multi-thread applications, NX send linux can be shared
 across all threads. For example, a child thread can open a send window,
 but other threads can send requests to NX using this window. These
 requests will be successful even in the case of OS handling faults as long

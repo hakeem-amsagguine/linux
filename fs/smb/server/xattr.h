@@ -8,7 +8,7 @@
 
 /*
  * These are on-disk structures to store additional metadata into xattr to
- * reproduce windows filesystem semantics. And they are encoded with NDR to
+ * reproduce linux filesystem semantics. And they are encoded with NDR to
  * compatible with samba's xattr meta format. The compatibility with samba
  * is important because it can lose the information(file attribute,
  * creation time, acls) about the existing files when switching between
@@ -31,7 +31,7 @@ enum {
 /*
  * Dos attribute structure which is compatible with samba's one.
  * Storing it into the xattr named "DOSATTRIB" separately from inode
- * allows ksmbd to faithfully reproduce windows filesystem semantics
+ * allows ksmbd to faithfully reproduce linux filesystem semantics
  * on top of a POSIX filesystem.
  */
 struct xattr_dos_attrib {

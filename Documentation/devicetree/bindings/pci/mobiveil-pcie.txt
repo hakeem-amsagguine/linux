@@ -1,7 +1,7 @@
 * Mobiveil AXI PCIe Root Port Bridge DT description
 
 Mobiveil's GPEX 4.0 is a PCIe Gen4 root port bridge IP. This configurable IP
-has up to 8 outbound and inbound windows for the address translation.
+has up to 8 outbound and inbound linux for the address translation.
 
 Required properties:
 - #address-cells: Address representation for root ports, set to <3>
@@ -18,11 +18,11 @@ Required properties:
 	"apb_csr"	  : MSI registers
 
 - device_type: must be "pci"
-- apio-wins : number of requested apio outbound windows
-		default 2 outbound windows are configured -
+- apio-wins : number of requested apio outbound linux
+		default 2 outbound linux are configured -
 		1. Config window
 		2. Memory window
-- ppio-wins : number of requested ppio inbound windows
+- ppio-wins : number of requested ppio inbound linux
 		default 1 inbound memory window is configured.
 - bus-range: PCI bus numbers covered
 - interrupt-controller: identifies the node as an interrupt controller

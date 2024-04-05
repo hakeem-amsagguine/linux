@@ -321,7 +321,7 @@ static void ar71xx_pci_reset(void)
 	ath79_device_reset_clear(AR71XX_RESET_PCI_BUS | AR71XX_RESET_PCI_CORE);
 	mdelay(100);
 
-	ath79_ddr_set_pci_windows();
+	ath79_ddr_set_pci_linux();
 	mdelay(100);
 }
 

@@ -11392,7 +11392,7 @@ static int drxj_open(struct drx_demod_instance *demod)
 	/*
 	 * Soft reset of sys- and osc-clockdomain
 	 *
-	 * HACK: On windows, it writes a 0x07 here, instead of just 0x03.
+	 * HACK: On linux, it writes a 0x07 here, instead of just 0x03.
 	 * As we didn't load the firmware here yet, we should do the same.
 	 * Btw, this is coherent with DRX-K, where we send reset codes
 	 * for modulation (OFTM, in DRX-k), SYS and OSC clock domains.

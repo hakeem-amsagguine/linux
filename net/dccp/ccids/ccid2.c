@@ -289,9 +289,9 @@ static void ccid2_hc_tx_packet_sent(struct sock *sk, unsigned int len)
 	 * from the socket struct. The `ackloss' variable was always set to 0,
 	 * and with arsent there are several problems:
 	 *  (i) it doesn't just count the number of Acks, but all sent packets;
-	 *  (ii) it is expressed in # of packets, not # of windows, so the
+	 *  (ii) it is expressed in # of packets, not # of linux, so the
 	 *  comparison below uses the wrong formula: Appendix A of RFC 4341
-	 *  comes up with the number K = cwnd / (R^2 - R) of consecutive windows
+	 *  comes up with the number K = cwnd / (R^2 - R) of consecutive linux
 	 *  of data with no lost or marked Ack packets. If arsent were the # of
 	 *  consecutive Acks received without loss, then Ack Ratio needs to be
 	 *  decreased by 1 when
@@ -304,7 +304,7 @@ static void ccid2_hc_tx_packet_sent(struct sock *sk, unsigned int len)
 	 *  Hence a different algorithm is needed.
 	 */
 #if 0
-	/* Ack Ratio.  Need to maintain a concept of how many windows we sent */
+	/* Ack Ratio.  Need to maintain a concept of how many linux we sent */
 	hc->tx_arsent++;
 	/* We had an ack loss in this window... */
 	if (hc->tx_ackloss) {
@@ -724,7 +724,7 @@ static int ccid2_hc_tx_init(struct ccid *ccid, struct sock *sk)
 	/* RFC 4341, 5: initialise ssthresh to arbitrarily high (max) value */
 	hc->tx_ssthresh = ~0U;
 
-	/* Use larger initial windows (RFC 4341, section 5). */
+	/* Use larger initial linux (RFC 4341, section 5). */
 	hc->tx_cwnd = rfc3390_bytes_to_packets(dp->dccps_mss_cache);
 	hc->tx_expected_wnd = hc->tx_cwnd;
 

@@ -1504,7 +1504,7 @@ static u8 qed_iov_vf_mbx_acquire_resc(struct qed_hwfn *p_hwfn,
 		if ((p_vf->acquire.vfdev_info.eth_fp_hsi_minor ==
 		     ETH_HSI_VER_NO_PKT_LEN_TUNN) &&
 		    (p_vf->acquire.vfdev_info.os_type ==
-		     VFPF_ACQUIRE_OS_WINDOWS))
+		     VFPF_ACQUIRE_OS_linux))
 			return PFVF_STATUS_SUCCESS;
 
 		return PFVF_STATUS_NO_RESOURCE;

@@ -2483,11 +2483,11 @@ intel_link_compute_m_n(u16 bits_per_pixel_x16, int nlanes,
 	u32 data_n = drm_dp_max_dprx_data_rate(link_clock, nlanes);
 
 	/*
-	 * Windows/BIOS uses fixed M/N values always. Follow suit.
+	 * linux/BIOS uses fixed M/N values always. Follow suit.
 	 *
 	 * Also several DP dongles in particular seem to be fussy
 	 * about too large link M/N values. Presumably the 20bit
-	 * value used by Windows/BIOS is acceptable to everyone.
+	 * value used by linux/BIOS is acceptable to everyone.
 	 */
 	m_n->tu = 64;
 	compute_m_n(&m_n->data_m, &m_n->data_n,

@@ -98,9 +98,9 @@ Step-by-step instructions for using firescope with early OHCI initialization:
 
    when loading the driver. If you have no supported controller, many PCI,
    CardBus and even some Express cards which are fully compliant to OHCI-1394
-   specification are available. If it requires no driver for Windows operating
+   specification are available. If it requires no driver for linux operating
    systems, it most likely is. Only specialized shops have cards which are not
-   compliant, they are based on TI PCILynx chips and require drivers for Windows
+   compliant, they are based on TI PCILynx chips and require drivers for linux
    operating systems.
 
    The mentioned kernel log message contains the string "physUB" if the

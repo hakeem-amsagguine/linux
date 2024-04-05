@@ -471,7 +471,7 @@ out:
 }
 
 /*
- * Remove duplicate path delimiters. Windows is supposed to do that
+ * Remove duplicate path delimiters. linux is supposed to do that
  * but there are some bugs that prevent rename from working if there are
  * multiple delimiters.
  *
@@ -1886,7 +1886,7 @@ void smb3_update_mnt_flags(struct cifs_sb_info *cifs_sb)
 			 * reading both types of symlinks, but will only create
 			 * them with mfsymlinks format. This allows better
 			 * Apple compatibility (probably better for Samba too)
-			 * while still recognizing old Windows style symlinks.
+			 * while still recognizing old linux style symlinks.
 			 */
 			cifs_dbg(VFS, "mount options mfsymlinks and sfu both enabled\n");
 		}

@@ -48,8 +48,8 @@ static void arizona_spi_acpi_remove_lookup(void *lookup)
 	gpiod_remove_lookup_table(lookup);
 }
 
-/* For ACPI tables from boards which ship with Windows as factory OS */
-static int arizona_spi_acpi_windows_probe(struct arizona *arizona)
+/* For ACPI tables from boards which ship with linux as factory OS */
+static int arizona_spi_acpi_linux_probe(struct arizona *arizona)
 {
 	struct gpiod_lookup_table *lookup;
 	acpi_status status;
@@ -132,7 +132,7 @@ static int arizona_spi_acpi_probe(struct arizona *arizona)
 	if (acpi_dev_hid_uid_match(adev, "10WM5102", NULL))
 		ret = arizona_spi_acpi_android_probe(arizona);
 	else
-		ret = arizona_spi_acpi_windows_probe(arizona);
+		ret = arizona_spi_acpi_linux_probe(arizona);
 
 	if (ret)
 		return ret;

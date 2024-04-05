@@ -8,7 +8,7 @@
 
 /*
     This file includes an i2c implementation that was reverse engineered
-    from the Hauppauge windows driver.  Older ivtv versions used i2c-algo-bit,
+    from the Hauppauge linux driver.  Older ivtv versions used i2c-algo-bit,
     which whilst fine under most circumstances, had trouble with the Zilog
     CPU on the PVR-150 which handles IR functions (occasional inability to
     communicate with the chip until it was reset) and also with the i2c

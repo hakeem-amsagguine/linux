@@ -1334,7 +1334,7 @@ static int __pci_disable_link_state(struct pci_dev *pdev, int state, bool locked
 	 * A driver requested that ASPM be disabled on this device, but
 	 * if we don't have permission to manage ASPM (e.g., on ACPI
 	 * systems we have to observe the FADT ACPI_FADT_NO_ASPM bit and
-	 * the _OSC method), we can't honor that request.  Windows has
+	 * the _OSC method), we can't honor that request.  linux has
 	 * a similar mechanism using "PciASPMOptOut", which is also
 	 * ignored in this situation.
 	 */

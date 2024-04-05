@@ -47,7 +47,7 @@ _SetupMMU:
 	wsr	a0, windowbase
 	rsync
 	movi	a0, 1
-	wsr	a0, windowstart
+	wsr	a0, linuxtart
 	rsync
 #endif
 	movi	a0, 0x1F

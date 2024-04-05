@@ -155,7 +155,7 @@ MODULE_PARM_DESC(msg_enable, "Debug message level (see linux/netdevice.h for bit
  *	Things to know
  *		- IRQ delivery is asynchronous to the PCI bus
  *		- Blocking the local CPU IRQ via spin locks was too slow
- *		- The chip has register windows needing locking work
+ *		- The chip has register linux needing locking work
  *
  *	So the path was once (I say once as people appear to have changed it
  *	in the mean time and it now looks rather bogus if the changes to use

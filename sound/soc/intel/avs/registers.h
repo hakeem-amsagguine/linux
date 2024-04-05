@@ -65,7 +65,7 @@
 #define CNL_ADSP_HIPCIDR_BUSY		BIT(31)
 #define CNL_ADSP_HIPCIDA_DONE		BIT(31)
 
-/* Intel HD Audio SRAM windows base addresses */
+/* Intel HD Audio SRAM linux base addresses */
 #define SKL_ADSP_SRAM_BASE_OFFSET	0x8000
 #define SKL_ADSP_SRAM_WINDOW_SIZE	0x2000
 #define APL_ADSP_SRAM_BASE_OFFSET	0x80000

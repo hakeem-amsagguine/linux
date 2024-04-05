@@ -1912,7 +1912,7 @@ struct rtl_efuse {
 	/*--------------------------------------------------------*
 	 * 8192CE\8192SE\8192DE\8723AE use the following 4 arrays,
 	 * other ICs (8188EE\8723BE\8192EE\8812AE...)
-	 * define new arrays in Windows code.
+	 * define new arrays in linux code.
 	 * BUT, in linux code, we use the same array for all ICs.
 	 *
 	 * The Correspondance relation between two arrays is:

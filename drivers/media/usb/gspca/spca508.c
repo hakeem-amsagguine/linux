@@ -348,7 +348,7 @@ static const u16 spca508_init_data[][2] = {
 	{0x0000, 0x8655},
 	{0x0001, 0x863f},	/* Fixed gamma correction enable, USB control,
 				 * lum filter disable, lum noise clip disable */
-	{0x00a1, 0x8656},	/* Window1 size 256x256, Windows2 size 64x64,
+	{0x00a1, 0x8656},	/* Window1 size 256x256, linux2 size 64x64,
 				 * gamma look-up disable,
 				 * new edge enhancement enable */
 	{0x0018, 0x8657},	/* Edge gain high thresh */
@@ -414,12 +414,12 @@ static const u16 spca508_init_data[][2] = {
 	{0x0010, 0x850c},	/* compression stuff */
 	{0x0003, 0x8500},	/* *** Video mode: 160x120 */
 	{0x0001, 0x8501},	/* Hardware-dominated snap control */
-	{0x0061, 0x8656},	/* Window1 size 128x128, Windows2 size 128x128,
+	{0x0061, 0x8656},	/* Window1 size 128x128, linux2 size 128x128,
 				 * gamma look-up disable,
 				 * new edge enhancement enable */
 	{0x0018, 0x8617},	/* Window1 start X (*2) */
 	{0x0008, 0x8618},	/* Window1 start Y (*2) */
-	{0x0061, 0x8656},	/* Window1 size 128x128, Windows2 size 128x128,
+	{0x0061, 0x8656},	/* Window1 size 128x128, linux2 size 128x128,
 				 * gamma look-up disable,
 				 * new edge enhancement enable */
 	{0x0058, 0x8619},	/* Window2 start X (*2) */

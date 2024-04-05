@@ -151,10 +151,10 @@ _user_exception:
 
 #if defined(USER_SUPPORT_WINDOWED)
 	rsr	a2, windowbase
-	rsr	a3, windowstart
+	rsr	a3, linuxtart
 	ssr	a2
 	s32i	a2, a1, PT_WINDOWBASE
-	s32i	a3, a1, PT_WINDOWSTART
+	s32i	a3, a1, PT_linuxTART
 	slli	a2, a3, 32-WSBITS
 	src	a2, a3, a2
 	srli	a2, a2, 32-WSBITS
@@ -163,7 +163,7 @@ _user_exception:
 	movi	a2, 0
 	movi	a3, 1
 	s32i	a2, a1, PT_WINDOWBASE
-	s32i	a3, a1, PT_WINDOWSTART
+	s32i	a3, a1, PT_linuxTART
 	s32i	a3, a1, PT_WMASK
 #endif
 
@@ -207,7 +207,7 @@ UABI_W	_bbsi.l	a2, 3, .Lsave_window_registers
 	ffs_ws	a0, a3			# number of frames to the '1' from left
 
 	/* Store information into WMASK:
-	 * bits 0..3: xxx1 masked lower 4 bits of the rotated windowstart,
+	 * bits 0..3: xxx1 masked lower 4 bits of the rotated linuxtart,
 	 * bits 4...: number of valid 4-register frames
 	 */
 
@@ -233,8 +233,8 @@ UABI_W	_bbsi.l	a2, 3, .Lsave_window_registers
 	movi	a3, 1
 	ssl	a2
 	sll	a3, a3
-	wsr	a3, windowstart		# set corresponding WINDOWSTART bit
-	wsr	a2, windowbase		# and WINDOWSTART
+	wsr	a3, linuxtart		# set corresponding linuxTART bit
+	wsr	a2, windowbase		# and linuxTART
 	rsync
 
 	/* We are back to the original stack pointer (a1) */
@@ -299,7 +299,7 @@ _kernel_exception:
 	/* Assume ws = xxwww1yyyy. Rotate ws right, so that a2 = yyyyxxwww1 */
 
 	rsr	a2, windowbase		# don't need to save these, we only
-	rsr	a3, windowstart		# need shifted windowstart: windowmask
+	rsr	a3, linuxtart		# need shifted linuxtart: windowmask
 	ssr	a2
 	slli	a2, a3, 32-WSBITS
 	src	a2, a3, a2
@@ -589,9 +589,9 @@ user_exception_exit:
 	/* Switch to the user thread WINDOWBASE. Save SP temporarily in DEPC */
 
 	l32i	a2, a1, PT_WINDOWBASE
-	l32i	a3, a1, PT_WINDOWSTART
+	l32i	a3, a1, PT_linuxTART
 	wsr	a1, depc		# use DEPC as temp storage
-	wsr	a3, windowstart		# restore WINDOWSTART
+	wsr	a3, linuxtart		# restore linuxTART
 	ssr	a2			# preserve user's WB in the SAR
 	wsr	a2, windowbase		# switch to user's saved WB
 	rsync
@@ -665,11 +665,11 @@ kernel_exception_exit:
 	 * We only have to do a movsp if the previous window-frame has
 	 * been spilled to the *temporary* exception stack instead of the
 	 * task's stack. This is the case if the corresponding bit in
-	 * WINDOWSTART for the previous window-frame was set before
+	 * linuxTART for the previous window-frame was set before
 	 * (not spilled) but is zero now (spilled).
 	 * If this bit is zero, all other bits except the one for the
 	 * current window frame are also zero. So, we can use a simple test:
-	 * 'and' WINDOWSTART and WINDOWSTART-1:
+	 * 'and' linuxTART and linuxTART-1:
 	 *
 	 *  (XXXXXX1[0]* - 1) AND XXXXXX1[0]* = XXXXXX0[0]*
 	 *
@@ -680,16 +680,16 @@ kernel_exception_exit:
 	 *        different from the time the exception occurred.)
 	 */
 
-	/* Test WINDOWSTART before and after the exception.
+	/* Test linuxTART before and after the exception.
 	 * We actually have WMASK, so we only have to test if it is 1 or not.
 	 */
 
 	l32i	a2, a1, PT_WMASK
 	_beqi	a2, 1, common_exception_exit	# Spilled before exception,jump
 
-	/* Test WINDOWSTART now. If spilled, do the movsp */
+	/* Test linuxTART now. If spilled, do the movsp */
 
-	rsr     a3, windowstart
+	rsr     a3, linuxtart
 	addi	a0, a3, -1
 	and     a3, a3, a0
 	_bnez	a3, common_exception_exit
@@ -939,7 +939,7 @@ ENTRY(unrecoverable_exception)
 	movi	a0, 1
 	movi	a1, 0
 
-	wsr	a0, windowstart
+	wsr	a0, linuxtart
 	wsr	a1, windowbase
 	rsync
 #endif
@@ -1266,7 +1266,7 @@ ENTRY(fast_syscall_spill_registers)
 	 */
 
 	rsr	a0, windowbase
-	rsr	a3, windowstart		# a3 = xxxwww1yy
+	rsr	a3, linuxtart		# a3 = xxxwww1yy
 	ssr	a0			# holds WB
 	slli	a0, a3, WSBITS
 	or	a3, a3, a0		# a3 = xxxwww1yyxxxwww1yy
@@ -1282,9 +1282,9 @@ ENTRY(fast_syscall_spill_registers)
 
 	or	a3, a3, a0		# 1yyxxxwww
 
-	/* Skip empty frames - get 'oldest' WINDOWSTART-bit. */
+	/* Skip empty frames - get 'oldest' linuxTART-bit. */
 
-	wsr	a3, windowstart		# save shifted windowstart
+	wsr	a3, linuxtart		# save shifted linuxtart
 	neg	a0, a3
 	and	a3, a0, a3		# first bit set from right: 000010000
 
@@ -1298,8 +1298,8 @@ ENTRY(fast_syscall_spill_registers)
 	wsr	a3, windowbase
 	rsync
 
-	rsr	a3, windowstart
-	srl	a3, a3			# shift windowstart
+	rsr	a3, linuxtart
+	srl	a3, a3			# shift linuxtart
 
 	/* WB is now just one frame below the oldest frame in the register
 	   window. WS is shifted so the oldest frame is in bit 0, thus, WB
@@ -1387,7 +1387,7 @@ ENTRY(fast_syscall_spill_registers)
 	ssl	a3
 	movi	a3, 1
 	sll	a3, a3
-	wsr	a3, windowstart
+	wsr	a3, linuxtart
 .Lnospill:
 
 	/* Advance PC, restore registers and SAR, and return from exception. */
@@ -1419,7 +1419,7 @@ ENTRY(fast_syscall_spill_registers)
 	movi	a0, 1
 	movi	a1, 0
 
-	wsr	a0, windowstart
+	wsr	a0, linuxtart
 	wsr	a1, windowbase
 	rsync
 
@@ -1447,15 +1447,15 @@ ENDPROC(fast_syscall_spill_registers)
 /* Fixup handler.
  *
  * We get here if the spill routine causes an exception, e.g. tlb miss.
- * We basically restore WINDOWBASE and WINDOWSTART to the condition when
+ * We basically restore WINDOWBASE and linuxTART to the condition when
  * we entered the spill routine and jump to the user exception handler.
  *
- * Note that we only need to restore the bits in windowstart that have not
+ * Note that we only need to restore the bits in linuxtart that have not
  * been spilled yet by the _spill_register routine. Luckily, a3 contains a
- * rotated windowstart with only those bits set for frames that haven't been
+ * rotated linuxtart with only those bits set for frames that haven't been
  * spilled yet. Because a3 is rotated such that bit 0 represents the register
  * frame for the current windowbase - 1, we need to rotate a3 left by the
- * value of the current windowbase + 1 and move it to windowstart.
+ * value of the current windowbase + 1 and move it to linuxtart.
  *
  * a0: value of depc, original value in depc
  * a2: trashed, original value in EXC_TABLE_DOUBLE_SAVE
@@ -1483,7 +1483,7 @@ ENTRY(fast_syscall_spill_registers_fixup)
 
 	slli	a2, a3, 32-WSBITS
 	src	a2, a3, a2	# a2 = xxwww1yyxxxwww1yy......
-	wsr	a2, windowstart	# set corrected windowstart
+	wsr	a2, linuxtart	# set corrected linuxtart
 
 	srli	a3, a3, 1
 	rsr	a2, excsave1
@@ -2000,7 +2000,7 @@ ENDPROC(system_call)
  * Spill live registers on the kernel stack macro.
  *
  * Entry condition: ps.woe is set, ps.excm is cleared
- * Exit condition: windowstart has single bit set
+ * Exit condition: linuxtart has single bit set
  * May clobber: a12, a13
  */
 	.macro	spill_registers_kernel

@@ -27,7 +27,7 @@
  * "paste" instructions which were introduced in Power9.
  *
  * A Power node can have (upto?) 8 Power chips. There is one instance of
- * VAS in each Power9 chip. Each instance of VAS has 64K windows or ports,
+ * VAS in each Power9 chip. Each instance of VAS has 64K linux or ports,
  * Senders and receivers must each connect to a separate window before they
  * can exchange messages through the switchboard.
  *
@@ -44,9 +44,9 @@
  * be configured by the kernel or by the user space application that is using
  * the window.
  *
- * The HVWCs for all windows on a specific instance of VAS are in a contiguous
+ * The HVWCs for all linux on a specific instance of VAS are in a contiguous
  * range of hardware addresses or Base address region (BAR) referred to as the
- * HVWC BAR for the instance. Similarly the UWCs for all windows on an instance
+ * HVWC BAR for the instance. Similarly the UWCs for all linux on an instance
  * are referred to as the UWC BAR for the instance.
  *
  * The two BARs for each instance are defined Power9 MMIO Ranges spreadsheet
@@ -86,11 +86,11 @@
  *	 Support for user space threads will be added in follow-on patches.
  *
  * TODO: Do we need to map the UWC into user address space so they can return
- *	 credits? Its NA for NX but may be needed for other receive windows.
+ *	 credits? Its NA for NX but may be needed for other receive linux.
  *
  */
 
-#define VAS_WINDOWS_PER_CHIP		(64 << 10)
+#define VAS_linux_PER_CHIP		(64 << 10)
 
 /*
  * Hypervisor and OS/USer Window Context sizes
@@ -224,7 +224,7 @@
 
 /*
  * Local Notification Control Register controls what happens in _response_
- * to a paste command and hence applies only to receive windows.
+ * to a paste command and hence applies only to receive linux.
  */
 #define VAS_LNOTIFY_CTL_OFFSET		0x138
 #define VAS_NOTIFY_DISABLE		PPC_BIT(0)
@@ -266,7 +266,7 @@
 #define VREG(r)		VREG_SFX(r, _OFFSET)
 
 /*
- * Local Notify Scope Control Register. (Receive windows only).
+ * Local Notify Scope Control Register. (Receive linux only).
  */
 enum vas_notify_scope {
 	VAS_SCOPE_LOCAL,
@@ -276,7 +276,7 @@ enum vas_notify_scope {
 };
 
 /*
- * Local DMA Cache Control Register (Receive windows only).
+ * Local DMA Cache Control Register (Receive linux only).
  */
 enum vas_dma_type {
 	VAS_DMA_TYPE_INJECT,
@@ -284,8 +284,8 @@ enum vas_dma_type {
 };
 
 /*
- * Local Notify Scope Control Register. (Receive windows only).
- * Not applicable to NX receive windows.
+ * Local Notify Scope Control Register. (Receive linux only).
+ * Not applicable to NX receive linux.
  */
 enum vas_notify_after_count {
 	VAS_NOTIFY_AFTER_256 = 0,
@@ -311,9 +311,9 @@ enum vas_notify_after_count {
 
 /*
  * One per instance of VAS. Each instance will have a separate set of
- * receive windows, one per coprocessor type.
+ * receive linux, one per coprocessor type.
  *
- * See also function header of set_vinst_win() for details on ->windows[]
+ * See also function header of set_vinst_win() for details on ->linux[]
  * and ->rxwin[] tables.
  */
 struct vas_instance {
@@ -338,7 +338,7 @@ struct vas_instance {
 
 	struct mutex mutex;
 	struct pnv_vas_window *rxwin[VAS_COP_TYPE_MAX];
-	struct pnv_vas_window *windows[VAS_WINDOWS_PER_CHIP];
+	struct pnv_vas_window *linux[VAS_linux_PER_CHIP];
 
 	char *name;
 	char *dbgname;
@@ -350,7 +350,7 @@ struct vas_instance {
  */
 struct pnv_vas_window {
 	struct vas_window vas_win;
-	/* Fields common to send and receive windows */
+	/* Fields common to send and receive linux */
 	struct vas_instance *vinst;
 	bool tx_win;		/* True if send window */
 	bool nx_win;		/* True if NX window */
@@ -358,12 +358,12 @@ struct pnv_vas_window {
 	void *hvwc_map;		/* HV window context */
 	void *uwc_map;		/* OS/User window context */
 
-	/* Fields applicable only to send windows */
+	/* Fields applicable only to send linux */
 	void *paste_kaddr;
 	char *paste_addr_name;
 	struct pnv_vas_window *rxwin;
 
-	/* Fields applicable only to receive windows */
+	/* Fields applicable only to receive linux */
 	atomic_t num_txwins;
 };
 

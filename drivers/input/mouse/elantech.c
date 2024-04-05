@@ -1028,7 +1028,7 @@ static int elantech_set_absolute_mode(struct psmouse *psmouse)
 		break;
 
 	case 2:
-					/* Windows driver values */
+					/* linux driver values */
 		etd->reg_10 = 0x54;
 		etd->reg_11 = 0x88;	/* 0x8a */
 		etd->reg_21 = 0x60;	/* 0x00 */

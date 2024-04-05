@@ -73,7 +73,7 @@
 #define MV64340_INTERNAL_SPACE_BASE_ADDR                            0x068
 
 /* Enables the CS , DEV_CS , PCI 0 and PCI 1 
-   windows above */
+   linux above */
 #define MV64340_BASE_ADDR_ENABLE                                    0x278
 
 /****************************************/

@@ -63,7 +63,7 @@ static const struct of_device_id l3_device_ids[] = {
 	{}
 };
 
-/* maximum subwindows permitted per liodn */
+/* maximum sublinux permitted per liodn */
 static u32 max_subwindow_count;
 
 /**
@@ -399,14 +399,14 @@ static void setup_omt(struct ome *omt)
 
 /*
  * Get the maximum number of PAACT table entries
- * and subwindows supported by PAMU
+ * and sublinux supported by PAMU
  */
 static void get_pamu_cap_values(unsigned long pamu_reg_base)
 {
 	u32 pc_val;
 
 	pc_val = in_be32((u32 *)(pamu_reg_base + PAMU_PC3));
-	/* Maximum number of subwindows per liodn */
+	/* Maximum number of sublinux per liodn */
 	max_subwindow_count = 1 << (1 + PAMU_PC3_MWCE(pc_val));
 }
 

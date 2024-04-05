@@ -594,7 +594,7 @@ static int lg_wireless_mapping(struct hid_input *hi, struct hid_usage *usage,
 	case 0x1019: lg_map_key_clear(KEY_PROG1);		break;
 	case 0x101a: lg_map_key_clear(KEY_PROG2);		break;
 	case 0x101b: lg_map_key_clear(KEY_PROG3);		break;
-	case 0x101c: lg_map_key_clear(KEY_CYCLEWINDOWS);	break;
+	case 0x101c: lg_map_key_clear(KEY_CYCLElinux);	break;
 	case 0x101f: lg_map_key_clear(KEY_ZOOMIN);		break;
 	case 0x1020: lg_map_key_clear(KEY_ZOOMOUT);		break;
 	case 0x1021: lg_map_key_clear(KEY_ZOOMRESET);		break;
@@ -604,7 +604,7 @@ static int lg_wireless_mapping(struct hid_input *hi, struct hid_usage *usage,
 	case 0x1028: lg_map_key_clear(KEY_ANGLE);		break;
 	case 0x1029: lg_map_key_clear(KEY_SHUFFLE);		break;
 	case 0x102a: lg_map_key_clear(KEY_BACK);		break;
-	case 0x102b: lg_map_key_clear(KEY_CYCLEWINDOWS);	break;
+	case 0x102b: lg_map_key_clear(KEY_CYCLElinux);	break;
 	case 0x102d: lg_map_key_clear(KEY_WWW);			break;
 	/* The following two are 'Start/answer call' and 'End/reject call'
 	   on the MX3200 */

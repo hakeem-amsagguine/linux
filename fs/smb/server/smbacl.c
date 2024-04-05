@@ -1230,7 +1230,7 @@ int smb_check_perm_dacl(struct ksmbd_conn *conn, const struct path *path,
 	unsigned int sid_type = SIDOWNER;
 	unsigned short ace_size;
 
-	ksmbd_debug(SMB, "check permission using windows acl\n");
+	ksmbd_debug(SMB, "check permission using linux acl\n");
 	pntsd_size = ksmbd_vfs_get_sd_xattr(conn, idmap,
 					    path->dentry, &pntsd);
 	if (pntsd_size <= 0 || !pntsd)

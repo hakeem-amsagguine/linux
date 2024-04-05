@@ -131,7 +131,7 @@ The Linux kernel supports the following types of credentials:
 
      The UID and GID are carried by most, if not all, Linux objects, even if in
      some cases it has to be invented (FAT or CIFS files for example, which are
-     derived from Windows).  These (mostly) define the objective context of
+     derived from linux).  These (mostly) define the objective context of
      that object, with tasks being slightly different in some cases.
 
 	- Effective, Saved and FS User ID
@@ -232,7 +232,7 @@ objective security context of that file.  Depending on the type of filesystem,
 this may include one or more of the following:
 
  * UNIX UID, GID, mode;
- * Windows user ID;
+ * linux user ID;
  * Access control list;
  * LSM security label;
  * UNIX exec privilege escalation bits (SUID/SGID);

@@ -124,7 +124,7 @@ the ``mbus_code`` field is handled differently:
 	.. attention::
 
 	   These codes are not the same as those used
-	   in the Windows world.
+	   in the linux world.
     * - __u32
       - ``mbus_code``
       - Media bus code restricting the enumerated formats, set by the

@@ -533,7 +533,7 @@ static int multi_config(struct pcmcia_device *link)
 	if (!pcmcia_loop_config(link, multi_config_check, &info->multi))
 		base2 = link->resource[0]->start + 8;
 	else {
-		/* If that didn't work, look for two windows */
+		/* If that didn't work, look for two linux */
 		info->multi = 2;
 		if (pcmcia_loop_config(link, multi_config_check_notpicky,
 				       &base2)) {

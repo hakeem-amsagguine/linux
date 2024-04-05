@@ -89,7 +89,7 @@ struct grpci1_priv {
 	unsigned char		irq_map[4];	/* GRPCI nexus PCI INTX# IRQs */
 	unsigned int		irq_err;	/* GRPCI nexus Virt Error IRQ */
 
-	/* AHB PCI Windows */
+	/* AHB PCI linux */
 	unsigned long		pci_area;	/* MEMORY */
 	unsigned long		pci_area_end;
 	unsigned long		pci_io;		/* I/O */
@@ -570,7 +570,7 @@ static int grpci1_of_probe(struct platform_device *ofdev)
 	priv->irq = irq_of_parse_and_map(ofdev->dev.of_node, 0);
 	dev_info(&ofdev->dev, "host found at 0x%p, irq%d\n", regs, priv->irq);
 
-	/* Find PCI Memory, I/O and Configuration Space Windows */
+	/* Find PCI Memory, I/O and Configuration Space linux */
 	priv->pci_area = ofdev->resource[1].start;
 	priv->pci_area_end = ofdev->resource[1].end+1;
 	priv->pci_io = ofdev->resource[2].start;

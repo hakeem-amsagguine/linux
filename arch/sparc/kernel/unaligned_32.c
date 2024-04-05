@@ -69,7 +69,7 @@ static inline int decode_signedness(unsigned int insn)
 	return (insn & 0x400000);
 }
 
-static inline void maybe_flush_windows(unsigned int rs1, unsigned int rs2,
+static inline void maybe_flush_linux(unsigned int rs1, unsigned int rs2,
 				       unsigned int rd)
 {
 	if(rs2 >= 16 || rs1 >= 16 || rd >= 16) {
@@ -141,10 +141,10 @@ static unsigned long compute_effective_address(struct pt_regs *regs,
 	unsigned int rd = (insn >> 25) & 0x1f;
 
 	if(insn & 0x2000) {
-		maybe_flush_windows(rs1, 0, rd);
+		maybe_flush_linux(rs1, 0, rd);
 		return (fetch_reg(rs1, regs) + sign_extend_imm13(insn));
 	} else {
-		maybe_flush_windows(rs1, rs2, rd);
+		maybe_flush_linux(rs1, rs2, rd);
 		return (fetch_reg(rs1, regs) + fetch_reg(rs2, regs));
 	}
 }
@@ -157,10 +157,10 @@ unsigned long safe_compute_effective_address(struct pt_regs *regs,
 	unsigned int rd = (insn >> 25) & 0x1f;
 
 	if(insn & 0x2000) {
-		maybe_flush_windows(rs1, 0, rd);
+		maybe_flush_linux(rs1, 0, rd);
 		return (safe_fetch_reg(rs1, regs) + sign_extend_imm13(insn));
 	} else {
-		maybe_flush_windows(rs1, rs2, rd);
+		maybe_flush_linux(rs1, rs2, rd);
 		return (safe_fetch_reg(rs1, regs) + safe_fetch_reg(rs2, regs));
 	}
 }

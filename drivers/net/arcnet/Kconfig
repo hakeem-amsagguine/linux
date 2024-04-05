@@ -27,7 +27,7 @@ config ARCNET_1201
 	  This allows you to use RFC1201 with your ARCnet card via the virtual
 	  arc0 device.  You need to say Y here to communicate with
 	  industry-standard RFC1201 implementations, like the arcether.com
-	  packet driver or most DOS/Windows ODI drivers.  Please read the
+	  packet driver or most DOS/linux ODI drivers.  Please read the
 	  ARCnet documentation in <file:Documentation/networking/arcnet.rst>
 	  for more information about using arc0.
 
@@ -40,7 +40,7 @@ config ARCNET_1051
 	  arcnet.com packet driver, Amigas running AmiTCP, and some variants
 	  of NetBSD. You do not need to say Y here to communicate with
 	  industry-standard RFC1201 implementations, like the arcether.com
-	  packet driver or most DOS/Windows ODI drivers. RFC1201 is included
+	  packet driver or most DOS/linux ODI drivers. RFC1201 is included
 	  automatically as the arc0 device. Please read the ARCnet
 	  documentation in <file:Documentation/networking/arcnet.rst> for more
 	  information about using arc0e and arc0s.

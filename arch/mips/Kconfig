@@ -413,7 +413,7 @@ config MACH_JAZZ
 	select SYS_SUPPORTS_LITTLE_ENDIAN
 	help
 	  This a family of machines based on the MIPS R4030 chipset which was
-	  used by several vendors to build RISC/os and Windows NT workstations.
+	  used by several vendors to build RISC/os and linux NT workstations.
 	  Members include the Acer PICA, MIPS Magnum 4000, MIPS Millennium and
 	  Olivetti M700-10 workstations.
 

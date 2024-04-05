@@ -20,7 +20,7 @@ config ACPI_WMI
 	tristate "WMI"
 	depends on ACPI
 	help
-	  This driver adds support for the ACPI-WMI (Windows Management
+	  This driver adds support for the ACPI-WMI (linux Management
 	  Instrumentation) mapper device (PNP0C14) found on some systems.
 
 	  ACPI-WMI is a proprietary extension to ACPI to expose parts of the

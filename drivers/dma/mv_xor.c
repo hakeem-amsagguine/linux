@@ -495,7 +495,7 @@ static int mv_xor_add_io_win(struct mv_xor_chan *mv_chan, u32 addr)
 		return 0;
 
 	/*
-	 * Loop over the cached windows to check, if the requested area
+	 * Loop over the cached linux to check, if the requested area
 	 * is already mapped. If this the case, nothing needs to be done
 	 * and we can return.
 	 */
@@ -1159,7 +1159,7 @@ err_free_dma:
 }
 
 static void
-mv_xor_conf_mbus_windows(struct mv_xor_device *xordev,
+mv_xor_conf_mbus_linux(struct mv_xor_device *xordev,
 			 const struct mbus_dram_target_info *dram)
 {
 	void __iomem *base = xordev->xor_high_base;
@@ -1196,7 +1196,7 @@ mv_xor_conf_mbus_windows(struct mv_xor_device *xordev,
 }
 
 static void
-mv_xor_conf_mbus_windows_a3700(struct mv_xor_device *xordev)
+mv_xor_conf_mbus_linux_a3700(struct mv_xor_device *xordev)
 {
 	void __iomem *base = xordev->xor_high_base;
 	u32 win_enable = 0;
@@ -1267,13 +1267,13 @@ static int mv_xor_resume(struct platform_device *dev)
 	}
 
 	if (xordev->xor_type == XOR_ARMADA_37XX) {
-		mv_xor_conf_mbus_windows_a3700(xordev);
+		mv_xor_conf_mbus_linux_a3700(xordev);
 		return 0;
 	}
 
 	dram = mv_mbus_dram_info();
 	if (dram)
-		mv_xor_conf_mbus_windows(xordev, dram);
+		mv_xor_conf_mbus_linux(xordev, dram);
 
 	return 0;
 }
@@ -1332,14 +1332,14 @@ static int mv_xor_probe(struct platform_device *pdev)
 		xordev->xor_type = (uintptr_t)device_get_match_data(&pdev->dev);
 
 	/*
-	 * (Re-)program MBUS remapping windows if we are asked to.
+	 * (Re-)program MBUS remapping linux if we are asked to.
 	 */
 	if (xordev->xor_type == XOR_ARMADA_37XX) {
-		mv_xor_conf_mbus_windows_a3700(xordev);
+		mv_xor_conf_mbus_linux_a3700(xordev);
 	} else {
 		dram = mv_mbus_dram_info();
 		if (dram)
-			mv_xor_conf_mbus_windows(xordev, dram);
+			mv_xor_conf_mbus_linux(xordev, dram);
 	}
 
 	/* Not all platforms can gate the clock, so it is not

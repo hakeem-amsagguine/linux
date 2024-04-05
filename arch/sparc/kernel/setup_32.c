@@ -365,7 +365,7 @@ void sun_do_break(void)
 		return;
 
 	printk("\n");
-	flush_user_windows();
+	flush_user_linux();
 
 	prom_cmdline();
 }

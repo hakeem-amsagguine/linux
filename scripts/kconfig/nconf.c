@@ -18,7 +18,7 @@
 #include <ctype.h>
 
 static const char nconf_global_help[] =
-"Help windows\n"
+"Help linux\n"
 "------------\n"
 "o  Global help:  Unless in a data entry window, pressing <F1> will give \n"
 "   you the global help window, which you are just reading.\n"
@@ -290,7 +290,7 @@ static void conf_load(void);
 static void conf_save(void);
 static void show_help(struct menu *menu);
 static int do_exit(void);
-static void setup_windows(void);
+static void setup_linux(void);
 static void search_conf(void);
 
 typedef void (*function_key_handler_t)(int *key, struct menu *menu);
@@ -472,7 +472,7 @@ static int process_special_keys(int *key, struct menu *menu)
 	int i;
 
 	if (*key == KEY_RESIZE) {
-		setup_windows();
+		setup_linux();
 		return 1;
 	}
 
@@ -965,7 +965,7 @@ static void center_item(int selected_index, int *last_top_row)
 			curses_menu_items[selected_index]);
 	*last_top_row = toprow;
 	post_menu(curses_menu);
-	refresh_all_windows(main_window);
+	refresh_all_linux(main_window);
 }
 
 /* this function assumes reset_menu has been called before */
@@ -1014,7 +1014,7 @@ static void show_menu(const char *prompt, const char *instructions,
 
 	/* Post the menu */
 	post_menu(curses_menu);
-	refresh_all_windows(main_window);
+	refresh_all_linux(main_window);
 }
 
 static void adj_match_dir(match_f *match_direction)
@@ -1133,7 +1133,7 @@ static void selected_conf(struct menu *menu, struct menu *active_menu)
 					"searching: %s", match_state.pattern);
 				clrtoeol();
 			}
-			refresh_all_windows(main_window);
+			refresh_all_linux(main_window);
 			res = wgetch(menu_win(curses_menu));
 			if (!res)
 				break;
@@ -1177,10 +1177,10 @@ static void selected_conf(struct menu *menu, struct menu *active_menu)
 				res == KEY_LEFT || res == KEY_RIGHT ||
 				res == 'm')
 				break;
-			refresh_all_windows(main_window);
+			refresh_all_linux(main_window);
 		}
 
-		refresh_all_windows(main_window);
+		refresh_all_linux(main_window);
 		/* if ESC or left*/
 		if (res == 27 || (menu != &rootmenu && res == KEY_LEFT))
 			break;
@@ -1316,7 +1316,7 @@ static void conf_choice(struct menu *menu)
 					 match_state.pattern);
 				clrtoeol();
 			}
-			refresh_all_windows(main_window);
+			refresh_all_linux(main_window);
 			res = wgetch(menu_win(curses_menu));
 			if (!res)
 				break;
@@ -1360,7 +1360,7 @@ static void conf_choice(struct menu *menu)
 					res == KEY_LEFT){
 				break;
 			}
-			refresh_all_windows(main_window);
+			refresh_all_linux(main_window);
 		}
 		/* if ESC or left */
 		if (res == 27 || res == KEY_LEFT)
@@ -1493,7 +1493,7 @@ static void conf_save(void)
 	}
 }
 
-static void setup_windows(void)
+static void setup_linux(void)
 {
 	int lines, columns;
 
@@ -1569,7 +1569,7 @@ int main(int ac, char **av)
 	set_menu_grey(curses_menu, attr_main_menu_grey);
 
 	set_config_filename(conf_get_configname());
-	setup_windows();
+	setup_linux();
 
 	/* check for KEY_FUNC(1) */
 	if (has_key(KEY_F(1)) == FALSE) {

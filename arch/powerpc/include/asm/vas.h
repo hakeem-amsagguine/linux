@@ -61,8 +61,8 @@ enum vas_cop_type {
 };
 
 /*
- * User space VAS windows are opened by tasks and take references
- * to pid and mm until windows are closed.
+ * User space VAS linux are opened by tasks and take references
+ * to pid and mm until linux are closed.
  * Stores pid, mm, and tgid for each window.
  */
 struct vas_user_win_ref {
@@ -70,7 +70,7 @@ struct vas_user_win_ref {
 	struct pid *tgid;	/* Thread group ID of owner */
 	struct mm_struct *mm;	/* Linux process mm_struct */
 	struct mutex mmap_mutex;	/* protects paste address mmap() */
-					/* with DLPAR close/open windows */
+					/* with DLPAR close/open linux */
 	struct vm_area_struct *vma;	/* Save VMA and used in DLPAR ops */
 };
 
@@ -117,7 +117,7 @@ static inline void vas_user_win_add_mm_context(struct vas_user_win_ref *ref)
 	 *
 	 * __switch_to() will issue CP_ABORT on future context switches
 	 * if process / thread has any open VAS window (Use
-	 * current->mm->context.vas_windows).
+	 * current->mm->context.vas_linux).
 	 */
 	asm volatile(PPC_CP_ABORT);
 }
@@ -219,8 +219,8 @@ struct vas_window *vas_tx_win_open(int vasid, enum vas_cop_type cop,
 			struct vas_tx_win_attr *attr);
 
 /*
- * Close the send or receive window identified by @win. For receive windows
- * return -EAGAIN if there are active send windows attached to this receive
+ * Close the send or receive window identified by @win. For receive linux
+ * return -EAGAIN if there are active send linux attached to this receive
  * window.
  */
 int vas_win_close(struct vas_window *win);
@@ -233,7 +233,7 @@ int vas_copy_crb(void *crb, int offset);
 /*
  * Paste a previously copied CRB (see vas_copy_crb()) from the L2 cache to
  * the hardware address associated with the window @win. @re is expected/
- * assumed to be true for NX windows.
+ * assumed to be true for NX linux.
  */
 int vas_paste_crb(struct vas_window *win, int offset, bool re);
 

@@ -889,7 +889,7 @@ void dce110_link_encoder_construct(
 		enc110->base.preferred_engine = ENGINE_ID_UNKNOWN;
 	}
 
-	/* default to one to mirror Windows behavior */
+	/* default to one to mirror linux behavior */
 	enc110->base.features.flags.bits.HDMI_6GB_EN = 1;
 
 	result = bp_funcs->get_encoder_cap_info(enc110->base.ctx->dc_bios,
@@ -1788,7 +1788,7 @@ void dce60_link_encoder_construct(
 		enc110->base.preferred_engine = ENGINE_ID_UNKNOWN;
 	}
 
-	/* default to one to mirror Windows behavior */
+	/* default to one to mirror linux behavior */
 	enc110->base.features.flags.bits.HDMI_6GB_EN = 1;
 
 	result = bp_funcs->get_encoder_cap_info(enc110->base.ctx->dc_bios,

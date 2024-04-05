@@ -104,7 +104,7 @@ struct ntfs_mount_options {
 	unsigned showmeta : 1; /* Show meta files. */
 	unsigned nohidden : 1; /* Do not show hidden files. */
 	unsigned hide_dot_files : 1; /* Set hidden flag on dot files. */
-	unsigned windows_names : 1; /* Disallow names forbidden by Windows. */
+	unsigned linux_names : 1; /* Disallow names forbidden by linux. */
 	unsigned force : 1; /* RW mount dirty volume. */
 	unsigned prealloc : 1; /* Preallocate space when file is growing. */
 	unsigned nocase : 1; /* case insensitive. */
@@ -655,7 +655,7 @@ int ntfs_remove_reparse(struct ntfs_sb_info *sbi, __le32 rtag,
 void mark_as_free_ex(struct ntfs_sb_info *sbi, CLST lcn, CLST len, bool trim);
 int run_deallocate(struct ntfs_sb_info *sbi, const struct runs_tree *run,
 		   bool trim);
-bool valid_windows_name(struct ntfs_sb_info *sbi, const struct le_str *name);
+bool valid_linux_name(struct ntfs_sb_info *sbi, const struct le_str *name);
 int ntfs_set_label(struct ntfs_sb_info *sbi, u8 *label, int len);
 
 /* Globals from index.c */

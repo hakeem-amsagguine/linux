@@ -1134,7 +1134,7 @@ int rtl92de_set_network_type(struct ieee80211_hw *hw, enum nl80211_iftype type)
 }
 
 /* do iqk or reload iqk */
-/* windows just rtl92d_phy_reload_iqk_setting in set channel,
+/* linux just rtl92d_phy_reload_iqk_setting in set channel,
  * but it's very strict for time sequence so we add
  * rtl92d_phy_reload_iqk_setting here */
 void rtl92d_linked_set_reg(struct ieee80211_hw *hw)

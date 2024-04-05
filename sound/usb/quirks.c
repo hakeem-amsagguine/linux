@@ -738,7 +738,7 @@ static int snd_usb_cm6206_boot_quirk(struct usb_device *dev)
 	int val[] = {
 		/*
 		 * Values here are chosen based on sniffing USB traffic
-		 * under Windows.
+		 * under linux.
 		 *
 		 * REG0: DAC is master, sample rate 48kHz, no copyright
 		 */
@@ -815,7 +815,7 @@ static int snd_usb_novation_boot_quirk(struct usb_device *dev)
  * messages through USB (this is disabled at startup). The synth will
  * acknowledge by sending a sysex on endpoint 0x85 and by displaying a USB
  * sign on its LCD. Values here are chosen based on sniffing USB traffic
- * under Windows.
+ * under linux.
  */
 static int snd_usb_accessmusic_boot_quirk(struct usb_device *dev)
 {
@@ -2065,7 +2065,7 @@ static const struct usb_audio_quirk_flags_table quirk_flags_table[] = {
 	DEVICE_FLG(0x0644, 0x806b, /* TEAC UD-701 */
 		   QUIRK_FLAG_ITF_USB_DSD_DAC | QUIRK_FLAG_CTL_MSG_DELAY |
 		   QUIRK_FLAG_IFACE_DELAY),
-	DEVICE_FLG(0x06f8, 0xb000, /* Hercules DJ Console (Windows Edition) */
+	DEVICE_FLG(0x06f8, 0xb000, /* Hercules DJ Console (linux Edition) */
 		   QUIRK_FLAG_IGNORE_CTL_ERROR),
 	DEVICE_FLG(0x06f8, 0xd002, /* Hercules DJ Console (Macintosh Edition) */
 		   QUIRK_FLAG_IGNORE_CTL_ERROR),

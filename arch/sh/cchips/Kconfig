@@ -18,7 +18,7 @@ config HD64461
 	  PCMCIA controller supporting 2 slots.
 
 	  More information is available at
-	  <http://semiconductor.hitachi.com/windowsce/superh/sld013.htm>.
+	  <http://semiconductor.hitachi.com/linuxce/superh/sld013.htm>.
 
 	  Say Y if you want support for the HD64461.
 	  Otherwise, say N.

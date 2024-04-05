@@ -16,7 +16,7 @@ static struct rc_map_table videomate_k100[] = {
 	{ 0x2f, KEY_RADIO },
 	{ 0x30, KEY_CAMERA },
 	{ 0x2d, KEY_NEW }, /* TV record button */
-	{ 0x17, KEY_CYCLEWINDOWS },
+	{ 0x17, KEY_CYCLElinux },
 	{ 0x2c, KEY_ANGLE },
 	{ 0x2b, KEY_LANGUAGE },
 	{ 0x32, KEY_SEARCH }, /* '...' button */

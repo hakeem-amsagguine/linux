@@ -215,7 +215,7 @@ is_well_known_sid(const struct cifs_sid *psid, uint32_t *puid, bool is_group)
 
 	num_subauth = psid->num_subauth;
 
-	/* check if Mac (or Windows NFS) vs. Samba format for Unix owner SID */
+	/* check if Mac (or linux NFS) vs. Samba format for Unix owner SID */
 	if (num_subauth == 2) {
 		if (is_group)
 			pwell_known_sid = &sid_unix_groups;
@@ -246,7 +246,7 @@ is_well_known_sid(const struct cifs_sid *psid, uint32_t *puid, bool is_group)
 			return false;
 
 		*puid = le32_to_cpu(psid->sub_auth[1]);
-	} else /* 3 subauths, ie Windows/Mac style */ {
+	} else /* 3 subauths, ie linux/Mac style */ {
 		*puid = le32_to_cpu(psid->sub_auth[0]);
 		if ((psid->sub_auth[0] != pwell_known_sid->sub_auth[0]) ||
 		    (psid->sub_auth[1] != pwell_known_sid->sub_auth[1]))

@@ -245,7 +245,7 @@ static int perf_parse_file(config_fn_t fn, void *data)
 		if (bomptr && *bomptr) {
 			/* We are at the file beginning; skip UTF8-encoded BOM
 			 * if present. Sane editors won't put this in on their
-			 * own, but e.g. Windows Notepad will do it happily. */
+			 * own, but e.g. linux Notepad will do it happily. */
 			if ((unsigned char) c == *bomptr) {
 				bomptr++;
 				continue;

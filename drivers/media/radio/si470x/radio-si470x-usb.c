@@ -93,7 +93,7 @@ MODULE_PARM_DESC(max_rds_errors, "RDS maximum block errors: *1*");
 #define ENTIRE_REPORT		17
 
 /* Report 18 is used to send the lowest 6 Si470x registers up the HID */
-/* interrupt endpoint 1 to Windows every 20 milliseconds for status */
+/* interrupt endpoint 1 to linux every 20 milliseconds for status */
 #define RDS_REPORT_SIZE		(RDS_REGISTER_NUM * RADIO_REGISTER_SIZE + 1)
 #define RDS_REPORT		18
 

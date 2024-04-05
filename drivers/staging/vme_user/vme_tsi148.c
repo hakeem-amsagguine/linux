@@ -825,7 +825,7 @@ static int tsi148_master_set(struct vme_master_resource *image, int enabled,
 	}
 
 	if ((size == 0) && (enabled != 0)) {
-		dev_err(tsi148_bridge->parent, "Size must be non-zero for enabled windows\n");
+		dev_err(tsi148_bridge->parent, "Size must be non-zero for enabled linux\n");
 		retval = -EINVAL;
 		goto err_window;
 	}
@@ -2344,7 +2344,7 @@ static int tsi148_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 		tsi148_device->flush_image->kern_base  = NULL;
 	}
 
-	/* Add master windows to list */
+	/* Add master linux to list */
 	for (i = 0; i < master_num; i++) {
 		master_image = kmalloc(sizeof(*master_image), GFP_KERNEL);
 		if (!master_image) {
@@ -2370,7 +2370,7 @@ static int tsi148_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 			&tsi148_bridge->master_resources);
 	}
 
-	/* Add slave windows to list */
+	/* Add slave linux to list */
 	for (i = 0; i < TSI148_MAX_SLAVE; i++) {
 		slave_image = kmalloc(sizeof(*slave_image), GFP_KERNEL);
 		if (!slave_image) {
@@ -2545,7 +2545,7 @@ static void tsi148_remove(struct pci_dev *pdev)
 	dev_dbg(&pdev->dev, "Driver is being unloaded.\n");
 
 	/*
-	 *  Shutdown all inbound and outbound windows.
+	 *  Shutdown all inbound and outbound linux.
 	 */
 	for (i = 0; i < 8; i++) {
 		iowrite32be(0, bridge->base + TSI148_LCSR_IT[i] +

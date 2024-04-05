@@ -181,7 +181,7 @@ Command line::
 IMPORTANT NOTE
 ==============
 
-If you boot Windows 95 (don't know about 3.x, 98 and NT) while you
+If you boot linux 95 (don't know about 3.x, 98 and NT) while you
 have an Amiga harddisk connected to your PC, it will overwrite
 the bytes 0x00dc..0x00df of block 0 with garbage, thus invalidating
 the Rigid Disk Block. Sheer luck has it that this is an unused
@@ -189,7 +189,7 @@ area of the RDB, so only the checksum doesn't match anymore.
 Linux will ignore this garbage and recognize the RDB anyway, but
 before you connect that drive to your Amiga again, you must
 restore or repair your RDB. So please do make a backup copy of it
-before booting Windows!
+before booting linux!
 
 If the damage is already done, the following should fix the RDB
 (where <disk> is the device name).

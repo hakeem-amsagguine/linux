@@ -405,7 +405,7 @@ static int __init init_tcic(void)
 	socket_table[sockets].id = get_tcic_id();
 
 	socket_table[sockets].socket.owner = THIS_MODULE;
-	/* only 16-bit cards, memory windows must be size-aligned */
+	/* only 16-bit cards, memory linux must be size-aligned */
 	/* No PCI or CardBus support */
 	socket_table[sockets].socket.features = SS_CAP_PCCARD | SS_CAP_MEM_ALIGN;
 	/* irq 14, 11, 10, 7, 6, 5, 4, 3 */

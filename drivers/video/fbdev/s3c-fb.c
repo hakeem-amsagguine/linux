@@ -66,7 +66,7 @@ struct s3c_fb;
 /**
  * struct s3c_fb_variant - fb variant information
  * @is_2443: Set if S3C2443/S3C2416 style hardware.
- * @nr_windows: The number of windows.
+ * @nr_linux: The number of linux.
  * @vidtcon: The base for the VIDTCONx registers
  * @wincon: The base for the WINxCON registers.
  * @winmap: The base for the WINxMAP registers.
@@ -85,7 +85,7 @@ struct s3c_fb;
  */
 struct s3c_fb_variant {
 	unsigned int	is_2443:1;
-	unsigned short	nr_windows;
+	unsigned short	nr_linux;
 	unsigned int	vidtcon;
 	unsigned short	wincon;
 	unsigned short	winmap;
@@ -192,10 +192,10 @@ struct s3c_fb_vsync {
  * @lcd_clk: The clk (sclk) feeding pixclk.
  * @regs: The mapped hardware registers.
  * @variant: Variant information for this hardware.
- * @enabled: A bitmask of enabled hardware windows.
+ * @enabled: A bitmask of enabled hardware linux.
  * @output_on: Flag if the physical output is enabled.
  * @pdata: The platform configuration data passed with the device.
- * @windows: The hardware windows that have been claimed.
+ * @linux: The hardware linux that have been claimed.
  * @irq_no: IRQ line number
  * @irq_flags: irq flags
  * @vsync_info: VSYNC-related information (count, queues...)
@@ -212,7 +212,7 @@ struct s3c_fb {
 	bool			 output_on;
 
 	struct s3c_fb_platdata	*pdata;
-	struct s3c_fb_win	*windows[S3C_FB_MAX_WIN];
+	struct s3c_fb_win	*linux[S3C_FB_MAX_WIN];
 
 	int			 irq_no;
 	unsigned long		 irq_flags;
@@ -839,7 +839,7 @@ static int s3c_fb_blank(int blank_mode, struct fb_info *info)
 	writel(wincon, sfb->regs + sfb->variant.wincon + (index * 4));
 
 	/* Check the enabled state to see if we need to be running the
-	 * main LCD interface, as if there are no active windows then
+	 * main LCD interface, as if there are no active linux then
 	 * it is highly likely that we also do not need to output
 	 * anything.
 	 */
@@ -1165,7 +1165,7 @@ static void s3c_fb_release_win(struct s3c_fb *sfb, struct s3c_fb_win *win)
  * @res: Pointer to where to place the resultant window.
  *
  * Allocate and do the basic initialisation for one of the hardware's graphics
- * windows.
+ * linux.
  */
 static int s3c_fb_probe_win(struct s3c_fb *sfb, unsigned int win_no,
 			    struct s3c_fb_win_variant *variant,
@@ -1364,8 +1364,8 @@ static int s3c_fb_probe(struct platform_device *pdev)
 	platid = platform_get_device_id(pdev);
 	fbdrv = (struct s3c_fb_driverdata *)platid->driver_data;
 
-	if (fbdrv->variant.nr_windows > S3C_FB_MAX_WIN) {
-		dev_err(dev, "too many windows, cannot attach\n");
+	if (fbdrv->variant.nr_linux > S3C_FB_MAX_WIN) {
+		dev_err(dev, "too many linux, cannot attach\n");
 		return -EINVAL;
 	}
 
@@ -1426,7 +1426,7 @@ static int s3c_fb_probe(struct platform_device *pdev)
 		goto err_lcd_clk;
 	}
 
-	dev_dbg(dev, "got resources (regs %p), probing windows\n", sfb->regs);
+	dev_dbg(dev, "got resources (regs %p), probing linux\n", sfb->regs);
 
 	platform_set_drvdata(pdev, sfb);
 	pm_runtime_get_sync(sfb->dev);
@@ -1445,13 +1445,13 @@ static int s3c_fb_probe(struct platform_device *pdev)
 		writel(reg, sfb->regs + VIDCON1);
 	}
 
-	/* zero all windows before we do anything */
+	/* zero all linux before we do anything */
 
-	for (win = 0; win < fbdrv->variant.nr_windows; win++)
+	for (win = 0; win < fbdrv->variant.nr_linux; win++)
 		s3c_fb_clear_win(sfb, win);
 
 	/* initialise colour key controls */
-	for (win = 0; win < (fbdrv->variant.nr_windows - 1); win++) {
+	for (win = 0; win < (fbdrv->variant.nr_linux - 1); win++) {
 		void __iomem *regs = sfb->regs + sfb->variant.keycon;
 
 		regs += (win * 8);
@@ -1463,16 +1463,16 @@ static int s3c_fb_probe(struct platform_device *pdev)
 
 	/* we have the register setup, start allocating framebuffers */
 
-	for (win = 0; win < fbdrv->variant.nr_windows; win++) {
+	for (win = 0; win < fbdrv->variant.nr_linux; win++) {
 		if (!pd->win[win])
 			continue;
 
 		ret = s3c_fb_probe_win(sfb, win, fbdrv->win[win],
-				       &sfb->windows[win]);
+				       &sfb->linux[win]);
 		if (ret < 0) {
 			dev_err(dev, "failed to create window %d\n", win);
 			for (; win >= 0; win--)
-				s3c_fb_release_win(sfb, sfb->windows[win]);
+				s3c_fb_release_win(sfb, sfb->linux[win]);
 			goto err_pm_runtime;
 		}
 	}
@@ -1512,8 +1512,8 @@ static void s3c_fb_remove(struct platform_device *pdev)
 	pm_runtime_get_sync(sfb->dev);
 
 	for (win = 0; win < S3C_FB_MAX_WIN; win++)
-		if (sfb->windows[win])
-			s3c_fb_release_win(sfb, sfb->windows[win]);
+		if (sfb->linux[win])
+			s3c_fb_release_win(sfb, sfb->linux[win]);
 
 	if (!sfb->variant.has_clksel)
 		clk_disable_unprepare(sfb->lcd_clk);
@@ -1534,7 +1534,7 @@ static int s3c_fb_suspend(struct device *dev)
 	pm_runtime_get_sync(sfb->dev);
 
 	for (win_no = S3C_FB_MAX_WIN - 1; win_no >= 0; win_no--) {
-		win = sfb->windows[win_no];
+		win = sfb->linux[win_no];
 		if (!win)
 			continue;
 
@@ -1579,13 +1579,13 @@ static int s3c_fb_resume(struct device *dev)
 		writel(reg, sfb->regs + VIDCON1);
 	}
 
-	/* zero all windows before we do anything */
-	for (win_no = 0; win_no < sfb->variant.nr_windows; win_no++)
+	/* zero all linux before we do anything */
+	for (win_no = 0; win_no < sfb->variant.nr_linux; win_no++)
 		s3c_fb_clear_win(sfb, win_no);
 
-	for (win_no = 0; win_no < sfb->variant.nr_windows - 1; win_no++) {
+	for (win_no = 0; win_no < sfb->variant.nr_linux - 1; win_no++) {
 		void __iomem *regs = sfb->regs + sfb->variant.keycon;
-		win = sfb->windows[win_no];
+		win = sfb->linux[win_no];
 		if (!win)
 			continue;
 
@@ -1600,7 +1600,7 @@ static int s3c_fb_resume(struct device *dev)
 
 	/* restore framebuffers */
 	for (win_no = 0; win_no < S3C_FB_MAX_WIN; win_no++) {
-		win = sfb->windows[win_no];
+		win = sfb->linux[win_no];
 		if (!win)
 			continue;
 
@@ -1703,7 +1703,7 @@ static struct s3c_fb_win_variant s3c_fb_data_64xx_wins[] = {
 
 static struct s3c_fb_driverdata s3c_fb_data_64xx = {
 	.variant = {
-		.nr_windows	= 5,
+		.nr_linux	= 5,
 		.vidtcon	= VIDTCON0,
 		.wincon		= WINCON(0),
 		.winmap		= WINxMAP(0),
@@ -1735,7 +1735,7 @@ static struct s3c_fb_driverdata s3c_fb_data_64xx = {
 /* S3C2443/S3C2416 style hardware */
 static struct s3c_fb_driverdata s3c_fb_data_s3c2443 = {
 	.variant = {
-		.nr_windows	= 2,
+		.nr_linux	= 2,
 		.is_2443	= 1,
 
 		.vidtcon	= 0x08,

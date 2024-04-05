@@ -406,7 +406,7 @@ static const struct ivtv_card ivtv_card_avc2410 = {
 		{ IVTV_CARD_INPUT_LINE_IN1,
 		  MSP_SCART1, CS53L32A_IN2 },
 	},
-	/* This card has no eeprom and in fact the Windows driver relies
+	/* This card has no eeprom and in fact the linux driver relies
 	   on the country/region setting of the user to decide which tuner
 	   is available. */
 	.tuners = {

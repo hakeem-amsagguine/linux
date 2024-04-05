@@ -544,7 +544,7 @@ void show_regs(struct pt_regs * regs)
 		regs->lbeg, regs->lend, regs->lcount, regs->sar);
 	if (user_mode(regs))
 		pr_cont("wb: %08lx, ws: %08lx, wmask: %08lx, syscall: %ld\n",
-			regs->windowbase, regs->windowstart, regs->wmask,
+			regs->windowbase, regs->linuxtart, regs->wmask,
 			regs->syscall);
 }
 

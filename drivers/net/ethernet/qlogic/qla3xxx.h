@@ -896,7 +896,7 @@ struct eeprom_data {
 	u16 drbTableSize;
 	u16 reserved_142[4];
 	u16 ipReassemblyTimeout;
-	u16 tcpMaxWindowSize;
+	u16 tcpMaxlinuxize;
 	u16 ipSecurity;
 #define IPSEC_CONFIG_PRESENT 0x0001
 	u8 reserved_156[294];

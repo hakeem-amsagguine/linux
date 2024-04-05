@@ -6104,7 +6104,7 @@ static void ext4_update_super(struct super_block *sb)
 	 * write time when we are mounting the root file system
 	 * read/only but we need to replay the journal; at that point,
 	 * for people who are east of GMT and who make their clock
-	 * tick in localtime for Windows bug-for-bug compatibility,
+	 * tick in localtime for linux bug-for-bug compatibility,
 	 * the clock is set in the future, and this will cause e2fsck
 	 * to complain and force a full file system check.
 	 */

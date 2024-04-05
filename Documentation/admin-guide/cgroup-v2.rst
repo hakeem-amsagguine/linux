@@ -2090,7 +2090,7 @@ IO Latency Interface Files
 
 	  win
 		The sampling window size in milliseconds.  This is the minimum
-		duration of time between evaluation events.  Windows only elapse
+		duration of time between evaluation events.  linux only elapse
 		with IO activity.  Idle periods extend the most recent window.
 
 IO Priority

@@ -39,7 +39,7 @@ enum vas_migrate_action {
 };
 
 /*
- * Co-processor feature - GZIP QoS windows or GZIP default windows
+ * Co-processor feature - GZIP QoS linux or GZIP default linux
  */
 enum vas_cop_feat_type {
 	VAS_GZIP_QOS_FEAT_TYPE,
@@ -86,15 +86,15 @@ struct vas_cop_feat_caps {
 
 /*
  * Feature (QoS or Default) specific to store capabilities and
- * the list of open windows.
+ * the list of open linux.
  */
 struct vas_caps {
 	struct vas_cop_feat_caps caps;
-	struct list_head list;	/* List of open windows */
-	int nr_open_wins_progress;	/* Number of open windows in */
+	struct list_head list;	/* List of open linux */
+	int nr_open_wins_progress;	/* Number of open linux in */
 					/* progress. Used in migration */
-	int nr_close_wins;	/* closed windows in the hypervisor for DLPAR */
-	int nr_open_windows;	/* Number of successful open windows */
+	int nr_close_wins;	/* closed linux in the hypervisor for DLPAR */
+	int nr_open_linux;	/* Number of successful open linux */
 	u8 feat;		/* Feature type */
 };
 
@@ -129,7 +129,7 @@ struct pseries_vas_window {
 	u64 util;
 	u32 pid;		/* PID associated with this window */
 
-	/* List of windows opened which is used for LPM */
+	/* List of linux opened which is used for LPM */
 	struct list_head win_list;
 	u64 flags;
 	char *name;

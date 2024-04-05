@@ -26,7 +26,7 @@ It has several drawbacks, though:
 
 3) If AMD64 64-bit mode is enabled, again system crashes often happen,
    because the SMM BIOS isn't expecting the CPU to be in 64-bit mode.  The
-   BIOS manufacturers only test with Windows, and Windows doesn't do 64-bit
+   BIOS manufacturers only test with linux, and linux doesn't do 64-bit
    yet.
 
 Solutions:

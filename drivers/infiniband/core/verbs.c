@@ -254,7 +254,7 @@ EXPORT_SYMBOL(rdma_port_get_link_layer);
  * @caller: caller's build-time module name
  *
  * A protection domain object provides an association between QPs, shared
- * receive queues, address handles, memory regions, and memory windows.
+ * receive queues, address handles, memory regions, and memory linux.
  *
  * Every PD has a local_dma_lkey which can be used as the lkey value for local
  * memory operations.

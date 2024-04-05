@@ -605,13 +605,13 @@ static int cifs_get_srv_inum(const unsigned int xid, struct cifs_tcon *tcon,
 			     u64 *uniqueid, struct cifs_open_info_data *unused)
 {
 	/*
-	 * We can not use the IndexNumber field by default from Windows or
+	 * We can not use the IndexNumber field by default from linux or
 	 * Samba (in ALL_INFO buf) but we can request it explicitly. The SNIA
 	 * CIFS spec claims that this value is unique within the scope of a
-	 * share, and the windows docs hint that it's actually unique
+	 * share, and the linux docs hint that it's actually unique
 	 * per-machine.
 	 *
-	 * There may be higher info levels that work but are there Windows
+	 * There may be higher info levels that work but are there linux
 	 * server or network appliances for which IndexNumber field is not
 	 * guaranteed unique?
 	 */
@@ -930,7 +930,7 @@ cifs_queryfs(const unsigned int xid, struct cifs_tcon *tcon,
 		rc = CIFSSMBQFSInfo(xid, tcon, buf);
 
 	/*
-	 * Some old Windows servers also do not support level 103, retry with
+	 * Some old linux servers also do not support level 103, retry with
 	 * older level one if old server failed the previous call or we
 	 * bypassed it because we detected that this was an older LANMAN sess
 	 */
@@ -1079,7 +1079,7 @@ cifs_make_node(unsigned int xid, struct inode *inode,
 	 * Check if mounted with mount parm 'sfu' mount parm.
 	 * SFU emulation should work with all servers, but only
 	 * supports block and char device (no socket & fifo),
-	 * and was used by default in earlier versions of Windows
+	 * and was used by default in earlier versions of linux
 	 */
 	if (!(cifs_sb->mnt_cifs_flags & CIFS_MOUNT_UNX_EMUL))
 		return -EPERM;

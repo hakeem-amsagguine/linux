@@ -2279,9 +2279,9 @@ void rtl92se_update_channel_access_setting(struct ieee80211_hw *hw)
 
 }
 
-/* this ifunction is for RFKILL, it's different with windows,
+/* this ifunction is for RFKILL, it's different with linux,
  * because UI will disable wireless when GPIO Radio Off.
- * And here we not check or Disable/Enable ASPM like windows*/
+ * And here we not check or Disable/Enable ASPM like linux*/
 bool rtl92se_gpio_radio_on_off_checking(struct ieee80211_hw *hw, u8 *valid)
 {
 	struct rtl_priv *rtlpriv = rtl_priv(hw);

@@ -122,7 +122,7 @@ PCM devices correspond to inputs/outputs as follows (assuming Maya44 is card #0)
 NAMING OF MIXER CONTROLS
 ========================
 
-(for more information about the signal flow, please refer to the block diagram on p.24 of the ESI Maya44 manual, or in the ESI windows software).
+(for more information about the signal flow, please refer to the block diagram on p.24 of the ESI Maya44 manual, or in the ESI linux software).
 
 
 PCM
@@ -140,7 +140,7 @@ Mic/Line input
     if switch is on, input jack 1/2 is microphone input (mono), otherwise line input (stereo).
 
 Bypass
-    analogue bypass from ADC input to output for channel 1+2. Same as "Monitor" in the windows driver.
+    analogue bypass from ADC input to output for channel 1+2. Same as "Monitor" in the linux driver.
 Bypass 1
     same for channel 3+4.
 
@@ -152,14 +152,14 @@ Crossmix 1
 IEC958 Output
     switch for S/PDIF output.
 
-    This is not supported by the ESI windows driver.
+    This is not supported by the ESI linux driver.
     S/PDIF should output the same signal as channel 3+4. [untested!]
 
 
 Digital output selectors
     These switches allow a direct digital routing from the ADCs to the DACs.
     Each switch determines where the digital input data to one of the DACs comes from.
-    They are not supported by the ESI windows driver.
+    They are not supported by the ESI linux driver.
     For normal operation, they should all be set to "PCM out".
 
 H/W

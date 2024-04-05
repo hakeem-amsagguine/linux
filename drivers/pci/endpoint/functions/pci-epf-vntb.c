@@ -615,7 +615,7 @@ static int epf_ntb_mw_bar_init(struct epf_ntb *ntb)
 			goto err_alloc_mem;
 		}
 
-		/* Allocate EPC outbound memory windows to vpci vntb device */
+		/* Allocate EPC outbound memory linux to vpci vntb device */
 		ntb->vpci_mw_addr[i] = pci_epc_mem_alloc_addr(ntb->epf->epc,
 							      &ntb->vpci_mw_phy[i],
 							      size);

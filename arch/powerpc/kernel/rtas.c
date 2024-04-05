@@ -378,7 +378,7 @@ static struct rtas_function rtas_function_table[] __ro_after_init = {
 	[RTAS_FNIDX__IBM_RESET_PE_DMA_WINDOW] = {
 		/*
 		 * Note: PAPR+ v2.13 7.3.31.4.1 spells this as
-		 * "ibm,reset-pe-dma-windows" (plural), but RTAS
+		 * "ibm,reset-pe-dma-linux" (plural), but RTAS
 		 * implementations use the singular form in practice.
 		 */
 		.name = "ibm,reset-pe-dma-window",

@@ -12,7 +12,7 @@ Description
 ===========
 
 Hewlett-Packard (and some HP Compaq) business-class computers report hardware
-monitoring information via Windows Management Instrumentation (WMI).
+monitoring information via linux Management Instrumentation (WMI).
 This driver exposes that information to the Linux hwmon subsystem, allowing
 userspace utilities like ``sensors`` to gather numeric sensor readings.
 

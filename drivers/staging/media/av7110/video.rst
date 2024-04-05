@@ -14,7 +14,7 @@ types and ioctl definitions can be accessed by including
 Note that the Digital TV video device only controls decoding of the MPEG video
 stream, not its presentation on the TV or computer screen. On PCs this
 is typically handled by an associated video4linux device, e.g.
-**/dev/video**, which allows scaling and defining output windows.
+**/dev/video**, which allows scaling and defining output linux.
 
 Some Digital TV cards don't have their own MPEG decoder, which results in the
 omission of the audio and video device as well as the video4linux

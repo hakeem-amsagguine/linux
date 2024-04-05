@@ -381,7 +381,7 @@ static int datafab_id_device(struct us_data *us,
 			     struct datafab_info *info)
 {
 	// this is a variation of the ATA "IDENTIFY DEVICE" command...according
-	// to the ATA spec, 'Sector Count' isn't used but the Windows driver
+	// to the ATA spec, 'Sector Count' isn't used but the linux driver
 	// sets this bit so we do too...
 	//
 	static unsigned char scommand[8] = { 0, 1, 0, 0, 0, 0xa0, 0xec, 1 };

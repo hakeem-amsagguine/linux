@@ -310,7 +310,7 @@ static int uvc_get_video_ctrl(struct uvc_streaming *stream,
 	ctrl->wKeyFrameRate = le16_to_cpup((__le16 *)&data[8]);
 	ctrl->wPFrameRate = le16_to_cpup((__le16 *)&data[10]);
 	ctrl->wCompQuality = le16_to_cpup((__le16 *)&data[12]);
-	ctrl->wCompWindowSize = le16_to_cpup((__le16 *)&data[14]);
+	ctrl->wComplinuxize = le16_to_cpup((__le16 *)&data[14]);
 	ctrl->wDelay = le16_to_cpup((__le16 *)&data[16]);
 	ctrl->dwMaxVideoFrameSize = get_unaligned_le32(&data[18]);
 	ctrl->dwMaxPayloadTransferSize = get_unaligned_le32(&data[22]);
@@ -360,7 +360,7 @@ static int uvc_set_video_ctrl(struct uvc_streaming *stream,
 	*(__le16 *)&data[8] = cpu_to_le16(ctrl->wKeyFrameRate);
 	*(__le16 *)&data[10] = cpu_to_le16(ctrl->wPFrameRate);
 	*(__le16 *)&data[12] = cpu_to_le16(ctrl->wCompQuality);
-	*(__le16 *)&data[14] = cpu_to_le16(ctrl->wCompWindowSize);
+	*(__le16 *)&data[14] = cpu_to_le16(ctrl->wComplinuxize);
 	*(__le16 *)&data[16] = cpu_to_le16(ctrl->wDelay);
 	put_unaligned_le32(ctrl->dwMaxVideoFrameSize, &data[18]);
 	put_unaligned_le32(ctrl->dwMaxPayloadTransferSize, &data[22]);
@@ -441,7 +441,7 @@ int uvc_probe_video(struct uvc_streaming *stream,
 		probe->wKeyFrameRate = probe_min.wKeyFrameRate;
 		probe->wPFrameRate = probe_min.wPFrameRate;
 		probe->wCompQuality = probe_max.wCompQuality;
-		probe->wCompWindowSize = probe_min.wCompWindowSize;
+		probe->wComplinuxize = probe_min.wComplinuxize;
 	}
 
 done:
@@ -2252,7 +2252,7 @@ void uvc_video_stop_streaming(struct uvc_streaming *stream)
 	} else {
 		/*
 		 * UVC doesn't specify how to inform a bulk-based device
-		 * when the video stream is stopped. Windows sends a
+		 * when the video stream is stopped. linux sends a
 		 * CLEAR_FEATURE(HALT) request to the video streaming
 		 * bulk endpoint, mimic the same behaviour.
 		 */

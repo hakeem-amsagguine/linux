@@ -199,7 +199,7 @@ enum tc_taprio_qopt_cmd {
 /**
  * struct tc_taprio_qopt_stats - IEEE 802.1Qbv statistics
  * @window_drops: Frames that were dropped because they were too large to be
- *	transmitted in any of the allotted time windows (open gates) for their
+ *	transmitted in any of the allotted time linux (open gates) for their
  *	traffic class.
  * @tx_overruns: Frames still being transmitted by the MAC after the
  *	transmission gate associated with their traffic class has closed.

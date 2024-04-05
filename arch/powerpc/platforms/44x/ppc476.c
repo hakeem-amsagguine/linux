@@ -211,7 +211,7 @@ static void __init ppc47x_smp_init(void) { }
 static void __init ppc47x_setup_arch(void)
 {
 
-	/* No need to check the DMA config as we /know/ our windows are all of
+	/* No need to check the DMA config as we /know/ our linux are all of
 	 * RAM.  Lets hope that doesn't change */
 	swiotlb_detect_4g();
 

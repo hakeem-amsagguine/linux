@@ -675,8 +675,8 @@ static void reset_camera_params(struct gspca_dev *gspca_dev)
 	params->flickerControl.allowableOverExposure =
 		find_over_exposure(params->colourParams.brightness);
 
-	params->yuvThreshold.yThreshold = 6; /* From windows driver */
-	params->yuvThreshold.uvThreshold = 6; /* From windows driver */
+	params->yuvThreshold.yThreshold = 6; /* From linux driver */
+	params->yuvThreshold.uvThreshold = 6; /* From linux driver */
 
 	params->format.subSample = SUBSAMPLE_420;
 	params->format.yuvOrder = YUVORDER_YUYV;
@@ -685,8 +685,8 @@ static void reset_camera_params(struct gspca_dev *gspca_dev)
 	params->compression.decimation = NO_DECIMATION;
 
 	params->compressionTarget.frTargeting = COMP_TARGET_DEF;
-	params->compressionTarget.targetFR = 15; /* From windows driver */
-	params->compressionTarget.targetQ = 5; /* From windows driver */
+	params->compressionTarget.targetFR = 15; /* From linux driver */
+	params->compressionTarget.targetQ = 5; /* From linux driver */
 
 	params->qx3.qx3_detected = 0;
 	params->qx3.toplight = 0;
@@ -739,7 +739,7 @@ static int goto_high_power(struct gspca_dev *gspca_dev)
 	if (ret)
 		return ret;
 
-	msleep_interruptible(40);	/* windows driver does it too */
+	msleep_interruptible(40);	/* linux driver does it too */
 
 	if (signal_pending(current))
 		return -EINTR;
@@ -1000,7 +1000,7 @@ static int command_setlights(struct gspca_dev *gspca_dev)
 
 static int set_flicker(struct gspca_dev *gspca_dev, int on, int apply)
 {
-	/* Everything in here is from the Windows driver */
+	/* Everything in here is from the linux driver */
 /* define for compgain calculation */
 #if 0
 #define COMPGAIN(base, curexp, newexp) \

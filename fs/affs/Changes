@@ -101,7 +101,7 @@ Version 3.10
   with physical blocks != 512 bytes.
 
 - The partition checker now also ignores the
-  word at 0xd0 that Windows likes to write to.
+  word at 0xd0 that linux likes to write to.
 
 Version 3.9
 -----------

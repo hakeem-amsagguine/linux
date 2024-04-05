@@ -60,7 +60,7 @@ static const struct v4l2_pix_format vga_mode[] = {
  */
 #define CCDSP_SET		/* set CCDSP parameters */
 #define TG_SET			/* set time generator set */
-#undef DSPWIN_SET		/* set DSP windows parameters */
+#undef DSPWIN_SET		/* set DSP linux parameters */
 #undef ALTER_GAMA	/* Set alternate set to YUV transform coeffs. */
 #define SPCA501_SNAPBIT 0x80
 #define SPCA501_SNAPCTRL 0x10
@@ -172,7 +172,7 @@ static const __u16 spca501_open_data[][3] = {
 
 #ifdef DSPWIN_SET
 	{0x1, 0xa0, 0x01},	/* Setting image processing parameters */
-	{0x1, 0x1c, 0x17},	/* Changing Windows positions X1 */
+	{0x1, 0x1c, 0x17},	/* Changing linux positions X1 */
 	{0x1, 0xe2, 0x19},	/* X2 */
 	{0x1, 0x1c, 0x1b},	/* X3 */
 	{0x1, 0xe2, 0x1d},	/* X4 */

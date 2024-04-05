@@ -116,7 +116,7 @@ typedef enum {
 	OSD_Text,	/* (x0,y0,size,color,text) */
 	OSD_SetWindow,	/* (x0) set window with number 0<x0<8 as current */
 	OSD_MoveWindow,	/* move current window to (x0, y0) */
-	OSD_OpenRaw,	/* Open other types of OSD windows */
+	OSD_OpenRaw,	/* Open other types of OSD linux */
 } OSD_Command;
 
 typedef struct osd_cmd_s {

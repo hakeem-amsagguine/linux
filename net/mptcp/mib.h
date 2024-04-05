@@ -24,7 +24,7 @@ enum linux_mptcp_mib_field {
 	MPTCP_MIB_OFOQUEUETAIL,	/* Segments inserted into OoO queue tail */
 	MPTCP_MIB_OFOQUEUE,		/* Segments inserted into OoO queue */
 	MPTCP_MIB_OFOMERGE,		/* Segments merged in OoO queue */
-	MPTCP_MIB_NODSSWINDOW,		/* Segments not in MPTCP windows */
+	MPTCP_MIB_NODSSWINDOW,		/* Segments not in MPTCP linux */
 	MPTCP_MIB_DUPDATA,		/* Segments discarded due to duplicate DSS */
 	MPTCP_MIB_ADDADDR,		/* Received ADD_ADDR with echo-flag=0 */
 	MPTCP_MIB_ADDADDRTX,		/* Sent ADD_ADDR with echo-flag=0 */

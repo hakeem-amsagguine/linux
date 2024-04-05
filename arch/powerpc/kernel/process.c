@@ -1304,7 +1304,7 @@ struct task_struct *__switch_to(struct task_struct *prev,
 	 * channel. ISA v3.1 supports paste into local memory.
 	 */
 	if (new->mm && (cpu_has_feature(CPU_FTR_ARCH_31) ||
-			atomic_read(&new->mm->context.vas_windows)))
+			atomic_read(&new->mm->context.vas_linux)))
 		asm volatile(PPC_CP_ABORT);
 #endif /* CONFIG_PPC_BOOK3S_64 */
 

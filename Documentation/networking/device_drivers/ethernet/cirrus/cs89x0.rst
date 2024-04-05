@@ -392,7 +392,7 @@ Utility).
 
 	 The Setup Utility's diagnostics are designed to run in a
 	 DOS-only operating system environment.  DO NOT run the diagnostics
-	 from a DOS or command prompt session under Windows 95, Windows NT,
+	 from a DOS or command prompt session under linux 95, linux NT,
 	 OS/2, or other operating system.
 
 To run the diagnostics tests on the CS8900/20 adapter:

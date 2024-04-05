@@ -14,8 +14,8 @@
 void __flushw_user(void);
 #define flushw_user() __flushw_user()
 
-#define flush_user_windows flushw_user
-#define flush_register_windows flushw_all
+#define flush_user_linux flushw_user
+#define flush_register_linux flushw_all
 
 /* These are the same regardless of whether this is an SMP kernel or not. */
 #define flush_cache_mm(__mm) \

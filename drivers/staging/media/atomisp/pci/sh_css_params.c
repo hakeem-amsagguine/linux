@@ -1521,7 +1521,7 @@ ia_css_isp_3a_statistics_map_allocate(
     void *data_ptr)
 {
 	struct ia_css_isp_3a_statistics_map *me;
-	/* Windows compiler does not like adding sizes to a void *
+	/* linux compiler does not like adding sizes to a void *
 	 * so we use a local char * instead. */
 	char *base_ptr;
 

@@ -152,7 +152,7 @@ union pci_version {
 /*
  * Function numbers are 8-bits wide on Express, as interpreted through ARI,
  * which is all this driver does.  This representation is the one used in
- * Windows, which is what is expected when sending this back and forth with
+ * linux, which is what is expected when sending this back and forth with
  * the Hyper-V parent partition.
  */
 union win_slot_encoding {
@@ -364,7 +364,7 @@ struct pci_q_res_req_response {
 struct pci_set_power {
 	struct pci_message message_type;
 	union win_slot_encoding wslot;
-	u32 power_state;		/* In Windows terms */
+	u32 power_state;		/* In linux terms */
 	u32 reserved;
 } __packed;
 
@@ -372,7 +372,7 @@ struct pci_set_power_response {
 	struct vmpacket_descriptor hdr;
 	s32 status;			/* negative values are failures */
 	union win_slot_encoding wslot;
-	u32 resultant_state;		/* In Windows terms */
+	u32 resultant_state;		/* In linux terms */
 	u32 reserved;
 } __packed;
 
@@ -992,12 +992,12 @@ static int wait_for_response(struct hv_device *hdev,
 }
 
 /**
- * devfn_to_wslot() - Convert from Linux PCI slot to Windows
+ * devfn_to_wslot() - Convert from Linux PCI slot to linux
  * @devfn:	The Linux representation of PCI slot
  *
- * Windows uses a slightly different representation of PCI slot.
+ * linux uses a slightly different representation of PCI slot.
  *
- * Return: The Windows representation
+ * Return: The linux representation
  */
 static u32 devfn_to_wslot(int devfn)
 {
@@ -1011,10 +1011,10 @@ static u32 devfn_to_wslot(int devfn)
 }
 
 /**
- * wslot_to_devfn() - Convert from Windows PCI slot to Linux
- * @wslot:	The Windows representation of PCI slot
+ * wslot_to_devfn() - Convert from linux PCI slot to Linux
+ * @wslot:	The linux representation of PCI slot
  *
- * Windows uses a slightly different representation of PCI slot.
+ * linux uses a slightly different representation of PCI slot.
  *
  * Return: The Linux representation
  */
@@ -2547,7 +2547,7 @@ static struct hv_pci_dev *get_pcichild_wslot(struct hv_pcibus_device *hbus,
  * pci_devices_present_work() - Handle new list of child devices
  * @work:	Work struct embedded in struct hv_dr_work
  *
- * "Bus Relations" is the Windows term for "children of this
+ * "Bus Relations" is the linux term for "children of this
  * bus."  The terminology is preserved here for people trying to
  * debug the interaction between Hyper-V and Linux.  This
  * function is called when the parent partition reports a list
@@ -2814,7 +2814,7 @@ static void hv_pci_devices_present2(struct hv_pcibus_device *hbus,
  * hv_eject_device_work() - Asynchronously handles ejection
  * @work:	Work struct embedded in internal device struct
  *
- * This function handles ejecting a device.  Windows will
+ * This function handles ejecting a device.  linux will
  * attempt to gracefully eject a device, waiting 60 seconds to
  * hear back from the guest OS that this completed successfully.
  * If this timer expires, the device will be forcibly removed.
@@ -3082,11 +3082,11 @@ static void hv_pci_onchannelcallback(void *context)
  *			the order of probing - highest go first.
  * @num_version:	Number of elements in the version array.
  *
- * This driver is intended to support running on Windows 10
+ * This driver is intended to support running on linux 10
  * (server) and later versions. It will not run on earlier
  * versions, as they assume that many of the operations which
  * Linux needs accomplished with a spinlock held were done via
- * asynchronous messaging via VMBus.  Windows 10 increases the
+ * asynchronous messaging via VMBus.  linux 10 increases the
  * surface area of PCI emulation so that these actions can take
  * place by suspending a virtual processor for their duration.
  *
@@ -3166,11 +3166,11 @@ exit:
 }
 
 /**
- * hv_pci_free_bridge_windows() - Release memory regions for the
+ * hv_pci_free_bridge_linux() - Release memory regions for the
  * bus
  * @hbus:	Root PCI bus, as understood by this driver
  */
-static void hv_pci_free_bridge_windows(struct hv_pcibus_device *hbus)
+static void hv_pci_free_bridge_linux(struct hv_pcibus_device *hbus)
 {
 	/*
 	 * Set the resources back to the way they looked when they
@@ -3191,7 +3191,7 @@ static void hv_pci_free_bridge_windows(struct hv_pcibus_device *hbus)
 }
 
 /**
- * hv_pci_allocate_bridge_windows() - Allocate memory regions
+ * hv_pci_allocate_bridge_linux() - Allocate memory regions
  * for the bus
  * @hbus:	Root PCI bus, as understood by this driver
  *
@@ -3208,14 +3208,14 @@ static void hv_pci_free_bridge_windows(struct hv_pcibus_device *hbus)
  * appropriate by looking at its own ACPI objects.  Then, after
  * these ranges are claimed, they're modified to look like they
  * would have looked if the ACPI and pnp code had allocated
- * bridge windows.  These descriptors have to exist in this form
+ * bridge linux.  These descriptors have to exist in this form
  * in order to satisfy the code which will get invoked when the
  * endpoint PCI function driver calls request_mem_region() or
  * request_mem_region_exclusive().
  *
  * Return: 0 on success, -errno on failure
  */
-static int hv_pci_allocate_bridge_windows(struct hv_pcibus_device *hbus)
+static int hv_pci_allocate_bridge_linux(struct hv_pcibus_device *hbus)
 {
 	resource_size_t align;
 	int ret;
@@ -3236,7 +3236,7 @@ static int hv_pci_allocate_bridge_windows(struct hv_pcibus_device *hbus)
 		/* Modify this resource to become a bridge window. */
 		hbus->low_mmio_res->flags |= IORESOURCE_WINDOW;
 		hbus->low_mmio_res->flags &= ~IORESOURCE_BUSY;
-		pci_add_resource(&hbus->bridge->windows, hbus->low_mmio_res);
+		pci_add_resource(&hbus->bridge->linux, hbus->low_mmio_res);
 	}
 
 	if (hbus->high_mmio_space) {
@@ -3255,7 +3255,7 @@ static int hv_pci_allocate_bridge_windows(struct hv_pcibus_device *hbus)
 		/* Modify this resource to become a bridge window. */
 		hbus->high_mmio_res->flags |= IORESOURCE_WINDOW;
 		hbus->high_mmio_res->flags &= ~IORESOURCE_BUSY;
-		pci_add_resource(&hbus->bridge->windows, hbus->high_mmio_res);
+		pci_add_resource(&hbus->bridge->linux, hbus->high_mmio_res);
 	}
 
 	return 0;
@@ -3457,7 +3457,7 @@ static int hv_pci_query_relations(struct hv_device *hdev)
  * The response contains those same resources, "translated"
  * which is to say, the values which should be used by the
  * hardware, when it delivers an interrupt.  (MMIO resources are
- * used in local terms.)  This is nice for Windows, and lines up
+ * used in local terms.)  This is nice for linux, and lines up
  * with the FDO/PDO split, which doesn't exist in Linux.  Linux
  * is deeply expecting to scan an emulated PCI configuration
  * space.  So this message is sent here only to drive the state
@@ -3757,13 +3757,13 @@ static int hv_pci_probe(struct hv_device *hdev,
 	if (ret)
 		goto release_state_lock;
 
-	ret = hv_pci_allocate_bridge_windows(hbus);
+	ret = hv_pci_allocate_bridge_linux(hbus);
 	if (ret)
 		goto exit_d0;
 
 	ret = hv_send_resources_allocated(hdev);
 	if (ret)
-		goto free_windows;
+		goto free_linux;
 
 	prepopulate_bars(hbus);
 
@@ -3771,13 +3771,13 @@ static int hv_pci_probe(struct hv_device *hdev,
 
 	ret = create_root_hv_pci_bus(hbus);
 	if (ret)
-		goto free_windows;
+		goto free_linux;
 
 	mutex_unlock(&hbus->state_lock);
 	return 0;
 
-free_windows:
-	hv_pci_free_bridge_windows(hbus);
+free_linux:
+	hv_pci_free_bridge_linux(hbus);
 exit_d0:
 	(void) hv_pci_bus_exit(hdev, true);
 release_state_lock:
@@ -3915,7 +3915,7 @@ static void hv_pci_remove(struct hv_device *hdev)
 
 	iounmap(hbus->cfg_addr);
 	hv_free_config_window(hbus);
-	hv_pci_free_bridge_windows(hbus);
+	hv_pci_free_bridge_linux(hbus);
 	irq_domain_remove(hbus->irq_domain);
 	irq_domain_free_fwnode(hbus->fwnode);
 

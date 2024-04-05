@@ -36,8 +36,8 @@
 /*
  *  Define the number of each that the fake driver supports.
  */
-#define FAKE_MAX_MASTER		8	/* Max Master Windows */
-#define FAKE_MAX_SLAVE		8	/* Max Slave Windows */
+#define FAKE_MAX_MASTER		8	/* Max Master linux */
+#define FAKE_MAX_SLAVE		8	/* Max Slave linux */
 
 /* Structures to hold information normally held in device registers */
 struct fake_slave_window {
@@ -275,7 +275,7 @@ static int fake_master_set(struct vme_master_resource *image, int enabled,
 	}
 
 	if ((size == 0) && (enabled != 0)) {
-		pr_err("Size must be non-zero for enabled windows\n");
+		pr_err("Size must be non-zero for enabled linux\n");
 		retval = -EINVAL;
 		goto err_window;
 	}
@@ -1093,7 +1093,7 @@ static int __init fake_init(void)
 
 	strscpy(fake_bridge->name, driver_name, sizeof(fake_bridge->name));
 
-	/* Add master windows to list */
+	/* Add master linux to list */
 	INIT_LIST_HEAD(&fake_bridge->master_resources);
 	for (i = 0; i < FAKE_MAX_MASTER; i++) {
 		master_image = kmalloc(sizeof(*master_image), GFP_KERNEL);
@@ -1119,7 +1119,7 @@ static int __init fake_init(void)
 			      &fake_bridge->master_resources);
 	}
 
-	/* Add slave windows to list */
+	/* Add slave linux to list */
 	INIT_LIST_HEAD(&fake_bridge->slave_resources);
 	for (i = 0; i < FAKE_MAX_SLAVE; i++) {
 		slave_image = kmalloc(sizeof(*slave_image), GFP_KERNEL);
@@ -1244,7 +1244,7 @@ static void __exit fake_exit(void)
 	pr_debug("Driver is being unloaded.\n");
 
 	/*
-	 *  Shutdown all inbound and outbound windows.
+	 *  Shutdown all inbound and outbound linux.
 	 */
 	for (i = 0; i < FAKE_MAX_MASTER; i++)
 		bridge->masters[i].enabled = 0;

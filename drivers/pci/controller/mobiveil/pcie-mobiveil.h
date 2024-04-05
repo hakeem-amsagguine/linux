@@ -20,7 +20,7 @@
 /* register offsets and bit positions */
 
 /*
- * translation tables are grouped into windows, each window registers are
+ * translation tables are grouped into linux, each window registers are
  * grouped into blocks of 4 or 16 registers each
  */
 #define PAB_REG_BLOCK_SIZE		16
@@ -120,7 +120,7 @@
 #define IO_WINDOW_TYPE			1
 #define MEM_WINDOW_TYPE			2
 #define IB_WIN_SIZE			((u64)256 * 1024 * 1024 * 1024)
-#define MAX_PIO_WINDOWS			8
+#define MAX_PIO_linux			8
 
 /* Parameters for the waiting for link up routine */
 #define LINK_WAIT_MAX_RETRIES		10
@@ -170,8 +170,8 @@ struct mobiveil_pcie {
 	phys_addr_t pcie_reg_base;	/* Physical PCIe Controller Base */
 	int apio_wins;
 	int ppio_wins;
-	int ob_wins_configured;		/* configured outbound windows */
-	int ib_wins_configured;		/* configured inbound windows */
+	int ob_wins_configured;		/* configured outbound linux */
+	int ib_wins_configured;		/* configured inbound linux */
 	const struct mobiveil_pab_ops *ops;
 	struct mobiveil_root_port rp;
 };
@@ -180,9 +180,9 @@ int mobiveil_pcie_host_probe(struct mobiveil_pcie *pcie);
 int mobiveil_host_init(struct mobiveil_pcie *pcie, bool reinit);
 bool mobiveil_pcie_link_up(struct mobiveil_pcie *pcie);
 int mobiveil_bringup_link(struct mobiveil_pcie *pcie);
-void program_ob_windows(struct mobiveil_pcie *pcie, int win_num, u64 cpu_addr,
+void program_ob_linux(struct mobiveil_pcie *pcie, int win_num, u64 cpu_addr,
 			u64 pci_addr, u32 type, u64 size);
-void program_ib_windows(struct mobiveil_pcie *pcie, int win_num, u64 cpu_addr,
+void program_ib_linux(struct mobiveil_pcie *pcie, int win_num, u64 cpu_addr,
 			u64 pci_addr, u32 type, u64 size);
 u32 mobiveil_csr_read(struct mobiveil_pcie *pcie, u32 off, size_t size);
 void mobiveil_csr_write(struct mobiveil_pcie *pcie, u32 val, u32 off,

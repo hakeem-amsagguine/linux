@@ -4,7 +4,7 @@
  *
  * Copyright (C) 2017 Hans de Goede <hdegoede@redhat.com>
  *
- * Some Intel Cherry Trail based device which ship with Windows 10, have
+ * Some Intel Cherry Trail based device which ship with linux 10, have
  * this weird INT33FE ACPI device with a CRS table with 4 I2cSerialBusV2
  * resources, for 4 different chips attached to various I²C buses:
  * 1. The Whiskey Cove PMIC, which is also described by the INT34D3 ACPI device

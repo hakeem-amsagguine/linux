@@ -184,8 +184,8 @@ static int saa7164_dvb_pause_port(struct saa7164_port *port)
 	return ret;
 }
 
-/* Firmware is very windows centric, meaning you have to transition
- * the part through AVStream / KS Windows stages, forwards or backwards.
+/* Firmware is very linux centric, meaning you have to transition
+ * the part through AVStream / KS linux stages, forwards or backwards.
  * States are: stopped, acquired (h/w), paused, started.
  */
 static int saa7164_dvb_stop_streaming(struct saa7164_port *port)

@@ -1361,10 +1361,10 @@ static void bnx2x_vf_mbx_acquire_resp(struct bnx2x *bp, struct bnx2x_virtf *vf,
 	bnx2x_vf_mbx_resp_send_msg(bp, vf, vfop_status);
 }
 
-static bool bnx2x_vf_mbx_is_windows_vm(struct bnx2x *bp,
+static bool bnx2x_vf_mbx_is_linux_vm(struct bnx2x *bp,
 				       struct vfpf_acquire_tlv *acquire)
 {
-	/* Windows driver does one of three things:
+	/* linux driver does one of three things:
 	 * 1. Old driver doesn't have bulletin board address set.
 	 * 2. 'Middle' driver sends mc_num == 32.
 	 * 3. New driver sets the OS field.
@@ -1372,7 +1372,7 @@ static bool bnx2x_vf_mbx_is_windows_vm(struct bnx2x *bp,
 	if (!acquire->bulletin_addr ||
 	    acquire->resc_request.num_mc_filters == 32 ||
 	    ((acquire->vfdev_info.vf_os & VF_OS_MASK) ==
-	     VF_OS_WINDOWS))
+	     VF_OS_linux))
 		return true;
 
 	return false;
@@ -1389,8 +1389,8 @@ static int bnx2x_vf_mbx_acquire_chk_dorq(struct bnx2x *bp,
 				  CHANNEL_TLV_PHYS_PORT_ID))
 		return 0;
 
-	/* Issue does not exist in windows VMs */
-	if (bnx2x_vf_mbx_is_windows_vm(bp, &mbx->msg->req.acquire))
+	/* Issue does not exist in linux VMs */
+	if (bnx2x_vf_mbx_is_linux_vm(bp, &mbx->msg->req.acquire))
 		return 0;
 
 	return -EOPNOTSUPP;
@@ -1426,7 +1426,7 @@ static void bnx2x_vf_mbx_acquire(struct bnx2x *bp, struct bnx2x_virtf *vf,
 	/* Verify the VF fastpath HSI can be supported by the loaded FW.
 	 * Linux vfs should be oblivious to changes between v0 and v2.
 	 */
-	if (bnx2x_vf_mbx_is_windows_vm(bp, &mbx->msg->req.acquire))
+	if (bnx2x_vf_mbx_is_linux_vm(bp, &mbx->msg->req.acquire))
 		vf->fp_hsi = acquire->vfdev_info.fp_hsi_ver;
 	else
 		vf->fp_hsi = max_t(u8, acquire->vfdev_info.fp_hsi_ver,

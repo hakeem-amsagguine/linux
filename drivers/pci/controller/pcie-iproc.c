@@ -155,7 +155,7 @@ enum iproc_pcie_ib_map_type {
  * @region_sizes: list of supported inbound mapping region sizes in KB, MB, or
  * GB, depending on the size unit
  * @nr_sizes: number of supported inbound mapping region sizes
- * @nr_windows: number of supported inbound mapping windows for the region
+ * @nr_linux: number of supported inbound mapping linux for the region
  * @imap_addr_offset: register offset between the upper and lower 32-bit
  * IMAP address registers
  * @imap_window_offset: register offset between each IMAP window
@@ -165,7 +165,7 @@ struct iproc_pcie_ib_map {
 	unsigned int size_unit;
 	resource_size_t region_sizes[MAX_NUM_IB_REGION_SIZES];
 	unsigned int nr_sizes;
-	unsigned int nr_windows;
+	unsigned int nr_linux;
 	u16 imap_addr_offset;
 	u16 imap_window_offset;
 };
@@ -177,7 +177,7 @@ static const struct iproc_pcie_ib_map paxb_v2_ib_map[] = {
 		.size_unit = SZ_1K,
 		.region_sizes = { 32 },
 		.nr_sizes = 1,
-		.nr_windows = 8,
+		.nr_linux = 8,
 		.imap_addr_offset = 0x40,
 		.imap_window_offset = 0x4,
 	},
@@ -187,7 +187,7 @@ static const struct iproc_pcie_ib_map paxb_v2_ib_map[] = {
 		.size_unit = SZ_1M,
 		.region_sizes = { 8 },
 		.nr_sizes = 1,
-		.nr_windows = 8,
+		.nr_linux = 8,
 		.imap_addr_offset = 0x4,
 		.imap_window_offset = 0x8,
 
@@ -199,7 +199,7 @@ static const struct iproc_pcie_ib_map paxb_v2_ib_map[] = {
 		.region_sizes = { 64, 128, 256, 512, 1024, 2048, 4096, 8192,
 				  16384 },
 		.nr_sizes = 9,
-		.nr_windows = 1,
+		.nr_linux = 1,
 		.imap_addr_offset = 0x4,
 		.imap_window_offset = 0x8,
 	},
@@ -209,7 +209,7 @@ static const struct iproc_pcie_ib_map paxb_v2_ib_map[] = {
 		.size_unit = SZ_1G,
 		.region_sizes = { 1, 2, 4, 8, 16, 32 },
 		.nr_sizes = 6,
-		.nr_windows = 8,
+		.nr_linux = 8,
 		.imap_addr_offset = 0x4,
 		.imap_window_offset = 0x8,
 	},
@@ -219,7 +219,7 @@ static const struct iproc_pcie_ib_map paxb_v2_ib_map[] = {
 		.size_unit = SZ_1G,
 		.region_sizes = { 32, 64, 128, 256, 512 },
 		.nr_sizes = 5,
-		.nr_windows = 8,
+		.nr_linux = 8,
 		.imap_addr_offset = 0x4,
 		.imap_window_offset = 0x8,
 	},
@@ -921,8 +921,8 @@ static int iproc_pcie_setup_ob(struct iproc_pcie *pcie, u64 axi_addr,
 	 */
 	axi_addr -= ob->axi_offset;
 
-	/* iterate through all OARR/OMAP mapping windows */
-	for (window_idx = ob->nr_windows - 1; window_idx >= 0; window_idx--) {
+	/* iterate through all OARR/OMAP mapping linux */
+	for (window_idx = ob->nr_linux - 1; window_idx >= 0; window_idx--) {
 		const struct iproc_pcie_ob_map *ob_map =
 			&pcie->ob_map[window_idx];
 
@@ -1053,7 +1053,7 @@ static inline bool iproc_pcie_ib_check_type(const struct iproc_pcie_ib_map *ib_m
 }
 
 static int iproc_pcie_ib_write(struct iproc_pcie *pcie, int region_idx,
-			       int size_idx, int nr_windows, u64 axi_addr,
+			       int size_idx, int nr_linux, u64 axi_addr,
 			       u64 pci_addr, resource_size_t size)
 {
 	struct device *dev = pcie->dev;
@@ -1087,10 +1087,10 @@ static int iproc_pcie_ib_write(struct iproc_pcie *pcie, int region_idx,
 
 	/*
 	 * Now program the IMAP registers.  Each IARR region may have one or
-	 * more IMAP windows.
+	 * more IMAP linux.
 	 */
-	size >>= ilog2(nr_windows);
-	for (window_idx = 0; window_idx < nr_windows; window_idx++) {
+	size >>= ilog2(nr_linux);
+	for (window_idx = 0; window_idx < nr_linux; window_idx++) {
 		val = readl(pcie->base + imap_offset);
 		val |= lower_32_bits(axi_addr) | IMAP_VALID;
 		writel(val, pcie->base + imap_offset);
@@ -1150,9 +1150,9 @@ static int iproc_pcie_setup_ib(struct iproc_pcie *pcie,
 				return -EINVAL;
 			}
 
-			/* Match found!  Program IARR and all IMAP windows. */
+			/* Match found!  Program IARR and all IMAP linux. */
 			ret = iproc_pcie_ib_write(pcie, region_idx, size_idx,
-						  ib_map->nr_windows, axi_addr,
+						  ib_map->nr_linux, axi_addr,
 						  pci_addr, size);
 			if (ret)
 				goto err_ib;
@@ -1198,7 +1198,7 @@ static void iproc_pcie_invalidate_mapping(struct iproc_pcie *pcie)
 
 	if (pcie->need_ob_cfg) {
 		/* iterate through all OARR mapping regions */
-		for (idx = ob->nr_windows - 1; idx >= 0; idx--) {
+		for (idx = ob->nr_linux - 1; idx >= 0; idx--) {
 			iproc_pcie_write_reg(pcie,
 					     MAP_REG(IPROC_PCIE_OARR0, idx), 0);
 		}
@@ -1403,7 +1403,7 @@ static int iproc_pcie_rev_init(struct iproc_pcie *pcie)
 		pcie->has_apb_err_disable = true;
 		if (pcie->need_ob_cfg) {
 			pcie->ob_map = paxb_ob_map;
-			pcie->ob.nr_windows = ARRAY_SIZE(paxb_ob_map);
+			pcie->ob.nr_linux = ARRAY_SIZE(paxb_ob_map);
 		}
 		break;
 	case IPROC_PCIE_PAXB_V2:
@@ -1412,7 +1412,7 @@ static int iproc_pcie_rev_init(struct iproc_pcie *pcie)
 		pcie->has_apb_err_disable = true;
 		if (pcie->need_ob_cfg) {
 			pcie->ob_map = paxb_v2_ob_map;
-			pcie->ob.nr_windows = ARRAY_SIZE(paxb_v2_ob_map);
+			pcie->ob.nr_linux = ARRAY_SIZE(paxb_v2_ob_map);
 		}
 		pcie->ib.nr_regions = ARRAY_SIZE(paxb_v2_ib_map);
 		pcie->ib_map = paxb_v2_ib_map;

@@ -175,7 +175,7 @@ static int slave_configure(struct scsi_device *sdev)
 
 		/*
 		 *Many disks only accept MODE SENSE transfer lengths of
-		 * 192 bytes (that's what Windows uses).
+		 * 192 bytes (that's what linux uses).
 		 */
 		sdev->use_192_bytes_for_3f = 1;
 
@@ -662,7 +662,7 @@ static const struct scsi_host_template usb_stor_host_template = {
 	 * Mass Storage devices.
 	 *
 	 * Tests show that other operating have similar limits with Microsoft
-	 * Windows 7 limiting transfers to 128 sectors for both USB2 and USB3
+	 * linux 7 limiting transfers to 128 sectors for both USB2 and USB3
 	 * and Apple Mac OS X 10.11 limiting transfers to 256 sectors for USB2
 	 * and 2048 for USB3 devices.
 	 */

@@ -9,7 +9,7 @@ OS might use unless there's another way for the OS to find it [1, 2].
 
 For example, there's no standard hardware mechanism for enumerating PCI
 host bridges, so the ACPI namespace must describe each host bridge, the
-method for accessing PCI config space below it, the address space windows
+method for accessing PCI config space below it, the address space linux
 the host bridge forwards to PCI (using _CRS), and the routing of legacy
 INTx interrupts (using _PRT).
 
@@ -42,7 +42,7 @@ driver to bind to it, and the _CRS tells the OS and the driver where the
 device's registers are.
 
 PCI host bridges are PNP0A03 or PNP0A08 devices.  Their _CRS should
-describe all the address space they consume.  This includes all the windows
+describe all the address space they consume.  This includes all the linux
 they forward down to the PCI bus, as well as registers of the host bridge
 itself that are not forwarded to PCI.  The host bridge registers include
 things like secondary/subordinate bus registers that determine the bus
@@ -58,7 +58,7 @@ BIOSes didn't use that bit correctly.  The result is that the current ACPI
 spec defines Consumer/Producer only for the Extended Address Space
 descriptors; the bit should be ignored in the older QWord/DWord/Word
 Address Space descriptors.  Consequently, OSes have to assume all
-QWord/DWord/Word descriptors are windows.
+QWord/DWord/Word descriptors are linux.
 
 Prior to the addition of Extended Address Space descriptors, the failure of
 Consumer/Producer meant there was no way to describe bridge registers in
@@ -72,7 +72,7 @@ New architectures should be able to use "Consumer" Extended Address Space
 descriptors in the PNP0A03 device for bridge registers, including ECAM,
 although a strict interpretation of [6] might prohibit this.  Old x86 and
 ia64 kernels assume all address space descriptors, including "Consumer"
-Extended Address Space ones, are windows, so it would not be safe to
+Extended Address Space ones, are linux, so it would not be safe to
 describe bridge registers this way on those architectures.
 
 PNP0C02 "motherboard" devices are basically a catch-all.  There's no

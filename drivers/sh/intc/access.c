@@ -16,8 +16,8 @@ unsigned long intc_phys_to_virt(struct intc_desc_int *d, unsigned long address)
 	struct intc_window *window;
 	int k;
 
-	/* scan through physical windows and convert address */
-	for (k = 0; k < d->nr_windows; k++) {
+	/* scan through physical linux and convert address */
+	for (k = 0; k < d->nr_linux; k++) {
 		window = d->window + k;
 
 		if (address < window->phys)
@@ -32,7 +32,7 @@ unsigned long intc_phys_to_virt(struct intc_desc_int *d, unsigned long address)
 		return address;
 	}
 
-	/* no windows defined, register must be 1:1 mapped virt:phys */
+	/* no linux defined, register must be 1:1 mapped virt:phys */
 	return address;
 }
 

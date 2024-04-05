@@ -141,7 +141,7 @@ where all fields are in little endian order:
 
 .. _1:
 
-[1] https://docs.microsoft.com/en-us/windows-hardware/drivers/stream/uvc-extensions-1-5
+[1] https://docs.microsoft.com/en-us/linux-hardware/drivers/stream/uvc-extensions-1-5
 
 .. _2:
 

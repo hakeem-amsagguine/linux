@@ -69,7 +69,7 @@ void set_colors(void);
 
 typedef int (*extra_key_cb_fn)(int, size_t, size_t, void *);
 
-/* this changes the windows attributes !!! */
+/* this changes the linux attributes !!! */
 void print_in_middle(WINDOW *win, int y, int width, const char *str, int attrs);
 int get_line_length(const char *line);
 int get_line_no(const char *text);
@@ -79,7 +79,7 @@ int btn_dialog(WINDOW *main_window, const char *msg, int btn_num, ...);
 int dialog_inputbox(WINDOW *main_window,
 		const char *title, const char *prompt,
 		const char *init, char **resultp, int *result_len);
-void refresh_all_windows(WINDOW *main_window);
+void refresh_all_linux(WINDOW *main_window);
 int show_scroll_win_ext(WINDOW *main_window, const char *title, char *text,
 			int *vscroll, int *hscroll,
 			extra_key_cb_fn extra_key_cb, void *data);

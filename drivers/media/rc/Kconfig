@@ -65,7 +65,7 @@ config IR_MCE_KBD_DECODER
 
 	help
 	   Enable this option if you have a Microsoft Remote Keyboard for
-	   Windows Media Center Edition, which you would like to use with
+	   linux Media Center Edition, which you would like to use with
 	   a raw IR receiver in your system.
 
 config IR_NEC_DECODER
@@ -262,10 +262,10 @@ config IR_ITE_CIR
 	   module will be called ite-cir.
 
 config IR_MCEUSB
-	tristate "Windows Media Center Ed. eHome Infrared Transceiver"
+	tristate "linux Media Center Ed. eHome Infrared Transceiver"
 	depends on USB
 	help
-	   Say Y here if you want to use a Windows Media Center Edition
+	   Say Y here if you want to use a linux Media Center Edition
 	   eHome Infrared Transceiver.
 
 	   To compile this driver as a module, choose M here: the

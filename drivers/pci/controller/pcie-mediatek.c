@@ -673,7 +673,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
 	u32 val;
 	int err;
 
-	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+	entry = resource_list_first_type(&host->linux, IORESOURCE_MEM);
 	if (entry)
 		mem = entry->res;
 	if (!mem)
@@ -741,7 +741,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
 	if (IS_ENABLED(CONFIG_PCI_MSI))
 		mtk_pcie_enable_msi(port);
 
-	/* Set AHB to PCIe translation windows */
+	/* Set AHB to PCIe translation linux */
 	val = lower_32_bits(mem->start) |
 	      AHB2PCIE_SIZE(fls(resource_size(mem)));
 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
@@ -1135,9 +1135,9 @@ put_resources:
 static void mtk_pcie_free_resources(struct mtk_pcie *pcie)
 {
 	struct pci_host_bridge *host = pci_host_bridge_from_priv(pcie);
-	struct list_head *windows = &host->windows;
+	struct list_head *linux = &host->linux;
 
-	pci_free_resource_list(windows);
+	pci_free_resource_list(linux);
 }
 
 static void mtk_pcie_remove(struct platform_device *pdev)

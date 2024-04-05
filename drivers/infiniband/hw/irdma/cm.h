@@ -192,7 +192,7 @@ struct option_mss {
 	__be16 mss;
 };
 
-struct option_windowscale {
+struct option_linuxcale {
 	u8 optionnum;
 	u8 len;
 	u8 shiftcount;
@@ -202,7 +202,7 @@ union all_known_options {
 	char eol;
 	struct option_base base;
 	struct option_mss mss;
-	struct option_windowscale windowscale;
+	struct option_linuxcale linuxcale;
 };
 
 struct irdma_timer_entry {

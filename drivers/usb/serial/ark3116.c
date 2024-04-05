@@ -114,7 +114,7 @@ static int ark3116_read_reg(struct usb_serial *serial,
 static inline int calc_divisor(int bps)
 {
 	/* Original ark3116 made some exceptions in rounding here
-	 * because windows did the same. Assume that is not really
+	 * because linux did the same. Assume that is not really
 	 * necessary.
 	 * Crystal is 12MHz, probably because of USB, but we divide by 4?
 	 */
@@ -269,7 +269,7 @@ static void ark3116_set_termios(struct tty_struct *tty,
 		/* restore lcr */
 		ark3116_write_reg(serial, UART_LCR, lcr);
 		/* magic baudrate thingy: not sure what it does,
-		 * but windows does this as well.
+		 * but linux does this as well.
 		 */
 		ark3116_write_reg(serial, 0xe, eval);
 
@@ -634,7 +634,7 @@ MODULE_DESCRIPTION(DRIVER_DESC);
 
 /*
  * The following describes what I learned from studying the old
- * ark3116.c driver, disassembling the windows driver, and some lucky
+ * ark3116.c driver, disassembling the linux driver, and some lucky
  * guesses. Since I do not have any datasheet or other
  * documentation, inaccuracies are almost guaranteed.
  *
@@ -669,7 +669,7 @@ MODULE_DESCRIPTION(DRIVER_DESC);
  * On my chip, all signals seem to be 3.3V, but 5V tolerant. But that
  * may be different for the one you have ;-).
  *
- * The windows driver limits the registers to 0-F, so I assume there
+ * The linux driver limits the registers to 0-F, so I assume there
  * are actually 16 present on the device.
  *
  * On an UART interrupt, 4 bytes of data come in on the interrupt
@@ -689,7 +689,7 @@ MODULE_DESCRIPTION(DRIVER_DESC);
  * stopping TX when CTS is +5V. Bit 1 does the same for RTS, making
  * RTS +5V when the 3116 cannot transfer the data to the USB bus
  * (verified by disabling the reading URB). Note that as far as I can
- * tell, the windows driver does NOT use this, so there might be some
+ * tell, the linux driver does NOT use this, so there might be some
  * hardware bug or something.
  *
  * According to a patch provided here
@@ -723,7 +723,7 @@ MODULE_DESCRIPTION(DRIVER_DESC);
  * Set to 0x41 for IrDA, at init.
  *
  * Register E:
- * Somekind of baudrate override. The windows driver seems to set
+ * Somekind of baudrate override. The linux driver seems to set
  * this to 0x00 for normal baudrates, 0x01 for 460800, 0x02 for 921600.
  * Since 460800 and 921600 cannot be obtained by dividing 3MHz by an integer,
  * it could be somekind of subdivisor thingy.

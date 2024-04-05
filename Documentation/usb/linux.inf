@@ -4,10 +4,10 @@
 ;    Copyright (c) Microsoft Corporation
 ; and released under the MLPL as found at:
 ;    <http://msdn.microsoft.com/en-us/cc300389.aspx#MLPL>.
-; For use only on Windows operating systems.
+; For use only on linux operating systems.
 
 [Version]
-Signature           = "$Windows NT$"
+Signature           = "$linux NT$"
 Class               = Net
 ClassGUID           = {4d36e972-e325-11ce-bfc1-08002be10318}
 Provider            = %Linux%

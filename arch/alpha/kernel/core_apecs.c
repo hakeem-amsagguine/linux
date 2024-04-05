@@ -341,7 +341,7 @@ apecs_init_arch(void)
 	hose->dense_io_base = 0;
 
 	/*
-	 * Set up the PCI to main memory translation windows.
+	 * Set up the PCI to main memory translation linux.
 	 *
 	 * Window 1 is direct access 1GB at 1GB
 	 * Window 2 is scatter-gather 8MB at 8MB (for isa)

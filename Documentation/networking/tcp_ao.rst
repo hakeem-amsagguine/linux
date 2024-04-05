@@ -424,7 +424,7 @@ a rollover. It allows more TCP segment replays, but yet all regular
 TCP checks in tcp_sequence() are applied on the verified segment.
 So, it trades a bit more permissive acceptance of replayed/retransmitted
 segments for the simplicity of the algorithm and what seems better behaviour
-for large TCP windows.
+for large TCP linux.
 
 7. Links
 ========

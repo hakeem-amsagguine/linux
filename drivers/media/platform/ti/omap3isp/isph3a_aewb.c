@@ -96,12 +96,12 @@ static int h3a_aewb_busy(struct ispstat *aewb)
 
 static u32 h3a_aewb_get_buf_size(struct omap3isp_h3a_aewb_config *conf)
 {
-	/* Number of configured windows + extra row for black data */
+	/* Number of configured linux + extra row for black data */
 	u32 win_count = (conf->ver_win_count + 1) * conf->hor_win_count;
 
 	/*
-	 * Unsaturated block counts for each 8 windows.
-	 * 1 extra for the last (win_count % 8) windows if win_count is not
+	 * Unsaturated block counts for each 8 linux.
+	 * 1 extra for the last (win_count % 8) linux if win_count is not
 	 * divisible by 8.
 	 */
 	win_count += (win_count + 7) / 8;

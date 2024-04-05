@@ -505,7 +505,7 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
 	struct rockchip_pcie *rockchip;
 	struct pci_epc *epc;
 	size_t max_regions;
-	struct pci_epc_mem_window *windows = NULL;
+	struct pci_epc_mem_window *linux = NULL;
 	int err, i;
 	u32 cfg_msi, cfg_msix_cp;
 
@@ -554,19 +554,19 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
 	/* Only enable function 0 by default */
 	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
 
-	windows = devm_kcalloc(dev, ep->max_regions,
+	linux = devm_kcalloc(dev, ep->max_regions,
 			       sizeof(struct pci_epc_mem_window), GFP_KERNEL);
-	if (!windows) {
+	if (!linux) {
 		err = -ENOMEM;
 		goto err_uninit_port;
 	}
 	for (i = 0; i < ep->max_regions; i++) {
-		windows[i].phys_base = rockchip->mem_res->start + (SZ_1M * i);
-		windows[i].size = SZ_1M;
-		windows[i].page_size = SZ_1M;
+		linux[i].phys_base = rockchip->mem_res->start + (SZ_1M * i);
+		linux[i].size = SZ_1M;
+		linux[i].page_size = SZ_1M;
 	}
-	err = pci_epc_multi_mem_init(epc, windows, ep->max_regions);
-	devm_kfree(dev, windows);
+	err = pci_epc_multi_mem_init(epc, linux, ep->max_regions);
+	devm_kfree(dev, linux);
 
 	if (err < 0) {
 		dev_err(dev, "failed to initialize the memory space\n");

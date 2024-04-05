@@ -14,13 +14,13 @@ power of this hardware.
 
 Until recently, emu10k1 users on Linux did not have access to the same low
 latency, multichannel features offered by the "kX ASIO" feature of their
-Windows driver.  As of ALSA 1.0.9 this is no more!
+linux driver.  As of ALSA 1.0.9 this is no more!
 
 For those unfamiliar with kX ASIO, this consists of 16 capture and 16 playback
 channels.  With a post 2.6.9 Linux kernel, latencies down to 64 (1.33 ms) or
 even 32 (0.66ms) frames should work well.
 
-The configuration is slightly more involved than on Windows, as you have to
+The configuration is slightly more involved than on linux, as you have to
 select the correct device for JACK to use.  Actually, for qjackctl users it's
 fairly self explanatory - select Duplex, then for capture and playback select
 the multichannel devices, set the in and out channels to 16, and the sample

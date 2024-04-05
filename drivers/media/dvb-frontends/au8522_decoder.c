@@ -325,7 +325,7 @@ static void au8522_setup_cvbs_tuner_mode(struct au8522_state *state,
 			AU8522_MODULE_CLOCK_CONTROL_REG0A3H_CVBS);
 
 	/* It's not clear why we have to have the PGA in automatic mode while
-	   enabling clamp control, but it's what Windows does */
+	   enabling clamp control, but it's what linux does */
 	au8522_writereg(state, AU8522_PGA_CONTROL_REG082H, 0x00);
 
 	/* Enable clamping control */

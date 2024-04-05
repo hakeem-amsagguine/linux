@@ -1032,8 +1032,8 @@ static int __init um_pci_init(void)
 		goto free;
 	}
 
-	pci_add_resource(&bridge->windows, &virt_iomem_resource);
-	pci_add_resource(&bridge->windows, &busn_resource);
+	pci_add_resource(&bridge->linux, &virt_iomem_resource);
+	pci_add_resource(&bridge->linux, &busn_resource);
 	bridge->ops = &um_pci_ops;
 	bridge->map_irq = um_pci_map_irq;
 
@@ -1062,7 +1062,7 @@ free:
 	if (um_pci_fwnode)
 		irq_domain_free_fwnode(um_pci_fwnode);
 	if (bridge) {
-		pci_free_resource_list(&bridge->windows);
+		pci_free_resource_list(&bridge->linux);
 		pci_free_host_bridge(bridge);
 	}
 	free_percpu(um_pci_msg_bufs);
@@ -1075,7 +1075,7 @@ static void __exit um_pci_exit(void)
 	unregister_virtio_driver(&um_pci_virtio_driver);
 	irq_domain_remove(um_pci_msi_domain);
 	irq_domain_remove(um_pci_inner_domain);
-	pci_free_resource_list(&bridge->windows);
+	pci_free_resource_list(&bridge->linux);
 	pci_free_host_bridge(bridge);
 	free_percpu(um_pci_msg_bufs);
 }

@@ -815,7 +815,7 @@ static int mite_setup(struct comedi_device *dev, struct mite *mite,
 	 * Make sure dma bursts work. I got this from running a bus analyzer
 	 * on a pxi-6281 and a pxi-6713. 6713 powered up with register value
 	 * of 0x61f and bursts worked. 6281 powered up with register value of
-	 * 0x1f and bursts didn't work. The NI windows driver reads the
+	 * 0x1f and bursts didn't work. The NI linux driver reads the
 	 * register, then does a bitwise-or of 0x600 with it and writes it back.
 	 *
 	 * The bits 0x90180700 in MITE_UNKNOWN_DMA_BURST_REG can be

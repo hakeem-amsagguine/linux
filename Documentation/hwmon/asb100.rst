@@ -22,7 +22,7 @@ supply a datasheet for these chips. Thanks go to many people who helped
 investigate their hardware, including:
 
 Vitaly V. Bursov
-Alexander van Kaam (author of MBM for Windows)
+Alexander van Kaam (author of MBM for linux)
 Bertrik Sikken
 
 The ASB100 implements seven voltage sensors, three fan rotation speed
